@@ -1,0 +1,321 @@
+{% extends 'admin/layout.html' %} 
+
+{% block main %}
+        <!-- Content Header (Page header) -->
+        <section class="content-header">
+          <h1>
+            课程管理
+            <small>编辑课程</small>
+          </h1>
+          <ol class="breadcrumb">
+            <li><a href="/"><i class="fa fa-dashboard"></i> 首页</a></li>
+            <li class="active">课程管理</li>
+          </ol>
+        </section>
+
+        <!-- Main content -->
+        <section class="content">
+          <div class="row">
+            <div class="col-md-12">
+              <!-- general form elements disabled -->
+              <div class="box box-warning">
+                <div class="box-header">
+                  <h3 class="box-title">任务描述</h3>
+                  <button id="save-course" data-id="{{view_course.id}}" class="btn-save btn btn-success btn-sm pull-right">保存信息</button>
+                </div><!-- /.box-header -->
+                <div class="box-body">
+                <form role="form">
+                    <div class="form-group">
+                      <label>开始时间</label>
+                      <input id="start_time" type="text" class="form-control" data-mask value="{{view_course.start_time or ''}}"/>
+                    </div>
+                    <div class="form-group">
+                      <label>结束时间</label>
+                      <input id="end_time" type="text" class="form-control" data-mask value="{{view_course.end_time or ''}}"/>
+                    </div>
+                    <div class="form-group">
+                      <label>课程名称</label>
+                      <input id="title" type="text" class="form-control" value="{{view_course.title or ''}}"/>
+                    </div>
+                    <div class="form-group">
+                      <label>课程介绍</label>
+                      <textarea id="intro" type="text" class="form-control">{{view_course.intro or ''}}</textarea>
+                    </div>
+                    <div class="form-group">
+                      <label>当前状态</label>
+                      <input id="state" type="text" class="form-control" value="{{view_course.state or ''}}"/>
+                    </div>
+                    <div class="form-group">
+                      <label>授课教师</label>
+                      <select id="teacher" class="form-control" value="{{view_course.teacher or ''}}">
+                        {%for teacher in all_teachers%}
+                        <option {% if view_course.teacher == teacher.username %} selected="selected" {% endif %}>{{teacher.username}}-{{teacher.name}}</option>
+                        {%endfor%}
+                      </select>
+                    </div>
+                    <div class="form-group">
+                      <label>课程时长</label>
+                      <input id="time" type="text" class="form-control" value="{{view_course.time or ''}}"/>
+                    </div>
+                  </form>
+                </div><!-- /.box-body -->
+              </div><!-- /.box -->
+
+              <div class="box box-warning">
+                <div class="box-header">
+                  <h3 class="box-title">课时列表</h3>
+                  <button id="add-chapter" data-toggle="modal" data-target="#addModal" data-id="{{view_course.id}}" class="btn-save btn btn-success btn-sm pull-right">新建课时</button>
+                </div><!-- /.box-header -->
+                <div class="box-body table-responsive no-padding">
+          <table class="table table-hover">
+            <tr>
+              <th>ID</th>
+              <th>课时名称</th>
+              <th>课时时长</th>
+              <th>课时视频</th>
+              <th>课时顺序</th>
+              <th>操作</th>
+            </tr>
+
+            {% for chapter in all_chapters %}
+            <tr id="chapter-{{chapter.id}}">
+              <td class="chapter-id">{{chapter.id}}</td>
+              <td class="chapter-title">{{chapter.title or "/"}}</td>
+              <td class="chapter-time">{{chapter.time or "/"}}</td>
+              <td class="chapter-video">{{chapter.video_link or "/"}}</td>
+              <td class="chapter-order">{{chapter.order_num or "/"}}</td>
+              <td class="chapter-intro" style="display:none;">{{chapter.intro or "/"}}</td>
+              <td class="chapter-section" style="display:none;">{{chapter.section or ""}}</td>
+              <td>
+                <div class="btn-group">
+                  <a type="button" class="edit btn btn-default btn-xs" data-toggle="modal" data-target="#addModal" data-id="{{chapter.id}}">
+                    <i class="fa fa-pencil-square-o"></i>
+                  </a>
+                  <a type="button" class="delete btn btn-default btn-xs" data-toggle="modal" data-target="#delModal" data-id="{{chapter.id}}">
+                    <i class="fa fa-trash-o"></i>
+                  </a>
+                </div>
+              </td>
+            </tr>
+            {% endfor %}
+
+          </table>
+        </div>
+              </div><!-- /.box -->
+            </div><!--/.col (right) -->
+          </div>
+
+        </section><!-- /.content -->
+
+        <div id="addModal" class="modal fade">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">
+          <span aria-hidden="true">&times;</span>
+          <span class="sr-only">Close</span>
+        </button>
+        <h4 class="modal-title">新建课时</h4>
+      </div>
+      <div class="modal-body">
+        <form role="form">
+                    <div class="form-group">
+                      <label>课时名称</label>
+                      <input id="chapter_title" type="text" class="form-control" value=""/>
+                    </div>
+                    <div class="form-group">
+                      <label>课时时长</label>
+                      <input id="chapter_time" type="text" class="form-control" value=""/>
+                    </div>
+                    <div class="form-group">
+                      <label>视频链接</label>
+                      <input id="chapter_video" type="text" class="form-control" value=""/>
+                    </div>
+                    <div class="form-group">
+                      <label>课时顺序</label>
+                      <input id="chapter_order" type="text" class="form-control" value=""/>
+                    </div>
+                    <div class="form-group">
+                      <label>课时介绍</label>
+                      <textarea id="chapter_intro" type="text" class="form-control"></textarea>
+                    </div>
+                    <div class="form-group">
+                      <label>知识点</label>
+                      <textarea id="chapter_section" type="text" class="form-control"></textarea>
+                    </div>
+                  </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+        <button type="button" class="btn btn-success btn-add" data-id="{{view_course.id}}" data-type="">确认</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div id="delModal" class="modal fade">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">
+          <span aria-hidden="true">&times;</span>
+          <span class="sr-only">Close</span>
+        </button>
+        <h4 class="modal-title">你确定要删除这个课时吗？</h4>
+      </div>
+      <div class="modal-body">
+        <p>如果选择确认，这个课时将会被永久删除。</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+        <button type="button" class="btn btn-success" data-id="" data-type="">确认</button>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}
+
+{% block javascript %}
+<!-- InputMask -->
+<script src="/static/AdminLTE/plugins/input-mask/jquery.inputmask.js" type="text/javascript"></script>
+<script src="/static/AdminLTE/plugins/input-mask/jquery.inputmask.date.extensions.js" type="text/javascript"></script>
+<script src="/static/AdminLTE/plugins/input-mask/jquery.inputmask.extensions.js" type="text/javascript"></script>
+
+
+
+<script type="text/javascript">
+$(document).ready(function() {
+        $("[data-mask]").inputmask({
+        mask: "y-m-d h:s:s",
+        placeholder: "yyyy-mm-dd hh:mm:ss",
+        alias: "datetime",
+        hourFormat: "24"
+    });
+});
+
+$(document).on('click', '#save-course', function() {
+  var course_id = $(this).attr('data-id');
+  var teacher = $('#teacher').val().split('-')[0]
+  $.ajax({
+    type: "POST",
+    contentType: "application/json; charset=utf-8",
+    dataType: "json",
+    url: "/admin/course/edit/" + course_id,
+    data: JSON.stringify({
+      start_time: $('#start_time').val(),
+      end_time: $('#end_time').val(),
+      title: $('#title').val(),
+      intro: $('#intro').val(),
+      state: $('#state').val(),
+      teacher: teacher,
+      time: $('#time').val(),
+    }),
+    success: function(msg) {
+      alert(msg.message);
+    },
+    error: function(msg) {
+      alert("error");
+    }
+  });         
+});
+
+$(document).on('click', '#addModal .btn-add', function() {
+  $('#addModal').modal('hide');
+
+  var course_id = $(this).attr('data-id');
+  $.ajax({
+    type: "POST",
+    contentType: "application/json; charset=utf-8",
+    dataType: "json",
+    url: "/admin/chapter/add",
+    data: JSON.stringify({
+      title: $('#chapter_title').val(),
+      intro: $('#chapter_intro').val(),
+      time: $('#chapter_time').val(),
+      video_link: $('#chapter_video').val(),
+      course_id: course_id,
+      order_num: $('#chapter_order').val(),
+      section: $('#chapter_section').val(),
+    }),
+    success: function(msg) {
+      alert(msg.message);
+      location.reload()
+    },
+    error: function(msg) {
+      alert("error");
+    }
+  });
+});
+
+$(document).on('click', '#addModal .btn-edit', function() {
+  $('#addModal').modal('hide');
+
+  var chapter_id = $(this).attr('data-id');
+  $.ajax({
+    type: "POST",
+    contentType: "application/json; charset=utf-8",
+    dataType: "json",
+    url: "/admin/chapter/edit/"+chapter_id,
+    data: JSON.stringify({
+      title: $('#chapter_title').val(),
+      intro: $('#chapter_intro').val(),
+      time: $('#chapter_time').val(),
+      video_link: $('#chapter_video').val(),
+      order_num: $('#chapter_order').val(),
+      section: $('#chapter_section').val(),
+    }),
+    success: function(msg) {
+      alert(msg.message);
+      location.reload()
+    },
+    error: function(msg) {
+      alert("error");
+    }
+  });
+});
+
+$(document).on('click', '.delete', function() {
+  var delete_id = $(this).attr('data-id');
+  $('#delModal .btn-success').attr('data-id', delete_id);
+});
+
+$(document).on('click', '#delModal .btn-success', function() {
+  $('#delModal').modal('hide');
+  var delete_id = $(this).attr('data-id');
+  $.getJSON('/admin/chapter/delete/' + delete_id, function(data) {
+    if (data.success == 0) {
+      $('#chapter-' + delete_id).hide();
+    } else {
+      alert("删除课时失败！");
+    }
+  });
+});
+
+$(document).on('click', '.edit', function() {
+  $('#addModal .btn-success').removeClass('btn-add');
+  $('#addModal .btn-success').addClass('btn-edit');
+  var edit_id = $(this).attr('data-id');
+  $('#addModal .modal-title').text("编辑课时");
+  $('#addModal .btn-success').attr('data-id', edit_id);
+  $('#addModal .btn-success').attr('data-type', 'edit');
+
+  var chapter_id = '#chapter-'+edit_id;
+  $('#chapter_title').val($(chapter_id + ' .chapter-title').text());
+  $('#chapter_intro').val($(chapter_id + ' .chapter-intro').text());
+  $('#chapter_time').val($(chapter_id + ' .chapter-time').text());
+  $('#chapter_video').val($(chapter_id + ' .chapter-video').text());
+  $('#chapter_order').val($(chapter_id + ' .chapter-order').text());
+  $('#chapter_section').val($(chapter_id + ' .chapter-section').text());
+});
+
+$(document).on('click', '#add-chapter', function() {
+  $('#addModal .btn-success').removeClass('btn-edit');
+  $('#addModal .btn-success').addClass('btn-add');
+  var edit_id = $('#save-course').attr('data-id');
+  $('#addModal .modal-title').text("新建课时");
+
+  $('#addModal .btn-success').attr('data-id', edit_id);
+  $('#addModal .btn-success').attr('data-type', 'add');
+});
+</script>
+{%endblock%}

@@ -20,6 +20,8 @@ import tornado.options
 import tornado.web
 
 import handler.index
+import handler.user
+import handler.admin
 
 from tornado.options import define, options
 from lib.loader import Loader
@@ -55,6 +57,17 @@ class Application(tornado.web.Application):
             (r"/(orca\.txt)", tornado.web.StaticFileHandler, dict(path = settings["static_path"])),
 
             (r"/", handler.index.IndexHandler),
+            (r"/signin", handler.user.SigninHandler),
+            (r"/signout", handler.user.SignoutHandler),
+            (r"/signup", handler.user.SignupHandler),
+            (r"/admin", handler.admin.IndexAdminHandler),
+            (r"/admin/signin", handler.admin.SigninAdminHandler),
+            (r"/admin/signout", handler.admin.SignoutAdminHandler),
+            (r"/admin/signup", handler.admin.SignupAdminHandler),
+            (r"/admin/users", handler.admin.UsersAdminHandler),
+            (r"/admin/user/new", handler.admin.UserNewAdminHandler),
+            (r"/admin/user/edit/(\d+)", handler.admin.UserEditAdminHandler),
+            (r"/admin/user/delete/(\d+)", handler.admin.UserDeleteAdminHandler),
         ]
 
         tornado.web.Application.__init__(self, handlers, **settings)

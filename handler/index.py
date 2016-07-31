@@ -50,5 +50,58 @@ bucket = BucketManager(q)
 
 class IndexHandler(BaseHandler):
     def get(self, template_variables = {}):
+        user_info = self.current_user
         template_variables["static_path"] = self.static_path
+        template_variables["user_info"] = user_info
+        
+        if(user_info):
+            print 'ddd'
+        else:
+            print 'dasfafafasd'
+            template_variables["sign_in_up"] = self.get_argument("s", "") 
+            link = self.get_argument("link", "")
+            if link!="":
+                template_variables["link"] =  link
+            link2 = self.get_argument("link2", "")
+            if link2!="":
+                template_variables["link2"] = link2 
+            invite = self.get_argument("i", "")
+            if invite!="":
+                template_variables["invite"] = invite
+            else:
+                template_variables["invite"] = None
+            error = self.get_argument("e", "")
+            if error!="":
+                template_variables["error"] = error
+            else:
+                template_variables["error"] = None
         self.render(self.template_path+"index.html", **template_variables)
+            
+
+class IndexAdminHandler(BaseHandler):
+    def get(self, template_variables = {}):
+        user_info = self.current_user
+        template_variables["side_menu"] = "dashboard"
+        template_variables["user_info"] = user_info
+        template_variables["user_count"] = 0
+        template_variables["course_count"] = 0
+        if(user_info and (user_info.admin == "admin" or user_info.admin == "teacher")):  
+            self.render("admin/index.html", **template_variables)
+        else:
+            self.render("admin/index.html", **template_variables)
+
+class CoursesAdminHandler(BaseHandler):
+    def get(self, template_variables = {}):
+        template_variables["side_menu"] = "courses"
+        user_info = self.current_user
+        template_variables["user_info"] = user_info
+        p = int(self.get_argument("p", "1"))
+
+        if(user_info):
+            if(user_info.admin == "admin"):  
+                template_variables["all_courses"] = 0
+            if(user_info.admin == "teacher"):
+                template_variables["all_courses"] = 0
+            self.render("admin/courses.html", **template_variables)
+        else:
+            self.render("admin/courses.html", **template_variables)

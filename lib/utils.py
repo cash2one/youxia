@@ -74,3 +74,9 @@ def pretty_date(time):
         if day_diff < 365:
             return str(day_diff / 30) + " 月前"
         return str(day_diff / 365) + " 天前"
+
+def getJsonKeyValue(data, update, key):
+    if data.has_key(key):
+        key_value = data[key]
+        update[key] = key_value
+    return update
