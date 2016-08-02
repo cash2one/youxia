@@ -373,55 +373,45 @@ class NowfeedsAdminHandler(BaseHandler):
             self.redirect("/admin/signin")
 
 class NowfeedEditAdminHandler(BaseHandler):
-    def get(self, course_id, template_variables = {}):
-        template_variables["side_menu"] = "courses"
+    def get(self, nowfeed_id, template_variables = {}):
+        template_variables["side_menu"] = "nowfeeds"
         user_info = self.current_user
         template_variables["user_info"] = user_info
 
-        if(user_info and (user_info.admin == "admin" or user_info.admin == "teacher")):  
-            view_course = self.course_model.get_course_by_id(course_id)
-            template_variables["view_course"] = view_course
-            template_variables["all_chapters"] = self.chapter_model.get_chapters_by_course_id(course_id)
-            template_variables["all_teachers"] = self.user_model.get_all_teachers()
-            if(user_info.admin == "admin" or view_course.teacher == user_info.username):
-                self.render("admin/course_edit.html", **template_variables)
+        if(user_info and user_info.admin == "admin"):  
+            view_nowfeed = self.nowfeed_model.get_nowfeed_by_id(nowfeed_id)
+            template_variables["view_nowfeed"] = view_nowfeed
+            if(user_info.admin == "admin"):
+                self.render("admin/nowfeed_edit.html", **template_variables)
             else:
-                self.redirect("/admin/courses")  
+                self.redirect("/admin/nowfeeds")  
         else:
             self.redirect("/admin/signin")
 
-    def post(self, course_id, template_variables = {}):
+    def post(self, nowfeed_id, template_variables = {}):
         user_info = self.current_user
-        view_course = self.course_model.get_course_by_id(course_id)
+        view_nowfeed = self.nowfeed_model.get_nowfeed_by_id(nowfeed_id)
 
-        if(user_info and (user_info.admin == "admin" or user_info.admin == "teacher") and view_course):  
+        if(user_info and user_info.admin == "admin" and view_nowfeed):  
             update_info = {}
             data = json.loads(self.request.body)
-            print data["intro"]
             
-            update_info = getJsonKeyValue(data, update_info, "title")
-            update_info = getJsonKeyValue(data, update_info, "intro")
-            update_info = getJsonKeyValue(data, update_info, "state")
-            update_info = getJsonKeyValue(data, update_info, "teacher")
-            update_info = getJsonKeyValue(data, update_info, "time")
-            update_info = getJsonKeyValue(data, update_info, "video_num")
-            update_info = getJsonKeyValue(data, update_info, "follow_num")
-
-            start_time = data["start_time"]
-            if start_time!='':
-                update_info = getJsonKeyValue(data, update_info, "start_time")
-            end_time = data["end_time"]
-            if end_time!='':
-                update_info = getJsonKeyValue(data, update_info, "end_time")
+            update_info = getJsonKeyValue(data, update_info, "name")
+            update_info = getJsonKeyValue(data, update_info, "subname")
+            update_info = getJsonKeyValue(data, update_info, "avatar")
+            update_info = getJsonKeyValue(data, update_info, "content")
+            update_info = getJsonKeyValue(data, update_info, "image")
+            update_info = getJsonKeyValue(data, update_info, "source")
+            update_info = getJsonKeyValue(data, update_info, "link")
             
-            update_result = self.course_model.update_course_by_id(course_id, update_info)
+            update_result = self.nowfeed_model.update_nowfeed_by_id(nowfeed_id, update_info)
 
             if update_result == 0:
                 success = 0
-                message = "成功保存课程信息"
+                message = "成功保存 Nowfeed 信息"
             else:
                 success = -1
-                message = "保存课程信息失败"
+                message = "保存 Nowfeed 信息失败"
 
             self.write(lib.jsonp.print_JSON({
                     "success": success,
@@ -429,7 +419,7 @@ class NowfeedEditAdminHandler(BaseHandler):
             }))
         else:
             success = -1
-            message = "保存课程信息失败"
+            message = "保存 Nowfeed 信息失败"
 
             self.write(lib.jsonp.print_JSON({
                     "success": success,
@@ -438,44 +428,39 @@ class NowfeedEditAdminHandler(BaseHandler):
 
 class NowfeedNewAdminHandler(BaseHandler):
     def get(self, template_variables = {}):
-        template_variables["side_menu"] = "courses"
+        template_variables["side_menu"] = "nowfeeds"
         user_info = self.current_user
         template_variables["user_info"] = user_info
 
-        if(user_info and (user_info.admin == "admin" or user_info.admin == "teacher")):  
-            template_variables["all_teachers"] = self.user_model.get_all_teachers()
-            self.render("admin/course_new.html", **template_variables)
+        if(user_info and user_info.admin == "admin"):  
+            self.render("admin/nowfeed_new.html", **template_variables)
         else:
             self.redirect("/admin/signin")
 
     def post(self, template_variables = {}):
         user_info = self.current_user
 
-        if(user_info and (user_info.admin == "admin" or user_info.admin == "teacher")):  
+        if(user_info and user_info.admin == "admin"):  
             update_info = {}
             data = json.loads(self.request.body)
             
-            update_info = getJsonKeyValue(data, update_info, "title")
-            update_info = getJsonKeyValue(data, update_info, "intro")
-            update_info = getJsonKeyValue(data, update_info, "state")
-            update_info = getJsonKeyValue(data, update_info, "teacher")
-            update_info = getJsonKeyValue(data, update_info, "time")
+            update_info = getJsonKeyValue(data, update_info, "name")
+            update_info = getJsonKeyValue(data, update_info, "subname")
+            update_info = getJsonKeyValue(data, update_info, "avatar")
+            update_info = getJsonKeyValue(data, update_info, "content")
+            update_info = getJsonKeyValue(data, update_info, "image")
+            update_info = getJsonKeyValue(data, update_info, "source")
+            update_info = getJsonKeyValue(data, update_info, "link")
+            update_info["created"] = time.strftime('%Y-%m-%d %H:%M:%S')
 
-            start_time = data["start_time"]
-            if start_time!='':
-                update_info = getJsonKeyValue(data, update_info, "start_time")
-            end_time = data["end_time"]
-            if end_time!='':
-                update_info = getJsonKeyValue(data, update_info, "end_time")
-
-            update_result = self.course_model.add_new_course(update_info)
+            update_result = self.nowfeed_model.add_new_nowfeed(update_info)
 
             if update_result > 0:
                 success = 0
-                message = "成功新建课程"
+                message = "成功新建 Nowfeed"
             else:
                 success = -1
-                message = "新建课程失败"
+                message = "新建 Nowfeed 失败"
 
             self.write(lib.jsonp.print_JSON({
                     "success": success,
@@ -483,7 +468,7 @@ class NowfeedNewAdminHandler(BaseHandler):
             }))
         else:
             success = -1
-            message = "新建课程失败"
+            message = "新建 Nowfeed 失败"
 
             self.write(lib.jsonp.print_JSON({
                     "success": success,

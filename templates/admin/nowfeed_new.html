@@ -4,12 +4,12 @@
         <!-- Content Header (Page header) -->
         <section class="content-header">
           <h1>
-            课程管理
-            <small>新建课程</small>
+            NowFeed 
+            <small>新建 NowFeed</small>
           </h1>
           <ol class="breadcrumb">
             <li><a href="/admin"><i class="fa fa-dashboard"></i> 首页</a></li>
-            <li class="active">课程管理</li>
+            <li class="active">NowFeed</li>
           </ol>
         </section>
 
@@ -20,42 +20,38 @@
               <!-- general form elements disabled -->
               <div class="box box-warning">
                 <div class="box-header">
-                  <h3 class="box-title">课程描述</h3>
-                  <button id="save-course"  class="btn-save btn btn-success btn-sm pull-right">保存信息</button>
+                  <h3 class="box-title">NowFeed</h3>
+                  <button id="save-nowfeed"  class="btn-save btn btn-success btn-sm pull-right">保存信息</button>
                 </div><!-- /.box-header -->
                 <div class="box-body">
                   <form role="form">
                     <div class="form-group">
-                      <label>开始时间</label>
-                      <input id="start_time" type="text" class="form-control" data-mask/>
+                      <label>Name</label>
+                      <input id="name" type="text" class="form-control"/>
                     </div>
                     <div class="form-group">
-                      <label>结束时间</label>
-                      <input id="end_time" type="text" class="form-control" data-mask/>
+                      <label>Subname</label>
+                      <input id="subname" type="text" class="form-control"/>
                     </div>
                     <div class="form-group">
-                      <label>课程名称</label>
-                      <input id="title" type="text" class="form-control"/>
+                      <label>Avatar</label>
+                      <input id="avatar" type="text" class="form-control"/>
                     </div>
                     <div class="form-group">
-                      <label>课程介绍</label>
-                      <input id="intro" type="text" class="form-control"/>
+                      <label>Content</label>
+                      <input id="content" type="text" class="form-control"/>
                     </div>
                     <div class="form-group">
-                      <label>当前状态</label>
-                      <input id="state" type="text" class="form-control"/>
+                      <label>Image</label>
+                      <input id="image" type="text" class="form-control"/>
                     </div>
                     <div class="form-group">
-                      <label>授课教师</label>
-                      <select id="teacher" class="form-control">
-                        {%for teacher in all_teachers%}
-                        <option>{{teacher.username}}-{{teacher.name}}</option>
-                        {%endfor%}
-                      </select>
+                      <label>Source</label>
+                      <input id="source" type="text" class="form-control"/>
                     </div>
                     <div class="form-group">
-                      <label>课程时长</label>
-                      <input id="time" type="text" class="form-control"/>
+                      <label>Link</label>
+                      <input id="link" type="text" class="form-control"/>
                     </div>
                   </form>
                 </div><!-- /.box-body -->
@@ -84,25 +80,24 @@ $(document).ready(function() {
     });
 });
 
-$(document).on('click', '#save-course', function() {
-  var teacher = $('#teacher').val().split('-')[0]
+$(document).on('click', '#save-nowfeed', function() {
   $.ajax({
     type: "POST",
     contentType: "application/json; charset=utf-8",
     dataType: "json",
-    url: "/admin/course/new",
+    url: "/admin/nowfeed/new",
     data: JSON.stringify({
-      start_time: $('#start_time').val(),
-      end_time: $('#end_time').val(),
-      title: $('#title').val(),
-      intro: $('#intro').val(),
-      state: $('#state').val(),
-      teacher: teacher,
-      time: $('#time').val(),
+      name: $('#name').val(),
+      subname: $('#subname').val(),
+      avatar: $('#avatar').val(),
+      content: $('#content').val(),
+      image: $('#image').val(),
+      source: $('#source').val(),
+      link: $('#link').val(),
     }),
     success: function(msg) {
       if (msg.success == 0) {
-        window.location.replace("/admin/courses");
+        window.location.replace("/admin/nowfeeds");
       }
     },
     error: function(msg) {

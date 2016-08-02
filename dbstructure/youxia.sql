@@ -89,10 +89,10 @@ CREATE TABLE `post` (
 DROP TABLE IF EXISTS `nowfeed`;
 CREATE TABLE `nowfeed` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `thumb` text,
+  `avatar` text,
   `name` text,
   `subname` text,
-  `text` text,
+  `content` text,
   `image` text,
   `source` text,
   `link` text,
