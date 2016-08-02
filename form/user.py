@@ -14,10 +14,11 @@ class SignupForm(Form):
         validators.Regexp(u"^(?!_)(?!.*?_$)(?!\d+)[a-zA-Z0-9_\u4e00-\u9fa5]+$", message = "用户名格式错误（中英文，数字，'_'构成，'_'不可在首尾，也不能全为数字）"),
     ])
 
-    email = TextField('Email', [
-        validators.Required(message = "必须填写Email"),
-        validators.Length(min = 4, message = "Email长度有误"),
-        validators.Email(message = "Email地址无效"),
+    mobile = TextField('Mobile', [
+        validators.Required(message = "必须填写手机号"),
+        validators.Length(min = 11, message = "请填写11位手机号"),
+        validators.Length(max = 11, message = "用请填写11位手机号"),
+        #validators.Email(message = "Email地址无效"),
     ])
 
     password = TextField('Password', [
@@ -48,10 +49,11 @@ class SignupForm(Form):
     ])
 
 class SigninForm(Form):
-    email = TextField('Email', [
-        validators.Required(message = "必须填写Email"),
-        validators.Length(min = 4, message = "Email长度有误"),
-        validators.Email(message = "Email地址无效"),
+    mobile = TextField('Mobile', [
+        validators.Required(message = "必须填写手机号"),
+        validators.Length(min = 11, message = "请填写11位手机号"),
+        validators.Length(max = 11, message = "用请填写11位手机号"),
+        #validators.Email(message = "Email地址无效"),
     ])
 
     password = TextField('Password', [

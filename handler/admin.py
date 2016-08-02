@@ -62,6 +62,7 @@ def do_login(self, user_id):
     user_id = user_info["uid"]
     self.session["uid"] = user_id
     self.session["username"] = user_info["username"]
+    self.session["mobile"] = user_info["mobile"]
     self.session["password"] = user_info["password"]
     self.session.save()
     self.set_secure_cookie("user", str(user_id))
@@ -70,6 +71,7 @@ def do_logout(self):
     # destroy sessions
     self.session["uid"] = None
     self.session["username"] = None
+    self.session["mobile"] = None
     self.session["password"] = None
     self.session.save()
 
@@ -88,7 +90,7 @@ class SigninAdminHandler(BaseHandler):
 
         form = SigninForm(self)
 
-        user_info = self.user_model.get_user_by_username(form.username.data)
+        user_info = self.user_model.get_user_by_mobile(form.mobile.data)
         if user_info == None:
             #self.redirect("/?s=signin&e=1")
             template_variables["errors"] = "用户名或密码错误！"
@@ -97,8 +99,8 @@ class SigninAdminHandler(BaseHandler):
         
         secure_password = hashlib.sha1(form.password.data).hexdigest()
         secure_password_md5 = hashlib.md5(form.password.data).hexdigest()
-        user_info = self.user_model.get_user_by_username_and_password(form.username.data, secure_password)
-        user_info = user_info or self.user_model.get_user_by_username_and_password(form.username.data, secure_password_md5)
+        user_info = self.user_model.get_user_by_mobile_and_password(form.mobile.data, secure_password)
+        user_info = user_info or self.user_model.get_user_by_mobile_and_password(form.mobile.data, secure_password_md5)
         
         if(user_info):
             do_login(self, user_info["uid"])
@@ -108,7 +110,7 @@ class SigninAdminHandler(BaseHandler):
             return
         else:
             #self.redirect("/?s=signin&e=2")
-            template_variables["errors"] = "用户名或密码错误！"
+            template_variables["errors"] = "手机或密码错误！"
             self.render("admin/login.html", **template_variables)
             return
 
@@ -289,8 +291,7 @@ class UserNewAdminHandler(BaseHandler):
             data = json.loads(self.request.body)
             
             update_info = getJsonKeyValue(data, update_info, "username")
-            update_info = getJsonKeyValue(data, update_info, "nickname")
-            update_info = getJsonKeyValue(data, update_info, "name")
+            update_info = getJsonKeyValue(data, update_info, "mobile")
             update_info = getJsonKeyValue(data, update_info, "gender")
             update_info = getJsonKeyValue(data, update_info, "admin")
             secure_password = hashlib.sha1("123456").hexdigest()
@@ -298,38 +299,6 @@ class UserNewAdminHandler(BaseHandler):
             update_info["created"] = time.strftime('%Y-%m-%d %H:%M:%S')
 
             update_result = self.user_model.add_new_user(update_info)
-
-            #ftp user add
-            ftpuser_update_info = {}
-            ftpuser_update_info = getJsonKeyValue(data, ftpuser_update_info, "username")
-            ftpuser_password = hashlib.md5("123456").hexdigest()
-            ftpuser_update_info["passwd"] = ftpuser_password
-            self.ftpuser_model.add_new_ftpuser(ftpuser_update_info)
-            ftpuserpath = "/home/vsftpd/"+ftpuser_update_info["username"];
-            #os.mkdir(ftpuserpath);
-            #os.chmod(ftpuserpath,stat.S_IRWXU);
-            #my_chown(ftpuserpath,"vsftpd","users")
-            
-
-            # process courses
-            courseStr = data["courses"]
-            if courseStr:
-                courseNames = courseStr.split(',') 
-                for courseName in courseNames:  
-                    course = self.course_model.get_course_by_title(courseName)
-                    if course:
-                        follow = self.follow_model.get_follow(user_id, course.id, "c")
-                        if not follow:
-                            self.follow_model.add_new_follow({
-                                "author_id": user_id,
-                                "obj_id": course.id,
-                                "obj_type": "c"
-                                })
-
-                courseFollows = self.follow_model.get_user_follow_courses(user_id)
-                for follow in courseFollows["list"]:
-                    if not follow.course_title in courseNames:
-                        self.follow_model.delete_follow_by_id(follow.id)
 
             if update_result > 0:
                 success = 0
@@ -356,24 +325,11 @@ class UserEditAdminHandler(BaseHandler):
         user_info = self.current_user
         template_variables["user_info"] = user_info
 
-        if(user_info and (user_info.admin == "admin" or user_info.admin == "teacher")):  
+        if(user_info and (user_info.admin == "admin")):  
             view_user = self.user_model.get_user_by_uid(user_id)
             template_variables["view_user"] = view_user
-            courses = self.follow_model.get_user_follow_courses(user_id)
-            courseStr = ''
-            i=0
-            for course in courses["list"]:
-                if i==0:
-                    courseStr = course.course_title
-                else:
-                    courseStr = courseStr + ','+course.course_title
-                i=i+1
-            template_variables["courseStr"] = courseStr 
 
-            if(user_info.admin == "admin" or self.course_model.get_user_by_teacher(user_info.username, user_id).author_id):
-                self.render("admin/user_edit.html", **template_variables)
-            else:
-               self.redirect("/admin/users") 
+            self.render("admin/user_edit.html", **template_variables)
         else:
             self.redirect("/admin/signin")
 
@@ -402,23 +358,21 @@ class UserDeleteAdminHandler(BaseHandler):
             }))
 
 
-class CoursesAdminHandler(BaseHandler):
+class NowfeedsAdminHandler(BaseHandler):
     def get(self, template_variables = {}):
-        template_variables["side_menu"] = "courses"
+        template_variables["side_menu"] = "nowfeeds"
         user_info = self.current_user
         template_variables["user_info"] = user_info
         p = int(self.get_argument("p", "1"))
 
         if(user_info):
             if(user_info.admin == "admin"):  
-                template_variables["all_courses"] = self.course_model.get_all_courses(current_page = p)
-            if(user_info.admin == "teacher"):
-                template_variables["all_courses"] = self.course_model.get_all_admin_courses(user_info.username, current_page = p)
-            self.render("admin/courses.html", **template_variables)
+                template_variables["all_nowfeeds"] = self.nowfeed_model.get_all_nowfeeds(current_page = p)
+            self.render("admin/nowfeeds.html", **template_variables)
         else:
             self.redirect("/admin/signin")
 
-class CourseEditAdminHandler(BaseHandler):
+class NowfeedEditAdminHandler(BaseHandler):
     def get(self, course_id, template_variables = {}):
         template_variables["side_menu"] = "courses"
         user_info = self.current_user
@@ -482,7 +436,7 @@ class CourseEditAdminHandler(BaseHandler):
                     "message": message
             }))     
 
-class CourseNewAdminHandler(BaseHandler):
+class NowfeedNewAdminHandler(BaseHandler):
     def get(self, template_variables = {}):
         template_variables["side_menu"] = "courses"
         user_info = self.current_user
@@ -536,7 +490,7 @@ class CourseNewAdminHandler(BaseHandler):
                     "message": message
             }))     
 
-class CourseDeleteAdminHandler(BaseHandler):
+class NowfeedDeleteAdminHandler(BaseHandler):
     def get(self, course_id, template_variables = {}):
         user_info = self.current_user
 

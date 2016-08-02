@@ -4,8 +4,8 @@
 <!-- Content Header (Page header) -->
 <section class="content-header">
   <h1>
-    课程管理
-    <small>所有课程</small>
+    NowFeed
+    <small>所有 NowFeed</small>
   </h1>
   <ol class="breadcrumb">
     <li>
@@ -13,7 +13,7 @@
         首页
       </a>
     </li>
-    <li class="active">课程管理</li>
+    <li class="active">NowFeed</li>
   </ol>
 </section>
 
@@ -23,7 +23,7 @@
     <div class="col-xs-12">
       <div class="box">
         <div class="box-header">
-          <a href="/admin/course/new" class="btn-save btn btn-success btn-sm">新建课程</a>
+          <a href="/admin/nowfeed/new" class="btn-save btn btn-success btn-sm">新建 NowFeed</a>
           <div class="box-tools">
             <div class="input-group">
               <input type="text" name="table_search" class="form-control input-sm pull-right" style="width: 150px;" placeholder="Search"/>
@@ -39,35 +39,27 @@
           <table class="table table-hover">
             <tr>
               <th>ID</th>
-              <th>课程名称</th>
-              <th>当前状态</th>
-              <th>授课教师</th>
-              <th>课程时长</th>
-              <th>视频数量</th>
-              <th>选课人数</th>
+              <th>NAME</th>
+              <th>SUBNAME</th>
+              <th>SOURCE</th>
+              <th>LINK</th>
               <th>创建时间</th>
-              <th>开始时间</th>
-              <th>结束时间</th>
               <th>操作</th>
             </tr>
-            {% for course in all_courses.list %}
-            <tr id="course-{{course.id}}">
-              <td>{{course.id}}</td>
-              <td>{{course.title or "/"}}</td>
-              <td>{{course.state or "/"}}</td>
-              <td>{{course.teacher or "/"}}{%if course.teacher_name%}-{{course.teacher_name}}{%endif%}</td>
-              <td>{{course.time or "/"}}</td>
-              <td>{{course.video_num or "/"}}</td>
-              <td>{{course.follow_num or "/"}}</td>
-              <td>{{course.created or "/"}}</td>
-              <td>{{course.start_time or "/"}}</td>
-              <td>{{course.end_time or "/"}}</td>
+            {% for nowfeed in all_nowfeeds.list %}
+            <tr id="nowfeed-{{nowfeed.id}}">
+              <td>{{nowfeed.id}}</td>
+              <td>{{nowfeed.name or "/"}}</td>
+              <td>{{nowfeed.subname or "/"}}</td>
+              <td>{{nowfeed.source or "/"}}</td>
+              <td>{{nowfeed.link or "/"}}</td>
+              <td>{{nowfeed.created or "/"}}</td>
               <td>
                 <div class="btn-group">
-                  <a href="/admin/course/edit/{{course.id}}" type="button" class="btn btn-default btn-xs">
+                  <a href="/admin/nowfeed/edit/{{nowfeed.id}}" type="button" class="btn btn-default btn-xs">
                     <i class="fa fa-pencil-square-o"></i>
                   </a>
-                  <a type="button" class="delete btn btn-default btn-xs" data-toggle="modal" data-target="#delModal" data-id="{{course.id}}">
+                  <a type="button" class="delete btn btn-default btn-xs" data-toggle="modal" data-target="#delModal" data-id="{{nowfeed.id}}">
                     <i class="fa fa-trash-o"></i>
                   </a>
                 </div>
@@ -79,7 +71,7 @@
         <!-- /.box-body -->
 
         <div class="box-footer clearfix">
-          <ul class="pagination pagination-sm no-margin pull-right">{{ all_courses.page|pagination(request.uri) }}</ul>
+          <ul class="pagination pagination-sm no-margin pull-right">{{ all_nowfeeds.page|pagination(request.uri) }}</ul>
         </div>
       </div>
       <!-- /.box --> </div>
@@ -96,10 +88,10 @@
           <span aria-hidden="true">&times;</span>
           <span class="sr-only">Close</span>
         </button>
-        <h4 class="modal-title">你确定要删除这个课程吗？</h4>
+        <h4 class="modal-title">你确定要删除这个nowfeed吗？</h4>
       </div>
       <div class="modal-body">
-        <p>如果选择确认，这个课程将会被永久删除。</p>
+        <p>如果选择确认，这个nowfeed将会被永久删除。</p>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
@@ -121,9 +113,9 @@ $(document).on('click', '.delete', function() {
 $(document).on('click', '#delModal .btn-success', function() {
   $('#delModal').modal('hide');
   var delete_id = $(this).attr('data-id');
-  $.getJSON('/admin/course/delete/' + delete_id, function(data) {
+  $.getJSON('/admin/nowfeed/delete/' + delete_id, function(data) {
     if (data.success == 0) {
-      $('course-' + delete_id).hide();
+      $('nowfeed-' + delete_id).hide();
     } else {
       alert("删除课程失败！");
     }

@@ -11,8 +11,16 @@ class UserModel(Query):
         self.table_name = "user"
         super(UserModel, self).__init__()
 
+    def get_all_users(self, num = 20, current_page = 1):
+        order = "user.uid DESC"
+        return self.order(order).pages(current_page = current_page, list_rows = num)
+
     def get_user_by_uid(self, uid):
         where = "uid = %s" % uid
+        return self.where(where).find()
+
+    def get_user_by_mobile(self, mobile):
+        where = "mobile = '%s'" % mobile
         return self.where(where).find()
 
     def get_user_by_email(self, email):
@@ -35,12 +43,16 @@ class UserModel(Query):
         where = "nickname = '%s' AND uid <> %s" % (nickname, uid)
         return self.where(where).select()
 
+    def get_user_by_mobile_and_password(self, mobile, secure_password):
+        where = "mobile = '%s' AND password = '%s'" % (mobile, secure_password)
+        return self.where(where).find()
+
     def get_user_by_email_and_uid(self, email, uid):
         where = "email = '%s' AND uid = '%s'" % (email, uid)
         return self.where(where).find()
 
-    def get_user_by_email_and_password(self, email, secure_password):
-        where = "email = '%s' AND password = '%s'" % (email, secure_password)
+    def get_user_by_username_and_password(self, username, secure_password):
+        where = "username = '%s' AND password = '%s'" % (username, secure_password)
         return self.where(where).find()
 
     def get_user_by_email_and_username(self, email, username):
@@ -75,6 +87,10 @@ class UserModel(Query):
             "password": secure_password
         }).where(where).save()
 
+    def delete_user_by_uid(self, uid):
+        where = "uid = %s" % uid
+        return self.where(where).delete()
+
     def add_new_user(self, info):
         return self.data(info).add()
 
@@ -96,3 +112,13 @@ class UserModel(Query):
     def update_user_info_by_user_id(self, uid, user_info):
         where = "user.uid = %s" % uid
         return self.where(where).data(user_info).save()
+
+    def get_all_admins(self):
+        where = "user.admin = 'admin'"
+        order = "user.uid DESC"
+        return self.where(where).order(order).select()
+
+    def get_all_teachers(self):
+        where = "user.admin = 'teacher'"
+        order = "user.uid DESC"
+        return self.where(where).order(order).select()

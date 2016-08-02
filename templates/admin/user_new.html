@@ -31,16 +31,12 @@
                 <div class="box-body">
                   <form role="form">
                     <div class="form-group">
-                      <label>用户学号</label>
+                      <label>用户名</label>
                       <input id="username" type="text" class="form-control" placeholder=""/>
                     </div>
                     <div class="form-group">
-                      <label>用户昵称</label>
-                      <input id="nickname" type="text" class="form-control" placeholder=""/>
-                    </div>
-                    <div class="form-group">
-                      <label>用户姓名</label>
-                      <input id="name" type="text" class="form-control" placeholder="" />
+                      <label>手机</label>
+                      <input id="mobile" type="text" class="form-control" placeholder=""/>
                     </div>
                     <div class="form-group">
                       <label>用户性别</label>
@@ -52,19 +48,10 @@
                     <div class="form-group">
                       <label>用户角色</label>
                       <select id="admin" class="form-control" >
-                        <option>student</option>
-                        <option>teacher</option>
+                        <option>normal</option>
                         <option>admin</option>
                       </select>
                     </div>
-                    <div class="form-group">
-                      <label>用户课程</label>
-                      <div class="tag">
-                        <input type="hidden" name="node" id="pSingleField" value="">
-                        <ul id="pTags" class=""></ul>
-                    </div>
-                    </div>
-
                   </form>
                 </div><!-- /.box-body -->
               </div><!-- /.box -->
@@ -86,22 +73,6 @@
 <script type="text/javascript">
 $(document).ready(function() {
     $("[data-mask]").inputmask();
-
-    var sampleTags = [];
-    $.getJSON('/admin/get/courses', function(data) {
-        $.each(data, function(key, val) {
-            sampleTags.push(val);
-        });
-    });
-
-
-    $("#pTags").tagit({
-        placeholderText: '为该用户添加课程',
-        availableTags: sampleTags,
-        singleField: true,
-        allowSpaces: true, //标签中是否允许空格
-        singleFieldNode: $('#pSingleField') //将值保存到mySingleField元素
-    });
 });
 
 $(document).on('click', '#save-base', function() {
@@ -113,11 +84,9 @@ $(document).on('click', '#save-base', function() {
     url: "/admin/user/new",
     data: JSON.stringify({
       username: $('#username').val(),
-      nickname: $('#nickname').val(),
-      name: $('#name').val(),
+      mobile: $('#mobile').val(),
       gender: $('#gender').val(),
       admin: $('#admin').val(),
-      courses: $('#pSingleField').val(),
     }),
     success: function(msg) {
       if (msg.success == 0) {

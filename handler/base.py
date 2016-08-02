@@ -57,6 +57,10 @@ class BaseHandler(tornado.web.RequestHandler):
         return self.application.post_model
 
     @property
+    def nowfeed_model(self):
+        return self.application.nowfeed_model
+
+    @property
     def debug_flag(self):
         return self.application.debug_flag
 

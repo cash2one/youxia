@@ -1637,13 +1637,13 @@
                         <i class="icon-sign icon-sign-arrow"></i>
 
                     </a>
-                                <span class="js-title-label title-label">登录买买买</span>
+                                <span class="js-title-label title-label">登录游侠</span>
                             </div>
                             <div class="form-group input">
-                                <input type="email" name="email" placeholder="邮箱" class="form-control email-input" />
+                                <input type="text" name="mobile" placeholder="手机" class="form-control email-input" />
                                 <span>
 
-                                <i class="fa fa-envelope-o"></i>
+                                <i class="fa fa-mobile"></i>
 
                             </span>
                             </div>
@@ -1691,10 +1691,10 @@
                             <input type="checkbox" name="gender" id="gender-switch" data-on-text="男" data-off-text="女" data-on-color="success" data-off-color="danger" checked>
 
                             <div class="form-group input">
-                                <input type="email" name="email" placeholder="邮箱" class="form-control email-input" />
+                                <input type="text" name="mobile" placeholder="手机" class="form-control email-input" />
                                 <span>
 
-                                <i class="fa fa-envelope-o"></i>
+                                <i class="fa fa-mobile"></i>
 
                             </span>
                             </div>
@@ -1803,17 +1803,14 @@
                             validating: 'glyphicon glyphicon-refresh'
                         },
                         fields: {
-                            email: {
+                            mobile: {
                                 validators: {
                                     notEmpty: {
-                                        message: '邮箱不能为空'
+                                        message: '手机不能为空'
                                     },
-                                    emailAddress: {
-                                        message: '输入的不是邮箱地址'
-                                    },
-                                    regexp: {
-                                        regexp: /^((?!qq\.com).)*$/,
-                                        message: "对不起，暂不支持 qq 邮箱"
+                                    regexp : {
+                                        regexp : /^\d{11}$/,
+                                        message : '手机号码为11位数字'
                                     }
                                 }
                             },
@@ -1857,17 +1854,14 @@
                                     }
                                 }
                             },
-                            email: {
+                            mobile: {
                                 validators: {
                                     notEmpty: {
-                                        message: '邮箱不能为空'
+                                        message: '手机不能为空'
                                     },
-                                    emailAddress: {
-                                        message: '输入的不是邮箱地址'
-                                    },
-                                    regexp: {
-                                        regexp: /^((?!qq\.com).)*$/,
-                                        message: "对不起，暂不支持 qq 邮箱"
+                                    regexp : {
+                                        regexp : /^\d{11}$/,
+                                        message : '手机号码为11位数字'
                                     }
                                 }
                             },
@@ -1945,7 +1939,7 @@
                     var error = $('.signin-error').attr("data-error");
                     var error_text = ""
                     if (error=="1") {
-                        error_text = "该邮箱注册的用户不存在，请检查重试。";
+                        error_text = "该手机号注册的用户不存在，请检查重试。";
                     } else if (error=="2") {
                         error_text = "输入的用户密码有误，请检查重试。";
                     }
@@ -1963,7 +1957,7 @@
                     if (error=="2") {
                         error_text = "你输入的邀请码有误，请输入正确的邀请码重试。";
                     } else if (error=="3") {
-                        error_text = "所填邮箱已经被注册过，请更改邮箱重试。";
+                        error_text = "所填手机号已经被注册过，请更改手机号重试。";
                     } else if (error=="4") {
                         error_text = "所填用户名已经被注册过，请更改用户名重试。";
                     } else {
@@ -2028,21 +2022,6 @@
 
                     $("#gender-switch").bootstrapSwitch();
                     {% endif %}
-
-
-
-                    $(document).on('click', '.mmm-like', function() {
-                        var like_icon = $(this);
-                        var item_id = $(this).attr('data-id');
-                        var like_num = $(this).parent().parent().find('.mitem-like');
-                        $.getJSON('/like/' + item_id, function(data) {
-                            if (data.success != 0) {
-                                like_icon.removeClass('fa-heart-o');
-                                like_icon.addClass('fa-heart');
-                                like_num.text(parseInt(like_num.text())+1);
-                            }
-                        });
-                    });
                 });
         </script>
 </body>

@@ -87,7 +87,7 @@ CREATE TABLE `post` (
 --  Table structure for `nowfeed`
 -- ----------------------------
 DROP TABLE IF EXISTS `nowfeed`;
-CREATE TABLE `post` (
+CREATE TABLE `nowfeed` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `thumb` text,
   `name` text,

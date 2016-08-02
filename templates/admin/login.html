@@ -2,7 +2,7 @@
 <html>
   <head>
     <meta charset="UTF-8">
-    <title>东南大学 | 登录</title>
+    <title>游侠 | 登录</title>
     <meta content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no' name='viewport'>
     <!-- Bootstrap 3.3.4 -->
     <link href="/static/AdminLTE/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
@@ -23,13 +23,13 @@
   <body class="login-page">
     <div class="login-box">
       <div class="login-logo">
-        <a href="/">东南大学</a>
+        <a href="/">游侠</a>
       </div><!-- /.login-logo -->
       <div class="login-box-body">
-        <p class="login-box-msg">{% if errors %}{{ errors }}{% else %}请输入管理员或教师账号登录{% endif %}</p>
+        <p class="login-box-msg">{% if errors %}{{ errors }}{% else %}请输入管理员账号登录{% endif %}</p>
         <form action="/admin/signin" method="POST">
           <div class="form-group has-feedback">
-            <input type="username" name="username" class="form-control" placeholder="用户名"/>
+            <input type="mobile" name="mobile" class="form-control" placeholder="手机"/>
             <span class="glyphicon glyphicon-phone form-control-feedback"></span>
           </div>
           <div class="form-group has-feedback">

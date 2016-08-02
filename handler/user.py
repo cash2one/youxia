@@ -51,7 +51,7 @@ def do_login(self, user_id):
     user_id = user_info["uid"]
     self.session["uid"] = user_id
     self.session["username"] = user_info["username"]
-    self.session["email"] = user_info["email"]
+    self.session["mobile"] = user_info["mobile"]
     self.session["password"] = user_info["password"]
     self.session.save()
     self.set_secure_cookie("user", str(user_id))
@@ -60,7 +60,7 @@ def do_logout(self):
     # destroy sessions
     self.session["uid"] = None
     self.session["username"] = None
-    self.session["email"] = None
+    self.session["mobile"] = None
     self.session["password"] = None
     self.session.save()
 
@@ -80,15 +80,15 @@ class SigninHandler(BaseHandler):
 
         form = SigninForm(self)
 
-        user_info = self.user_model.get_user_by_email(form.email.data)
+        user_info = self.user_model.get_user_by_mobile(form.mobile.data)
         if user_info == None:
             self.redirect("/?s=signin&e=1")
             return
         
         secure_password = hashlib.sha1(form.password.data).hexdigest()
         secure_password_md5 = hashlib.md5(form.password.data).hexdigest()
-        user_info = self.user_model.get_user_by_email_and_password(form.email.data, secure_password)
-        user_info = user_info or self.user_model.get_user_by_email_and_password(form.email.data, secure_password_md5)
+        user_info = self.user_model.get_user_by_mobile_and_password(form.mobile.data, secure_password)
+        user_info = user_info or self.user_model.get_user_by_mobile_and_password(form.mobile.data, secure_password_md5)
         
         if(user_info):
             do_login(self, user_info["uid"])
@@ -168,11 +168,11 @@ class SignupHandler(BaseHandler):
                 self.redirect("/?s=signup&e=2")
                 return
         # validate duplicated
-        duplicated_email = self.user_model.get_user_by_email(form.email.data)
+        duplicated_mobile = self.user_model.get_user_by_mobile(form.mobile.data)
         duplicated_username = self.user_model.get_user_by_username(form.username.data)
 
-        if(duplicated_email or duplicated_username):
-            if(duplicated_email):
+        if(duplicated_mobile or duplicated_username):
+            if(duplicated_mobile):
                 self.redirect("/?s=signup&e=3")
                 return
 
@@ -194,12 +194,13 @@ class SignupHandler(BaseHandler):
         #avatar = self.avatar_model.get_rand_avatar(form.gender.data)
 
         user_info = {
-            "email": form.email.data,
+            "mobile": form.mobile.data,
             "password": secure_password,
             "username": form.username.data,
             #s"avatar": avatar[0].avatar,
             "intro": "",
             "gender": form.gender.data,
+            "admin": "normal",
             "created": time.strftime('%Y-%m-%d %H:%M:%S')
         }
 
