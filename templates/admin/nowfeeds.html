@@ -42,7 +42,8 @@
               <th>NAME</th>
               <th>SUBNAME</th>
               <th>SOURCE</th>
-              <th>LINK</th>
+              <th>TYPE</th>
+              <th>TIME</th>
               <th>创建时间</th>
               <th>操作</th>
             </tr>
@@ -52,14 +53,18 @@
               <td>{{nowfeed.name or "/"}}</td>
               <td>{{nowfeed.subname or "/"}}</td>
               <td>{{nowfeed.source or "/"}}</td>
-              <td>{{nowfeed.link or "/"}}</td>
+              <td>{{nowfeed.nowfeed_type or "/"}}</td>
+              <td>{{nowfeed.video_time or "/"}}</td>
               <td>{{nowfeed.created or "/"}}</td>
               <td>
                 <div class="btn-group">
-                  <a href="/admin/nowfeed/edit/{{nowfeed.id}}" type="button" class="btn btn-default btn-xs">
+                  <a href="{{nowfeed.link}}" type="button" class="btn btn-default btn-xs" target="_blank">
+                    <i class="fa fa-link"></i>
+                  </a>
+                  <a href="/admin/nowfeed/edit/{{nowfeed.id}}" type="button" class="btn btn-default btn-xs" target="_blank">
                     <i class="fa fa-pencil-square-o"></i>
                   </a>
-                  <a type="button" class="delete btn btn-default btn-xs" data-toggle="modal" data-target="#delModal" data-id="{{nowfeed.id}}">
+                  <a type="button" class="delete btn btn-default btn-xs" data-toggle="modal" data-target="#delModal" data-id="{{nowfeed.id}}" target="_blank">
                     <i class="fa fa-trash-o"></i>
                   </a>
                 </div>

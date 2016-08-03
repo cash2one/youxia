@@ -53,6 +53,18 @@
                       <label>Link</label>
                       <input id="link" type="text" class="form-control" value="{{view_nowfeed.link or ''}}"/>
                     </div>
+                    <div class="form-group">
+                      <label>Type</label>
+                      <select id="nowfeed_type" class="form-control" value="{{view_nowfeed.nowfeed_type or 'text'}}">
+                        <option {% if view_nowfeed.nowfeed_type == 'text' %} selected="selected" {% endif %}>text</option>
+                        <option {% if view_nowfeed.nowfeed_type == 'image' %} selected="selected" {% endif %}>image</option>
+                        <option {% if view_nowfeed.nowfeed_type == 'video' %} selected="selected" {% endif %}>video</option>
+                      </select>
+                    </div>
+                    <div class="form-group">
+                      <label>Time</label>
+                      <input id="video_time" type="text" class="form-control" value="{{view_nowfeed.video_time or ''}}"/>
+                    </div>
                   </form>
                 </div><!-- /.box-body -->
               </div><!-- /.box -->
@@ -86,6 +98,8 @@ $(document).on('click', '#save-nowfeed', function() {
       image: $('#image').val(),
       source: $('#source').val(),
       link: $('#link').val(),
+      nowfeed_type: $('#nowfeed_type').val(),
+      video_time: $('#video_time').val(),
     }),
     success: function(msg) {
       alert(msg.message);

@@ -220,3 +220,27 @@ fieldset {
 a:hover, a:focus {
     text-decoration: none !important;
 }
+
+
+.source-icon {
+    display: block;
+    margin: -1px 0 0;
+    height: 17px;
+    width: 17px;
+}
+.source-weibo {
+    background-image: url(/static/img/68-sina-weibo.png); 
+}
+.source-weixin {
+    background-image: url(/static/img/49-tencent-mm.png); 
+}
+.now-feed_item-meta .shortstop {
+    margin: 0 !important;
+}
+.nowfeed-content {
+    display: block;
+    color: inherit !important;
+}
+.nowfeed-content:hover {
+    background: #f1f2f3!important;
+}

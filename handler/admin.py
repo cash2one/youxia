@@ -403,6 +403,8 @@ class NowfeedEditAdminHandler(BaseHandler):
             update_info = getJsonKeyValue(data, update_info, "image")
             update_info = getJsonKeyValue(data, update_info, "source")
             update_info = getJsonKeyValue(data, update_info, "link")
+            update_info = getJsonKeyValue(data, update_info, "nowfeed_type")
+            update_info = getJsonKeyValue(data, update_info, "video_time")
             
             update_result = self.nowfeed_model.update_nowfeed_by_id(nowfeed_id, update_info)
 
@@ -451,6 +453,8 @@ class NowfeedNewAdminHandler(BaseHandler):
             update_info = getJsonKeyValue(data, update_info, "image")
             update_info = getJsonKeyValue(data, update_info, "source")
             update_info = getJsonKeyValue(data, update_info, "link")
+            update_info = getJsonKeyValue(data, update_info, "nowfeed_type")
+            update_info = getJsonKeyValue(data, update_info, "video_time")
             update_info["created"] = time.strftime('%Y-%m-%d %H:%M:%S')
 
             update_result = self.nowfeed_model.add_new_nowfeed(update_info)

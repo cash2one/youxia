@@ -96,6 +96,8 @@ CREATE TABLE `nowfeed` (
   `image` text,
   `source` text,
   `link` text,
+  `nowfeed_type` text,
+  `video_time` text,
   `created` datetime DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;
