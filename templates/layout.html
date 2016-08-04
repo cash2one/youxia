@@ -1711,16 +1711,6 @@
                             <div class="form-group input">
                                 <script async type="text/javascript" src="http://api.geetest.com/get.php?gt=aa45a1e576f4766651234093fc86a383"></script>
                             </div>
-<!--
-                            <div class="form-group input">
-                                <input type="text" name="invite" placeholder="邀请码" class="form-control invite-input" {%if invite%}value="{{invite}}" {%endif%} autocomplete="off" />
-                                <span>
-
-                                <i class="fa fa-gift"></i>
-
-                            </span>
-                            </div>
--->
                             <div class="action">
                                 <button type="submit" class="submit btn btn-success btn-sinup">注册</button>
                             </div>
@@ -1781,11 +1771,16 @@
         <script src="/static/bootstrap-3.2.0-dist/js/bootstrap.min.js"></script>
         <script src="/static/bootstrap-switch-master/dist/js/bootstrap-switch.min.js"></script>
         <script src="/static/bootstrapvalidator/bootstrapValidator.min.js"></script>
+        <script src="/static/js/jquery.bootstrap-autohidingnavbar.js"></script>
+        
 
         {% block javascript %}{% endblock %}
 
         <script type="text/javascript">
             $(document).ready(function() {
+                
+                $('#global-scoreboard').autoHidingNavbar();
+
                     {% if user_info == none %}
                     $(".username-input").focus(function() {
                         $(".bootstrap-switch-id-gender-switch").hide();

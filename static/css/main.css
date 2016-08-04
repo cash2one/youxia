@@ -244,3 +244,9 @@ a:hover, a:focus {
 .nowfeed-content:hover {
     background: #f1f2f3!important;
 }
+#global-scoreboard {
+    position: static !important;
+}
+#global-header{
+    position: static !important;
+}
