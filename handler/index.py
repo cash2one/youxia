@@ -57,7 +57,7 @@ class IndexHandler(BaseHandler):
         p = int(self.get_argument("p", "1"))
         all_nowfeeds = self.nowfeed_model.get_all_nowfeeds(current_page = p)
         template_variables["all_nowfeeds"] = all_nowfeeds
-        
+
         if(user_info):
             print 'ddd'
         else:
@@ -80,3 +80,14 @@ class IndexHandler(BaseHandler):
             else:
                 template_variables["error"] = None
         self.render(self.template_path+"index.html", **template_variables)
+
+class PostHandler(BaseHandler):
+    def get(self, post_id, template_variables = {}):
+        user_info = self.current_user
+        template_variables["static_path"] = self.static_path
+        template_variables["user_info"] = user_info
+
+        p = int(self.get_argument("p", "1"))
+        all_nowfeeds = self.nowfeed_model.get_all_nowfeeds(current_page = p)
+        template_variables["all_nowfeeds"] = all_nowfeeds
+        self.render(self.template_path+"post.html", **template_variables)
