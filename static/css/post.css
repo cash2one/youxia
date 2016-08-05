@@ -784,3 +784,121 @@ h1.c-single-normal__title {
     position: fixed;
     top: 100px;
 }
+
+
+.user-info {
+    top: -300px;
+    padding-bottom: 30px;
+    width: 298px;
+    transition: all 2s linear;
+}
+.user-info, .operate-record {
+    background-color: #fff;
+    border: 1px solid #e3e6ee;
+    border-radius: 5px;
+}
+
+
+.user-info .headpic i {
+    width: 100px;
+    height: 100px;
+    display: block;
+    border-radius: 100px;
+    border: 5px solid #eff3fa;
+    margin: auto;
+    position: relative;
+}
+
+.user-info .headpic i b {
+    position: absolute;
+    bottom: 0px;
+    right: -10px;
+}
+.male {
+    background-color: #4f94fb;
+    background-position: -117px -227px;
+}
+.male, .female {
+    display: inline-block;
+    width: 30px;
+    height: 30px;
+    border-radius: 30px;
+    background-image: url(http://www.xxxxxbbs.com/images/xxxxxbbs-21.png);
+    background-repeat: no-repeat;
+}
+.user-info .headpic em {
+    margin: 16px auto 3px;
+    display: block;
+    text-align: center;
+    font-size: 16px;
+    color: #666;
+}
+.user-info ul {
+    text-align: center;
+    margin-top: 16px;
+}
+.user-info ul li {
+    display: inline-block;
+    font-size: 12px;
+    color: #c4c4c4;
+    padding: 0px 20px;
+}
+.user-info ul li a {
+    display: block;
+    text-align: center;
+    margin-top: 8px;
+    font-size: 24px;
+    color: #48a0ff;
+    transition: all 0.2s linear;
+}
+.user-info ul .line {
+    display: inline-block;
+    height: 36px;
+    width: 1px;
+    background-color: #dfdfdf;
+    vertical-align: top;
+    margin-top: 7px;
+}
+.user-info .button-area {
+    text-align: center;
+    margin: 15px auto 0px;
+    word-spacing: 5px;
+}
+.white-button {
+    display: inline-block;
+    background-color: #fff;
+    border: 1px solid #e3e6ee;
+    color: #2175d0;
+    border-radius: 5px;
+    line-height: 2em;
+    padding: 0px 1.375em;
+    text-align: center;
+    transition: all 0.2s linear;
+}
+.follow-btn, .un-follow-btn, .each-follow-btn, .private-btn, .user-home-btn {
+    padding: 0px;
+    width: 104px;
+    height: 34px;
+    color: #999;
+    font-size: 14px;
+    line-height: 34px;
+}
+.white-button:hover {
+    color: #fff;
+    border-color: #2175d0;
+    background-color: #2175d0;
+}
+.follow-btn:hover, .private-btn:hover, .user-home-btn:hover {
+    color: #fff;
+}
+.user-info .headpic {
+    display: block;
+    margin-top: 30px;
+    text-align: center;
+}
+.follow-btn:hover i {
+    background-position: -144px -164px;
+}
+.private-btn:hover i {
+    background-position: -144px -185px;
+}

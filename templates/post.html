@@ -102,92 +102,60 @@
                     </section>
                     <section id="now-feed" data-module="now" class="col-c" data-behavior="index_now_feed" data-now-offset="25">
                         <div class="now-feed-content">
-                            {% for nowfeed in all_nowfeeds.list %}
-                            <article data-id="{{nowfeed.id}}" data-time="{{nowfeed.created}}" class="now-feed-item now-feed-shortstop has-media module_bloom_behavior ">
-                                <div class="now-content bloom-content">
-                                    <h1>
-                                        <font>
-                                            <font>{{nowfeed.name}}</font>
-                                        </font>
-                                        <span>
-                                            <font>
-                                                <font>{{nowfeed.subname}}</font>
-                                            </font>
-                                        </span>
-                                    </h1>
-                                    <div class="img-container" data-main-container=".now-feed-item">
-                                        <img class="focus-image  imageLoaded" src="{{nowfeed.avatar}}"></div>
-                                    
-                                    {% if nowfeed.content %}
-                                    <a href="{{nowfeed.link}}" class="nowfeed-content" target="_blank">
-                                    <p><font><font>{{nowfeed.content}}</font></font></p>
-                                    </a>
-                                    {% endif %}
-                                </div>
-                                {% if nowfeed.image %}
-                                <a href="{{nowfeed.link}}" class="" target="_blank">
-                                <figure class="feed-item-figure {% if nowfeed.nowfeed_type == 'video'%}video{% endif %}">
-                                    <div class="img-wrap external">
-                                        <picture>
-                                            <source srcset="{{nowfeed.image}}">
-                                            <img data-default-src="{{nowfeed.image}}" data-image-container=".feed-item-figure" src="{{nowfeed.image}}" class="imageLoaded"></picture>
-                                        {% if nowfeed.nowfeed_type == 'video'%}
-                                        <span class="video-play-button " data-playtxt="PLAY" data-id="17153249">
-                                            <font>
-                                                <font>播放</font>
-                                            </font>
-                                        </span>
-                                        {% if nowfeed.video_time%}
-                                        <span class="video-length">
-                                            <font>
-                                                <font>{{nowfeed.video_time}}</font>
-                                            </font>
-                                        </span>
-                                        {% endif %}
-                                        {% endif %}
-                                    </div>
-                                </figure>
-                                </a>
-                                {% endif %}
-                                <div class="now-feed_item-meta display-share" src="http://espn.com/espn/now?nowId=21-0549975032521035975-4" data-original-src="http://espn.com/espn/now?nowId=21-0549975032521035975-4">
-                                    <div class="now-share">
-                                        <span class="share-count">
-                                            <font>
-                                                <font>分享</font>
-                                            </font>
-                                        </span>
-                                        <div class="share-actions">
-                                            <div class="btn-close icon-font-before icon-close-solid-before"></div>
-                                            <ul data-id="549975032521035975" data-name="That's it for Day 2 of Packers camp after a two-hour and seven-minute practice. The pads come on tomorrow." data-type="article">
-                                                <li>
-                                                    <a href="https://www.facebook.com/dialog/share?href=http%3A%2F%2Fespn.com%2Fespn%2Fnow%3FnowId%3D21%2D0549975032521035975%2D4&amp;app_id=116656161708917" class="btn-social sm icon-font-before icon-facebook-solid-before Shortstop" data-short-text="Share" data-social-tool="facebook"></a>
-                                                </li>
-                                                <li>
-                                                    <a href="http://twitter.com/intent/tweet?lang=en&amp;url=http%3A%2F%2Fespn.com%2Fespn%2Fnow%3FnowId%3D21%2D0549975032521035975%2D4&amp;text=That%27s%20it%20for%20Day%202%20of%20Packers%20camp%20after%20a%20two%2Dhour%20and%20seven%2Dminute%20practice.%20The%20pads%20come%20on%20tomorrow." class="btn-social sm icon-font-before icon-twitter-solid-before Shortstop" data-short-text="Tweet" data-social-tool="twitter"></a>
-                                                </li>
-                                                <li>
-                                                    <a href="mailto:?subject=That's it for Day 2 of Packers camp after a two-hour and seven-minute practice. The pads come on tomorrow.&amp;body=http://espn.com/espn/now?nowId=21-0549975032521035975-4" data-route="false" class="btn-social sm email icon-font-before icon-email-solid-before Shortstop" data-social-tool="email"></a>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                    </div>
-
-                                    <div class="shortstop">
-                                        <a href="{{nowfeed.link}}" class="source-icon source-{{nowfeed.source}}" target="_blank"></a></div>
-                                    <span class="category" style="display:none;">
-                                        <font>
-                                            <font>{{nowfeed.source}}</font>
-                                        </font>
-                                    </span>
-                                    &nbsp;
-                                    <span class="timestamp" data-time="2016-07-27T15:25:38Z" data-behavior="date_ago">
-                                        <font>
-                                            <font>{{nowfeed.created|pretty_date}}</font>
-                                        </font>
-                                    </span>
-                                </div>
-                            </article>
-                            {% endfor %}
+                            <div class="user-info">
+            <a href="/lookat/home?userId=101023" target="_blank" class="headpic">
+                <i style="background-image: url(http://imageqiniu.xxxxxbbs.com/FqqUBTNPGP0b-MKC5ifkROWUpIsd?imageMogr2/auto-orient/thumbnail/!100x100r/gravity/Center/crop/100x100);background-repeat: no-repeat;">
+                    
+                    
+                        <b class="male"></b>
+                    
+                    
+                    <!-- <img src=''> -->
+                </i>
+                <em>啊汤锅</em>
+            </a>
+            
+            <ul>
+                <li>
+                    关注
+                    
+                        <a href="/lookat/friend?userId=101023" target="_blank">84</a>
+                    
+                    
+                </li>
+                <span class="line"></span>
+                <li>
+                    粉丝
+                    
+                        <a href="/lookat/fins?userId=101023" target="_blank">1245</a>
+                    
+                    
+                </li>
+                <span class="line"></span>
+                <li>
+                    作品
+                    
+                        <a href="/lookat/home?userId=101023" target="_blank">21</a>
+                    
+                    
+                </li>
+            </ul>
+            
+            <div class="button-area" userid="101023">
+                
+                    
+                        <a href="javascript:;" class="white-button follow-btn" userid="101023" type="0"><i></i>关注</a>
+                    
+                    
+                    
+                
+                
+                    <a href="javascript:;" class="white-button private-btn message-button" userid="101023"><i></i>发私信</a>
+                
+                
+            </div>
+            
+        </div>
                         </div>
                     </section>
 
@@ -204,6 +172,7 @@
 
             $(document).ready(function() {
                 $('#social-bar').stick_in_parent({offset_top: 130});
+                $('#now-feed').stick_in_parent({offset_top: 60});
               });
             </script>
 {% endblock %}
