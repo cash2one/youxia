@@ -32,6 +32,7 @@
     <link rel="stylesheet" href="/static/bootstrapvalidator/bootstrapValidator.min.css" />
     <link rel="stylesheet" href="/static/font-awesome-4.1.0/css/font-awesome.min.css" />
     <link href="/static/bootstrap-switch-master/dist/css/bootstrap3/bootstrap-switch.css" rel="stylesheet">
+
     
 
     <link id="font-link" rel="stylesheet" href="/static/css/base64-benton-woff.css">
@@ -1774,12 +1775,13 @@
         <script src="/static/bootstrapvalidator/bootstrapValidator.min.js"></script>
         <script src="/static/js/jquery.bootstrap-autohidingnavbar.js"></script>
         
+        
 
         {% block javascript %}{% endblock %}
 
         <script type="text/javascript">
+
             $(document).ready(function() {
-                
                 $('#global-scoreboard').autoHidingNavbar();
 
                     {% if user_info == none %}
