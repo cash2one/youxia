@@ -1,0 +1,125 @@
+{% extends 'layout.html' %} {% block stylesheet %}
+<link rel="stylesheet" href="/static/css/post.css" />
+<link rel="stylesheet" href="/static/css/new.css" />{% endblock %} {% block main %}
+<section id="pane-main">
+    <div id="custom-nav" data-id="index"></div>
+    <section id="main-container">
+        <div class="main-content layout-abc">
+            <section id="news-feed" class="col-b col-p" data-behavior="index_news_feed" data-minifeed="region=us&amp;headlinestack=true&amp;insider=true&amp;pubkey=espn-en-frontpage-index&amp;lang=en">
+                <div id="news-feed-content" data-count="41">
+                    <div class="container-wrapper">
+                        <div class="container">
+                            <!--no cache-->
+                            <article data-id="17145771" class="news-feed-item top news-feed-story-package no-thumb" data-pos="1">
+                                <div class="o-single-content" id="single-content-wrapper">
+                                    <div id="article-header" class="o-single-content__header" style="background-image: url('http://imageqiniu.xxxxxbbs.com/FiX_TMei2VLGjbLKp1MdatB8TkMI?imageView2/2/w/728/q/100|watermark/1/image/aHR0cDovLzd4c2N3NS5jb20wLnowLmdsYi5xaW5pdWNkbi5jb20vd2F0ZXJtYXJrLnBuZw==/gravity/South/dy/5')">
+                                        <div class="o-single-content__body c-single-normal__header">
+                                            <span class="button-alt button-title-image">
+                                            <span>点击上传文章封面图片</span>
+                                            <input id="fileupload" type="file" name="files[]" data-url="/upload/image" multiple>
+                                            </span>
+                                            <div class="c-article-header-meta">
+                                                <span class="c-article-header-meta__category">新帖</span>
+                                                <span class="c-article-header-meta__time">13 小时前</span>
+                                            </div>
+                                            <h1 class="c-single-normal__title">
+                                              <span  class="yx-item yx-title" contenteditable="true">告别小白马，迎接大红马，就为了后排大一点。带杂图调味。</span>
+                                            </h1>
+                                        </div>
+                                    </div>
+                                    <div class="o-single-content__body o-single-content__body--main">
+                                        <aside id='social-bar' class="c-social-bar c-social-bar--vertical c-social-bar--colored c-social-bar--sqaured c-social-bar--left js-social-bar" data-component="SocialBar" data-post-title="爱范儿客户端新版上线 不妥协只为做到更好" data-post-link="http%3A%2F%2Fwww.ifanr.com%2F695851" data-post-summary="终于加入了这些功能，泪奔。" data-post-id="695851" data-fixed-start="#article-content" data-fixed-end="#footer-rec-posts"></aside>
+                                        <article class="o-single-content__body__content c-article-content s-single-article js-article">
+                                            <div class="add-bar">
+                                                <a class="med button-alt button-add add-text" href="javascript:void(0);">添加文字</a>
+                                                <a class="med button-alt button-add add-image" href="javascript:void(0);">添加图片</a>
+                                                <a class="med button-alt button-add add-video" href="javascript:void(0);">添加视频</a>
+                                            </div>
+                                            <p class="yx-item">
+                                                <img class="alignnone size-full wp-image-695550 aligncenter" src="http://imageqiniu.xxxxxbbs.com/FnOpGi-p-x-uOBmkcksyT-8BDCZs?imageView2/2/w/728/q/100|watermark/1/image/aHR0cDovLzd4c2N3NS5jb20wLnowLmdsYi5xaW5pdWNkbi5jb20vd2F0ZXJtYXJrLnBuZw==/gravity/South/dy/5" alt="ifanr310dl" width="720" height="450" srcset="http://imageqiniu.xxxxxbbs.com/FnOpGi-p-x-uOBmkcksyT-8BDCZs?imageView2/2/w/728/q/100|watermark/1/image/aHR0cDovLzd4c2N3NS5jb20wLnowLmdsYi5xaW5pdWNkbi5jb20vd2F0ZXJtYXJrLnBuZw==/gravity/South/dy/5" sizes="(max-width: 720px) 100vw, 720px">
+                                            </p>
+                                            <div class="add-bar">
+                                                <a class="med button-alt button-add add-text" href="javascript:void(0);">添加文字</a>
+                                                <a class="med button-alt button-add add-image" href="javascript:void(0);">添加图片</a>
+                                                <a class="med button-alt button-add add-video" href="javascript:void(0);">添加视频</a>
+                                            </div>
+                                        </article>
+                                    </div>
+                                </div>
+                            </article>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <section id="now-feed" data-module="now" class="col-c" data-behavior="index_now_feed" data-now-offset="25">
+                <div class="now-feed-content">
+                    <div class="favfeed_item type-signin logged-out" style="display: block;">
+                        <div class="message">
+                            <p>Log in to ESPN or join to view your favorites</p>
+                        </div>
+                        <a class="button med register" href="#" data-route="false" data-behavior="overlay" tref="/members/v5_0/register" data-regformid="espn_bbc" data-language="en" data-affiliatename="espn">发布</a>
+                        <a class="med button-alt sign-in" href="#" data-route="false" data-behavior="overlay" tref="/members/v3_1/login" data-regformid="espn_bbc" data-language="en" data-affiliatename="espn">保存</a>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </section>
+</section>
+{% endblock %} {% block javascript %}
+<script src="/static/js/jquery.sticky-kit.min.js"></script>
+<script src="/static/js/jQuery-File-Upload-9.12.5/js/vendor/jquery.ui.widget.js"></script>
+<script src="/static/js/jQuery-File-Upload-9.12.5/js/jquery.iframe-transport.js"></script>
+<script src="/static/js/jQuery-File-Upload-9.12.5/js/jquery.fileupload.js"></script>
+<script>
+$(function() {
+    $('#fileupload').fileupload({
+        dataType: 'json',
+        done: function(e, data) {
+            $.each(data.result.files, function(index, file) {
+                $('<p/>').text(file.name).appendTo(document.body);
+            });
+        }
+    });
+});
+</script>
+<script type="text/javascript">
+$(document).ready(function() {
+    function insertTextAtCursor(text) {
+        var sel, range, html;
+        if (window.getSelection) {
+            sel = window.getSelection();
+            if (sel.getRangeAt && sel.rangeCount) {
+                range = sel.getRangeAt(0);
+                range.deleteContents();
+                range.insertNode(document.createTextNode(text));
+            }
+        } else if (document.selection && document.selection.createRange) {
+            document.selection.createRange().text = text;
+        }
+    }
+
+    $('#social-bar').stick_in_parent({
+        offset_top: 130
+    });
+    $('#now-feed').stick_in_parent({
+        offset_top: 60
+    });
+
+    $(document).on('click', '.add-text', function() {
+
+        $(this).parent().after('<p class="yx-item" contenteditable="true"></p><div class="add-bar"><a class="med button-alt button-add add-text" href="javascript:void(0);">添加文字</a><a class="med button-alt button-add add-image" href="javascript:void(0);">添加图片</a><a class="med button-alt button-add add-video" href="javascript:void(0);">添加视频</a></div>');
+
+        $(this).parent().next().bind("paste", function(e) {
+            e.preventDefault();
+            if (e.originalEvent.clipboardData && e.originalEvent.clipboardData.getData) {
+                var text = e.originalEvent.clipboardData.getData("text/plain");
+                document.execCommand("insertHTML", false, text);
+            } else if (window.clipboardData && window.clipboardData.getData) {
+                var text = window.clipboardData.getData("Text");
+                insertTextAtCursor(text);
+            }
+        });
+    });
+});
+</script>
+{% endblock %}

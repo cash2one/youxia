@@ -58,7 +58,9 @@ class Application(tornado.web.Application):
             (r"/(orca\.txt)", tornado.web.StaticFileHandler, dict(path = settings["static_path"])),
 
             (r"/", handler.index.IndexHandler),
+            (r"/new", handler.index.NewHandler),
             (r"/p/(\d+)", handler.index.PostHandler),
+            (r"/upload/image", handler.index.UploadImageHandler),
             (r"/signin", handler.user.SigninHandler),
             (r"/signout", handler.user.SignoutHandler),
             (r"/signup", handler.user.SignupHandler),
