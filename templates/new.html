@@ -12,18 +12,18 @@
                             <!--no cache-->
                             <article data-id="17145771" class="news-feed-item top news-feed-story-package no-thumb" data-pos="1">
                                 <div class="o-single-content" id="single-content-wrapper">
-                                    <div id="article-header" class="o-single-content__header" style="background-image: url('http://imageqiniu.xxxxxbbs.com/FiX_TMei2VLGjbLKp1MdatB8TkMI?imageView2/2/w/728/q/100|watermark/1/image/aHR0cDovLzd4c2N3NS5jb20wLnowLmdsYi5xaW5pdWNkbi5jb20vd2F0ZXJtYXJrLnBuZw==/gravity/South/dy/5')">
+                                    <div id="article-header" class="o-single-content__header">
                                         <div class="o-single-content__body c-single-normal__header">
                                             <span class="button-alt button-title-image">
                                             <span>点击上传文章封面图片</span>
-                                            <input id="fileupload" type="file" name="files[]" data-url="/upload/image" multiple>
+                                            <input id="coverUpload" type="file" name="files" data-url="/upload/image">
                                             </span>
                                             <div class="c-article-header-meta">
                                                 <span class="c-article-header-meta__category">新帖</span>
-                                                <span class="c-article-header-meta__time">13 小时前</span>
+                                                <span class="c-article-header-meta__time">n 分钟前</span>
                                             </div>
                                             <h1 class="c-single-normal__title">
-                                              <span  class="yx-item yx-title" contenteditable="true">告别小白马，迎接大红马，就为了后排大一点。带杂图调味。</span>
+                                              <span  class="yx-item yx-title" contenteditable="true">在这里输入文章标题</span>
                                             </h1>
                                         </div>
                                     </div>
@@ -32,15 +32,7 @@
                                         <article class="o-single-content__body__content c-article-content s-single-article js-article">
                                             <div class="add-bar">
                                                 <a class="med button-alt button-add add-text" href="javascript:void(0);">添加文字</a>
-                                                <a class="med button-alt button-add add-image" href="javascript:void(0);">添加图片</a>
-                                                <a class="med button-alt button-add add-video" href="javascript:void(0);">添加视频</a>
-                                            </div>
-                                            <p class="yx-item">
-                                                <img class="alignnone size-full wp-image-695550 aligncenter" src="http://imageqiniu.xxxxxbbs.com/FnOpGi-p-x-uOBmkcksyT-8BDCZs?imageView2/2/w/728/q/100|watermark/1/image/aHR0cDovLzd4c2N3NS5jb20wLnowLmdsYi5xaW5pdWNkbi5jb20vd2F0ZXJtYXJrLnBuZw==/gravity/South/dy/5" alt="ifanr310dl" width="720" height="450" srcset="http://imageqiniu.xxxxxbbs.com/FnOpGi-p-x-uOBmkcksyT-8BDCZs?imageView2/2/w/728/q/100|watermark/1/image/aHR0cDovLzd4c2N3NS5jb20wLnowLmdsYi5xaW5pdWNkbi5jb20vd2F0ZXJtYXJrLnBuZw==/gravity/South/dy/5" sizes="(max-width: 720px) 100vw, 720px">
-                                            </p>
-                                            <div class="add-bar">
-                                                <a class="med button-alt button-add add-text" href="javascript:void(0);">添加文字</a>
-                                                <a class="med button-alt button-add add-image" href="javascript:void(0);">添加图片</a>
+                                                <a class="med button-alt button-add add-image" href="javascript:void(0);">添加图片<input class="imgUpload" type="file" name="files" data-url="/upload/image"></a>
                                                 <a class="med button-alt button-add add-video" href="javascript:void(0);">添加视频</a>
                                             </div>
                                         </article>
@@ -70,20 +62,34 @@
 <script src="/static/js/jQuery-File-Upload-9.12.5/js/vendor/jquery.ui.widget.js"></script>
 <script src="/static/js/jQuery-File-Upload-9.12.5/js/jquery.iframe-transport.js"></script>
 <script src="/static/js/jQuery-File-Upload-9.12.5/js/jquery.fileupload.js"></script>
-<script>
-$(function() {
-    $('#fileupload').fileupload({
+<script type="text/javascript">
+$(document).ready(function() {
+    var nowAddBar;
+    $('#coverUpload').fileupload({
         dataType: 'json',
         done: function(e, data) {
             $.each(data.result.files, function(index, file) {
-                $('<p/>').text(file.name).appendTo(document.body);
+                $('#article-header').css('background-image', 'url('+file.name+')');
             });
         }
     });
-});
-</script>
-<script type="text/javascript">
-$(document).ready(function() {
+    function imgUpload() {
+        $('.imgUpload').fileupload({
+        dataType: 'json',
+        done: function(e, data) {
+            $.each(data.result.files, function(index, file) {
+                nowAddBar.after('<p class="yx-item"><img class="alignnone size-full wp-image-695550 aligncenter" src="'+file.name+'" sizes="(max-width: 720px) 100vw, 720px"></p><div class="add-bar"><a class="med button-alt button-add add-text" href="javascript:void(0);">添加文字</a><a class="med button-alt button-add add-image" href="javascript:void(0);">添加图片<input class="imgUpload" type="file" name="files" data-url="/upload/image"></a><a class="med button-alt button-add add-video" href="javascript:void(0);">添加视频</a></div>');
+                imgUpload();
+            });
+        }
+    });
+    }
+    imgUpload();
+
+    
+    $(document).on('click', '.add-image', function() {
+        nowAddBar = $(this).parent();
+    });
     function insertTextAtCursor(text) {
         var sel, range, html;
         if (window.getSelection) {

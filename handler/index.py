@@ -99,9 +99,9 @@ class UploadImageHandler(BaseHandler):
     def post(self, template_variables = {}):
         template_variables = {}
         # validate the fields
-        if("files[]" in self.request.files):            
+        if("files" in self.request.files):            
             file_name = "%s" % uuid.uuid1()
-            file_raw = self.request.files["files[]"][0]["body"]
+            file_raw = self.request.files["files"][0]["body"]
             file_buffer = StringIO.StringIO(file_raw)
             file = Image.open(file_buffer)
 
@@ -117,4 +117,9 @@ class UploadImageHandler(BaseHandler):
             file_name = "http://objdsnsh2.bkt.clouddn.com/"+file_name+".png"
             print file_name
 
-            self.write(file_name)
+            self.write(lib.jsonp.print_JSON({
+                    "files": [
+                        {
+                            "name": file_name,
+                        }]
+            }))
