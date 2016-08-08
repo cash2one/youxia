@@ -78,7 +78,7 @@ $(document).ready(function() {
         dataType: 'json',
         done: function(e, data) {
             $.each(data.result.files, function(index, file) {
-                nowAddBar.after('<p class="yx-item"><img class="alignnone size-full wp-image-695550 aligncenter" src="'+file.name+'" sizes="(max-width: 720px) 100vw, 720px"></p><div class="add-bar"><a class="med button-alt button-add add-text" href="javascript:void(0);">添加文字</a><a class="med button-alt button-add add-image" href="javascript:void(0);">添加图片<input class="imgUpload" type="file" name="files" data-url="/upload/image"></a><a class="med button-alt button-add add-video" href="javascript:void(0);">添加视频</a></div>');
+                nowAddBar.after('<div class="yx-item"><img class="alignnone size-full wp-image-695550 aligncenter" src="'+file.name+'" sizes="(max-width: 720px) 100vw, 720px"><div class="yx-img-info" contenteditable="true">在这里添加图片描述</div></div><div class="add-bar"><a class="med button-alt button-add add-text" href="javascript:void(0);">添加文字</a><a class="med button-alt button-add add-image" href="javascript:void(0);">添加图片<input class="imgUpload" type="file" name="files" data-url="/upload/image"></a><a class="med button-alt button-add add-video" href="javascript:void(0);">添加视频</a></div>');
                 imgUpload();
             });
         }
@@ -113,7 +113,8 @@ $(document).ready(function() {
 
     $(document).on('click', '.add-text', function() {
 
-        $(this).parent().after('<p class="yx-item" contenteditable="true"></p><div class="add-bar"><a class="med button-alt button-add add-text" href="javascript:void(0);">添加文字</a><a class="med button-alt button-add add-image" href="javascript:void(0);">添加图片</a><a class="med button-alt button-add add-video" href="javascript:void(0);">添加视频</a></div>');
+        $(this).parent().after('<div class="yx-item" contenteditable="true"></div><div class="add-bar"><a class="med button-alt button-add add-text" href="javascript:void(0);">添加文字</a><a class="med button-alt button-add add-image" href="javascript:void(0);">添加图片<input class="imgUpload" type="file" name="files" data-url="/upload/image"></a><a class="med button-alt button-add add-video" href="javascript:void(0);">添加视频</a></div>');
+        imgUpload();
 
         $(this).parent().next().bind("paste", function(e) {
             e.preventDefault();

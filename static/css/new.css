@@ -1,7 +1,7 @@
 .yx-item {
 	border: 2px dashed rgba(33, 117, 208, .5);
 	padding: 10px;
-	border-radius: 5px;
+	border-radius: 5px;   
 }
 .yx-item:hover {
 	border: 2px solid rgba(33, 117, 208, .5);
@@ -84,4 +84,28 @@ input.imgUpload  {
     cursor: pointer;
     height: 33px;
     width: 219px;
+}
+.c-article-content .yx-item {
+    font-size: 16px;
+    color: #333;
+    line-height: 29px;
+    margin: 0 0 10px;
+    padding-right: 10px;
+}
+.yx-img-info {
+    font-size: 14px;
+    line-height: 20px;
+    padding: 14px 20px;
+    background-color: #323436;
+    color: #fff;
+    word-wrap: break-word;
+}
+.yx-img-info {
+    border: 2px dashed rgba(33, 117, 208, .5);
+    padding: 10px;
+    border-radius: 5px;   
+}
+.yx-img-info:hover {
+    border: 2px solid rgba(33, 117, 208, .5);
+    border-radius: 5px;
 }
