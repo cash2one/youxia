@@ -95,6 +95,9 @@ class NewHandler(BaseHandler):
         template_variables["user_info"] = user_info
         self.render(self.template_path+"new.html", **template_variables)
 
+    def post(self, template_variables = {}):
+        template_variables = {}
+
 class UploadImageHandler(BaseHandler):
     def post(self, template_variables = {}):
         template_variables = {}
