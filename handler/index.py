@@ -31,6 +31,7 @@ from lib.reddit import hot
 from lib.utils import pretty_date
 from pyquery import PyQuery as pyq
 from lib.dateencoder import DateEncoder
+from lib.utils import getJsonKeyValue
 
 from lib.mobile import is_mobile_browser
 from lib.mobile import is_weixin_browser
@@ -86,6 +87,8 @@ class PostHandler(BaseHandler):
         user_info = self.current_user
         template_variables["static_path"] = self.static_path
         template_variables["user_info"] = user_info
+        post = self.post_model.get_post_by_id(post_id)
+        template_variables["post"] = post
         self.render(self.template_path+"post.html", **template_variables)
 
 class NewHandler(BaseHandler):
@@ -95,8 +98,42 @@ class NewHandler(BaseHandler):
         template_variables["user_info"] = user_info
         self.render(self.template_path+"new.html", **template_variables)
 
+    @tornado.web.authenticated
     def post(self, template_variables = {}):
+        user_info = self.current_user
         template_variables = {}
+
+        post_type = self.get_argument('action', "save")
+
+        post_info = {}
+        data = json.loads(self.request.body)
+
+        post_info = getJsonKeyValue(data, post_info, "title")
+        post_info = getJsonKeyValue(data, post_info, "content")
+        post_info = getJsonKeyValue(data, post_info, "cover")
+
+        post_info["author_id"] = self.current_user["uid"]
+        post_info["updated"] = time.strftime('%Y-%m-%d %H:%M:%S')
+        post_info["created"] = time.strftime('%Y-%m-%d %H:%M:%S')
+
+        post_id = self.post_model.add_new_post(post_info)
+        if post_id:
+            success = 0
+            message = "成功新建帖子"
+            redirect = "/p/"+str(post_id)
+        else:
+            success = -1
+            message = "新建帖子失败"
+            redirect = ""
+
+        self.write(lib.jsonp.print_JSON({
+            "success": success,
+            "message": message,
+            "redirect": redirect
+        }))
+
+        
+
 
 class UploadImageHandler(BaseHandler):
     def post(self, template_variables = {}):
