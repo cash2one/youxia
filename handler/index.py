@@ -87,8 +87,11 @@ class PostHandler(BaseHandler):
         user_info = self.current_user
         template_variables["static_path"] = self.static_path
         template_variables["user_info"] = user_info
+        p = int(self.get_argument("p", "1"))
         post = self.post_model.get_post_by_post_id(post_id)
         template_variables["post"] = post
+        all_replys = self.reply_model.get_post_all_replys_sort_by_created2(post_id, current_page = p)
+        print all_replys
         self.render(self.template_path+"post.html", **template_variables)
 
 class NewHandler(BaseHandler):

@@ -58,12 +58,12 @@ class ReplyModel(Query):
         return self.where(where).order(order).join(join).field(field).pages(current_page = current_page, list_rows = num)
 
     def get_post_all_replys_sort_by_created2(self, post_id, num = 50, current_page = 1):
-        where = "reply.post_id = %s" % post_id
-        join = "LEFT JOIN user ON reply.author_id = user.uid"
+        where = "reply.obj_id = %s AND reply.reply_type='post'" % post_id
+        join = "LEFT JOIN user ON reply.author_id = user.uid \
+                RIGHT JOIN reply AS reply_reply ON reply.id = reply_reply.obj_id AND reply_reply.reply_type='reply'"
         order = "reply.created ASC, reply.id ASC"
         field = "reply.*, \
                 user.username as author_username, \
-                user.sign as author_sign, \
                 user.avatar as author_avatar"
         return self.where(where).order(order).join(join).field(field).pages(current_page = current_page, list_rows = num)
 

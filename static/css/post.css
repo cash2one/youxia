@@ -542,7 +542,6 @@ h1.c-single-normal__title {
 .c-article-comments__list {
     list-style: none;
     padding: 0;
-    margin: 30px 0 0;
     overflow: hidden;
 }
 .c-article-comments__list>li {
@@ -915,7 +914,7 @@ h1.c-single-normal__title {
 }
 #rPostBtn {
     position: absolute;
-    right: 76px;
+    right: 80px;
     margin-top: 6px;
     padding: 5px 10px;
     z-index: 999;
@@ -923,9 +922,7 @@ h1.c-single-normal__title {
 .note-editor .note-editable {
     min-height: 124px;
 }
-.comment-box {
-	margin-top: 30px;
-}
+
 
 
 .yx-item img{
@@ -946,4 +943,28 @@ h1.c-single-normal__title {
     background-color: #323436;
     color: #fff;
     word-wrap: break-word;
+}
+
+.note-toolbar {
+	border: 1px solid #eee !important;
+}
+.note-editor {
+	border: 1px solid #eee !important;
+	    border-radius: 0 0 5px 5px !important;
+}
+.comment-box-avatar {
+	    float: left;
+}
+.c-article-likes {
+	margin-top: 20px;
+	margin-bottom: 50px;
+}
+
+.comment-area {
+	float: left;
+    width: 667px;
+    margin-left: 10px;
+}
+.c-article-comments__headline {
+	margin-bottom: 20px;
 }
