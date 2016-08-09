@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # coding=utf-8
 #
-# Copyright 2016 webeta
+# Copyright 2013 mifan.tv
 
 from lib.query import Query
 
@@ -14,28 +14,30 @@ class PostModel(Query):
     def add_new_post(self, post_info):
         return self.data(post_info).add()
 
-    def get_post_by_id(self, post_id):
+    def get_post_by_post_id2(self, post_id, user_id):
         where = "post.id = %s" % post_id
-        return self.where(where).find()
+        join = "LEFT JOIN user AS author_user ON post.author_id = author_user.uid\
+                LEFT JOIN vote ON vote.author_id = %s AND post.id = vote.post_id" % user_id
+        field = "post.*, \
+                author_user.username as author_username, \
+                author_user.avatar as author_avatar, \
+                author_user.sign as author_sign, \
+                vote.up_down as vote_up_down"
+        return self.where(where).join(join).field(field).find()
 
-    def get_post_by_pid_and_source(self, pid, source):
-        where = "post.pid = %s AND post.source = '%s'" % (pid, source)
-        return self.where(where).find()
+    def get_post_by_post_id(self, post_id):
+        where = "post.id = %s" % post_id
+        join = "LEFT JOIN user AS author_user ON post.author_id = author_user.uid"
+        field = "post.*, \
+                author_user.username as author_username, \
+                author_user.avatar as author_avatar, \
+                author_user.sign as author_sign"
+        return self.where(where).join(join).field(field).find()
 
-    def update_post_by_post_uuid(self, uuid, post_info):
-        where = "post.post_uuid = %s" % post_uuid
+    def update_post_by_post_id(self, post_id, post_info):
+        where = "post.id = %s" % post_id
         return self.where(where).data(post_info).save()
 
-    def delete_post_by_post_uuid(self, post_uuid):
-        where = "post.post_uuid = %s" % post_uuid
+    def delete_post_by_post_id(self, post_id):
+        where = "post.id = %s" % post_id
         return self.where(where).delete()
-
-    def get_user_all_posts(self, author_id, num = 10, current_page = 1):
-        where = "post.author_id = '%s'" % author_id
-        order = "post.created DESC, post.id DESC"
-        return self.where(where).order(order).pages(current_page = current_page, list_rows = num)
-
-    def get_all_posts(self, num = 7, current_page = 1):
-        where = "post.post_type = '%s'" % "baicai-featured"
-        order = "post.created DESC, post.id DESC"
-        return self.where(where).order(order).pages(current_page = current_page, list_rows = num)

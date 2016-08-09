@@ -60,6 +60,7 @@ class Application(tornado.web.Application):
             (r"/", handler.index.IndexHandler),
             (r"/new", handler.index.NewHandler),
             (r"/p/(\d+)", handler.index.PostHandler),
+            (r"/reply/(\d+)", handler.index.ReplyHandler),
             (r"/upload/image", handler.index.UploadImageHandler),
             (r"/signin", handler.user.SigninHandler),
             (r"/signout", handler.user.SignoutHandler),
@@ -98,6 +99,7 @@ class Application(tornado.web.Application):
         self.user_model = self.loader.use("user.model")
         self.post_model = self.loader.use("post.model")
         self.nowfeed_model = self.loader.use("nowfeed.model")
+        self.reply_model = self.loader.use("reply.model")
 
         # Have one global session controller
         self.session_manager = SessionManager(settings["cookie_secret"], ["127.0.0.1:11211"], 0)

@@ -87,7 +87,7 @@ class PostHandler(BaseHandler):
         user_info = self.current_user
         template_variables["static_path"] = self.static_path
         template_variables["user_info"] = user_info
-        post = self.post_model.get_post_by_id(post_id)
+        post = self.post_model.get_post_by_post_id(post_id)
         template_variables["post"] = post
         self.render(self.template_path+"post.html", **template_variables)
 
@@ -162,4 +162,42 @@ class UploadImageHandler(BaseHandler):
                         {
                             "name": file_name,
                         }]
+            }))
+class ReplyHandler(BaseHandler):
+    def get(self, post_id, template_variables = {}):
+        user_info = self.current_user
+
+    @tornado.web.authenticated
+    def post(self, post_id, template_variables = {}):
+        user_info = self.current_user
+
+        data = json.loads(self.request.body)
+        reply_content = data["reply_content"]
+
+        if(user_info):
+            reply_info = {
+                "author_id": user_info["uid"],
+                "obj_id": post_id,
+                "content": reply_content,
+                "reply_type": "post",
+                "created": time.strftime('%Y-%m-%d %H:%M:%S'),
+            }
+            reply_id = self.reply_model.add_new_reply(reply_info)
+
+            post = self.post_model.get_post_by_post_id(post_id)
+            self.post_model.update_post_by_post_id(post_id, {
+                "reply_num": post.reply_num+1, 
+                "updated": time.strftime('%Y-%m-%d %H:%M:%S'),
+            })
+
+
+            self.write(lib.jsonp.print_JSON({
+                    "success": 1,
+                    "message": "successed",
+                    "reply_id": reply_id
+            }))
+        else:
+            self.write(lib.jsonp.print_JSON({
+                    "success": 0,
+                    "message": "failed",
             }))
