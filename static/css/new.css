@@ -42,12 +42,9 @@ textarea.yx-item {
 .yx-title {
 	border: 2px dashed rgba(255, 255, 255, 1);
 	display: block;
-	padding: 10px;
-	border-radius: 5px;  
 }
 .yx-title:hover {
 	border: 2px solid rgba(255, 255, 255, 1);
-	border-radius: 5px;
 }
 .button-title-image {
 	color: #fff;
@@ -112,20 +109,3 @@ input.imgUpload  {
     border: 2px solid rgba(33, 117, 208, .5);
     border-radius: 5px;
 }
-.tag-bar {
-    border: 2px dashed rgba(33, 117, 208, .5);
-    padding: 10px;
-    border-radius: 5px;   
-    margin-bottom: 30px;
-}
-.tag-bar:hover {
-    border: 2px solid rgba(33, 117, 208, .5);
-    border-radius: 5px;
-}
-.ui-widget-content {
-    background: #fff !important;
-    color: #333333;
-    font-size: 14px !important;
-}
-#postTags {
-	border: none !important;

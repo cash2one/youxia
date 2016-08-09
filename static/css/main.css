@@ -270,7 +270,12 @@ a:hover, a:focus {
     border-radius: 5px !important;
 }
 
-
+#news-feed .container {
+    margin-bottom: 0 !important;
+}
+.container-wrapper {
+    margin-bottom: 30px;
+}
 
 
 

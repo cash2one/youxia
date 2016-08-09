@@ -902,3 +902,24 @@ h1.c-single-normal__title {
 .private-btn:hover i {
     background-position: -144px -185px;
 }
+
+
+.yx-item img{
+	width: 720px !important;
+}
+.c-article-content .yx-item {
+    font-size: 16px;
+    color: #333;
+    line-height: 29px;
+    margin: 0 0 10px;
+    padding-right: 10px;
+}
+.yx-img-info {
+	width: 720px !important;
+    font-size: 14px;
+    line-height: 20px;
+    padding: 14px 20px;
+    background-color: #323436;
+    color: #fff;
+    word-wrap: break-word;
+}
