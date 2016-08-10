@@ -105,6 +105,7 @@ CREATE TABLE `reply` (
   `up_num` int(11) DEFAULT 0,
   `down_num` int(11) DEFAULT 0,
   `author_id` int(11) DEFAULT NULL,
+  `reply_to` int(11) DEFAULT NULL,
   `created` datetime DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;

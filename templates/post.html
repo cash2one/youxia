@@ -215,7 +215,7 @@ $(document).ready(function() {
         });
     });
 
-    $.getJSON('/reply/2', function(data) {
+    $.getJSON('/reply/{{post.id}}', function(data) {
         var all_replys_text = '';
         var all_replys = data.list;
         for (var i=0;i<all_replys.length;i++)
