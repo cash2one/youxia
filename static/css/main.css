@@ -279,3 +279,6 @@ a:hover, a:focus {
 
 
 
+#global-header .container>h1 a {
+    background-image: url("http://objdsnsh2.bkt.clouddn.com/logo-espn-82x20.png");
+}
