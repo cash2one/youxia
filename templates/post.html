@@ -10,7 +10,7 @@
                     <div class="container-wrapper">
                         <div class="container">
                             <!--no cache-->
-                            <article data-id="17145771" class="news-feed-item top news-feed-story-package no-thumb" data-pos="1">
+                            <article data-id="17145771" class="news-feed-item" data-pos="1">
                                 <div class="o-single-content" id="single-content-wrapper">
                                     <div id="article-header" class="o-single-content__header" style='background-image: {{post.cover}}'>
                                         <div class="o-single-content__body c-single-normal__header">
@@ -227,14 +227,14 @@ $(document).ready(function() {
                 for (var j=0;j<inner_replys.length;j++)
                 {
                     var inner_reply = inner_replys[j];
-                    inner_replys_text += '<li id="comment-'+inner_reply.id+'" class="c-article-comments-replies__item  js-single-comment" data-comment-username="'+inner_reply.author_username+'" data-comment-id="'+inner_reply.id+'"><div class="c-article-comments-replies__item__wrapper"><span class="c-article-comments-item__name">'+inner_reply.author_username+': <a class="comment-at" href="#comment-1032989" "="">@'+inner_reply.author_username+'</a></span><span class="c-article-comments-item__meta">'+inner_reply.created+'</span><div class="c-article-comments-item__content">'+inner_reply.content+'</div><button class="c-article-comments-item__reply c-article-comments-replies__reply js-reply-comment">回复</button><button class="c-article-comments-item-voting c-article-comments-item-voting--down js-vote-down ">'+inner_reply.up_num+'</button><button class="c-article-comments-item-voting c-article-comments-item-voting--up js-vote-up ">'+inner_reply.down_num+'</button></div></li>';
+                    inner_replys_text += '<li id="comment-'+inner_reply.id+'" class="c-article-comments-replies__item  js-single-comment" data-comment-username="'+inner_reply.author_username+'" data-comment-id="'+inner_reply.id+'"><div class="c-article-comments-replies__item__wrapper"><span class="c-article-comments-item__name">'+inner_reply.author_username+': <a class="comment-at" href="#comment-1032989" "="">@'+inner_reply.to_username+'</a></span><span class="c-article-comments-item__meta">'+inner_reply.created+'</span><a class="med button-alt up-btn" href="#">顶(0)</a><div class="c-article-comments-item__content">'+inner_reply.content+'</div><span class="c-article-comments-item__meta comment-bottom-btn comment-reply">回复</span><span class="c-article-comments-item__meta comment-bottom-btn comment-report">举报</span></div></li>';
                 }
                 if (inner_replys_text!='') {
                     inner_replys_text='<ul class="c-article-comments-replies c-article-comments-item__info js-child-comments">'+inner_replys_text+'</ul>'
                 }
             }
 
-            all_replys_text += '<li id="comment-'+reply.id+'" class="c-article-comments-item"><img class="c-article-comments-item__avatar" src="http://gravatar.ifanrx.com/avatar/6e9069ddddb70ce78f23295b2cbc76e3?s=80&amp;d=%2F%2Fifanr.b0.upaiyun.com%2Fsite-static%2Fifanr-2.0%2Fdist%2Fimages%2Fcommon%2Fgravatar.jpg" alt=""><div class="c-article-comments-item__info is-high js-single-comment" data-comment-username="'+reply.author_username+'" data-comment-id="'+reply.id+'"> <span class="c-article-comments-item__name">'+reply.author_username+'</span><span class="c-article-comments-item__meta">'+reply.created+'</span><div class="c-article-comments-item__content">'+reply.content+'</div><button class="c-article-comments-item__reply js-reply-comment">回复</button><button class="c-article-comments-item-voting c-article-comments-item-voting--down js-vote-down ">'+reply.up_num+'</button><button class="c-article-comments-item-voting c-article-comments-item-voting--up js-vote-up ">'+reply.down_num+'</button></div>'+inner_replys_text+'</li>';
+            all_replys_text += '<li id="comment-'+reply.id+'" class="c-article-comments-item"><img class="c-article-comments-item__avatar" src="http://gravatar.ifanrx.com/avatar/6e9069ddddb70ce78f23295b2cbc76e3?s=80&amp;d=%2F%2Fifanr.b0.upaiyun.com%2Fsite-static%2Fifanr-2.0%2Fdist%2Fimages%2Fcommon%2Fgravatar.jpg" alt=""><div class="c-article-comments-item__info js-single-comment comment-outer" data-comment-username="'+reply.author_username+'" data-comment-id="'+reply.id+'"> <span class="c-article-comments-item__name">'+reply.author_username+'</span><span class="c-article-comments-item__meta">'+reply.created+'</span><a class="med button-alt up-btn" href="#">顶('+reply.up_num+')</a><div class="c-article-comments-item__content">'+reply.content+'</div><span class="c-article-comments-item__meta comment-bottom-btn comment-reply">回复</span><span class="c-article-comments-item__meta comment-bottom-btn comment-report">举报</span></div>'+inner_replys_text+'</li>';
 
         }
         if (all_replys_text!='') {

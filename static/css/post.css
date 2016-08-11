@@ -417,11 +417,7 @@ h1.c-single-normal__title {
 .s-single-article p {
     margin: 0 0 16px;
 }
-.news-feed-story-package.top p, .s-single-article, .s-single-article p {
-    font-size: 16px;
-    color: #333;
-    line-height: 29px;
-}
+
 
 .c-article-likes {
     overflow: hidden;
@@ -588,28 +584,17 @@ h1.c-single-normal__title {
     line-height: 30px;
     cursor: pointer;
 }
-.is-high .c-article-comments-item__content {
-    padding: 0 5px;
+.c-article-comments-item__content {
     margin: 9px 0;
+    font-size: 14px !important;
+    line-height: 20px
 }
 .c-article-comments-item p {
     padding: 0;
     margin: 9px 0;
     color: #333;
-    font-size: 14px;
-    line-height: 20px;
 }
-.is-high .c-article-comments-item__content p {
-    background-color: #fef1e9;
-    display: inline;
-    box-shadow: 5px 0 0 #fef1e9,-5px 0 0 #fef1e9;
-    padding: 3px 0;
-    line-height: 25px;
-}
-.is-high .c-article-comments-item__content p::before {
-    display: block;
-    content: " ";
-}
+
 .c-article-comments-item__reply {
     color: #ef2f11;
     font-size: 13px;
@@ -678,11 +663,11 @@ h1.c-single-normal__title {
     overflow: hidden;
 }
 .c-article-comments-replies__item__wrapper {
-    padding: 18px 12px 15.5px;
+        padding: 18px 8px 15.5px 12px;
 }
 .c-article-comments-item__name {
     color: #666;
-    font-size: 12px;
+    font-size: 13px;
     font-weight: 700;
     margin-right: 10px;
     line-height: 1;
@@ -709,11 +694,7 @@ h1.c-single-normal__title {
     text-align: left;
     line-height: 12px;
 }
-.c-article-comments-item a {
-    text-decoration: none;
-    outline: 0;
-    color: #333;
-}
+
 .c-article-comments-item__meta {
     color: #b3b3b3;
     font-size: 12px;
@@ -726,13 +707,7 @@ h1.c-single-normal__title {
     border-bottom: 1px solid #ccc;
     padding-bottom: 1px;
 }
-.c-article-comments-item p {
-    padding: 0;
-    margin: 9px 0;
-    color: #333;
-    font-size: 14px;
-    line-height: 20px;
-}
+
 .c-article-comments-replies p {
     padding: 0;
     margin: 9px 0 5.5px;
@@ -967,4 +942,25 @@ h1.c-single-normal__title {
 }
 .c-article-comments__headline {
 	margin-bottom: 20px;
+}
+.med.up-btn {
+    line-height: 1.4;
+    font-size: 12px;
+    float: right;
+    border-radius: 3px;
+        border: 1px solid #ccc;
+    color: #ccc;
+}
+.comment-outer {
+	padding-right: 8px;
+}
+.comment-bottom-btn {
+	
+	margin-bottom: 5px;
+}
+.comment-reply {
+	float: left;
+}
+.comment-report {
+	float: right;
 }

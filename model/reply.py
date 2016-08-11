@@ -68,11 +68,13 @@ class ReplyModel(Query):
 
     def get_reply_all_replys_sort_by_created(self, reply_id):
         where = "reply.obj_id = %s AND reply.reply_type='reply'" % reply_id
-        join = "LEFT JOIN user ON reply.author_id = user.uid"
+        join = "LEFT JOIN user ON reply.author_id = user.uid \
+                LEFT JOIN user AS to_user ON reply.reply_to = to_user.uid"
         order = "reply.created ASC, reply.id ASC"
         field = "reply.*, \
                 user.username as author_username, \
-                user.avatar as author_avatar"
+                user.avatar as author_avatar, \
+                to_user.username as to_username"
         return self.where(where).order(order).join(join).field(field).select()
 
     def get_reply_by_id(self, reply_id):
