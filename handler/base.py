@@ -61,6 +61,10 @@ class BaseHandler(tornado.web.RequestHandler):
         return self.application.nowfeed_model
 
     @property
+    def newsfeed_model(self):
+        return self.application.newsfeed_model
+
+    @property
     def reply_model(self):
         return self.application.reply_model
 

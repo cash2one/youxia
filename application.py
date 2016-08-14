@@ -73,6 +73,9 @@ class Application(tornado.web.Application):
             (r"/admin/user/new", handler.admin.UserNewAdminHandler),
             (r"/admin/user/edit/(\d+)", handler.admin.UserEditAdminHandler),
             (r"/admin/user/delete/(\d+)", handler.admin.UserDeleteAdminHandler),
+            (r"/admin/newsfeeds", handler.admin.NewsfeedsAdminHandler),
+            (r"/admin/newsfeed/new", handler.admin.NewsfeedNewAdminHandler),
+            (r"/admin/newsfeed/edit/(\d+)", handler.admin.NewsfeedEditAdminHandler),
             (r"/admin/nowfeeds", handler.admin.NowfeedsAdminHandler),
             (r"/admin/nowfeed/new", handler.admin.NowfeedNewAdminHandler),
             (r"/admin/nowfeed/edit/(\d+)", handler.admin.NowfeedEditAdminHandler),
@@ -99,6 +102,7 @@ class Application(tornado.web.Application):
         self.user_model = self.loader.use("user.model")
         self.post_model = self.loader.use("post.model")
         self.nowfeed_model = self.loader.use("nowfeed.model")
+        self.newsfeed_model = self.loader.use("newsfeed.model")
         self.reply_model = self.loader.use("reply.model")
 
         # Have one global session controller

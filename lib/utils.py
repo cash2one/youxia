@@ -78,5 +78,6 @@ def pretty_date(time):
 def getJsonKeyValue(data, update, key):
     if data.has_key(key):
         key_value = data[key]
-        update[key] = key_value
+        if key_value != "":
+            update[key] = key_value
     return update

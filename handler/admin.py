@@ -357,6 +357,136 @@ class UserDeleteAdminHandler(BaseHandler):
                     "message": message
             }))
 
+class NewsfeedsAdminHandler(BaseHandler):
+    def get(self, template_variables = {}):
+        template_variables["side_menu"] = "newsfeeds"
+        user_info = self.current_user
+        template_variables["user_info"] = user_info
+        p = int(self.get_argument("p", "1"))
+
+        if(user_info):
+            if(user_info.admin == "admin"):  
+                template_variables["all_newsfeeds"] = self.newsfeed_model.get_all_newsfeeds(current_page = p)
+            self.render("admin/newsfeeds.html", **template_variables)
+        else:
+            self.redirect("/admin/signin")
+
+class NewsfeedNewAdminHandler(BaseHandler):
+    def get(self, template_variables = {}):
+        template_variables["side_menu"] = "newsfeeds"
+        user_info = self.current_user
+        template_variables["user_info"] = user_info
+
+        if(user_info and user_info.admin == "admin"):  
+            self.render("admin/newsfeed_new.html", **template_variables)
+        else:
+            self.redirect("/admin/signin")
+
+    def post(self, template_variables = {}):
+        user_info = self.current_user
+
+        if(user_info and user_info.admin == "admin"):  
+            update_info = {}
+            data = json.loads(self.request.body)
+            
+            update_info = getJsonKeyValue(data, update_info, "title")
+            update_info = getJsonKeyValue(data, update_info, "brief")
+            update_info = getJsonKeyValue(data, update_info, "feed_type")
+            update_info = getJsonKeyValue(data, update_info, "video_time")
+            update_info = getJsonKeyValue(data, update_info, "channel_name")
+            update_info = getJsonKeyValue(data, update_info, "channel_img")
+            update_info = getJsonKeyValue(data, update_info, "channel_link")
+            update_info = getJsonKeyValue(data, update_info, "user_name")
+            update_info = getJsonKeyValue(data, update_info, "user_img")
+            update_info = getJsonKeyValue(data, update_info, "user_link")
+            update_info = getJsonKeyValue(data, update_info, "post1_id")
+            update_info = getJsonKeyValue(data, update_info, "post2_id")
+            update_info = getJsonKeyValue(data, update_info, "post3_id")
+            update_info = getJsonKeyValue(data, update_info, "layut_type")
+            update_info["created"] = time.strftime('%Y-%m-%d %H:%M:%S')
+
+            update_result = self.newsfeed_model.add_new_newsfeed(update_info)
+
+            if update_result > 0:
+                success = 0
+                message = "成功新建 Newsfeed"
+            else:
+                success = -1
+                message = "新建 Newsfeed 失败"
+
+            self.write(lib.jsonp.print_JSON({
+                    "success": success,
+                    "message": message
+            }))
+        else:
+            success = -1
+            message = "新建 Newsfeed 失败"
+
+            self.write(lib.jsonp.print_JSON({
+                    "success": success,
+                    "message": message
+            })) 
+
+class NewsfeedEditAdminHandler(BaseHandler):
+    def get(self, newsfeed_id, template_variables = {}):
+        template_variables["side_menu"] = "newsfeeds"
+        user_info = self.current_user
+        template_variables["user_info"] = user_info
+
+        if(user_info and user_info.admin == "admin"):  
+            view_newsfeed = self.newsfeed_model.get_newsfeed_by_id(newsfeed_id)
+            template_variables["view_newsfeed"] = view_newsfeed
+            if(user_info.admin == "admin"):
+                self.render("admin/newsfeed_edit.html", **template_variables)
+            else:
+                self.redirect("/admin/newsfeeds")  
+        else:
+            self.redirect("/admin/signin")
+
+    def post(self, newsfeed_id, template_variables = {}):
+        user_info = self.current_user
+        view_newsfeed = self.newsfeed_model.get_newsfeed_by_id(newsfeed_id)
+
+        if(user_info and user_info.admin == "admin" and view_newsfeed):  
+            update_info = {}
+            data = json.loads(self.request.body)
+            
+            update_info = getJsonKeyValue(data, update_info, "title")
+            update_info = getJsonKeyValue(data, update_info, "brief")
+            update_info = getJsonKeyValue(data, update_info, "feed_type")
+            update_info = getJsonKeyValue(data, update_info, "video_time")
+            update_info = getJsonKeyValue(data, update_info, "channel_name")
+            update_info = getJsonKeyValue(data, update_info, "channel_img")
+            update_info = getJsonKeyValue(data, update_info, "channel_link")
+            update_info = getJsonKeyValue(data, update_info, "user_name")
+            update_info = getJsonKeyValue(data, update_info, "user_img")
+            update_info = getJsonKeyValue(data, update_info, "user_link")
+            update_info = getJsonKeyValue(data, update_info, "post1_id")
+            update_info = getJsonKeyValue(data, update_info, "post2_id")
+            update_info = getJsonKeyValue(data, update_info, "post3_id")
+            update_info = getJsonKeyValue(data, update_info, "layut_type")
+            
+            update_result = self.newsfeed_model.update_newsfeed_by_id(newsfeed_id, update_info)
+
+            if update_result == 0:
+                success = 0
+                message = "成功保存 Newsfeed 信息"
+            else:
+                success = -1
+                message = "保存 Newsfeed 信息失败"
+
+            self.write(lib.jsonp.print_JSON({
+                    "success": success,
+                    "message": message
+            }))
+        else:
+            success = -1
+            message = "保存 Newsfeed 信息失败"
+
+            self.write(lib.jsonp.print_JSON({
+                    "success": success,
+                    "message": message
+            }))
 
 class NowfeedsAdminHandler(BaseHandler):
     def get(self, template_variables = {}):

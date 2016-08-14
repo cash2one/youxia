@@ -94,6 +94,30 @@ CREATE TABLE `nowfeed` (
 ) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
+--  Table structure for `newsfeed`
+-- ----------------------------
+DROP TABLE IF EXISTS `newsfeed`;
+CREATE TABLE `newsfeed` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `title` text,
+  `brief` text,
+  `channel_name` text,
+  `channel_img` text,
+  `channel_link` text,
+  `user_name` text,
+  `user_img` text,
+  `user_link` text,
+  `post1_id` int(11) DEFAULT NULL,
+  `post2_id` int(11) DEFAULT NULL,
+  `post3_id` int(11) DEFAULT NULL,
+  `layut_type` text,
+  `feed_type` text,
+  `video_time` text,
+  `created` datetime DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;
+
+-- ----------------------------
 --  Table structure for `reply`
 -- ----------------------------
 DROP TABLE IF EXISTS `reply`;

@@ -129,6 +129,11 @@
               </a>
             </li>
             {% endif %}
+            <li {% if side_menu == "newsfeeds" %}class="active"{% endif %}>
+              <a href="/admin/newsfeeds">
+                <i class="fa fa-tasks"></i> <span>NewsFeed</span>
+              </a>
+            </li>
             <li {% if side_menu == "nowfeeds" %}class="active"{% endif %}>
               <a href="/admin/nowfeeds">
                 <i class="fa fa-tasks"></i> <span>NowFeed</span>

@@ -2455,6 +2455,7 @@
                         <div id="news-feed-content" data-count="41">
                             <div class="container-wrapper">
                                 <div class="container">
+                                    {%for feed in all_feeds.list%}
                                     <!--no cache-->
                                     <article data-id="17145771" class="news-feed-item top news-feed-story-package no-thumb" data-pos="1">
                                         <a name="&amp;lpos=fp:feed:1:nfl:mem1:ts1" class="story-link" data-sport="nfl" data-id="17145771" href="/nfl/story/_/id/17145771/2016-nfl-all-retirement-team-players-retired-calvin-johnson-detroit-lions-marshawn-lynch-seattle-seahawks" data-popup-href="http://espn.go.com/nfl/story/_/id/17145771/2016-nfl-all-retirement-team-players-retired-calvin-johnson-detroit-lions-marshawn-lynch-seattle-seahawks"></a>
@@ -2817,47 +2818,43 @@
                                     </article>
                                     <!--get: espn-en_index_top_the-gms-office-12715_2016-07-27T13:30:20Z_false_true_false_desktop_11-->
                                     <!--espn-en_index_top_the-gms-office-12715_2016-07-27T13:30:20Z_false_true_false_desktop_11-->
-                                    <article data-id="the-gms-office-12715" class="news-feed-item news-feed-story-package active no-thumb" data-pos="4">
-                                        <a name="&amp;lpos=fp:feed:4:mlb:mem2:ts1" class="story-link" data-sport="insider" data-id="the-gms-office-12715" href="/blog/the-gms-office/insider/post?id=12715" data-popup-href="http://espn.go.com/blog/the-gms-office/insider/post?id=12715"></a>
+                                    {%if feed.layout_type=="F1"%}
+                                    <article class="news-feed-item news-feed-story-package active no-thumb">
+                                        <a class="story-link" href="/p/{{feed.post1_id}}"></a>
                                         <figure class="feed-item-figure ">
                                             <div class="img-wrap">
-                                                <a name="&amp;lpos=fp:feed:4:mlb:mem2:ts1" href="/blog/the-gms-office/insider/post?id=12715" data-sport="null">
+                                                <a href="/p/{{feed.post1_id}}">
                                                     <picture>
-                                                        <source srcset="http://a1.espncdn.com/combiner/i?img=%2Fphoto%2F2016%2F0725%2Fr106910_1296x518_5%2D2.jpg&amp;w=375&amp;h=150&amp;scale=crop&amp;cquality=80&amp;location=origin, http://a1.espncdn.com/combiner/i?img=%2Fphoto%2F2016%2F0725%2Fr106910_1296x518_5%2D2.jpg&amp;w=768&amp;h=307&amp;scale=crop&amp;cquality=40&amp;location=origin 2x" media="(max-width: 375px)">
-                                                        <source srcset="http://a1.espncdn.com/combiner/i?img=%2Fphoto%2F2016%2F0725%2Fr106910_1296x518_5%2D2.jpg&amp;w=768&amp;h=307&amp;scale=crop&amp;cquality=80&amp;location=origin, http://a1.espncdn.com/combiner/i?img=%2Fphoto%2F2016%2F0725%2Fr106910_1296x518_5%2D2.jpg&amp;w=1296&amp;h=518&amp;scale=crop&amp;cquality=40&amp;location=origin 2x" media="(min-width: 376px)">
-                                                        <img data-default-src="http://a.espncdn.com/photo/2016/0725/r106910_1296x518_5-2.jpg" class=" lazyloaded" data-image-container=".feed-item-figure"></picture>
+                                                        <source srcset="{{feed.post1_cover}}&amp;w=375&amp;h=150&amp;scale=crop&amp;cquality=80&amp;location=origin, {{feed.post1_cover}}&amp;w=768&amp;h=307&amp;scale=crop&amp;cquality=40&amp;location=origin 2x" media="(max-width: 375px)">
+                                                        <source srcset="{{feed.post1_cover}}&amp;w=768&amp;h=307&amp;scale=crop&amp;cquality=80&amp;location=origin, {{feed.post1_cover}}&amp;w=1296&amp;h=518&amp;scale=crop&amp;cquality=40&amp;location=origin 2x" media="(min-width: 376px)">
+                                                        <img data-default-src="{{feed.post1_cover}}" class=" lazyloaded" data-image-container=".feed-item-figure"></picture>
                                                 </a>
                                             </div>
-                                            <span class="credit">
-                                                <font>
-                                                    <font>哈里如何/盖蒂图片社</font>
-                                                </font>
-                                            </span>
                                         </figure>
                                         <div class="text-container">
                                             <div class="item-info-wrap">
                                                 <div class="news-feed_item-meta icon-font-before icon-brand-insider-solid-before">
                                                     <span class="timestamp">
                                                         <font>
-                                                            <font>2H</font>
+                                                            <font>{{feed.created|pretty_date}}</font>
                                                         </font>
                                                     </span>
                                                     <span class="author">
                                                         <font>
-                                                            <font>吉姆·鲍登</font>
+                                                            <font>{{feed.user_name or feed.post1_author_name}}</font>
                                                         </font>
                                                     </span>
                                                 </div>
                                                 <h1>
-                                                    <a name="&amp;lpos=fp:feed:4:mlb:mem2:ts1" href="/blog/the-gms-office/insider/post?id=12715" class=" realStory" data-sport="insider">
+                                                    <a href="/p/{{feed.post1_id}}" class=" realStory">
                                                         <font>
-                                                            <font>会是什么采取克里斯出售交易吗？</font>
+                                                            <font>{{feed.title or feed.post1_title}}</font>
                                                         </font>
                                                     </a>
                                                 </h1>
                                                 <p>
                                                     <font>
-                                                        <font>吉姆·鲍登看什么五队 - 红袜队，格拉斯哥流浪者，国民，小熊和道奇 - 将不得不割爱土地白袜队的王牌克里斯销售。</font>
+                                                        <font>{{feed.brief or ""}}</font>
                                                     </font>
                                                 </p>
                                             </div>
@@ -2866,6 +2863,7 @@
                                             </div>
                                         </div>
                                     </article>
+                                    {%endif%}
                                     <!--get: espn-en_index_top_tradedeadline_missingaces_2016-07-27T13:40:27Z_false_false_false_desktop_11-->
                                     <!--espn-en_index_top_tradedeadline_missingaces_2016-07-27T13:40:27Z_false_false_false_desktop_11-->
                                     <article data-id="tradedeadline_missingaces" class="news-feed-item  no-thumb" data-pos="5">
@@ -5269,6 +5267,7 @@
                                             </li>
                                         </ul>
                                     </article>
+                                    {%endfor%}
                                 </div>
                             </div>
                         </div>
