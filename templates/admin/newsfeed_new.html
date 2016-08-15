@@ -36,17 +36,6 @@
                       </select>
                     </div>
                     <div class="form-group">
-                      <label>feed_type</label>
-                      <select id="feed_type" class="form-control" >
-                        <option>image</option>
-                        <option>video</option>
-                      </select>
-                    </div>
-                    <div class="form-group">
-                      <label>Time</label>
-                      <input id="video_time" type="text" class="form-control"/>
-                    </div>
-                    <div class="form-group">
                       <label>title</label>
                       <input id="title" type="text" class="form-control"/>
                     </div>
@@ -125,8 +114,6 @@ $(document).on('click', '#save-newsfeed', function() {
     url: "/admin/newsfeed/new",
     data: JSON.stringify({
       layout_type: $('#layout_type').val(),
-      feed_type: $('#feed_type').val(),
-      video_time: $('#video_time').val(),
       title: $('#title').val(),
       brief: $('#brief').val(),
       post1_id: $('#post1_id').val(),

@@ -2615,11 +2615,20 @@
                                                         <source srcset="{{feed.post1_cover}}" media="(min-width: 376px)">
                                                         <img data-default-src="{{feed.post1_cover}}" class=" lazyloaded" data-image-container=".feed-item-figure"></picture>
                                                 </a>
-                                                <span class="video-play-button " data-playtxt="PLAY" data-id="17153214">
+                                                {%if feed.feed_type=="video"%}
+                                                <span class="video-play-button " data-playtxt="PLAY">
                                                     <font>
-                                                        <font>玩</font>
+                                                        <font>播放</font>
                                                     </font>
                                                 </span>
+                                                {%if feed.video_time%}
+                                                <span class="video-length">
+                                                    <font>
+                                                        <font>{{feed.video_time}}</font>
+                                                    </font>
+                                                </span>
+                                                {%endif%}
+                                                {%endif%}
                                             </div>
                                             <figcaption>
                                                 <div class="caption-wrapper">
@@ -2647,6 +2656,20 @@
                                                         <source srcset="{{feed.post1_cover}}" media="(min-width: 376px)">
                                                         <img data-default-src="{{feed.post1_cover}}" class=" lazyloaded" data-image-container=".feed-item-figure"></picture>
                                                 </a>
+                                                {%if feed.feed_type=="video"%}
+                                                <span class="video-play-button " data-playtxt="PLAY">
+                                                    <font>
+                                                        <font>播放</font>
+                                                    </font>
+                                                </span>
+                                                {%if feed.video_time%}
+                                                <span class="video-length">
+                                                    <font>
+                                                        <font>{{feed.video_time}}</font>
+                                                    </font>
+                                                </span>
+                                                {%endif%}
+                                                {%endif%}
                                             </div>
                                         </figure>
                                         <div class="text-container">
@@ -2684,63 +2707,87 @@
                                     {%endif%}
 
                                     {%if feed.layout_type=="S1"%}
-                                    <article class="news-feed-item  no-thumb">
-                                        <a class="story-link" href="/p/{{feed.post1_id}}"></a>
-                                        <figure class="feed-item-figure video ">
-                                            <div class="img-wrap">
-                                                <a href="/p/{{feed.post1_id}}">
-                                                    <picture>
-                                                        <source srcset="{{feed.post1_cover}}" media="(max-width: 413px)">
-                                                        <source srcset="{{feed.post1_cover}}" media="(min-width: 414px)">
-                                                        <img data-default-src="{{feed.post1_cover}}" class=" lazyload" data-image-container=".feed-item-figure"></picture>
-                                                </a>
-                                                <span class="video-play-button " data-playtxt="PLAY" data-id="17151764">
+                                    <article class="news-feed-item ">
+                                        <a class="story-link" href="http://espndeportes.espn.go.com/?src=com"></a>
+                                        <h2 class="featured-top">
+                                            <a href="http://espndeportes.espn.go.com/?src=com">
+                                                <img src="http://a.espncdn.com/i/espn/networks_shows/500/espn_deportes.png" class="lazyload" data-lazyload="true">
+                                                <span class="presByText">
+                                                    <font>
+                                                        <font>ESPN Deportes进行</font>
+                                                    </font>
+                                                </span>
+                                            </a>
+                                        </h2>
+                                        <ul>
+                                            <li class="no-thumb">
+                                                <figure class="feed-item-figure video ">
+                                                    <div class="img-wrap">
+                                                        <a href="http://espndeportes.espn.go.com/futbol/espana/nota/_/id/2740669/neymar-avala-a-gabriel-jesus-pide-respeto-por-su-vida-privada">
+                                                            <picture>
+                                                                <source srcset="{{feed.post1_cover}}">
+                                                                <source srcset="{{feed.post1_cover}}" media="(min-width: 320px)">
+                                                                <img data-default-src="{{feed.post1_cover}}" class=" lazyload" data-image-container=".feed-item-figure"></picture>
+                                                        </a>
+                                                        {%if feed.feed_type=="video"%}
+                                                <span class="video-play-button " data-playtxt="PLAY">
                                                     <font>
                                                         <font>播放</font>
                                                     </font>
                                                 </span>
+                                                {%if feed.video_time%}
                                                 <span class="video-length">
                                                     <font>
-                                                        <font>1:05</font>
+                                                        <font>{{feed.video_time}}</font>
                                                     </font>
                                                 </span>
-                                            </div>
-                                        </figure>
-                                        <div class="text-container no-headlines">
-                                            <div class="item-info-wrap">
-                                                <div class="news-feed_item-meta ">
-                                                    <div class="category-link">
-                                                        <a href="/nfl/">
+                                                {%endif%}
+                                                {%endif%}
+                                                    </div>
+                                                    <span class="credit">
+                                                        <font>
+                                                            <font>盖蒂图片社</font>
+                                                        </font>
+                                                    </span>
+                                                </figure>
+                                                <a class="story-link" href="http://espndeportes.espn.go.com/futbol/espana/nota/_/id/2740669/neymar-avala-a-gabriel-jesus-pide-respeto-por-su-vida-privada"></a>
+                                                <div class="text-container">
+                                                    <div class="news-feed_item-meta">
+                                                        <div class="category-link">
+                                                            <a href="http://www.espnfc.us/spanish-primera-division/15/index">
+                                                                <font>
+                                                                    <font>西班牙甲级联赛</font>
+                                                                </font>
+                                                            </a>
+                                                        </div>
+                                                        <span class="timestamp">
                                                             <font>
-                                                                <font>NFL</font>
+                                                                <font>20H</font>
+                                                            </font>
+                                                        </span>
+                                                        <span class="author">
+                                                            <font>
+                                                                <font>霍尔迪布兰科/ ESPN数字</font>
+                                                            </font>
+                                                        </span>
+                                                    </div>
+                                                    <h1>
+                                                        <a name="&amp;lpos=fp:feed:40:espn_deportes:1" href="http://espndeportes.espn.go.com/futbol/espana/nota/_/id/2740669/neymar-avala-a-gabriel-jesus-pide-respeto-por-su-vida-privada" class="">
+                                                            <font>
+                                                                <font>{{feed.title or feed.post1_title}}</font>
                                                             </font>
                                                         </a>
-                                                    </div>
-                                                    <span class="timestamp">
+                                                    </h1>
+                                                    <p>
                                                         <font>
-                                                            <font>9H</font>
+                                                            <font>
+                                                                {{feed.brief or ""}}
+                                                            </font>
                                                         </font>
-                                                    </span>
-                                                    <span class="author">
-                                                        <font>
-                                                            <font>大卫Schoenfield</font>
-                                                        </font>
-                                                    </span>
+                                                    </p>
                                                 </div>
-                                                <h1>
-                                                    <a href="/p/{{feed.post1_id}}" class=" realStory" data-sport="post">
-                                                        <font>
-                                                            <font>{{feed.title or feed.post1_title}}</font>
-                                                        </font>
-                                                    </a>
-                                                </h1>
-                                                <p>
-                                                    <font>
-                                                        {{feed.brief or ""}}
-                                                    </font>
-                                                </p>
-                                            </div>
-                                        </div>
+                                            </li>
+                                        </ul>
                                     </article>
                                     {%endif%}
 
@@ -2767,6 +2814,20 @@
                                                                 <source srcset="{{feed.post1_cover}}" media="(min-width: 414px)">
                                                                 <img data-default-src="{{feed.post1_cover}}" class=" lazyload" data-image-container=".feed-item-figure"></picture>
                                                         </a>
+                                                        {%if feed.feed_type=="video"%}
+                                                <span class="video-play-button " data-playtxt="PLAY">
+                                                    <font>
+                                                        <font>播放</font>
+                                                    </font>
+                                                </span>
+                                                {%if feed.video_time%}
+                                                <span class="video-length">
+                                                    <font>
+                                                        <font>{{feed.video_time}}</font>
+                                                    </font>
+                                                </span>
+                                                {%endif%}
+                                                {%endif%}
                                                     </div>
                                                     <span class="credit">
                                                         <font>
@@ -2801,6 +2862,20 @@
                                                                 <source srcset="{{feed.post2_cover}}" media="(min-width: 414px)">
                                                                 <img data-default-src="{{feed.post2_cover}}" class=" lazyload" data-image-container=".feed-item-figure"></picture>
                                                         </a>
+                                                        {%if feed.feed_type=="video"%}
+                                                <span class="video-play-button " data-playtxt="PLAY">
+                                                    <font>
+                                                        <font>播放</font>
+                                                    </font>
+                                                </span>
+                                                {%if feed.video_time%}
+                                                <span class="video-length">
+                                                    <font>
+                                                        <font>{{feed.video_time}}</font>
+                                                    </font>
+                                                </span>
+                                                {%endif%}
+                                                {%endif%}
                                                     </div>
                                                 </figure>
                                                 <a target="_blank" class="story-link" href="/p/{{feed.post2_id}}"></a>
@@ -2830,6 +2905,20 @@
                                                                 <source srcset="{{feed.post3_cover}}" media="(min-width: 414px)">
                                                                 <img data-default-src="{{feed.post3_cover}}" class=" lazyload" data-image-container=".feed-item-figure"></picture>
                                                         </a>
+                                                        {%if feed.feed_type=="video"%}
+                                                <span class="video-play-button " data-playtxt="PLAY">
+                                                    <font>
+                                                        <font>播放</font>
+                                                    </font>
+                                                </span>
+                                                {%if feed.video_time%}
+                                                <span class="video-length">
+                                                    <font>
+                                                        <font>{{feed.video_time}}</font>
+                                                    </font>
+                                                </span>
+                                                {%endif%}
+                                                {%endif%}
                                                     </div>
                                                 </figure>
                                                 <a target="_blank" class="story-link" data-id="17150577" href="/p/{{feed.post3_id}}"></a>
@@ -2857,11 +2946,12 @@
                                     {%if feed.layout_type=="M2"%}
                                     <article class="news-feed-item news-feed-story-duo">
                                         <h2 class="featured-top">
-                                            <a href="/nfl/">
-                                                <img src="http://a.espncdn.com/combiner/i?img=/i/espn/teamlogos/500/nfl.png?w=80&amp;h=80&amp;transparent=true" class="lazyload" data-lazyload="true">
+                                            <a target="_blank" href="http://fivethirtyeight.com/">
+                                                <img src="http://a.espncdn.com/combiner/i?img=/i/espn/teamlogos/500/538.png?w=300&amp;h=60&amp;transparent=true" class="lazyload" data-lazyload="true">
                                                 <span class="presByText">
+                                                    <img src="http://a.espncdn.com/i/columnists/silver_nate-circle_60.png" class="lazyload" data-lazyload="true">
                                                     <font>
-                                                        <font>NFL四分卫</font>
+                                                        <font>纳特·西尔弗</font>
                                                     </font>
                                                 </span>
                                             </a>
@@ -2876,6 +2966,20 @@
                                                                 <source srcset="{{feed.post1_cover}}" media="(min-width: 414px)">
                                                                 <img data-default-src="{{feed.post1_cover}}" class=" lazyload" data-image-container=".feed-item-figure"></picture>
                                                         </a>
+                                                        {%if feed.feed_type=="video"%}
+                                                <span class="video-play-button " data-playtxt="PLAY">
+                                                    <font>
+                                                        <font>播放</font>
+                                                    </font>
+                                                </span>
+                                                {%if feed.video_time%}
+                                                <span class="video-length">
+                                                    <font>
+                                                        <font>{{feed.video_time}}</font>
+                                                    </font>
+                                                </span>
+                                                {%endif%}
+                                                {%endif%}
                                                     </div>
                                                     <span class="credit">
                                                         <font>
@@ -2922,6 +3026,20 @@
                                                                 <source srcset="{{feed.post2_cover}}" media="(min-width: 414px)">
                                                                 <img data-default-src="{{feed.post2_cover}}" class=" lazyload" data-image-container=".feed-item-figure"></picture>
                                                         </a>
+                                                        {%if feed.feed_type=="video"%}
+                                                <span class="video-play-button " data-playtxt="PLAY">
+                                                    <font>
+                                                        <font>播放</font>
+                                                    </font>
+                                                </span>
+                                                {%if feed.video_time%}
+                                                <span class="video-length">
+                                                    <font>
+                                                        <font>{{feed.video_time}}</font>
+                                                    </font>
+                                                </span>
+                                                {%endif%}
+                                                {%endif%}
                                                     </div>
                                                     <span class="credit">
                                                         <font>

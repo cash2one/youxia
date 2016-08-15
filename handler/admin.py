@@ -391,8 +391,6 @@ class NewsfeedNewAdminHandler(BaseHandler):
             
             update_info = getJsonKeyValue(data, update_info, "title")
             update_info = getJsonKeyValue(data, update_info, "brief")
-            update_info = getJsonKeyValue(data, update_info, "feed_type")
-            update_info = getJsonKeyValue(data, update_info, "video_time")
             update_info = getJsonKeyValue(data, update_info, "channel_name")
             update_info = getJsonKeyValue(data, update_info, "channel_img")
             update_info = getJsonKeyValue(data, update_info, "channel_link")
@@ -453,8 +451,6 @@ class NewsfeedEditAdminHandler(BaseHandler):
             
             update_info = getJsonKeyValue(data, update_info, "title")
             update_info = getJsonKeyValue(data, update_info, "brief")
-            update_info = getJsonKeyValue(data, update_info, "feed_type")
-            update_info = getJsonKeyValue(data, update_info, "video_time")
             update_info = getJsonKeyValue(data, update_info, "channel_name")
             update_info = getJsonKeyValue(data, update_info, "channel_img")
             update_info = getJsonKeyValue(data, update_info, "channel_link")

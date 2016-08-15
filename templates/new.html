@@ -159,6 +159,8 @@ $(document).ready(function() {
         $(".yx-item").each(function() {
           content = content + $(this).prop("outerHTML");
         });
+        var cover = $('#article-header').css('background-image')
+        cover = cover.replace('url(','').replace(')','').replace(/\"/gi, "");
         $.ajax({
             type: "POST",
             contentType: "application/json; charset=utf-8",
@@ -166,7 +168,7 @@ $(document).ready(function() {
             url: "/new",
             data: JSON.stringify({
                 title: $('.yx-title').text(),
-                cover: $('#article-header').css('background-image'),
+                cover: cover,
                 content: content,
             }),
             success: function(msg) {

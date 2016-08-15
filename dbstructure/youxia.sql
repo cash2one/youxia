@@ -69,6 +69,8 @@ CREATE TABLE `post` (
   `view_num` int(11) DEFAULT 1,
   `follow_num` int(11) DEFAULT 0,
   `author_id` int(11) DEFAULT NULL,
+  `is_video` int(11) DEFAULT 0,
+  `video_time` int(11) DEFAULT NULL,
   `updated` datetime DEFAULT NULL,
   `created` datetime DEFAULT NULL,
   PRIMARY KEY (`id`)
@@ -111,8 +113,6 @@ CREATE TABLE `newsfeed` (
   `post2_id` int(11) DEFAULT NULL,
   `post3_id` int(11) DEFAULT NULL,
   `layout_type` text,
-  `feed_type` text,
-  `video_time` text,
   `created` datetime DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;
