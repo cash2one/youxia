@@ -24,8 +24,17 @@ class NewsfeedModel(Query):
 
     def get_all_newsfeeds(self, num = 10, current_page = 1):
         order = "newsfeed.id DESC"
-        field = "newsfeed.*"
-        return self.order(order).field(field).pages(current_page = current_page, list_rows = num) 
+        join = "LEFT JOIN post AS post1 ON newsfeed.post1_id = post1.id\
+                LEFT JOIN post AS post2 ON newsfeed.post2_id = post2.id\
+                LEFT JOIN post AS post3 ON newsfeed.post3_id = post3.id"
+        field = "newsfeed.*, \
+                post1.title as post1_title, \
+                post1.cover as post1_cover, \
+                post2.title as post2_title, \
+                post2.cover as post2_cover, \
+                post3.title as post3_title, \
+                post3.cover as post3_cover"
+        return self.order(order).join(join).field(field).pages(current_page = current_page, list_rows = num) 
 
     def get_all_newsfeeds_count(self):
         return self.count()

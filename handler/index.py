@@ -59,6 +59,10 @@ class IndexHandler(BaseHandler):
         all_nowfeeds = self.nowfeed_model.get_all_nowfeeds(current_page = p)
         template_variables["all_nowfeeds"] = all_nowfeeds
 
+        all_newsfeeds = self.newsfeed_model.get_all_newsfeeds(current_page = p)
+        template_variables["all_newsfeeds"] = all_newsfeeds
+        print all_newsfeeds
+
         if(user_info):
             print 'ddd'
         else:

@@ -110,7 +110,7 @@ CREATE TABLE `newsfeed` (
   `post1_id` int(11) DEFAULT NULL,
   `post2_id` int(11) DEFAULT NULL,
   `post3_id` int(11) DEFAULT NULL,
-  `layut_type` text,
+  `layout_type` text,
   `feed_type` text,
   `video_time` text,
   `created` datetime DEFAULT NULL,

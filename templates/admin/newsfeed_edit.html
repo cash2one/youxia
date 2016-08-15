@@ -26,13 +26,13 @@
                 <div class="box-body">
                   <form role="form">
                   <div class="form-group">
-                      <label>layut_type</label>
-                      <select id="layut_type" class="form-control" >
-                        <option {% if view_newsfeed.layut_type == 'F1' %} selected="selected" {% endif %}>F1</option>
-                        <option {% if view_newsfeed.layut_type == 'L1' %} selected="selected" {% endif %}>L1</option>
-                        <option {% if view_newsfeed.layut_type == 'M2' %} selected="selected" {% endif %}>M2</option>
-                        <option {% if view_newsfeed.layut_type == 'S1' %} selected="selected" {% endif %}>S1</option>
-                        <option {% if view_newsfeed.layut_type == 'S3' %} selected="selected" {% endif %}>S3</option>
+                      <label>layout_type</label>
+                      <select id="layout_type" class="form-control" >
+                        <option {% if view_newsfeed.layout_type == 'F1' %} selected="selected" {% endif %}>F1</option>
+                        <option {% if view_newsfeed.layout_type == 'L1' %} selected="selected" {% endif %}>L1</option>
+                        <option {% if view_newsfeed.layout_type == 'M2' %} selected="selected" {% endif %}>M2</option>
+                        <option {% if view_newsfeed.layout_type == 'S1' %} selected="selected" {% endif %}>S1</option>
+                        <option {% if view_newsfeed.layout_type == 'S3' %} selected="selected" {% endif %}>S3</option>
                       </select>
                     </div>
                     <div class="form-group">
@@ -125,7 +125,7 @@ $(document).on('click', '#save-newsfeed', function() {
     dataType: "json",
     url: "/admin/newsfeed/edit/" + newsfeed_id,
     data: JSON.stringify({
-      layut_type: $('#layut_type').val(),
+      layout_type: $('#layout_type').val(),
       feed_type: $('#feed_type').val(),
       video_time: $('#video_time').val(),
       title: $('#title').val(),

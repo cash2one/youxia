@@ -26,8 +26,8 @@
                 <div class="box-body">
                   <form role="form">
                     <div class="form-group">
-                      <label>layut_type</label>
-                      <select id="layut_type" class="form-control" >
+                      <label>layout_type</label>
+                      <select id="layout_type" class="form-control" >
                         <option>F1</option>
                         <option>L1</option>
                         <option>M2</option>
@@ -124,7 +124,7 @@ $(document).on('click', '#save-newsfeed', function() {
     dataType: "json",
     url: "/admin/newsfeed/new",
     data: JSON.stringify({
-      layut_type: $('#layut_type').val(),
+      layout_type: $('#layout_type').val(),
       feed_type: $('#feed_type').val(),
       video_time: $('#video_time').val(),
       title: $('#title').val(),

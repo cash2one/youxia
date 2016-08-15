@@ -402,7 +402,7 @@ class NewsfeedNewAdminHandler(BaseHandler):
             update_info = getJsonKeyValue(data, update_info, "post1_id")
             update_info = getJsonKeyValue(data, update_info, "post2_id")
             update_info = getJsonKeyValue(data, update_info, "post3_id")
-            update_info = getJsonKeyValue(data, update_info, "layut_type")
+            update_info = getJsonKeyValue(data, update_info, "layout_type")
             update_info["created"] = time.strftime('%Y-%m-%d %H:%M:%S')
 
             update_result = self.newsfeed_model.add_new_newsfeed(update_info)
@@ -464,7 +464,7 @@ class NewsfeedEditAdminHandler(BaseHandler):
             update_info = getJsonKeyValue(data, update_info, "post1_id")
             update_info = getJsonKeyValue(data, update_info, "post2_id")
             update_info = getJsonKeyValue(data, update_info, "post3_id")
-            update_info = getJsonKeyValue(data, update_info, "layut_type")
+            update_info = getJsonKeyValue(data, update_info, "layout_type")
             
             update_result = self.newsfeed_model.update_newsfeed_by_id(newsfeed_id, update_info)
 
