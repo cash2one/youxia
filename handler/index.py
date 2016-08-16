@@ -29,7 +29,6 @@ from lib.xss import XssCleaner
 from lib.utils import find_mentions
 from lib.reddit import hot
 from lib.utils import pretty_date
-from pyquery import PyQuery as pyq
 from lib.dateencoder import DateEncoder
 from lib.utils import getJsonKeyValue
 
