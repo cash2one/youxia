@@ -2455,6 +2455,7 @@
                         <div id="news-feed-content" data-count="41">
                             <div class="container-wrapper">
                                 <div class="container">
+                                    {%if all_newsfeeds.list[0]%}
                                     <article class="news-feed-item top news-feed-story-package no-thumb">
                                         <a class="story-link" href="/p/{{all_newsfeeds.list[0].post1_id}}"></a>
                                         <figure class="feed-item-figure ">
@@ -2601,6 +2602,7 @@
                                             </ul>
                                         </div>
                                     </article>
+                                    {%endif%}
 
                                     {%for feed in all_newsfeeds.list%}
                                     
