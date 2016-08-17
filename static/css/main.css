@@ -2,9 +2,18 @@
     width: auto !important;
 }
 
-.container:before, .container:after, .container-fluid:before, .container-fluid:after {
+@media screen and (min-width: 1024px) {
+    .container:before, .container:after, .container-fluid:before, .container-fluid:after {
     display: inline !important;
 }
+
+}
+@media screen and (max-width: 767px) {
+   body.page-context-top #global-viewport #pane-main {
+    padding-top: 44px;
+} 
+}
+
 
 #global-viewport #pane-main {
     z-index: 1 !important;
@@ -286,3 +295,79 @@ a:hover, a:focus {
 .news-feed-item h1 a:visited {
     color: #1d1e1f;
 }
+
+
+.navcar ul {
+    height: 65px;
+    padding-left: 6px;
+}
+
+.navcar li {
+    width: 103px;
+    height: 65px;
+    line-height: 14px;
+    text-align: center;
+    float: left;
+        padding-left: 20px;
+        padding-right: 20px;
+        background: #fff;
+                border-right: 1px solid #a5a6a7;
+}
+.navcar li:hover
+{
+    background: #f1f2f3;
+}
+
+
+.navcar li a {
+    background: url(http://x.autoimg.cn/www/common/images/topbar_car.png) no-repeat;
+    background-image: -webkit-image-set(url(http://x.autoimg.cn/www/common/images/topbar_car.png) 1x,url(http://x.autoimg.cn/www/common/images/topbar_car@2x.png) 2x);
+}
+.navcar li a {
+    display: block;
+    height: 65px;
+    line-height: 22px;
+    padding-top: 25px;
+        margin-top: 10px;
+}
+
+.navcar li a:link, .navcar li a:visited {
+    color: #666;
+}
+.navcar li.navcar01 a {
+    background-position: -11px 0;
+}
+.navcar li.navcar02 a {
+    background-position: -91px 0;
+}
+.navcar li.navcar03 a {
+    background-position: -164px 0;
+}
+.navcar li.navcar04 a {
+    background-position: -244px 0;
+}
+.navcar li.navcar05 a {
+    background-position: -4px -60px;
+}
+.navcar li.navcar06 a {
+    background-position: -80px -60px;
+}
+.navcar li.navcar07 a {
+    background-position: -164px -58px;
+}
+.navcar li.navcar08 a {
+    background-position: -244px -58px;
+}
+.navcar li.navcar09 a {
+    background-position: -4px -120px;
+}
+ .navcar li.navcar10 a {
+    background-position: -84px -118px;
+}
+.navcar li.navcar11 a {
+    background-position: -171px -120px;
+}
+.navcar li.navcar12 a {
+    background-position: -251px -120px;
+}
+
