@@ -303,15 +303,18 @@ a:hover, a:focus {
 }
 
 .navcar li {
-    width: 103px;
+    width: 101px;
     height: 65px;
     line-height: 14px;
     text-align: center;
     float: left;
-        padding-left: 20px;
-        padding-right: 20px;
+        padding-left: 13px;
+        padding-right: 13px;
         background: #fff;
-                border-right: 1px solid #a5a6a7;
+                border-right: 1px solid #e3e6ee;
+}
+.navcar li.navcar01, .navcar li.navcar02, .navcar li.navcar11,.navcar li.navcar12 {
+    width: 88px;
 }
 .navcar li:hover
 {
