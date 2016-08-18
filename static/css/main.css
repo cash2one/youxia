@@ -373,10 +373,12 @@ a:hover, a:focus {
 .navcar li.navcar12 a {
     background-position: -251px -120px;
 }
-
-.scores-next {
-    display: none !important;
-}
 .navcar li.navcar12 {
     border-right: 1px solid #a5a6a7;
+}
+.scores-next {
+    border-left: 0 !important;
+}
+.scores-next:before {
+    content: "" !important;
 }
