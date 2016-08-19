@@ -1,7 +1,10 @@
+#main-container {
+    padding-top: 0px;
+}
 .plus_wrap {
     margin: 0 auto;
     width: 100%;
-    
+
     margin-bottom: 20px;
 }
 .plus_wrap .show_gt_1120 {
@@ -9,7 +12,6 @@
 }
 .hot_tag {
     height: 76px;
-    margin-top: 20px;
 }
 
 .hot_tag .tag_left {
