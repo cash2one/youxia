@@ -58,6 +58,7 @@ class Application(tornado.web.Application):
             (r"/(orca\.txt)", tornado.web.StaticFileHandler, dict(path = settings["static_path"])),
 
             (r"/", handler.index.IndexHandler),
+            (r"/reviews", handler.index.ReviewsHandler),
             (r"/new", handler.index.NewHandler),
             (r"/p/(\d+)", handler.index.PostHandler),
             (r"/reply/(\d+)", handler.index.ReplyHandler),
