@@ -59,6 +59,7 @@ class Application(tornado.web.Application):
 
             (r"/", handler.index.IndexHandler),
             (r"/reviews", handler.index.ReviewsHandler),
+            (r"/bbs", handler.index.BbsHandler),
             (r"/new", handler.index.NewHandler),
             (r"/p/(\d+)", handler.index.PostHandler),
             (r"/reply/(\d+)", handler.index.ReplyHandler),

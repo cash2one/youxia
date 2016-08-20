@@ -94,6 +94,15 @@ class ReviewsHandler(BaseHandler):
        
         self.render(self.template_path+"review.html", **template_variables)
 
+class BbsHandler(BaseHandler):
+    def get(self, template_variables = {}):
+        user_info = self.current_user
+        template_variables["static_path"] = self.static_path
+        template_variables["user_info"] = user_info
+        p = int(self.get_argument("p", "1"))
+       
+        self.render(self.template_path+"bbs.html", **template_variables)
+
 class PostHandler(BaseHandler):
     def get(self, post_id, template_variables = {}):
         user_info = self.current_user
