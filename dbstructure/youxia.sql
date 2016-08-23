@@ -133,3 +133,20 @@ CREATE TABLE `reply` (
   `created` datetime DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+--  Table structure for `tag`
+-- ----------------------------
+DROP TABLE IF EXISTS `tag`;
+CREATE TABLE `tag` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `name` text,
+  `thumb` text,
+  `cover` text,
+  `intro` text,
+  `tag_type` text,
+  `post_num` int(11) DEFAULT 0,
+  `follow_num` int(11) DEFAULT 0,
+  `created` datetime DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;

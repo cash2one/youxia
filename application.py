@@ -107,6 +107,7 @@ class Application(tornado.web.Application):
         self.nowfeed_model = self.loader.use("nowfeed.model")
         self.newsfeed_model = self.loader.use("newsfeed.model")
         self.reply_model = self.loader.use("reply.model")
+        self.tag_model = self.loader.use("reply.model")
 
         # Have one global session controller
         self.session_manager = SessionManager(settings["cookie_secret"], ["127.0.0.1:11211"], 0)
