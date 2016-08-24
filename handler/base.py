@@ -73,6 +73,10 @@ class BaseHandler(tornado.web.RequestHandler):
         return self.application.tag_model
 
     @property
+    def post_tag_model(self):
+        return self.application.post_tag_model
+
+    @property
     def debug_flag(self):
         return self.application.debug_flag
 

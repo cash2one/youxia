@@ -12,9 +12,9 @@ class TagModel(Query):
         self.table_name = "tag"
         super(TagModel, self).__init__()
 
-    def get_all_tags(self):
-        order = "tag.category DESC, tag.post_num DESC, tag.id DESC"
-        return self.order(order).select()
+    def get_all_tags(self, num = 10, current_page = 1):
+        order = "tag.post_num DESC, tag.id DESC"
+        return self.order(order).pages(current_page = current_page, list_rows = num)
 
     def get_all_tags2(self):
         order = "tag.post_num DESC, tag.id DESC"

@@ -484,6 +484,137 @@ class NewsfeedEditAdminHandler(BaseHandler):
                     "message": message
             }))
 
+class TagsAdminHandler(BaseHandler):
+    def get(self, template_variables = {}):
+        template_variables["side_menu"] = "tags"
+        user_info = self.current_user
+        template_variables["user_info"] = user_info
+        p = int(self.get_argument("p", "1"))
+
+        if(user_info):
+            if(user_info.admin == "admin"):  
+                template_variables["all_tags"] = self.tag_model.get_all_tags(current_page = p)
+            self.render("admin/tags.html", **template_variables)
+        else:
+            self.redirect("/admin/signin")
+
+class TagEditAdminHandler(BaseHandler):
+    def get(self, tag_id, template_variables = {}):
+        template_variables["side_menu"] = "tags"
+        user_info = self.current_user
+        template_variables["user_info"] = user_info
+
+        if(user_info and user_info.admin == "admin"):  
+            view_tag = self.tag_model.get_tag_by_tag_id(tag_id)
+            template_variables["view_tag"] = view_tag
+            if(user_info.admin == "admin"):
+                self.render("admin/tag_edit.html", **template_variables)
+            else:
+                self.redirect("/admin/tags")  
+        else:
+            self.redirect("/admin/signin")
+
+    def post(self, tag_id, template_variables = {}):
+        user_info = self.current_user
+        view_tag = self.tag_model.get_tag_by_id(tag_id)
+
+        if(user_info and user_info.admin == "admin" and view_tag):  
+            update_info = {}
+            data = json.loads(self.request.body)
+            
+            update_info = getJsonKeyValue(data, update_info, "name")
+            update_info = getJsonKeyValue(data, update_info, "thumb")
+            update_info = getJsonKeyValue(data, update_info, "cover")
+            update_info = getJsonKeyValue(data, update_info, "intro")
+            update_info = getJsonKeyValue(data, update_info, "tag_type")
+            
+            update_result = self.tag_model.update_tag_by_id(tag_id, update_info)
+
+            if update_result == 0:
+                success = 0
+                message = "成功保存标签信息"
+            else:
+                success = -1
+                message = "保存标签信息失败"
+
+            self.write(lib.jsonp.print_JSON({
+                    "success": success,
+                    "message": message
+            }))
+        else:
+            success = -1
+            message = "保存标签信息失败"
+
+            self.write(lib.jsonp.print_JSON({
+                    "success": success,
+                    "message": message
+            }))     
+
+class TagNewAdminHandler(BaseHandler):
+    def get(self, template_variables = {}):
+        template_variables["side_menu"] = "tags"
+        user_info = self.current_user
+        template_variables["user_info"] = user_info
+
+        if(user_info and user_info.admin == "admin"):  
+            self.render("admin/tag_new.html", **template_variables)
+        else:
+            self.redirect("/admin/signin")
+
+    def post(self, template_variables = {}):
+        user_info = self.current_user
+
+        if(user_info and user_info.admin == "admin"):  
+            update_info = {}
+            data = json.loads(self.request.body)
+            
+            update_info = getJsonKeyValue(data, update_info, "name")
+            update_info = getJsonKeyValue(data, update_info, "thumb")
+            update_info = getJsonKeyValue(data, update_info, "cover")
+            update_info = getJsonKeyValue(data, update_info, "intro")
+            update_info = getJsonKeyValue(data, update_info, "tag_type")
+            update_info["created"] = time.strftime('%Y-%m-%d %H:%M:%S')
+
+            update_result = self.tag_model.add_new_tag(update_info)
+
+            if update_result > 0:
+                success = 0
+                message = "成功新建标签"
+            else:
+                success = -1
+                message = "新建标签失败"
+
+            self.write(lib.jsonp.print_JSON({
+                    "success": success,
+                    "message": message
+            }))
+        else:
+            success = -1
+            message = "新建标签失败"
+
+            self.write(lib.jsonp.print_JSON({
+                    "success": success,
+                    "message": message
+            }))     
+
+class TagDeleteAdminHandler(BaseHandler):
+    def get(self, tag_id, template_variables = {}):
+        user_info = self.current_user
+
+        if(user_info and (user_info.admin == "admin")):
+            self.tag_model.delete_tag_by_id(tag_id)
+            success = 0
+            message = "成功删除标签"
+        else:
+            success = -1
+            message = "删除标签失败"
+
+        self.write(lib.jsonp.print_JSON({
+                    "success": success,
+                    "message": message
+            }))
+
+
 class NowfeedsAdminHandler(BaseHandler):
     def get(self, template_variables = {}):
         template_variables["side_menu"] = "nowfeeds"

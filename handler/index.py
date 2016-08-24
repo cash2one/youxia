@@ -112,6 +112,18 @@ class TagHandler(BaseHandler):
        
         self.render(self.template_path+"tag.html", **template_variables)
 
+class GetTagsHandler(BaseHandler):
+    def get(self, template_variables = {}):
+        user_info = self.current_user
+        template_variables["user_info"] = user_info
+        allTags = self.tag_model.get_all_tags2()
+        print allTags
+        allTagJson = []
+        for tag in allTags:
+            allTagJson.append(tag.name)
+
+        self.write(json.dumps(allTagJson))
+
 class PostHandler(BaseHandler):
     def get(self, post_id, template_variables = {}):
         user_info = self.current_user
@@ -120,8 +132,8 @@ class PostHandler(BaseHandler):
         p = int(self.get_argument("p", "1"))
         post = self.post_model.get_post_by_post_id(post_id)
         template_variables["post"] = post
-        all_replys = self.reply_model.get_post_all_replys_sort_by_created2(post_id, current_page = p)
-        print all_replys
+        template_variables["tags"] = self.post_tag_model.get_post_all_tags(post_id)
+
         self.render(self.template_path+"post.html", **template_variables)
 
 class NewHandler(BaseHandler):
@@ -164,6 +176,17 @@ class NewHandler(BaseHandler):
             "message": message,
             "redirect": redirect
         }))
+
+        # process tags
+        tagStr = data["tags"]
+        print tagStr
+        if tagStr:
+            tagNames = tagStr.split(',') 
+            for tagName in tagNames:  
+                tag = self.tag_model.get_tag_by_tag_name(tagName)
+                if tag:
+                    self.post_tag_model.add_new_post_tag({"post_id": post_id, "tag_id": tag.id})
+                    self.tag_model.update_tag_by_tag_id(tag.id, {"post_num": tag.post_num+1})
 
         
 

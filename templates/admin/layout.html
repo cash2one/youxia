@@ -139,6 +139,11 @@
                 <i class="fa fa-tasks"></i> <span>NowFeed</span>
               </a>
             </li>
+            <li {% if side_menu == "tags" %}class="active"{% endif %}>
+              <a href="/admin/tags">
+                <i class="fa fa-tasks"></i> <span>标签管理</span>
+              </a>
+            </li>
             <li {% if side_menu == "personal" %}class="active"{% endif %}>
               <a href="/admin/personal">
                 <i class="fa fa-user"></i> <span>密码修改</span>

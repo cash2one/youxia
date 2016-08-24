@@ -42,10 +42,9 @@
                                         </aside>
                                         <div id="article-content" class="o-single-content__body__content c-article-meta">
                                             <div class="c-article-tags">
-                                                <a href="http://www.ifanr.com/tags/android-%e5%ba%94%e7%94%a8" class="c-article-tags__item">Android 应用</a>
-                                                <a href="http://www.ifanr.com/tags/iphone-%e5%ba%94%e7%94%a8" class="c-article-tags__item">iPhone 应用</a>
-                                                <a href="http://www.ifanr.com/tags/%e7%88%b1%e8%8c%83%e5%84%bf-android-%e5%ae%a2%e6%88%b7%e7%ab%af" class="c-article-tags__item">爱范儿 Android 客户端</a>
-                                                <a href="http://www.ifanr.com/tags/%e7%88%b1%e8%8c%83%e5%84%bf-iphone-%e5%ae%a2%e6%88%b7%e7%ab%af" class="c-article-tags__item">爱范儿 iPhone 客户端</a>
+                                                {% for tag in tags.list %}
+                                                <a href="/t/{{tag.tag_name}}" class="c-article-tags__item">{{tag.tag_name}}</a>
+                                                {% endfor %}
                                             </div>
                                             <div class="c-card-meta c-card-meta--darken c-article-sns" data-component="ArticleContentMeta" data-post-id="695851">
                                                 <button class="c-article-sns__info c-card-meta__info c-card-meta__info--comments js-article-comment-count js-goto-comments">31</button>

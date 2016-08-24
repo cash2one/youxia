@@ -46,6 +46,7 @@
                       <select id="tag_type" class="form-control" value="{{view_tag.tag_type or 'text'}}">
                         <option {% if view_tag.tag_type == '普通标签' %} selected="selected" {% endif %}>普通标签</option>
                         <option {% if view_tag.tag_type == '汽车品牌' %} selected="selected" {% endif %}>汽车品牌</option>
+                        <option {% if view_tag.tag_type == '汽车厂家' %} selected="selected" {% endif %}>汽车厂家</option>
                         <option {% if view_tag.tag_type == '汽车车型' %} selected="selected" {% endif %}>汽车车型</option>
                       </select>
                     </div>

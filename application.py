@@ -83,11 +83,16 @@ class Application(tornado.web.Application):
             (r"/admin/nowfeed/new", handler.admin.NowfeedNewAdminHandler),
             (r"/admin/nowfeed/edit/(\d+)", handler.admin.NowfeedEditAdminHandler),
             (r"/admin/nowfeed/delete/(\d+)", handler.admin.NowfeedDeleteAdminHandler),
+            (r"/admin/tags", handler.admin.TagsAdminHandler),
+            (r"/admin/tag/new", handler.admin.TagNewAdminHandler),
+            (r"/admin/tag/edit/(\d+)", handler.admin.TagEditAdminHandler),
+            (r"/admin/tag/delete/(\d+)", handler.admin.TagDeleteAdminHandler),
             (r"/api/signin", handler.api.SigninApiHandler),
             (r"/api/signout", handler.api.SignoutApiHandler),
             (r"/api/setting/password", handler.api.SettingPasswordApiHandler),
             (r"/api/get/user/base", handler.api.GetUserBaseInfoApiHandler),
             (r"/api/update/user/base", handler.api.UpdateUserBaseInfoApiHandler),
+            (r"/get/tags", handler.index.GetTagsHandler),
         ]
 
         tornado.web.Application.__init__(self, handlers, **settings)
@@ -107,7 +112,8 @@ class Application(tornado.web.Application):
         self.nowfeed_model = self.loader.use("nowfeed.model")
         self.newsfeed_model = self.loader.use("newsfeed.model")
         self.reply_model = self.loader.use("reply.model")
-        self.tag_model = self.loader.use("reply.model")
+        self.tag_model = self.loader.use("tag.model")
+        self.post_tag_model = self.loader.use("post_tag.model")
 
         # Have one global session controller
         self.session_manager = SessionManager(settings["cookie_secret"], ["127.0.0.1:11211"], 0)
