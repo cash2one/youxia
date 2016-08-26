@@ -114,6 +114,9 @@ class Application(tornado.web.Application):
         self.reply_model = self.loader.use("reply.model")
         self.tag_model = self.loader.use("tag.model")
         self.post_tag_model = self.loader.use("post_tag.model")
+        self.car_brand_model = self.loader.use("car_brand.model")
+        self.car_vender_model = self.loader.use("car_vender.model")
+        self.car_model_model = self.loader.use("car_model.model")
 
         # Have one global session controller
         self.session_manager = SessionManager(settings["cookie_secret"], ["127.0.0.1:11211"], 0)
