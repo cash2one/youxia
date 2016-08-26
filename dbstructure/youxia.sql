@@ -172,7 +172,7 @@ CREATE TABLE `car_brand` (
   `name` text,
   `pinyin` text,
   `english` text,
-  `tag_id` int(11) DEFAULT NULL
+  `tag_id` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;
 
@@ -186,7 +186,7 @@ CREATE TABLE `car_vender` (
   `order_num` text,
   `brand_id` int(11) DEFAULT NULL,
   `brand_name` text,
-  `tag_id` int(11) DEFAULT NULL
+  `tag_id` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;
 
@@ -194,7 +194,7 @@ CREATE TABLE `car_vender` (
 --  Table structure for `car_model`
 -- ----------------------------
 DROP TABLE IF EXISTS `car_model`;
-CREATE TABLE `car_vender` (
+CREATE TABLE `car_model` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `name` text,
   `english` text,
@@ -205,6 +205,6 @@ CREATE TABLE `car_vender` (
   `vender_name` text,
   `price` text,
   `year` int(11) DEFAULT NULL,
-  `tag_id` int(11) DEFAULT NULL
+  `tag_id` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;
