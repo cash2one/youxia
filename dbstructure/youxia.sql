@@ -214,17 +214,21 @@ CREATE TABLE `car_model` (
 --  Table structure for `car_data`
 -- ----------------------------
 DROP TABLE IF EXISTS `car_data`;
-CREATE TABLE `car_brand` (
+CREATE TABLE `car_data` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
+  `data_type` text,
   `name` text,
   `pinyin` text,
   `english` text,
-  `data_type` text,
+  `thumb` text,
+  `cover` text,
   `tag_id` int(11) DEFAULT NULL,
   `order_num` text,
   `brand_id` int(11) DEFAULT NULL,
   `brand_name` text,
   `vender_id` int(11) DEFAULT NULL,
   `vender_name` text,
+  `fgcolor` text,
+  `bgcolor` text,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;

@@ -144,6 +144,21 @@
                 <i class="fa fa-tasks"></i> <span>标签管理</span>
               </a>
             </li>
+            <li {% if side_menu == "car-brand" %}class="active"{% endif %}>
+              <a href="/admin/carbrands">
+                <i class="fa fa-tasks"></i> <span>汽车品牌</span>
+              </a>
+            </li>
+            <li {% if side_menu == "car-vender" %}class="active"{% endif %}>
+              <a href="/admin/carvenders">
+                <i class="fa fa-tasks"></i> <span>汽车厂家</span>
+              </a>
+            </li>
+            <li {% if side_menu == "car-model" %}class="active"{% endif %}>
+              <a href="/admin/carmodels">
+                <i class="fa fa-tasks"></i> <span>汽车型号</span>
+              </a>
+            </li>
             <li {% if side_menu == "personal" %}class="active"{% endif %}>
               <a href="/admin/personal">
                 <i class="fa fa-user"></i> <span>密码修改</span>

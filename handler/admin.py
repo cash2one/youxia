@@ -847,3 +847,47 @@ class GetCoursesAdminHandler(BaseHandler):
             allCourseJson.append(course.title)
 
         self.write(json.dumps(allCourseJson))
+
+
+
+class CarBrandsAdminHandler(BaseHandler):
+    def get(self, template_variables = {}):
+        template_variables["side_menu"] = "car-brand"
+        user_info = self.current_user
+        template_variables["user_info"] = user_info
+        p = int(self.get_argument("p", "1"))
+
+        if(user_info):
+            if(user_info.admin == "admin"):  
+                template_variables["all_datas"] = self.car_data_model.get_all_car_brands(current_page = p)
+            self.render("admin/car_brand.html", **template_variables)
+        else:
+            self.redirect("/admin/signin")
+
+class CarVendersAdminHandler(BaseHandler):
+    def get(self, template_variables = {}):
+        template_variables["side_menu"] = "car-vender"
+        user_info = self.current_user
+        template_variables["user_info"] = user_info
+        p = int(self.get_argument("p", "1"))
+
+        if(user_info):
+            if(user_info.admin == "admin"):  
+                template_variables["all_datas"] = self.car_data_model.get_all_car_venders(current_page = p)
+            self.render("admin/car_vender.html", **template_variables)
+        else:
+            self.redirect("/admin/signin")
+
+class CarModelsAdminHandler(BaseHandler):
+    def get(self, template_variables = {}):
+        template_variables["side_menu"] = "car-model"
+        user_info = self.current_user
+        template_variables["user_info"] = user_info
+        p = int(self.get_argument("p", "1"))
+
+        if(user_info):
+            if(user_info.admin == "admin"):  
+                template_variables["all_datas"] = self.car_data_model.get_all_car_models(current_page = p)
+            self.render("admin/car_model.html", **template_variables)
+        else:
+            self.redirect("/admin/signin")

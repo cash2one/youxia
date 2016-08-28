@@ -85,6 +85,10 @@ class BaseHandler(tornado.web.RequestHandler):
         return self.application.car_model_model
 
     @property
+    def car_data_model(self):
+        return self.application.car_data_model
+
+    @property
     def post_tag_model(self):
         return self.application.post_tag_model
 

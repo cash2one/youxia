@@ -87,6 +87,9 @@ class Application(tornado.web.Application):
             (r"/admin/tag/new", handler.admin.TagNewAdminHandler),
             (r"/admin/tag/edit/(\d+)", handler.admin.TagEditAdminHandler),
             (r"/admin/tag/delete/(\d+)", handler.admin.TagDeleteAdminHandler),
+            (r"/admin/carbrands", handler.admin.CarBrandsAdminHandler),
+            (r"/admin/carvenders", handler.admin.CarVendersAdminHandler),
+            (r"/admin/carmodels", handler.admin.CarModelsAdminHandler),
             (r"/api/signin", handler.api.SigninApiHandler),
             (r"/api/signout", handler.api.SignoutApiHandler),
             (r"/api/setting/password", handler.api.SettingPasswordApiHandler),
@@ -117,6 +120,7 @@ class Application(tornado.web.Application):
         self.car_brand_model = self.loader.use("car_brand.model")
         self.car_vender_model = self.loader.use("car_vender.model")
         self.car_model_model = self.loader.use("car_model.model")
+        self.car_data_model = self.loader.use("car_data.model")
 
         # Have one global session controller
         self.session_manager = SessionManager(settings["cookie_secret"], ["127.0.0.1:11211"], 0)
