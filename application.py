@@ -90,6 +90,7 @@ class Application(tornado.web.Application):
             (r"/admin/carbrands", handler.admin.CarBrandsAdminHandler),
             (r"/admin/carvenders", handler.admin.CarVendersAdminHandler),
             (r"/admin/carmodels", handler.admin.CarModelsAdminHandler),
+            (r"/admin/cardata/new", handler.admin.CarDataNewAdminHandler),
             (r"/api/signin", handler.api.SigninApiHandler),
             (r"/api/signout", handler.api.SignoutApiHandler),
             (r"/api/setting/password", handler.api.SettingPasswordApiHandler),

@@ -950,7 +950,8 @@ class CarDataEditAdminHandler(BaseHandler):
 
 class CarDataNewAdminHandler(BaseHandler):
     def get(self, template_variables = {}):
-        template_variables["side_menu"] = "car-brand"
+        data_type = self.get_argument('type', "car-brand")
+        template_variables["side_menu"] = data_type
         user_info = self.current_user
         template_variables["user_info"] = user_info
 
@@ -961,6 +962,7 @@ class CarDataNewAdminHandler(BaseHandler):
 
     def post(self, template_variables = {}):
         user_info = self.current_user
+        data_type = self.get_argument('type', "car-brand")
 
         if(user_info and user_info.admin == "admin"):  
             update_info = {}
