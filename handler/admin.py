@@ -891,3 +891,127 @@ class CarModelsAdminHandler(BaseHandler):
             self.render("admin/car_model.html", **template_variables)
         else:
             self.redirect("/admin/signin")
+
+class CarDataEditAdminHandler(BaseHandler):
+    def get(self, car_data_id, template_variables = {}):
+        template_variables["side_menu"] = "car-brand"
+        user_info = self.current_user
+        template_variables["user_info"] = user_info
+
+        if(user_info and user_info.admin == "admin"):  
+            view_data = self.car_data_model.get_car_data_by_id(car_data_id)
+            template_variables["view_data"] = view_data
+            if(user_info.admin == "admin"):
+                self.render("admin/car_data_edit.html", **template_variables)
+            else:
+                self.redirect("/admin/carbrands")  
+        else:
+            self.redirect("/admin/signin")
+
+    def post(self, car_data_id, template_variables = {}):
+        user_info = self.current_user
+        view_data = self.car_data_model.get_car_data_by_id(car_data_id)
+
+        if(user_info and user_info.admin == "admin" and view_data):  
+            update_info = {}
+            data = json.loads(self.request.body)
+            
+            update_info = getJsonKeyValue(data, update_info, "name")
+            update_info = getJsonKeyValue(data, update_info, "subname")
+            update_info = getJsonKeyValue(data, update_info, "avatar")
+            update_info = getJsonKeyValue(data, update_info, "content")
+            update_info = getJsonKeyValue(data, update_info, "image")
+            update_info = getJsonKeyValue(data, update_info, "source")
+            update_info = getJsonKeyValue(data, update_info, "link")
+            update_info = getJsonKeyValue(data, update_info, "nowfeed_type")
+            update_info = getJsonKeyValue(data, update_info, "video_time")
+            
+            update_result = self.car_data_model.update_car_data_by_id(car_data_id, update_info)
+
+            if update_result == 0:
+                success = 0
+                message = "成功保存 car data 信息"
+            else:
+                success = -1
+                message = "保存 car data 信息失败"
+
+            self.write(lib.jsonp.print_JSON({
+                    "success": success,
+                    "message": message
+            }))
+        else:
+            success = -1
+            message = "保存 car data 信息失败"
+
+            self.write(lib.jsonp.print_JSON({
+                    "success": success,
+                    "message": message
+            }))     
+
+class CarDataNewAdminHandler(BaseHandler):
+    def get(self, template_variables = {}):
+        template_variables["side_menu"] = "car-brand"
+        user_info = self.current_user
+        template_variables["user_info"] = user_info
+
+        if(user_info and user_info.admin == "admin"):  
+            self.render("admin/car_data_new.html", **template_variables)
+        else:
+            self.redirect("/admin/signin")
+
+    def post(self, template_variables = {}):
+        user_info = self.current_user
+
+        if(user_info and user_info.admin == "admin"):  
+            update_info = {}
+            data = json.loads(self.request.body)
+            
+            update_info = getJsonKeyValue(data, update_info, "name")
+            update_info = getJsonKeyValue(data, update_info, "subname")
+            update_info = getJsonKeyValue(data, update_info, "avatar")
+            update_info = getJsonKeyValue(data, update_info, "content")
+            update_info = getJsonKeyValue(data, update_info, "image")
+            update_info = getJsonKeyValue(data, update_info, "source")
+            update_info = getJsonKeyValue(data, update_info, "link")
+            update_info = getJsonKeyValue(data, update_info, "nowfeed_type")
+            update_info = getJsonKeyValue(data, update_info, "video_time")
+            update_info["created"] = time.strftime('%Y-%m-%d %H:%M:%S')
+
+            update_result = self.car_data_model.add_new_car_data(update_info)
+
+            if update_result > 0:
+                success = 0
+                message = "成功新建 car data"
+            else:
+                success = -1
+                message = "新建 car data 失败"
+
+            self.write(lib.jsonp.print_JSON({
+                    "success": success,
+                    "message": message
+            }))
+        else:
+            success = -1
+            message = "新建 car data 失败"
+
+            self.write(lib.jsonp.print_JSON({
+                    "success": success,
+                    "message": message
+            }))     
+
+class CarDataDeleteAdminHandler(BaseHandler):
+    def get(self, car_data_id, template_variables = {}):
+        user_info = self.current_user
+
+        if(user_info and (user_info.admin == "admin")):
+            self.car_data_model.delete_car_data_by_id(car_data_id)
+            success = 0
+            message = "成功删除 car data"
+        else:
+            success = -1
+            message = "删除 car data 失败"
+
+        self.write(lib.jsonp.print_JSON({
+                    "success": success,
+                    "message": message
+            }))
