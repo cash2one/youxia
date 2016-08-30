@@ -171,6 +171,7 @@ CREATE TABLE `car_data` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `data_type` text,
   `car_size` text,
+  `car_sort` text,
   `name` text,
   `pinyin` text,
   `english` text,

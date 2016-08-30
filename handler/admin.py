@@ -918,6 +918,7 @@ class CarDataEditAdminHandler(BaseHandler):
             
             update_info = getJsonKeyValue(data, update_info, "data_type")
             update_info = getJsonKeyValue(data, update_info, "car_size")
+            update_info = getJsonKeyValue(data, update_info, "car_sort")
             update_info = getJsonKeyValue(data, update_info, "name")
             update_info = getJsonKeyValue(data, update_info, "pinyin")
             update_info = getJsonKeyValue(data, update_info, "english")
@@ -976,6 +977,7 @@ class CarDataNewAdminHandler(BaseHandler):
             
             update_info = getJsonKeyValue(data, update_info, "data_type")
             update_info = getJsonKeyValue(data, update_info, "car_size")
+            update_info = getJsonKeyValue(data, update_info, "car_sort")
             update_info = getJsonKeyValue(data, update_info, "name")
             update_info = getJsonKeyValue(data, update_info, "pinyin")
             update_info = getJsonKeyValue(data, update_info, "english")

@@ -38,6 +38,10 @@
                       <input id="car_size" type="text" class="form-control" value="{{view_data.car_size or ''}}"/>
                     </div>
                     <div class="form-group">
+                      <label>car_sort</label>
+                      <input id="car_sort" type="text" class="form-control" value="{{view_data.car_sort or ''}}"/>
+                    </div>
+                    <div class="form-group">
                       <label>Name</label>
                       <input id="name" type="text" class="form-control" value="{{view_data.name or ''}}"/>
                     </div>
@@ -117,6 +121,7 @@ $(document).on('click', '#save-nowfeed', function() {
     data: JSON.stringify({
       data_type: $('#data_type').val(),
       car_size: $('#car_size').val(),
+      car_sort: $('#car_sort').val(),
       name: $('#name').val(),
       pinyin: $('#pinyin').val(),
       english: $('#english').val(),

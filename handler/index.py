@@ -91,6 +91,9 @@ class ReviewsHandler(BaseHandler):
         template_variables["static_path"] = self.static_path
         template_variables["user_info"] = user_info
         p = int(self.get_argument("p", "1"))
+
+        all_cars1 = self.car_data_model.get_car_models_by_sort("热门车", current_page = p)
+        template_variables["all_cars1"] = all_cars1
        
         self.render(self.template_path+"review.html", **template_variables)
 
