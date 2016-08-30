@@ -49,21 +49,23 @@
 我的寝卧</a>
                             </div>
                         </div>
+                        {%set i=0%}
                         {%for car_data in all_cars1.list%}
-                        <div class="ipmanage_subarticle ">
+                        {%set i=i+1%}
+                        <div class="ipmanage_subarticle {%if i==4%}margin_no{%endif%}">
                             <div class="article_cover">
-                                <a href="http://plus.zealer.com/post/7215.html" class="global_gaNode" data-galabel="plus_ip_1_article_1" target="_blank">
+                                <a href="/t/{{car_data.name}}" class="global_gaNode" data-galabel="plus_ip_1_article_1" target="_blank">
                                     <img src="{{car_data.thumb}}" alt="{{car_data.vender_name}} {{car_data.name}}">
                                 </a>
                             </div>
                             <div class="article_down">
                                 <div class="article_title">
-                                    <a href="http://plus.zealer.com/post/7215.html" class="global_gaNode" data-galabel="plus_ip_1_article_1" target="_blank">
+                                    <a href="/t/{{car_data.name}}" class="global_gaNode" data-galabel="plus_ip_1_article_1" target="_blank">
                                         {{car_data.vender_name}} {{car_data.name}}</a>
                                 </div>
                                 <div class="article_user clear">
                                     <div class="user_logo">
-                                        <a href="/t/{{car_data.name}}" class="global_gaNode" data-galabel="plus_ip_1_personal_1" rel="nofollow" target="_blank">
+                                        <a href="/t/{{car_data.brand_name}}" class="global_gaNode" data-galabel="plus_ip_1_personal_1" rel="nofollow" target="_blank">
                                             <img src="http://car0.autoimg.cn/logo/brand/50/129302239927557500.jpg">
                                         </a>
                                     </div>
