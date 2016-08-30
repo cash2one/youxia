@@ -164,59 +164,13 @@ CREATE TABLE `post_tag` (
 ) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
---  Table structure for `car_brand`
--- ----------------------------
-DROP TABLE IF EXISTS `car_brand`;
-CREATE TABLE `car_brand` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `name` text,
-  `pinyin` text,
-  `english` text,
-  `tag_id` int(11) DEFAULT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;
-
--- ----------------------------
---  Table structure for `car_vender`
--- ----------------------------
-DROP TABLE IF EXISTS `car_vender`;
-CREATE TABLE `car_vender` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `name` text,
-  `order_num` text,
-  `brand_id` int(11) DEFAULT NULL,
-  `brand_name` text,
-  `tag_id` int(11) DEFAULT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;
-
--- ----------------------------
---  Table structure for `car_model`
--- ----------------------------
-DROP TABLE IF EXISTS `car_model`;
-CREATE TABLE `car_model` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `name` text,
-  `english` text,
-  `order_num` text,
-  `brand_id` int(11) DEFAULT NULL,
-  `brand_name` text,
-  `vender_id` int(11) DEFAULT NULL,
-  `vender_name` text,
-  `price` text,
-  `year` int(11) DEFAULT NULL,
-  `tag_id` int(11) DEFAULT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;
-
-
--- ----------------------------
 --  Table structure for `car_data`
 -- ----------------------------
 DROP TABLE IF EXISTS `car_data`;
 CREATE TABLE `car_data` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `data_type` text,
+  `car_size` text,
   `name` text,
   `pinyin` text,
   `english` text,
