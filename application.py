@@ -91,6 +91,7 @@ class Application(tornado.web.Application):
             (r"/admin/carvenders", handler.admin.CarVendersAdminHandler),
             (r"/admin/carmodels", handler.admin.CarModelsAdminHandler),
             (r"/admin/cardata/new", handler.admin.CarDataNewAdminHandler),
+            (r"/admin/cardata/edit/(\d+)", handler.admin.CarDataEditAdminHandler),
             (r"/api/signin", handler.api.SigninApiHandler),
             (r"/api/signout", handler.api.SignoutApiHandler),
             (r"/api/setting/password", handler.api.SettingPasswordApiHandler),
@@ -118,9 +119,6 @@ class Application(tornado.web.Application):
         self.reply_model = self.loader.use("reply.model")
         self.tag_model = self.loader.use("tag.model")
         self.post_tag_model = self.loader.use("post_tag.model")
-        self.car_brand_model = self.loader.use("car_brand.model")
-        self.car_vender_model = self.loader.use("car_vender.model")
-        self.car_model_model = self.loader.use("car_model.model")
         self.car_data_model = self.loader.use("car_data.model")
 
         # Have one global session controller

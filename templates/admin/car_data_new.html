@@ -26,44 +26,68 @@
                 <div class="box-body">
                   <form role="form">
                     <div class="form-group">
+                      <label>Type</label>
+                      <select id="data_type" class="form-control" >
+                        <option>car_brand</option>
+                        <option>car_vender</option>
+                        <option>car_model</option>
+                      </select>
+                    </div>
+                    <div class="form-group">
+                      <label>car_size</label>
+                      <input id="car_size" type="text" class="form-control"/>
+                    </div>
+                    <div class="form-group">
                       <label>Name</label>
                       <input id="name" type="text" class="form-control"/>
                     </div>
                     <div class="form-group">
-                      <label>Subname</label>
-                      <input id="subname" type="text" class="form-control"/>
+                      <label>Pinyin</label>
+                      <input id="pinyin" type="text" class="form-control"/>
                     </div>
                     <div class="form-group">
-                      <label>Avatar</label>
-                      <input id="avatar" type="text" class="form-control"/>
+                      <label>English</label>
+                      <input id="english" type="text" class="form-control"/>
                     </div>
                     <div class="form-group">
-                      <label>Content</label>
-                      <input id="content" type="text" class="form-control"/>
+                      <label>Thumb</label>
+                      <input id="thumb" type="text" class="form-control"/>
                     </div>
                     <div class="form-group">
-                      <label>Image</label>
-                      <input id="image" type="text" class="form-control"/>
+                      <label>Cover</label>
+                      <input id="cover" type="text" class="form-control"/>
                     </div>
                     <div class="form-group">
-                      <label>Source</label>
-                      <input id="source" type="text" class="form-control"/>
+                      <label>Tag_id</label>
+                      <input id="tag_id" type="text" class="form-control"/>
                     </div>
                     <div class="form-group">
-                      <label>Link</label>
-                      <input id="link" type="text" class="form-control"/>
+                      <label>order_num</label>
+                      <input id="order_num" type="text" class="form-control"/>
                     </div>
                     <div class="form-group">
-                      <label>Type</label>
-                      <select id="nowfeed_type" class="form-control" >
-                        <option>text</option>
-                        <option>image</option>
-                        <option>video</option>
-                      </select>
+                      <label>brand_id</label>
+                      <input id="brand_id" type="text" class="form-control"/>
                     </div>
                     <div class="form-group">
-                      <label>Time</label>
-                      <input id="video_time" type="text" class="form-control"/>
+                      <label>brand_name</label>
+                      <input id="brand_name" type="text" class="form-control"/>
+                    </div>
+                    <div class="form-group">
+                      <label>vender_id</label>
+                      <input id="vender_id" type="text" class="form-control"/>
+                    </div>
+                    <div class="form-group">
+                      <label>vender_name</label>
+                      <input id="vender_name" type="text" class="form-control"/>
+                    </div>
+                    <div class="form-group">
+                      <label>fgcolor</label>
+                      <input id="fgcolor" type="text" class="form-control"/>
+                    </div>
+                    <div class="form-group">
+                      <label>bgcolor</label>
+                      <input id="bgcolor" type="text" class="form-control"/>
                     </div>
                   </form>
                 </div><!-- /.box-body -->
@@ -83,35 +107,32 @@
 
 
 <script type="text/javascript">
-$(document).ready(function() {
-        $("[data-mask]").inputmask({
-        mask: "y-m-d h:s:s",
-        placeholder: "yyyy-mm-dd hh:mm:ss",
-        alias: "datetime",
-        hourFormat: "24"
-    });
-});
-
 $(document).on('click', '#save-nowfeed', function() {
   $.ajax({
     type: "POST",
     contentType: "application/json; charset=utf-8",
     dataType: "json",
-    url: "/admin/nowfeed/new",
+    url: "/admin/cardata/new",
     data: JSON.stringify({
+      data_type: $('#data_type').val(),
+      car_size: $('#car_size').val(),
       name: $('#name').val(),
-      subname: $('#subname').val(),
-      avatar: $('#avatar').val(),
-      content: $('#content').val(),
-      image: $('#image').val(),
-      source: $('#source').val(),
-      link: $('#link').val(),
-      nowfeed_type: $('#nowfeed_type').val(),
-      video_time: $('#video_time').val(),
+      pinyin: $('#pinyin').val(),
+      english: $('#english').val(),
+      thumb: $('#thumb').val(),
+      cover: $('#cover').val(),
+      tag_id: $('#tag_id').val(),
+      order_num: $('#order_num').val(),
+      brand_id: $('#brand_id').val(),
+      brand_name: $('#brand_name').val(),
+      vender_id: $('#vender_id').val(),
+      vender_name: $('#vender_name').val(),
+      fgcolor: $('#fgcolor').val(),
+      bgcolor: $('#bgcolor').val(),
     }),
     success: function(msg) {
       if (msg.success == 0) {
-        window.location.replace("/admin/nowfeeds");
+        window.location.replace("/admin/carbrands");
       }
     },
     error: function(msg) {

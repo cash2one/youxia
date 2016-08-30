@@ -73,18 +73,6 @@ class BaseHandler(tornado.web.RequestHandler):
         return self.application.tag_model
 
     @property
-    def car_brand_model(self):
-        return self.application.car_brand_model
-
-    @property
-    def car_vender_model(self):
-        return self.application.car_vender_model
-
-    @property
-    def car_model_model(self):
-        return self.application.car_model_model
-
-    @property
     def car_data_model(self):
         return self.application.car_data_model
 

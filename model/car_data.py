@@ -15,20 +15,28 @@ class Car_dataModel(Query):
     def add_new_car_data(self, car_data_info):
         return self.data(car_data_info).add()
 
+    def update_car_data_by_id(self, car_data_id, car_data_info):
+        where = "car_data.id = %s" % car_data_id
+        return self.where(where).data(car_data_info).save()
+
+    def delete_car_data_by_id(self, car_data_id):
+        where = "car_data.id = %s " % car_data_id
+        return self.where(where).delete()
+
     def get_all_car_brands(self, num = 10, current_page = 1):
-    	where = "car_data.data_type = 'brand'"
+    	where = "car_data.data_type = 'car_brand'"
         order = "car_data.id DESC"
         field = "car_data.*"
         return self.order(order).field(field).pages(current_page = current_page, list_rows = num) 
 
     def get_all_car_venders(self, num = 10, current_page = 1):
-    	where = "car_data.data_type = 'vender'"
+    	where = "car_data.data_type = 'car_vender'"
         order = "car_data.id DESC"
         field = "car_data.*"
         return self.order(order).field(field).pages(current_page = current_page, list_rows = num) 
 
     def get_all_car_models(self, num = 10, current_page = 1):
-    	where = "car_data.data_type = 'model'"
+    	where = "car_data.data_type = 'car_model'"
         order = "car_data.id DESC"
         field = "car_data.*"
         return self.order(order).field(field).pages(current_page = current_page, list_rows = num) 
