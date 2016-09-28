@@ -1,902 +1,1199 @@
 <!DOCTYPE html>
-<html class="js no-touch history video localstorage desktop-ua  scrollbars-17 desktop translated-ltr" style=""><head>
-    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
-    <meta http-equiv="x-ua-compatible" content="IE=edge,chrome=1">
-    <meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <link rel="canonical" href="http://espn.go.com">
-    <title>ESPN：全球领先的体育</title>
-    <meta name="description" content="Visit ESPN to get up-to-the-minute sports news coverage, scores, highlights and commentary for NFL, MLB, NBA, College Football, NCAA Basketball and more.">
-    <meta name="news_keywords" content="ESPN.com, ESPN, ESPN2, ESPNews, ESPN Classic, ESPNU, Insider, sports scores, sports news, MLB scores, NFL scores, NBA scores, NHL scores, College Football scores, College Basketball scores, sports videos, sports information, Fantasy sports, Fantasy games, Fantasy football, Fantasy baseball">
-    <meta name="keywords" content="ESPN.com, ESPN, ESPN2, ESPNews, ESPN Classic, ESPNU, Insider, sports scores, sports news, MLB scores, NFL scores, NBA scores, NHL scores, College Football scores, College Basketball scores, sports videos, sports information, Fantasy sports, Fantasy games, Fantasy football, Fantasy baseball">
-    <meta property="fb:app_id" content="116656161708917">
-    <meta property="og:site_name" content="ESPN.com">
-    <meta property="og:url" content="http://espn.go.com">
-    <meta property="og:title" content="ESPN: The Worldwide Leader in Sports">
-    <meta property="og:description" content="Visit ESPN to get up-to-the-minute sports news coverage, scores, highlights and commentary for NFL, MLB, NBA, College Football, NCAA Basketball and more.">
-    <meta property="og:image" content="http://a1.espncdn.com/combiner/i?img=%2Fi%2Fespn%2Fespn_logos%2Fespn_red.png">
-    <meta property="og:type" content="website">
-    <meta name="title" content="ESPN: The Worldwide Leader in Sports">
-    <meta name="medium" content="index">
-    <!-- Indicate preferred brand name for Google to display -->
-    <link rel="mask-icon" sizes="any" href="http://a.espncdn.com/prod/assets/icons/E.svg" color="#990000">
-    <link rel="shortcut icon" href="http://a.espncdn.com/favicon.ico">
-    <link rel="apple-touch-icon" href="http://a.espncdn.com/wireless/mw5/r1/images/bookmark-icons/espn_icon-57x57.min.png">
-    <link rel="apple-touch-icon-precomposed" href="http://a.espncdn.com/wireless/mw5/r1/images/bookmark-icons/espn_icon-57x57.min.png">
-    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="http://a.espncdn.com/wireless/mw5/r1/images/bookmark-icons/espn_icon-72x72.min.png">
-    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="http://a.espncdn.com/wireless/mw5/r1/images/bookmark-icons/espn_icon-114x114.min.png">
-    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="http://a.espncdn.com/wireless/mw5/r1/images/bookmark-icons/espn_icon-152x152.min.png">
-    <link rel="alternate" href="android-app://com.espn.score_center/sportscenter/x-callback-url/showFeatured">
-    <link rel="alternate" href="ios-app://317469184/sportscenter/x-callback-url/showFeatured">
-
-    <link rel="stylesheet" href="/static/bootstrap-3.2.0-dist/css/bootstrap.css">
-    <link rel="stylesheet" href="/static/bootstrapvalidator/bootstrapValidator.min.css" />
-    <link rel="stylesheet" href="/static/font-awesome-4.1.0/css/font-awesome.min.css" />
-    <link href="/static/bootstrap-switch-master/dist/css/bootstrap3/bootstrap-switch.css" rel="stylesheet">
-
-    
-
-    <link id="font-link" rel="stylesheet" href="/static/css/base64-benton-woff.css">
-    <link rel="stylesheet" href="/static/css/shell-desktop.css">
-    <link rel="stylesheet" href="/static/css/page.css">
-    <link class="page-type-include" rel="stylesheet" href="/static/css/index.css">
-    <link rel="stylesheet" href="/static/css/main.css" />
-    {% block stylesheet %}{% endblock %}</head>
-
-<body class="index desktop page-context-top prod null" data-pagetype="index" data-sport="" data-customstylesheet="null">
-    
-    <div id="global-viewport" data-behavior="global_nav_condensed global_nav_full" class="">
-        <div id="header-wrapper" data-behavior="global_header" class="hidden-print">
-            <section id="global-scoreboard" class="hide-fullbtn no-datepicker">
-                <div class="wrap">
-                    <div class="scoreboard-content">
-                        <div class="scoreboard-dropdown-wrapper scoreboard-menu">
-                            <!-- mobile dropdown -->
-                            <div class="league-nav-wrapper league-nav-mobile mobile-dropdown">
-                                <span class="mobile-arrow"></span>
-                                <select id="league-nav">
-                                    <option value="topEvents" data-id="0" data-league="topEvents" data-sport="" data-draft="false" class="active">
-                                        热门活动
-                                    </option>
-                                    <option value="mlb" data-id="10" data-league="mlb" data-sport="baseball" data-draft="false">
-                                        MLB
-                                    </option>
-                                    <option value="global.champs_cup" data-id="8307" data-league="global.champs_cup" data-sport="soccer" data-draft="false">
-                                        国际冠军杯
-                                    </option>
-                                    <option value="sprint" data-id="2021" data-league="sprint" data-sport="racing" data-draft="false">
-                                        NASCAR
-                                    </option>
-                                    <option value="pga" data-id="1106" data-league="pga" data-sport="golf" data-draft="false">
-                                        高尔夫（M）
-                                    </option>
-                                    <option value="usa.1" data-id="770" data-league="usa.1" data-sport="soccer" data-draft="false">
-                                        MLS
-                                    </option>
-                                    <option value="fifa.friendly.w" data-id="3923" data-league="fifa.friendly.w" data-sport="soccer" data-draft="false">
-                                        女子国际友谊赛
-                                    </option>
-                                    <option value="wnba" data-id="59" data-league="wnba" data-sport="basketball" data-draft="false">
-                                        WNBA
-                                    </option>
-                                </select>
-                            </div>
-                            <!-- desktop dropdown -->
-                            <div class="dropdown-wrapper league-nav-desktop desktop-dropdown hoverable" data-behavior="button_dropdown">
-                                <button type="button" class="button button-filter med dropdown-toggle current-league-name">
-                                    <font>
-                                        <font>热门活动</font>
-                                    </font>
-                                </button>
-                                <ul class="dropdown-menu league-nav med">
-                                    <li class="league active">
-                                        <a href="#" data-id="0" data-league="topEvents" data-sport="" data-draft="false">
-                                            <font>
-                                                <font>热门活动</font>
-                                            </font>
-                                        </a>
-                                    </li>
-                                    <li class="league">
-                                        <a href="#" data-id="10" data-league="mlb" data-sport="baseball" data-draft="false">
-                                            <font>
-                                                <font>MLB</font>
-                                            </font>
-                                        </a>
-                                    </li>
-                                    <li class="league">
-                                        <a href="#" data-id="8307" data-league="global.champs_cup" data-sport="soccer" data-draft="false">
-                                            <font>
-                                                <font>国际冠军杯</font>
-                                            </font>
-                                        </a>
-                                    </li>
-                                    <li class="league">
-                                        <a href="#" data-id="2021" data-league="sprint" data-sport="racing" data-draft="false">
-                                            <font>
-                                                <font>NASCAR</font>
-                                            </font>
-                                        </a>
-                                    </li>
-                                    <li class="league">
-                                        <a href="#" data-id="1106" data-league="pga" data-sport="golf" data-draft="false">
-                                            <font>
-                                                <font>高尔夫（M）</font>
-                                            </font>
-                                        </a>
-                                    </li>
-                                    <li class="league">
-                                        <a href="#" data-id="770" data-league="usa.1" data-sport="soccer" data-draft="false">
-                                            <font>
-                                                <font>MLS</font>
-                                            </font>
-                                        </a>
-                                    </li>
-                                    <li class="league">
-                                        <a href="#" data-id="3923" data-league="fifa.friendly.w" data-sport="soccer" data-draft="false">
-                                            <font>
-                                                <font>女子国际友谊赛</font>
-                                            </font>
-                                        </a>
-                                    </li>
-                                    <li class="league">
-                                        <a href="#" data-id="59" data-league="wnba" data-sport="basketball" data-draft="false">
-                                            <font>
-                                                <font>WNBA</font>
-                                            </font>
-                                        </a>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-                        <div class="scoreboard-dropdown-wrapper  conference-menu">
-                            <!-- mobile dropdown -->
-                            <div class="conference-nav-wrapper mobile-dropdown">
-                                <span class="mobile-arrow"></span>
-                                <select id="conference-nav"></select>
-                            </div>
-                            <!-- desktop dropdown -->
-                            <div class="dropdown-wrapper desktop-dropdown hoverable" data-behavior="button_dropdown">
-                                <button type="button" class="button button-filter med dropdown-toggle current-conference-name"></button>
-                                <ul class="dropdown-menu conference-nav med"></ul>
-                            </div>
-                        </div>
-                        <div class="scoreboard-dropdown-wrapper scores-date-pick">
-                            <div class="dropdown-wrapper hoverable" data-behavior="button_dropdown">
-                                <button type="button" class="button button-filter dropdown-toggle med selected-date"></button>
-                                <ul class="dropdown-menu date-nav med"></ul>
-                            </div>
-                        </div>
-                        <div class="scoreboard-dropdown-wrapper secondary-nav-container hidden"></div>
-                        <div class="scores-prev controls inactive">
-                            <font>
-                                <font>&lt;</font>
-                            </font>
-                        </div>
-                        <div id="fullbtn" class="view-full"></div>
-                        <div class="scores-next controls">
-                            <font>
-                                <font>&gt;</font>
-                            </font>
-                        </div>
-                        <div class="navcar">
-                        <ul>
-                            <li class="navcar01"><a target="_blank" href="http://www.autohome.com.cn/a00/#pvareaid=103421" data-tjposition="4|1">微型车</a></li>
-                            <li class="navcar02"><a target="_blank" href="http://www.autohome.com.cn/a0/#pvareaid=103421" data-tjposition="4|2">小型车</a></li>
-                            <li class="navcar03"><a target="_blank" href="http://www.autohome.com.cn/a/#pvareaid=103421" data-tjposition="4|3">紧凑型车</a></li>
-                            <li class="navcar04"><a target="_blank" href="http://www.autohome.com.cn/b/#pvareaid=103421" data-tjposition="4|4">中型车</a></li>
-                            <li class="navcar05"><a target="_blank" href="http://www.autohome.com.cn/c/#pvareaid=103421" data-tjposition="4|5">中大型车</a></li>
-                            <li class="navcar06"><a target="_blank" href="http://www.autohome.com.cn/d/#pvareaid=103421" data-tjposition="4|6">大型车</a></li>
-                            <li class="navcar07" id="auto-header-suv">
-                                <a target="_blank" href="http://www.autohome.com.cn/suv/#pvareaid=103451" data-tjposition="4|7"><i class="topbar-icon topbar-icon10 topbar-icon10-sjb"></i>SUV</a>
-                                <div id="auto-header-suv-list" style="display: none;" class="dropdown">
-                                    <dl>
-                                        <dd><a target="_blank" href="http://www.autohome.com.cn/suv/#pvareaid=103421" data-tjposition="4|7|1">全部SUV</a></dd>
-                                        <dd><a target="_blank" href="http://www.autohome.com.cn/suva0/#pvareaid=103421" data-tjposition="4|7|2">小型SUV</a></dd>
-                                        <dd><a target="_blank" href="http://www.autohome.com.cn/suva/#pvareaid=103421" data-tjposition="4|7|3">紧凑型SUV</a></dd>
-                                        <dd><a target="_blank" href="http://www.autohome.com.cn/suvb/#pvareaid=103421" data-tjposition="4|7|4">中型SUV</a></dd>
-                                        <dd><a target="_blank" href="http://www.autohome.com.cn/suvc/#pvareaid=103421" data-tjposition="4|7|5">中大型SUV</a></dd>
-                                        <dd><a target="_blank" href="http://www.autohome.com.cn/suvd/#pvareaid=103421" data-tjposition="4|7|6">大型SUV</a></dd>
-                                    </dl>
-                                </div>
-                            </li>
-                            <li class="navcar08"><a target="_blank" href="http://www.autohome.com.cn/mpv/#pvareaid=103421" data-tjposition="4|8">MPV</a></li>
-                            <li class="navcar09"><a target="_blank" href="http://www.autohome.com.cn/s/#pvareaid=103421" data-tjposition="4|9">跑车</a></li>
-                            <li class="navcar10"><a target="_blank" href="http://www.autohome.com.cn/p/#pvareaid=103421" data-tjposition="4|10">皮卡</a></li>
-                            <li class="navcar11"><a target="_blank" href="http://www.autohome.com.cn/mb/#pvareaid=103421" data-tjposition="4|11">微面</a></li>
-                            <li class="navcar12"><a target="_blank" href="http://diandong.autohome.com.cn#pvareaid=103686" data-tjposition="4|12">电动车</a></li>
-                        </ul>
-                    </div>
-                    </div>
-                </div>
-            </section>
-            <header id="global-header" class="espn-en user-account-management has-search">
-                <div class="menu-overlay-secondary"></div>
-                <div class="container">
-                    
-                    <h1><a href="/" name="&amp;lpos=sitenavdefault&amp;lid=sitenav_main-logo"><font><font>ESPN</font></font></a></h1>
-                    <ul class="tools">
-                        <li class="search">
-                            <a href="#" class="icon-font-after icon-search-solid-after" id="global-search-trigger"></a>
-                            <div id="global-search" class="global-search">
-                                <input type="text" class="search-box" placeholder="Search Sports, Teams or Players...">
-                                <input type="submit" class="btn-search">
-                            </div>
-                        </li>
-                        <li class="user" data-behavior="favorites_mgmt">
-                            <a href="#" id="global-user-trigger" data-route="false">
-                                <font>
-                                    <font>签到</font>
-                                </font>
-                            </a>
-                            <div class="global-user">
-                                <ul>
-                                    <li class="display-user">
-                                        <font>
-                                            <font>欢迎</font>
-                                        </font><span><font><font>周杰伦！</font></font></span></li>
-                                    <li class="insider">
-                                        <a data-language="en" data-behavior="overlay" tref="http://insider.espn.go.com/insider/promo/offer?addata=2009_insdr_xxx_wel_tst_actinsider"><img src="http://a.espncdn.com/redesign/assets/img/icons/icon-insider-bigger.png" class="imageLoaded">
-                                            <font>
-                                                <font>激活内幕</font>
-                                            </font>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <font>
-                                            <font>管理我的：</font>
-                                        </font>
-                                    </li>
-                                    <li>
-                                        <a tref="/members/v3_1/modifyAccount" data-language="en" data-behavior="overlay">
-                                            <font>
-                                                <font>帐户信息</font>
-                                            </font>
-                                        </a>
-                                    </li>
-                                    <li class="noMobile">
-                                        <a tref="/members/v3_1/modifyNewsletters" data-language="en" data-behavior="overlay">
-                                            <font>
-                                                <font>简讯</font>
-                                            </font>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a data-behavior="video_settings">
-                                            <font>
-                                                <font>视频设置</font>
-                                            </font>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a onclick="javascript:espn.memberservices.logout();return false;" href="#" class="small">
-                                            <font>
-                                                <font>登出</font>
-                                            </font>
-                                        </a>
-                                    </li>
-                                </ul>
-                                <ul class="favs" data-behavior="favorites_mgmt">
-                                    <li>
-                                        <div class="current-favorites">
-                                            <h2 class="feed-title favorites"><font><font>收藏夹</font></font><span class="settings open-favs"><font><font>设置</font></font></span></h2>
-                                            <ul class="current-favorites-container">
-                                                <li>
-                                                    <a name="&amp;lpos=favorites:nav:team:user:clubhouse:1" href="/mlb/team/_/name/nyy/" class="fav-header">
-                                                        <div class="fav-img-wrap"><img data-behavior="fix_broken_images" class="main imageLoaded" src="http://a.espncdn.com/combiner/i?img=/i/teamlogos/mlb/500/nyy.png&amp;w=100&amp;h=100&amp;transparent=true"></div>
-                                                        <div class="link-text">
-                                                            <font>
-                                                                <font>
-                                                                    纽约洋基队
-                                                                </font>
-                                                            </font><span><font><font>MLB</font></font></span>
-                                                        </div>
-                                                        <div class="link-text-short">
-                                                            <font>
-                                                                <font>
-                                                                    MLB
-                                                                </font>
-                                                            </font>
-                                                        </div>
-                                                    </a>
-                                                </li>
-                                                <li>
-                                                    <a name="&amp;lpos=favorites:nav:team:user:clubhouse:2" href="http://espnfc.com/team/real-madrid/86/index" class="fav-header">
-                                                        <div class="fav-img-wrap"><img data-behavior="fix_broken_images" class="main imageLoaded" src="http://a.espncdn.com/combiner/i?img=/i/teamlogos/soccer/500/86.png&amp;w=100&amp;h=100&amp;transparent=true"></div>
-                                                        <div class="link-text">
-                                                            <font>
-                                                                <font>
-                                                                    皇家马德里
-                                                                </font>
-                                                            </font><span><font><font>足球</font></font></span>
-                                                        </div>
-                                                        <div class="link-text-short">
-                                                            <font>
-                                                                <font>
-                                                                    足球
-                                                                </font>
-                                                            </font>
-                                                        </div>
-                                                    </a>
-                                                </li>
-                                                <li>
-                                                    <a name="&amp;lpos=favorites:nav:team:user:clubhouse:3" href="http://espnfc.com/team/bayern-munich/132/index" class="fav-header">
-                                                        <div class="fav-img-wrap"><img data-behavior="fix_broken_images" class="main imageLoaded" src="http://a.espncdn.com/combiner/i?img=/i/teamlogos/soccer/500/132.png&amp;w=100&amp;h=100&amp;transparent=true"></div>
-                                                        <div class="link-text">
-                                                            <font>
-                                                                <font>
-                                                                    拜仁慕尼黑
-                                                                </font>
-                                                            </font><span><font><font>足球</font></font></span>
-                                                        </div>
-                                                        <div class="link-text-short">
-                                                            <font>
-                                                                <font>
-                                                                    足球
-                                                                </font>
-                                                            </font>
-                                                        </div>
-                                                    </a>
-                                                </li>
-                                                <li>
-                                                    <a name="&amp;lpos=favorites:nav:team:user:clubhouse:4" href="http://espnfc.com/team/manchester-city/382/index" class="fav-header">
-                                                        <div class="fav-img-wrap"><img data-behavior="fix_broken_images" class="main imageLoaded" src="http://a.espncdn.com/combiner/i?img=/i/teamlogos/soccer/500/382.png&amp;w=100&amp;h=100&amp;transparent=true"></div>
-                                                        <div class="link-text">
-                                                            <font>
-                                                                <font>
-                                                                    曼城
-                                                                </font>
-                                                            </font><span><font><font>足球</font></font></span>
-                                                        </div>
-                                                        <div class="link-text-short">
-                                                            <font>
-                                                                <font>
-                                                                    足球
-                                                                </font>
-                                                            </font>
-                                                        </div>
-                                                    </a>
-                                                </li>
-                                                <li>
-                                                    <a name="&amp;lpos=favorites:nav:team:user:clubhouse:5" href="http://espnfc.com/team/aberdeen/263/index" class="fav-header">
-                                                        <div class="fav-img-wrap"><img data-behavior="fix_broken_images" class="main imageLoaded" src="http://a.espncdn.com/combiner/i?img=/i/teamlogos/soccer/500/263.png&amp;w=100&amp;h=100&amp;transparent=true"></div>
-                                                        <div class="link-text">
-                                                            <font>
-                                                                <font>
-                                                                    阿伯丁
-                                                                </font>
-                                                            </font><span><font><font>足球</font></font></span>
-                                                        </div>
-                                                        <div class="link-text-short">
-                                                            <font>
-                                                                <font>
-                                                                    足球
-                                                                </font>
-                                                            </font>
-                                                        </div>
-                                                    </a>
-                                                </li>
-                                                <li>
-                                                    <a name="&amp;lpos=favorites:nav:team:user:clubhouse:6" href="http://espnfc.com/team/barcelona/83/index" class="fav-header">
-                                                        <div class="fav-img-wrap"><img data-behavior="fix_broken_images" class="main imageLoaded" src="http://a.espncdn.com/combiner/i?img=/i/teamlogos/soccer/500/83.png&amp;w=100&amp;h=100&amp;transparent=true"></div>
-                                                        <div class="link-text">
-                                                            <font>
-                                                                <font>
-                                                                    巴塞罗那
-                                                                </font>
-                                                            </font><span><font><font>足球</font></font></span>
-                                                        </div>
-                                                        <div class="link-text-short">
-                                                            <font>
-                                                                <font>
-                                                                    足球
-                                                                </font>
-                                                            </font>
-                                                        </div>
-                                                    </a>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                    </li>
-                                </ul>
-                            </div>
-                        </li>
-                        <li>
-                            <a href="#" id="global-scoreboard-trigger" data-route="false">
-                                <font>
-                                    <font>成绩</font>
-                                </font>
-                            </a>
-                        </li>
-                    </ul>
-                </div>
-                <nav id="global-nav" data-loadtype="client" data-wayfindsport="">
-                    <ul class="espn-en" itemscope="" itemtype="http://www.schema.org/SiteNavigationElement" style="display: block;">
-                        <li class="sports menu-nba" itemprop="name">
-                            <a itemprop="url" href="/reviews" name="&amp;lpos=sitenavcustom+sitenav_nba">
-                                <span><span class="link-text"><font><font>车评</font></font></span>
-                                <span class="link-text-short"><font><font>车评</font></font></span>
-                                </span>
-                            </a>
-                            
-                        </li>
-                        <li class="sports menu-nfl" itemprop="name">
-                            <a itemprop="url" href="/nfl/" name="&amp;lpos=sitenavcustom+sitenav_nfl">
-                                <span><span class="link-text"><font><font>大神经验</font></font></span>
-                                <span class="link-text-short"><font><font>大神经验</font></font></span>
-                                </span>
-                            </a>
-                            
-                        </li>
-                        <li class="sports menu-golf" itemprop="name">
-                            <a itemprop="url" href="/golf/" name="&amp;lpos=sitenavcustom+sitenav_golf" data-icon="golf">
-                                <span><span class="link-text"><font><font>装备</font></font></span>
-                                <span class="link-text-short"><font><font>装备</font></font></span>
-                                </span>
-                            </a>
-                            
-                        </li>
-                        <li class="sports menu-mlb" itemprop="name">
-                            <a itemprop="url" href="/mlb/" name="&amp;lpos=sitenavcustom+sitenav_mlb">
-                                <span><span class="link-text"><font><font>游记</font></font></span>
-                                <span class="link-text-short"><font><font>游记</font></font></span>
-                                </span>
-                            </a>
-                            
-                        </li>
-                        <li class="sports menu-ncaaf" itemprop="name">
-                            <a itemprop="url" href="/college-football/" name="&amp;lpos=sitenavcustom+sitenav_ncf" data-icon="football-college">
-                                <span><span class="link-text"><font><font>什么值得买</font></font></span>
-                                <span class="link-text-short"><font><font>什么值得买</font></font></span>
-                                </span>
-                            </a>
-                            
-                        </li>
-                        <li class="external sports menu-soccer" itemprop="name">
-                            <a itemprop="url" href="/bbs" name="&amp;lpos=sitenavcustom+sitenav_soccer">
-                                <span><span class="link-text"><font><font>社区</font></font></span>
-                                <span class="link-text-short"><font><font>社区</font></font></span>
-                                </span>
-                            </a>
-                            
-                        </li>
-                        <li class="none more" itemprop="name">
-                            <a itemprop="url" href="#" data-mobile="false">
-                                <span><span class="link-text"><font><font>...</font></font></span>
-                                <span class="link-text-short"><font><font>...</font></font></span>
-                                </span>
-                            </a>
-                            
-                        </li>
-                        <li class="pillar more-espn" itemprop="name">
-                            <a itemprop="url" href="#">
-                                <span><span class="link-text"><font><font>更多ESPN</font></font></span>
-                                <span class="link-text-short"><font><font>更多ESPN</font></font></span>
-                                </span>
-                            </a>
-                            
-                        </li>
-
-                        <li class="pillar listen" itemprop="name">
-                            <a itemprop="url" href="http://espn.go.com/espnradio/index" name="&amp;lpos=sitenavcustom+sitenav_listen">
-                                <span><span class="link-text"><font><font>文章</font></font></span>
-                                <span class="link-text-short"><font><font>文章</font></font></span>
-                                </span>
-                            </a>
-                            
-                        </li>
-                        <li class="pillar watch" itemprop="name">
-                            <a itemprop="url" href="http://espn.go.com/watchespn/index" name="&amp;lpos=sitenavcustom+sitenav_watch">
-                                <span><span class="link-text"><font><font>视频</font></font></span>
-                                <span class="link-text-short"><font><font>视频</font></font></span>
-                                </span>
-                            </a>
-                            
-                        </li>
-                    </ul>
-                </nav>
-            </header>
+<html>
+  
+  <head>
+    <script id="_pusher_dependencies1" src="https://js.pusher.com/3.0.0/xhr.min.js" type="text/javascript" charset="UTF-8" async=""></script>
+    <meta charset="utf-8">
+    <title>Flarum Community</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1">
+    <meta name="theme-color" content="#E7672E">
+    <link rel="stylesheet" href="https://discuss.flarum.org/assets/forum-64c7858d.css">
+    <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Open+Sans:400italic,700italic,400,700,600">
+    <style type="text/css" adt="123"></style>
+    <style type="text/css"></style>
+    <style type="text/css">object,embed{ -webkit-animation-duration:.001s;-webkit-animation-name:playerInserted; -ms-animation-duration:.001s;-ms-animation-name:playerInserted; -o-animation-duration:.001s;-o-animation-name:playerInserted; animation-duration:.001s;animation-name:playerInserted;} @-webkit-keyframes playerInserted{from{opacity:0.99;}to{opacity:1;}} @-ms-keyframes playerInserted{from{opacity:0.99;}to{opacity:1;}} @-o-keyframes playerInserted{from{opacity:0.99;}to{opacity:1;}} @keyframes playerInserted{from{opacity:0.99;}to{opacity:1;}}</style>
+    <link type="text/css" rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.4.0/styles/default.min.css">
+    <script type="text/javascript" async="" src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.4.0/highlight.min.js"></script>
+    <script src="https://use.fontawesome.com/328dabcfd7.js"></script>
+    <link rel="stylesheet" href="/static/css/main.css">
+  </head>
+  
+  <body class="no-touch">
+    <div id="app" class="App affix App--index" style="min-height: 775px;">
+      <div id="app-navigation" class="App-navigation">
+        <div class="Navigation ButtonGroup App-backControl">
+          <button class="Button Button--icon Navigation-drawer hasIcon" type="button">
+            <i class="icon fa fa-fw fa-reorder Button-icon"></i>
+          </button>
         </div>
-
-        {% block main %}{% endblock %}
-
-        {%if user_info==none%}
-            <div id="loginModal" class="modal fade" {%if link%}data-link="{{link}}" {%endif%} {%if link2%}data-link2="{{link2}}" {%endif%}>
-                <div class="modal-dialog">
-                    <form class="login signin-form" action="/signin" method="POST">
-                        <fieldset>
-                            <legend class="legend">
-                                登录或注册
-                                <span class="modal-dialog-title-close" data-dismiss="modal"></span>
-                            </legend>
-                            <div class="title">
-                                <a class="js-signup signup-switch with-icon" href="javascript:;">
-
-                        注册
-
-                        <i class="icon-sign icon-sign-arrow"></i>
-
-                    </a>
-                                <span class="js-title-label title-label">登录游侠</span>
-                            </div>
-                            <div class="form-group input">
-                                <input type="text" name="mobile" placeholder="手机" class="form-control email-input" />
-                                <span>
-
-                                <i class="fa fa-mobile"></i>
-
-                            </span>
-                            </div>
-                            <div class="form-group input">
-                                <input type="password" name="password" placeholder="密码" class="form-control password-input" />
-                                <span>
-
-                                <i class="fa fa-lock"></i>
-
-                            </span>
-                            </div>
-                            <div class="action">
-                                <button type="submit" class="submit btn btn-success btn-signin">登录</button>
-                            </div>
-                        </fieldset>
-                        {{ xsrf_form_html() }}
-                    </form>
-
-                    <form class="login signup-form" style="display: none;" action="/signup" method="POST">
-                        <fieldset>
-                            <legend class="legend">
-                                登录或注册
-                                <span class="modal-dialog-title-close" data-dismiss="modal"></span>
-                            </legend>
-                            <div class="title">
-                                <a class="js-signup signin-switch with-icon" href="javascript:;">
-
-                        登录
-
-                        <i class="icon-sign icon-sign-arrow"></i>
-
-                    </a>
-                                <span class="js-title-label title-label">快速注册</span>
-                            </div>
-
-                            <div class="form-group input">
-                                <input type="text" name="username" placeholder="用户名" class="form-control username-input" />
-                                <span>
-
-                                <i class="fa fa-user"></i>
-
-                            </span>
-                            </div>
-
-                            <input type="checkbox" name="gender" id="gender-switch" data-on-text="男" data-off-text="女" data-on-color="success" data-off-color="danger" checked>
-
-                            <div class="form-group input">
-                                <input type="text" name="mobile" placeholder="手机" class="form-control email-input" />
-                                <span>
-
-                                <i class="fa fa-mobile"></i>
-
-                            </span>
-                            </div>
-
-                            <div class="form-group input">
-                                <input type="password" name="password" placeholder="密码" class="form-control password-input" />
-                                <span>
-
-                                <i class="fa fa-lock"></i>
-
-                            </span>
-                            </div>
-
-                            <div class="form-group input">
-                                <script async type="text/javascript" src="http://api.geetest.com/get.php?gt=aa45a1e576f4766651234093fc86a383"></script>
-                            </div>
-                            <div class="action">
-                                <button type="submit" class="submit btn btn-success btn-sinup">注册</button>
-                            </div>
-
-                        </fieldset>
-                        {{ xsrf_form_html() }}
-                    </form>
-
-                    <form class="login signin-error" data-error="{{error}}" style="disply: none">
-                        <fieldset>
-                            <legend class="legend">
-                                登录或注册
-                                <span class="modal-dialog-title-close" data-dismiss="modal"></span>
-                            </legend>
-                            <div class="title">
-                                <a class="js-signup signin-switch with-icon" href="javascript:;">
-
-                        重新登录
-
-                        <i class="icon-sign icon-sign-arrow"></i>
-
-                    </a>
-                                <span class="js-title-label title-label">登录失败</span>
-                            </div>
-                            <div class="input error-text">
-                                你输入邮箱或密码有误，请重试。
-                            </div>
-                        </fieldset>
-                    </form>
-
-                    <form class="login signup-error" data-error={{error}} style="disply: none">
-                        <fieldset>
-                            <legend class="legend">
-                                登录或注册
-                                <span class="modal-dialog-title-close" data-dismiss="modal"></span>
-                            </legend>
-                            <div class="title">
-                                <a class="js-signup signup-switch with-icon" href="javascript:;">
-
-                        重新注册
-
-                        <i class="icon-sign icon-sign-arrow"></i>
-
-                    </a>
-                                <span class="js-title-label title-label">注册失败</span>
-                            </div>
-                            <div class="input error-text">
-                                你输入的注册信息有误，请重试。
-                            </div>
-                        </fieldset>
-                    </form>
-                </div>
+      </div>
+      <div id="drawer" class="App-drawer">
+        <header id="header" class="App-header">
+          <div id="header-navigation" class="Header-navigation">
+            <div class="Navigation ButtonGroup "></div>
+          </div>
+          <div class="container">
+            <h1 class="Header-title">
+              <a href="https://discuss.flarum.org" id="home-link">
+                <img src="https://discuss.flarum.org/assets/header.png" alt="" height="27"></a>
+            </h1>
+            <div class="Header-primary">
+              <ul class="Header-controls">
+                <li>
+                  <a href="http://flarum.org" class="Button Button--link">Home</a></li>
+                <li>
+                  <a href="http://discuss.flarum.org/d/859-flarum-community-guidelines" class="Button Button--link">Guidelines</a></li>
+                <li>
+                  <a href="http://flarum.org/docs/faq" class="Button Button--link">FAQ</a></li>
+                <li>
+                  <a href="https://gitter.im/flarum/flarum" class="Button Button--link" target="_blank">Chat</a></li>
+                <li>
+                  <a href="http://flarum.org/docs/contributing" class="Button Button--link" target="_blank">Report a Bug</a></li>
+              </ul>
+              <div id="header-primary">
+                <ul class="Header-controls"></ul>
+              </div>
             </div>
-            {%endif%}
+            <div id="header-secondary" class="Header-secondary">
+              <ul class="Header-controls">
+                <li class="item-search">
+                  <div class="Search ">
+                    <div class="Search-input">
+                      <input class="FormControl" placeholder="Search Forum"></div>
+                    <ul class="Dropdown-menu Search-results"></ul>
+                  </div>
+                </li>
+                <li class="item-notifications">
+                  <div class="ButtonGroup Dropdown dropdown NotificationsDropdown itemCount0">
+                    <button class="Dropdown-toggle Button Button--flat" data-toggle="dropdown" title="Notifications">
+                      <i class="icon fa fa-fw fa-bell Button-icon"></i>
+                      <span class="Button-label">Notifications</span></button>
+                    <div class="Dropdown-menu Dropdown-menu--right"></div>
+                  </div>
+                </li>
+                <li class="item-session">
+                  <div class="ButtonGroup Dropdown dropdown SessionDropdown itemCount4">
+                    <button class="Dropdown-toggle Button Button--user Button--flat" data-toggle="dropdown">
+                      <span class="Avatar " style="background: rgb(160, 176, 229);">G</span>
+                      <span class="Button-label">
+                        <span class="username">gaolinjie</span></span>
+                    </button>
+                    <ul class="Dropdown-menu dropdown-menu Dropdown-menu--right">
+                      <li class="item-profile">
+                        <a href="/u/gaolinjie" active="false" class=" hasIcon" type="button" title="Profile">
+                          <i class="icon fa fa-fw fa-user Button-icon"></i>
+                          <span class="Button-label">Profile</span></a>
+                      </li>
+                      <li class="item-settings">
+                        <a href="/settings" active="false" class=" hasIcon" type="button" title="Settings">
+                          <i class="icon fa fa-fw fa-cog Button-icon"></i>
+                          <span class="Button-label">Settings</span></a>
+                      </li>
+                      <li class="Dropdown-separator"></li>
+                      <li class="item-logOut">
+                        <button class=" hasIcon" type="button" title="Log Out">
+                          <i class="icon fa fa-fw fa-sign-out Button-icon"></i>
+                          <span class="Button-label">Log Out</span></button>
+                      </li>
+                    </ul>
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </header>
+      </div>
+      <main class="App-content">
+        <div id="content" style="padding-bottom: 0px;">
+          <div class="IndexPage">
+            <div></div>
+            <div class="container">
+              <nav class="IndexPage-nav sideNav">
+                <ul>
+                  <li class="item-newDiscussion App-primaryControl">
+                    <button class="Button Button--primary IndexPage-newDiscussion hasIcon" itemclassname="App-primaryControl" type="button" title="Start a Discussion">
+                      <i class="icon fa fa-fw fa-edit Button-icon"></i>
+                      <span class="Button-label">Start a Discussion</span></button>
+                  </li>
+                  <li class="item-nav">
+                    <div class="ButtonGroup Dropdown dropdown App-titleControl Dropdown--select itemCount16">
+                      <button class="Dropdown-toggle Button" data-toggle="dropdown">
+                        <span class="Button-label">All Discussions</span>
+                        <i class="icon fa fa-fw fa-sort Button-caret"></i>
+                      </button>
+                      <ul class="Dropdown-menu dropdown-menu ">
+                        <li class="item-allDiscussions active">
+                          <a href="/" active="true" class=" hasIcon" type="button" title="All Discussions">
+                            <i class="icon fa fa-fw fa-comments-o Button-icon"></i>
+                            <span class="Button-label">All Discussions</span></a>
+                        </li>
+                        <li class="item-following">
+                          <a href="/following" active="false" class=" hasIcon" type="button" title="Following">
+                            <i class="icon fa fa-fw fa-star Button-icon"></i>
+                            <span class="Button-label">Following</span></a>
+                        </li>
+                        <li class="item-tags">
+                          <a href="/tags" active="false" class=" hasIcon" type="button" title="Tags">
+                            <i class="icon fa fa-fw fa-th-large Button-icon"></i>
+                            <span class="Button-label">Tags</span></a>
+                        </li>
+                        <li class="Dropdown-separator"></li>
+                        <li class="item-tag20">
+                          <a class="TagLinkButton hasIcon " href="/t/post-tests-here" style="" title="Test out Flarum in this tag. Discussions in this tag will be deleted every so often.">
+                            <span class="icon TagIcon Button-icon" style="background-color: rgb(181, 158, 140);"></span>Post tests here</a>
+                        </li>
+                        <li class="item-tag24">
+                          <a class="TagLinkButton hasIcon " href="/t/support" style="" title="Get help setting up, using, and customising Flarum.">
+                            <span class="icon TagIcon Button-icon" style="background-color: rgb(75, 147, 209);"></span>Support</a>
+                        </li>
+                        <li class="item-tag69">
+                          <a class="TagLinkButton hasIcon " href="/t/feedback" style="" title="For discussing Flarum core features and design. For issues use Support.">
+                            <span class="icon TagIcon Button-icon" style="background-color: rgb(147, 84, 202);"></span>Feedback</a>
+                        </li>
+                        <li class="item-tag48">
+                          <a class="TagLinkButton hasIcon " href="/t/extensions" style="" title="Announce your extensions and provide help to users in this area. For requests/ideas, post in Feedback. For help building extensions, post in Dev > Extensibility.">
+                            <span class="icon TagIcon Button-icon" style="background-color: rgb(72, 191, 131);"></span>Extensions</a>
+                        </li>
+                        <li class="item-tag4">
+                          <a class="TagLinkButton hasIcon " href="/t/dev" style="" title="For developers. Get help hacking core, building extensions, themes, and translations.">
+                            <span class="icon TagIcon Button-icon" style="background-color: rgb(65, 65, 65);"></span>Dev</a>
+                        </li>
+                        <li class="item-tag16">
+                          <a class="TagLinkButton hasIcon " href="/t/meta" style="" title="Discussion about this community: its organisation and how we can improve it.">
+                            <span class="icon TagIcon Button-icon" style="background-color: rgb(239, 86, 79);"></span>Meta</a>
+                        </li>
+                        <li class="item-tag52">
+                          <a class="TagLinkButton hasIcon " href="/t/resources" style="" title="Share Flarum-related resources and services here: hosting, jobs, etc.">
+                            <span class="icon TagIcon Button-icon" style="background-color: rgb(98, 108, 120);"></span>Resources</a>
+                        </li>
+                        <li class="item-tag1">
+                          <a class="TagLinkButton hasIcon " href="/t/off-topic" style="" title="Off-topic discussions that don't fit into any other categories.">
+                            <span class="icon TagIcon Button-icon" style="background-color: rgb(214, 139, 79);"></span>Off-topic</a>
+                        </li>
+                        <li class="item-tag60">
+                          <a class="TagLinkButton hasIcon " href="/t/solved" style="" title="Solved issues.">
+                            <span class="icon TagIcon Button-icon" style="background-color: rgb(109, 187, 62);"></span>Solved</a>
+                        </li>
+                        <li class="item-tag19">
+                          <a class="TagLinkButton hasIcon " href="/t/performance" style="" title="">
+                            <span class="icon TagIcon Button-icon"></span>Performance</a>
+                        </li>
+                        <li class="item-tag57">
+                          <a class="TagLinkButton hasIcon " href="/t/integrations" style="" title="Extensions for other software, like browsers or wordpress.">
+                            <span class="icon TagIcon Button-icon"></span>Integrations</a>
+                        </li>
+                        <li class="item-moreTags">
+                          <a href="/tags" active="false" class="" type="button" title="More...">
+                            <span class="Button-label">More...</span></a>
+                        </li>
+                      </ul>
+                    </div>
+                  </li>
+                </ul>
+              </nav>
+              <div class="IndexPage-results sideNavOffset">
+                <div class="IndexPage-toolbar">
+                  <ul class="IndexPage-toolbar-view">
+                    <li class="item-sort">
+                      <span class="Select">
+                        <select class="Select-input FormControl">
+                          <option value="latest">Latest</option>
+                          <option value="top">Top</option>
+                          <option value="newest">Newest</option>
+                          <option value="oldest">Oldest</option></select>
+                        <i class="icon fa fa-fw fa-sort Select-caret"></i>
+                      </span>
+                    </li>
+                  </ul>
+                  <ul class="IndexPage-toolbar-action">
+                    <li class="item-markAllAsRead">
+                      <button title="Mark All as Read" class="Button Button--icon hasIcon" type="button">
+                        <i class="icon fa fa-fw fa-check Button-icon"></i>
+                      </button>
+                    </li>
+                  </ul>
+                </div>
+                <div class="DiscussionList">
+                  <button class="Button Button--block DiscussionList-update" type="button" title="Show 13 updated discussions">
+                    <span class="Button-label">Show 13 updated discussions</span></button>
+                  <ul class="DiscussionList-discussions">
+                    <li data-id="2072">
+                      <div class="DiscussionListItem">
+                        <div class="ButtonGroup Dropdown dropdown DiscussionListItem-controls itemCount1">
+                          <button class="Dropdown-toggle Button Button--icon Button--flat Slidable-underneath Slidable-underneath--right" data-toggle="dropdown">
+                            <i class="icon fa fa-fw fa-ellipsis-v Button-icon"></i>
+                            <span class="Button-label"></span>
+                            <i class="icon fa fa-fw fa-caret-down Button-caret"></i>
+                          </button>
+                          <ul class="Dropdown-menu dropdown-menu ">
+                            <li class="item-subscription">
+                              <button class=" hasIcon" type="button" title="Follow">
+                                <i class="icon fa fa-fw fa-star Button-icon"></i>
+                                <span class="Button-label">Follow</span></button>
+                            </li>
+                          </ul>
+                        </div>
+                        <a class="Slidable-underneath Slidable-underneath--left Slidable-underneath--elastic">
+                          <i class="icon fa fa-fw fa-check "></i>
+                        </a>
+                        <div class="DiscussionListItem-content Slidable-content unread">
+                          <a href="/u/luceos" class="DiscussionListItem-author" title="" data-original-title="luceos started 14 Feb">
+                            <img class="Avatar " src="https://discuss.flarum.org/assets/avatars/5ztmag78s0pdnjbm.jpg"></a>
+                          <ul class="DiscussionListItem-badges badges">
+                            <li class="item-sticky">
+                              <span class="Badge Badge--sticky " title="" data-original-title="Sticky">
+                                <i class="icon fa fa-fw fa-thumb-tack Badge-icon"></i>
+                              </span>
+                            </li>
+                          </ul>
+                          <a href="/d/2072-international-support-sites/38" class="DiscussionListItem-main">
+                            <h3 class="DiscussionListItem-title">International support sites</h3>
+                            <ul class="DiscussionListItem-info">
+                              <li class="item-tags">
+                                <span class="TagsLabel ">
+                                  <span class="TagLabel  colored" style="color: rgb(75, 147, 209); background-color: rgb(75, 147, 209);">
+                                    <span class="TagLabel-text">Support</span></span>
+                                </span>
+                              </li>
+                              <li class="item-terminalPost">
+                                <span>
+                                  <i class="icon fa fa-fw fa-reply "></i>
+                                  <span class="username">Dominion</span>replied
+                                  <time pubdate="true" datetime="2016-09-25T13:29:55+08:00" title="Sunday, September 25, 2016 1:29 PM" data-humantime="true">21 hours ago</time></span>
+                              </li>
+                              <li class="item-excerpt">
+                                <span>The following is a list of support channels to get localized support. Do you run your own Flarum installation or have a chat channel to offer support in any non-English language, please reply and I'll...</span></li>
+                            </ul>
+                          </a>
+                          <span class="DiscussionListItem-count" title="Mark as Read">26</span></div>
+                      </div>
+                    </li>
+                    <li data-id="697">
+                      <div class="DiscussionListItem">
+                        <div class="ButtonGroup Dropdown dropdown DiscussionListItem-controls itemCount1">
+                          <button class="Dropdown-toggle Button Button--icon Button--flat Slidable-underneath Slidable-underneath--right" data-toggle="dropdown">
+                            <i class="icon fa fa-fw fa-ellipsis-v Button-icon"></i>
+                            <span class="Button-label"></span>
+                            <i class="icon fa fa-fw fa-caret-down Button-caret"></i>
+                          </button>
+                          <ul class="Dropdown-menu dropdown-menu ">
+                            <li class="item-subscription">
+                              <button class=" hasIcon" type="button" title="Follow">
+                                <i class="icon fa fa-fw fa-star Button-icon"></i>
+                                <span class="Button-label">Follow</span></button>
+                            </li>
+                          </ul>
+                        </div>
+                        <a class="Slidable-underneath Slidable-underneath--left Slidable-underneath--elastic disabled">
+                          <i class="icon fa fa-fw fa-check "></i>
+                        </a>
+                        <div class="DiscussionListItem-content Slidable-content read">
+                          <a href="/u/Kulga" class="DiscussionListItem-author" title="" data-original-title="Kulga started Aug '15">
+                            <img class="Avatar " src="https://discuss.flarum.org/assets/avatars/uwodteixtmcww2b3.jpg"></a>
+                          <ul class="DiscussionListItem-badges badges">
+                            <li class="item-sticky">
+                              <span class="Badge Badge--sticky " title="" data-original-title="Sticky">
+                                <i class="icon fa fa-fw fa-thumb-tack Badge-icon"></i>
+                              </span>
+                            </li>
+                          </ul>
+                          <a href="/d/697-devflarum-sandbox-server" class="DiscussionListItem-main">
+                            <h3 class="DiscussionListItem-title">Devflarum - Sandbox Server</h3>
+                            <ul class="DiscussionListItem-info">
+                              <li class="item-tags">
+                                <span class="TagsLabel ">
+                                  <span class="TagLabel  colored" style="color: rgb(75, 147, 209); background-color: rgb(75, 147, 209);">
+                                    <span class="TagLabel-text">Support</span></span>
+                                </span>
+                              </li>
+                              <li class="item-terminalPost">
+                                <span>
+                                  <i class="icon fa fa-fw fa-reply "></i>
+                                  <span class="username">Kulga</span>replied
+                                  <time pubdate="true" datetime="2016-09-22T04:29:45+08:00" title="Thursday, September 22, 2016 4:29 AM" data-humantime="true">4 days ago</time></span>
+                              </li>
+                              <li class="item-excerpt">
+                                <span>DevFlarum - Admin Accessible Sandbox Server See INFO for Username / Password Devflarum is a administrator accessible sandbox server, free to use, is resistant to spam and "griefers", has most extensio...</span></li>
+                            </ul>
+                          </a>
+                          <span class="DiscussionListItem-count" title="">89</span></div>
+                      </div>
+                    </li>
+                    <li data-id="1662">
+                      <div class="DiscussionListItem">
+                        <div class="ButtonGroup Dropdown dropdown DiscussionListItem-controls itemCount1">
+                          <button class="Dropdown-toggle Button Button--icon Button--flat Slidable-underneath Slidable-underneath--right" data-toggle="dropdown">
+                            <i class="icon fa fa-fw fa-ellipsis-v Button-icon"></i>
+                            <span class="Button-label"></span>
+                            <i class="icon fa fa-fw fa-caret-down Button-caret"></i>
+                          </button>
+                          <ul class="Dropdown-menu dropdown-menu ">
+                            <li class="item-subscription">
+                              <button class=" hasIcon" type="button" title="Follow">
+                                <i class="icon fa fa-fw fa-star Button-icon"></i>
+                                <span class="Button-label">Follow</span></button>
+                            </li>
+                          </ul>
+                        </div>
+                        <a class="Slidable-underneath Slidable-underneath--left Slidable-underneath--elastic disabled">
+                          <i class="icon fa fa-fw fa-check "></i>
+                        </a>
+                        <div class="DiscussionListItem-content Slidable-content read">
+                          <a href="/u/luceos" class="DiscussionListItem-author" title="" data-original-title="luceos started Dec '15">
+                            <img class="Avatar " src="https://discuss.flarum.org/assets/avatars/5ztmag78s0pdnjbm.jpg"></a>
+                          <ul class="DiscussionListItem-badges badges">
+                            <li class="item-sticky">
+                              <span class="Badge Badge--sticky " title="" data-original-title="Sticky">
+                                <i class="icon fa fa-fw fa-thumb-tack Badge-icon"></i>
+                              </span>
+                            </li>
+                          </ul>
+                          <a href="/d/1662-extension-developer-first-read" class="DiscussionListItem-main">
+                            <h3 class="DiscussionListItem-title">Extension developer - first read</h3>
+                            <ul class="DiscussionListItem-info">
+                              <li class="item-tags">
+                                <span class="TagsLabel ">
+                                  <span class="TagLabel  colored" style="color: rgb(65, 65, 65); background-color: rgb(65, 65, 65);">
+                                    <span class="TagLabel-text">Dev</span></span>
+                                </span>
+                              </li>
+                              <li class="item-terminalPost">
+                                <span>
+                                  <i class="icon fa fa-fw fa-reply "></i>
+                                  <span class="username">jordanjay29</span>replied
+                                  <time pubdate="true" datetime="2016-03-23T01:03:47+08:00" title="Wednesday, March 23, 2016 1:03 AM" data-humantime="true">23 Mar</time></span>
+                              </li>
+                              <li class="item-excerpt">
+                                <span>If you are or want to become a Flarum extension developer, you might want to read up on the several resources and tutorials related to Extension development: Building extensions documentation Extensio...</span></li>
+                            </ul>
+                          </a>
+                          <span class="DiscussionListItem-count" title="">4</span></div>
+                      </div>
+                    </li>
+                    <li data-id="859">
+                      <div class="DiscussionListItem">
+                        <div class="ButtonGroup Dropdown dropdown DiscussionListItem-controls itemCount1">
+                          <button class="Dropdown-toggle Button Button--icon Button--flat Slidable-underneath Slidable-underneath--right" data-toggle="dropdown">
+                            <i class="icon fa fa-fw fa-ellipsis-v Button-icon"></i>
+                            <span class="Button-label"></span>
+                            <i class="icon fa fa-fw fa-caret-down Button-caret"></i>
+                          </button>
+                          <ul class="Dropdown-menu dropdown-menu ">
+                            <li class="item-subscription">
+                              <button class=" hasIcon" type="button" title="Follow">
+                                <i class="icon fa fa-fw fa-star Button-icon"></i>
+                                <span class="Button-label">Follow</span></button>
+                            </li>
+                          </ul>
+                        </div>
+                        <a class="Slidable-underneath Slidable-underneath--left Slidable-underneath--elastic disabled">
+                          <i class="icon fa fa-fw fa-check "></i>
+                        </a>
+                        <div class="DiscussionListItem-content Slidable-content read">
+                          <a href="/u/Toby" class="DiscussionListItem-author" title="" data-original-title="Toby started Sep '15">
+                            <img class="Avatar " src="https://discuss.flarum.org/assets/avatars/yzejjqriqrwntpab.jpg"></a>
+                          <ul class="DiscussionListItem-badges badges">
+                            <li class="item-sticky">
+                              <span class="Badge Badge--sticky " title="" data-original-title="Sticky">
+                                <i class="icon fa fa-fw fa-thumb-tack Badge-icon"></i>
+                              </span>
+                            </li>
+                            <li class="item-locked">
+                              <span class="Badge Badge--locked " title="" data-original-title="Locked">
+                                <i class="icon fa fa-fw fa-lock Badge-icon"></i>
+                              </span>
+                            </li>
+                          </ul>
+                          <a href="/d/859-flarum-community-guidelines/2" class="DiscussionListItem-main">
+                            <h3 class="DiscussionListItem-title">Flarum Community Guidelines</h3>
+                            <ul class="DiscussionListItem-info">
+                              <li class="item-tags">
+                                <span class="TagsLabel ">
+                                  <span class="TagLabel  colored" style="color: rgb(239, 86, 79); background-color: rgb(239, 86, 79);">
+                                    <span class="TagLabel-text">Meta</span></span>
+                                </span>
+                              </li>
+                              <li class="item-terminalPost">
+                                <span>
+                                  <i class="icon fa fa-fw fa-reply "></i>
+                                  <span class="username">Toby</span>replied
+                                  <time pubdate="true" datetime="2015-09-17T19:11:08+08:00" title="Thursday, September 17, 2015 7:11 PM" data-humantime="true">Sep '15</time></span>
+                              </li>
+                              <li class="item-excerpt">
+                                <span>Welcome to the Flarum Community! ... And thanks for joining us! We're excited about Flarum, and are always happy to meet people who feel the same way. We want everyone to get the most out of Flarum an...</span></li>
+                            </ul>
+                          </a>
+                          <span class="DiscussionListItem-count" title="">1</span></div>
+                      </div>
+                    </li>
+                    <li data-id="3702">
+                      <div class="DiscussionListItem">
+                        <div class="ButtonGroup Dropdown dropdown DiscussionListItem-controls itemCount1">
+                          <button class="Dropdown-toggle Button Button--icon Button--flat Slidable-underneath Slidable-underneath--right" data-toggle="dropdown">
+                            <i class="icon fa fa-fw fa-ellipsis-v Button-icon"></i>
+                            <span class="Button-label"></span>
+                            <i class="icon fa fa-fw fa-caret-down Button-caret"></i>
+                          </button>
+                          <ul class="Dropdown-menu dropdown-menu ">
+                            <li class="item-subscription">
+                              <button class=" hasIcon" type="button" title="Follow">
+                                <i class="icon fa fa-fw fa-star Button-icon"></i>
+                                <span class="Button-label">Follow</span></button>
+                            </li>
+                          </ul>
+                        </div>
+                        <a class="Slidable-underneath Slidable-underneath--left Slidable-underneath--elastic">
+                          <i class="icon fa fa-fw fa-check "></i>
+                        </a>
+                        <div class="DiscussionListItem-content Slidable-content unread">
+                          <a href="/u/marcozambi" class="DiscussionListItem-author" title="" data-original-title="marcozambi started 21 days ago">
+                            <img class="Avatar " src="https://discuss.flarum.org/assets/avatars/eefygzcso3fyu6rt.jpg"></a>
+                          <ul class="DiscussionListItem-badges badges"></ul>
+                          <a href="/d/3702-opengraph-content-embedding" class="DiscussionListItem-main">
+                            <h3 class="DiscussionListItem-title">Opengraph content embedding</h3>
+                            <ul class="DiscussionListItem-info">
+                              <li class="item-tags">
+                                <span class="TagsLabel ">
+                                  <span class="TagLabel  colored" style="color: rgb(72, 191, 131); background-color: rgb(72, 191, 131);">
+                                    <span class="TagLabel-text">Extensions</span></span>
+                                </span>
+                              </li>
+                              <li class="item-terminalPost">
+                                <span>
+                                  <i class="icon fa fa-fw fa-reply "></i>
+                                  <span class="username">marcozambi</span>replied
+                                  <time pubdate="true" datetime="2016-09-26T05:02:41+08:00" title="Monday, September 26, 2016 5:02 AM" data-humantime="true">6 hours ago</time></span>
+                              </li>
+                            </ul>
+                          </a>
+                          <span class="DiscussionListItem-count" title="Mark as Read">11</span></div>
+                      </div>
+                    </li>
+                    <li data-id="187">
+                      <div class="DiscussionListItem">
+                        <div class="ButtonGroup Dropdown dropdown DiscussionListItem-controls itemCount1">
+                          <button class="Dropdown-toggle Button Button--icon Button--flat Slidable-underneath Slidable-underneath--right" data-toggle="dropdown">
+                            <i class="icon fa fa-fw fa-ellipsis-v Button-icon"></i>
+                            <span class="Button-label"></span>
+                            <i class="icon fa fa-fw fa-caret-down Button-caret"></i>
+                          </button>
+                          <ul class="Dropdown-menu dropdown-menu ">
+                            <li class="item-subscription">
+                              <button class=" hasIcon" type="button" title="Follow">
+                                <i class="icon fa fa-fw fa-star Button-icon"></i>
+                                <span class="Button-label">Follow</span></button>
+                            </li>
+                          </ul>
+                        </div>
+                        <a class="Slidable-underneath Slidable-underneath--left Slidable-underneath--elastic">
+                          <i class="icon fa fa-fw fa-check "></i>
+                        </a>
+                        <div class="DiscussionListItem-content Slidable-content unread">
+                          <a href="/u/Toby" class="DiscussionListItem-author" title="" data-original-title="Toby started Jun '15">
+                            <img class="Avatar " src="https://discuss.flarum.org/assets/avatars/yzejjqriqrwntpab.jpg"></a>
+                          <ul class="DiscussionListItem-badges badges"></ul>
+                          <a href="/d/187-word-association-game/2627" class="DiscussionListItem-main">
+                            <h3 class="DiscussionListItem-title">Word association game</h3>
+                            <ul class="DiscussionListItem-info">
+                              <li class="item-tags">
+                                <span class="TagsLabel ">
+                                  <span class="TagLabel  colored" style="color: rgb(214, 139, 79); background-color: rgb(214, 139, 79);">
+                                    <span class="TagLabel-text">Off-topic</span></span>
+                                </span>
+                              </li>
+                              <li class="item-terminalPost">
+                                <span>
+                                  <i class="icon fa fa-fw fa-reply "></i>
+                                  <span class="username">meetdilip</span>replied
+                                  <time pubdate="true" datetime="2016-09-26T02:21:07+08:00" title="Monday, September 26, 2016 2:21 AM" data-humantime="true">9 hours ago</time></span>
+                              </li>
+                            </ul>
+                          </a>
+                          <span class="DiscussionListItem-count" title="Mark as Read">5</span></div>
+                      </div>
+                    </li>
+                    <li data-id="901">
+                      <div class="DiscussionListItem">
+                        <div class="ButtonGroup Dropdown dropdown DiscussionListItem-controls itemCount1">
+                          <button class="Dropdown-toggle Button Button--icon Button--flat Slidable-underneath Slidable-underneath--right" data-toggle="dropdown">
+                            <i class="icon fa fa-fw fa-ellipsis-v Button-icon"></i>
+                            <span class="Button-label"></span>
+                            <i class="icon fa fa-fw fa-caret-down Button-caret"></i>
+                          </button>
+                          <ul class="Dropdown-menu dropdown-menu ">
+                            <li class="item-subscription">
+                              <button class=" hasIcon" type="button" title="Follow">
+                                <i class="icon fa fa-fw fa-star Button-icon"></i>
+                                <span class="Button-label">Follow</span></button>
+                            </li>
+                          </ul>
+                        </div>
+                        <a class="Slidable-underneath Slidable-underneath--left Slidable-underneath--elastic disabled">
+                          <i class="icon fa fa-fw fa-check "></i>
+                        </a>
+                        <div class="DiscussionListItem-content Slidable-content read">
+                          <a href="/u/hvaleanu" class="DiscussionListItem-author" title="" data-original-title="hvaleanu started Sep '15">
+                            <span class="Avatar " style="background: rgb(160, 229, 174);">H</span></a>
+                          <ul class="DiscussionListItem-badges badges"></ul>
+                          <a href="/d/901-create-a-poll/7" class="DiscussionListItem-main">
+                            <h3 class="DiscussionListItem-title">Create a poll</h3>
+                            <ul class="DiscussionListItem-info">
+                              <li class="item-tags">
+                                <span class="TagsLabel ">
+                                  <span class="TagLabel  colored" style="color: rgb(147, 84, 202); background-color: rgb(147, 84, 202);">
+                                    <span class="TagLabel-text">Feedback</span></span>
+                                  <span class="TagLabel ">
+                                    <span class="TagLabel-text">Features</span></span>
+                                </span>
+                              </li>
+                              <li class="item-terminalPost">
+                                <span>
+                                  <i class="icon fa fa-fw fa-reply "></i>
+                                  <span class="username">FacundoLedesma</span>replied
+                                  <time pubdate="true" datetime="2016-09-25T23:34:08+08:00" title="Sunday, September 25, 2016 11:34 PM" data-humantime="true">11 hours ago</time></span>
+                              </li>
+                            </ul>
+                          </a>
+                          <span class="DiscussionListItem-count" title="">6</span></div>
+                      </div>
+                    </li>
+                    <li data-id="3772">
+                      <div class="DiscussionListItem">
+                        <div class="ButtonGroup Dropdown dropdown DiscussionListItem-controls itemCount1">
+                          <button class="Dropdown-toggle Button Button--icon Button--flat Slidable-underneath Slidable-underneath--right" data-toggle="dropdown">
+                            <i class="icon fa fa-fw fa-ellipsis-v Button-icon"></i>
+                            <span class="Button-label"></span>
+                            <i class="icon fa fa-fw fa-caret-down Button-caret"></i>
+                          </button>
+                          <ul class="Dropdown-menu dropdown-menu ">
+                            <li class="item-subscription">
+                              <button class=" hasIcon" type="button" title="Follow">
+                                <i class="icon fa fa-fw fa-star Button-icon"></i>
+                                <span class="Button-label">Follow</span></button>
+                            </li>
+                          </ul>
+                        </div>
+                        <a class="Slidable-underneath Slidable-underneath--left Slidable-underneath--elastic">
+                          <i class="icon fa fa-fw fa-check "></i>
+                        </a>
+                        <div class="DiscussionListItem-content Slidable-content unread">
+                          <a href="/u/ibrahimk157" class="DiscussionListItem-author" title="" data-original-title="ibrahimk157 started 10 days ago">
+                            <span class="Avatar " style="background: rgb(201, 160, 229);">I</span></a>
+                          <ul class="DiscussionListItem-badges badges"></ul>
+                          <a href="/d/3772-upgrading-from-beta-2" class="DiscussionListItem-main">
+                            <h3 class="DiscussionListItem-title">Upgrading from Beta 2</h3>
+                            <ul class="DiscussionListItem-info">
+                              <li class="item-tags">
+                                <span class="TagsLabel ">
+                                  <span class="TagLabel  colored" style="color: rgb(75, 147, 209); background-color: rgb(75, 147, 209);">
+                                    <span class="TagLabel-text">Support</span></span>
+                                  <span class="TagLabel ">
+                                    <span class="TagLabel-text">Installation</span></span>
+                                  <span class="TagLabel ">
+                                    <span class="TagLabel-text">Upgrading</span></span>
+                                </span>
+                              </li>
+                              <li class="item-terminalPost">
+                                <span>
+                                  <i class="icon fa fa-fw fa-reply "></i>
+                                  <span class="username">ibrahimk157</span>replied
+                                  <time pubdate="true" datetime="2016-09-25T21:45:09+08:00" title="Sunday, September 25, 2016 9:45 PM" data-humantime="true">13 hours ago</time></span>
+                              </li>
+                            </ul>
+                          </a>
+                          <span class="DiscussionListItem-count" title="Mark as Read">75</span></div>
+                      </div>
+                    </li>
+                    <li data-id="3831">
+                      <div class="DiscussionListItem">
+                        <div class="ButtonGroup Dropdown dropdown DiscussionListItem-controls itemCount1">
+                          <button class="Dropdown-toggle Button Button--icon Button--flat Slidable-underneath Slidable-underneath--right" data-toggle="dropdown">
+                            <i class="icon fa fa-fw fa-ellipsis-v Button-icon"></i>
+                            <span class="Button-label"></span>
+                            <i class="icon fa fa-fw fa-caret-down Button-caret"></i>
+                          </button>
+                          <ul class="Dropdown-menu dropdown-menu ">
+                            <li class="item-subscription">
+                              <button class=" hasIcon" type="button" title="Follow">
+                                <i class="icon fa fa-fw fa-star Button-icon"></i>
+                                <span class="Button-label">Follow</span></button>
+                            </li>
+                          </ul>
+                        </div>
+                        <a class="Slidable-underneath Slidable-underneath--left Slidable-underneath--elastic">
+                          <i class="icon fa fa-fw fa-check "></i>
+                        </a>
+                        <div class="DiscussionListItem-content Slidable-content unread">
+                          <a href="/u/naiwungmusic" class="DiscussionListItem-author" title="" data-original-title="naiwungmusic started 20 hours ago">
+                            <img class="Avatar " src="https://discuss.flarum.org/assets/avatars/zdrwqrhnymbvdxxw.jpg"></a>
+                          <ul class="DiscussionListItem-badges badges"></ul>
+                          <a href="/d/3831-ideal-for-best-answer" class="DiscussionListItem-main">
+                            <h3 class="DiscussionListItem-title">Ideal for Best Answer</h3>
+                            <ul class="DiscussionListItem-info">
+                              <li class="item-tags">
+                                <span class="TagsLabel ">
+                                  <span class="TagLabel  colored" style="color: rgb(65, 65, 65); background-color: rgb(65, 65, 65);">
+                                    <span class="TagLabel-text">Dev</span></span>
+                                  <span class="TagLabel ">
+                                    <span class="TagLabel-text">Extensibility</span></span>
+                                </span>
+                              </li>
+                              <li class="item-terminalPost">
+                                <span>
+                                  <i class="icon fa fa-fw fa-reply "></i>
+                                  <span class="username">naiwungmusic</span>replied
+                                  <time pubdate="true" datetime="2016-09-25T21:23:37+08:00" title="Sunday, September 25, 2016 9:23 PM" data-humantime="true">14 hours ago</time></span>
+                              </li>
+                            </ul>
+                          </a>
+                          <span class="DiscussionListItem-count" title="Mark as Read">4</span></div>
+                      </div>
+                    </li>
+                    <li data-id="3830">
+                      <div class="DiscussionListItem">
+                        <div class="ButtonGroup Dropdown dropdown DiscussionListItem-controls itemCount1">
+                          <button class="Dropdown-toggle Button Button--icon Button--flat Slidable-underneath Slidable-underneath--right" data-toggle="dropdown">
+                            <i class="icon fa fa-fw fa-ellipsis-v Button-icon"></i>
+                            <span class="Button-label"></span>
+                            <i class="icon fa fa-fw fa-caret-down Button-caret"></i>
+                          </button>
+                          <ul class="Dropdown-menu dropdown-menu ">
+                            <li class="item-subscription">
+                              <button class=" hasIcon" type="button" title="Follow">
+                                <i class="icon fa fa-fw fa-star Button-icon"></i>
+                                <span class="Button-label">Follow</span></button>
+                            </li>
+                          </ul>
+                        </div>
+                        <a class="Slidable-underneath Slidable-underneath--left Slidable-underneath--elastic disabled">
+                          <i class="icon fa fa-fw fa-check "></i>
+                        </a>
+                        <div class="DiscussionListItem-content Slidable-content read">
+                          <a href="/u/Yossi1114" class="DiscussionListItem-author" title="" data-original-title="Yossi1114 started a day ago">
+                            <img class="Avatar " src="https://discuss.flarum.org/assets/avatars/pd9im15pju2yui6s.jpg"></a>
+                          <ul class="DiscussionListItem-badges badges"></ul>
+                          <a href="/d/3830-i-m-making-japanese-tranlation-but/4" class="DiscussionListItem-main">
+                            <h3 class="DiscussionListItem-title">I'm making Japanese tranlation but...</h3>
+                            <ul class="DiscussionListItem-info">
+                              <li class="item-tags">
+                                <span class="TagsLabel ">
+                                  <span class="TagLabel  colored" style="color: rgb(65, 65, 65); background-color: rgb(65, 65, 65);">
+                                    <span class="TagLabel-text">Dev</span></span>
+                                  <span class="TagLabel ">
+                                    <span class="TagLabel-text">i18n</span></span>
+                                </span>
+                              </li>
+                              <li class="item-terminalPost">
+                                <span>
+                                  <i class="icon fa fa-fw fa-reply "></i>
+                                  <span class="username">Dominion</span>replied
+                                  <time pubdate="true" datetime="2016-09-25T13:37:22+08:00" title="Sunday, September 25, 2016 1:37 PM" data-humantime="true">21 hours ago</time></span>
+                              </li>
+                            </ul>
+                          </a>
+                          <span class="DiscussionListItem-count" title="">2</span></div>
+                      </div>
+                    </li>
+                    <li data-id="2605">
+                      <div class="DiscussionListItem">
+                        <div class="ButtonGroup Dropdown dropdown DiscussionListItem-controls itemCount1">
+                          <button class="Dropdown-toggle Button Button--icon Button--flat Slidable-underneath Slidable-underneath--right" data-toggle="dropdown">
+                            <i class="icon fa fa-fw fa-ellipsis-v Button-icon"></i>
+                            <span class="Button-label"></span>
+                            <i class="icon fa fa-fw fa-caret-down Button-caret"></i>
+                          </button>
+                          <ul class="Dropdown-menu dropdown-menu ">
+                            <li class="item-subscription">
+                              <button class=" hasIcon" type="button" title="Follow">
+                                <i class="icon fa fa-fw fa-star Button-icon"></i>
+                                <span class="Button-label">Follow</span></button>
+                            </li>
+                          </ul>
+                        </div>
+                        <a class="Slidable-underneath Slidable-underneath--left Slidable-underneath--elastic">
+                          <i class="icon fa fa-fw fa-check "></i>
+                        </a>
+                        <div class="DiscussionListItem-content Slidable-content unread">
+                          <a href="/u/sijad" class="DiscussionListItem-author" title="" data-original-title="sijad started 19 Apr">
+                            <img class="Avatar " src="https://discuss.flarum.org/assets/avatars/pvbsgdqmt9nkgmcu.jpg"></a>
+                          <ul class="DiscussionListItem-badges badges"></ul>
+                          <a href="/d/2605-pages" class="DiscussionListItem-main">
+                            <h3 class="DiscussionListItem-title">Pages</h3>
+                            <ul class="DiscussionListItem-info">
+                              <li class="item-tags">
+                                <span class="TagsLabel ">
+                                  <span class="TagLabel  colored" style="color: rgb(72, 191, 131); background-color: rgb(72, 191, 131);">
+                                    <span class="TagLabel-text">Extensions</span></span>
+                                </span>
+                              </li>
+                              <li class="item-terminalPost">
+                                <span>
+                                  <i class="icon fa fa-fw fa-reply "></i>
+                                  <span class="username">AllysonSouzaNopSai</span>replied
+                                  <time pubdate="true" datetime="2016-09-25T03:23:53+08:00" title="Sunday, September 25, 2016 3:23 AM" data-humantime="true">a day ago</time></span>
+                              </li>
+                            </ul>
+                          </a>
+                          <span class="DiscussionListItem-count" title="Mark as Read">65</span></div>
+                      </div>
+                    </li>
+                    <li data-id="2435">
+                      <div class="DiscussionListItem">
+                        <div class="ButtonGroup Dropdown dropdown DiscussionListItem-controls itemCount1">
+                          <button class="Dropdown-toggle Button Button--icon Button--flat Slidable-underneath Slidable-underneath--right" data-toggle="dropdown">
+                            <i class="icon fa fa-fw fa-ellipsis-v Button-icon"></i>
+                            <span class="Button-label"></span>
+                            <i class="icon fa fa-fw fa-caret-down Button-caret"></i>
+                          </button>
+                          <ul class="Dropdown-menu dropdown-menu ">
+                            <li class="item-subscription">
+                              <button class=" hasIcon" type="button" title="Follow">
+                                <i class="icon fa fa-fw fa-star Button-icon"></i>
+                                <span class="Button-label">Follow</span></button>
+                            </li>
+                          </ul>
+                        </div>
+                        <a class="Slidable-underneath Slidable-underneath--left Slidable-underneath--elastic">
+                          <i class="icon fa fa-fw fa-check "></i>
+                        </a>
+                        <div class="DiscussionListItem-content Slidable-content unread">
+                          <a href="/u/HotWordland" class="DiscussionListItem-author" title="" data-original-title="HotWordland started 5 Apr">
+                            <img class="Avatar " src="https://discuss.flarum.org/assets/avatars/nomekjfazkl1f6n8.jpg"></a>
+                          <ul class="DiscussionListItem-badges badges"></ul>
+                          <a href="/d/2435-now-in-beta-5-how-to-build-extension" class="DiscussionListItem-main">
+                            <h3 class="DiscussionListItem-title">Now in beta.5 how to build extension?</h3>
+                            <ul class="DiscussionListItem-info">
+                              <li class="item-tags">
+                                <span class="TagsLabel ">
+                                  <span class="TagLabel  colored" style="color: rgb(75, 147, 209); background-color: rgb(75, 147, 209);">
+                                    <span class="TagLabel-text">Support</span></span>
+                                  <span class="TagLabel ">
+                                    <span class="TagLabel-text">Reported</span></span>
+                                </span>
+                              </li>
+                              <li class="item-terminalPost">
+                                <span>
+                                  <i class="icon fa fa-fw fa-reply "></i>
+                                  <span class="username">vsin</span>replied
+                                  <time pubdate="true" datetime="2016-09-25T01:52:18+08:00" title="Sunday, September 25, 2016 1:52 AM" data-humantime="true">a day ago</time></span>
+                              </li>
+                            </ul>
+                          </a>
+                          <span class="DiscussionListItem-count" title="Mark as Read">5</span></div>
+                      </div>
+                    </li>
+                    <li data-id="3758">
+                      <div class="DiscussionListItem">
+                        <div class="ButtonGroup Dropdown dropdown DiscussionListItem-controls itemCount1">
+                          <button class="Dropdown-toggle Button Button--icon Button--flat Slidable-underneath Slidable-underneath--right" data-toggle="dropdown">
+                            <i class="icon fa fa-fw fa-ellipsis-v Button-icon"></i>
+                            <span class="Button-label"></span>
+                            <i class="icon fa fa-fw fa-caret-down Button-caret"></i>
+                          </button>
+                          <ul class="Dropdown-menu dropdown-menu ">
+                            <li class="item-subscription">
+                              <button class=" hasIcon" type="button" title="Follow">
+                                <i class="icon fa fa-fw fa-star Button-icon"></i>
+                                <span class="Button-label">Follow</span></button>
+                            </li>
+                          </ul>
+                        </div>
+                        <a class="Slidable-underneath Slidable-underneath--left Slidable-underneath--elastic">
+                          <i class="icon fa fa-fw fa-check "></i>
+                        </a>
+                        <div class="DiscussionListItem-content Slidable-content unread">
+                          <a href="/u/marcozambi" class="DiscussionListItem-author" title="" data-original-title="marcozambi started 12 days ago">
+                            <img class="Avatar " src="https://discuss.flarum.org/assets/avatars/eefygzcso3fyu6rt.jpg"></a>
+                          <ul class="DiscussionListItem-badges badges"></ul>
+                          <a href="/d/3758-flarum-search-functionality-error-500/25" class="DiscussionListItem-main">
+                            <h3 class="DiscussionListItem-title">Flarum search functionality error 500</h3>
+                            <ul class="DiscussionListItem-info">
+                              <li class="item-tags">
+                                <span class="TagsLabel ">
+                                  <span class="TagLabel  colored" style="color: rgb(75, 147, 209); background-color: rgb(75, 147, 209);">
+                                    <span class="TagLabel-text">Support</span></span>
+                                </span>
+                              </li>
+                              <li class="item-terminalPost">
+                                <span>
+                                  <i class="icon fa fa-fw fa-reply "></i>
+                                  <span class="username">FBI</span>replied
+                                  <time pubdate="true" datetime="2016-09-24T21:12:45+08:00" title="Saturday, September 24, 2016 9:12 PM" data-humantime="true">2 days ago</time></span>
+                              </li>
+                            </ul>
+                          </a>
+                          <span class="DiscussionListItem-count" title="Mark as Read">5</span></div>
+                      </div>
+                    </li>
+                    <li data-id="3826">
+                      <div class="DiscussionListItem">
+                        <div class="ButtonGroup Dropdown dropdown DiscussionListItem-controls itemCount1">
+                          <button class="Dropdown-toggle Button Button--icon Button--flat Slidable-underneath Slidable-underneath--right" data-toggle="dropdown">
+                            <i class="icon fa fa-fw fa-ellipsis-v Button-icon"></i>
+                            <span class="Button-label"></span>
+                            <i class="icon fa fa-fw fa-caret-down Button-caret"></i>
+                          </button>
+                          <ul class="Dropdown-menu dropdown-menu ">
+                            <li class="item-subscription">
+                              <button class=" hasIcon" type="button" title="Follow">
+                                <i class="icon fa fa-fw fa-star Button-icon"></i>
+                                <span class="Button-label">Follow</span></button>
+                            </li>
+                          </ul>
+                        </div>
+                        <a class="Slidable-underneath Slidable-underneath--left Slidable-underneath--elastic">
+                          <i class="icon fa fa-fw fa-check "></i>
+                        </a>
+                        <div class="DiscussionListItem-content Slidable-content unread">
+                          <a href="/u/Yossi1114" class="DiscussionListItem-author" title="" data-original-title="Yossi1114 started 2 days ago">
+                            <img class="Avatar " src="https://discuss.flarum.org/assets/avatars/pd9im15pju2yui6s.jpg"></a>
+                          <ul class="DiscussionListItem-badges badges">
+                            <li class="item-locked">
+                              <span class="Badge Badge--locked " title="" data-original-title="Locked">
+                                <i class="icon fa fa-fw fa-lock Badge-icon"></i>
+                              </span>
+                            </li>
+                          </ul>
+                          <a href="/d/3826-looking-for-attach-a-file-extension" class="DiscussionListItem-main">
+                            <h3 class="DiscussionListItem-title">Looking for Attach a file Extension</h3>
+                            <ul class="DiscussionListItem-info">
+                              <li class="item-tags">
+                                <span class="TagsLabel ">
+                                  <span class="TagLabel  colored" style="color: rgb(147, 84, 202); background-color: rgb(147, 84, 202);">
+                                    <span class="TagLabel-text">Feedback</span></span>
+                                  <span class="TagLabel ">
+                                    <span class="TagLabel-text">Features</span></span>
+                                </span>
+                              </li>
+                              <li class="item-terminalPost">
+                                <span>
+                                  <i class="icon fa fa-fw fa-reply "></i>
+                                  <span class="username">Digital</span>replied
+                                  <time pubdate="true" datetime="2016-09-24T19:43:36+08:00" title="Saturday, September 24, 2016 7:43 PM" data-humantime="true">2 days ago</time></span>
+                              </li>
+                            </ul>
+                          </a>
+                          <span class="DiscussionListItem-count" title="Mark as Read">2</span></div>
+                      </div>
+                    </li>
+                    <li data-id="3824">
+                      <div class="DiscussionListItem">
+                        <div class="ButtonGroup Dropdown dropdown DiscussionListItem-controls itemCount1">
+                          <button class="Dropdown-toggle Button Button--icon Button--flat Slidable-underneath Slidable-underneath--right" data-toggle="dropdown">
+                            <i class="icon fa fa-fw fa-ellipsis-v Button-icon"></i>
+                            <span class="Button-label"></span>
+                            <i class="icon fa fa-fw fa-caret-down Button-caret"></i>
+                          </button>
+                          <ul class="Dropdown-menu dropdown-menu ">
+                            <li class="item-subscription">
+                              <button class=" hasIcon" type="button" title="Follow">
+                                <i class="icon fa fa-fw fa-star Button-icon"></i>
+                                <span class="Button-label">Follow</span></button>
+                            </li>
+                          </ul>
+                        </div>
+                        <a class="Slidable-underneath Slidable-underneath--left Slidable-underneath--elastic">
+                          <i class="icon fa fa-fw fa-check "></i>
+                        </a>
+                        <div class="DiscussionListItem-content Slidable-content unread">
+                          <a href="/u/kvnqprezo" class="DiscussionListItem-author" title="" data-original-title="kvnqprezo started 2 days ago">
+                            <span class="Avatar " style="background: rgb(215, 160, 229);">K</span></a>
+                          <ul class="DiscussionListItem-badges badges">
+                            <li class="item-locked">
+                              <span class="Badge Badge--locked " title="" data-original-title="Locked">
+                                <i class="icon fa fa-fw fa-lock Badge-icon"></i>
+                              </span>
+                            </li>
+                          </ul>
+                          <a href="/d/3824-is-there-any-extension-for-friendship-and-followers-system" class="DiscussionListItem-main">
+                            <h3 class="DiscussionListItem-title">Is there any extension for friendship and followers system?</h3>
+                            <ul class="DiscussionListItem-info">
+                              <li class="item-tags">
+                                <span class="TagsLabel ">
+                                  <span class="TagLabel  colored" style="color: rgb(147, 84, 202); background-color: rgb(147, 84, 202);">
+                                    <span class="TagLabel-text">Feedback</span></span>
+                                  <span class="TagLabel ">
+                                    <span class="TagLabel-text">Features</span></span>
+                                </span>
+                              </li>
+                              <li class="item-terminalPost">
+                                <span>
+                                  <i class="icon fa fa-fw fa-reply "></i>
+                                  <span class="username">Digital</span>replied
+                                  <time pubdate="true" datetime="2016-09-24T19:16:13+08:00" title="Saturday, September 24, 2016 7:16 PM" data-humantime="true">2 days ago</time></span>
+                              </li>
+                            </ul>
+                          </a>
+                          <span class="DiscussionListItem-count" title="Mark as Read">3</span></div>
+                      </div>
+                    </li>
+                    <li data-id="3825">
+                      <div class="DiscussionListItem">
+                        <div class="ButtonGroup Dropdown dropdown DiscussionListItem-controls itemCount1">
+                          <button class="Dropdown-toggle Button Button--icon Button--flat Slidable-underneath Slidable-underneath--right" data-toggle="dropdown">
+                            <i class="icon fa fa-fw fa-ellipsis-v Button-icon"></i>
+                            <span class="Button-label"></span>
+                            <i class="icon fa fa-fw fa-caret-down Button-caret"></i>
+                          </button>
+                          <ul class="Dropdown-menu dropdown-menu ">
+                            <li class="item-subscription">
+                              <button class=" hasIcon" type="button" title="Follow">
+                                <i class="icon fa fa-fw fa-star Button-icon"></i>
+                                <span class="Button-label">Follow</span></button>
+                            </li>
+                          </ul>
+                        </div>
+                        <a class="Slidable-underneath Slidable-underneath--left Slidable-underneath--elastic">
+                          <i class="icon fa fa-fw fa-check "></i>
+                        </a>
+                        <div class="DiscussionListItem-content Slidable-content unread">
+                          <a href="/u/ashkir" class="DiscussionListItem-author" title="" data-original-title="ashkir started 2 days ago">
+                            <span class="Avatar " style="background: rgb(208, 160, 229);">A</span></a>
+                          <ul class="DiscussionListItem-badges badges"></ul>
+                          <a href="/d/3825-duplicate-emails" class="DiscussionListItem-main">
+                            <h3 class="DiscussionListItem-title">Duplicate Emails</h3>
+                            <ul class="DiscussionListItem-info">
+                              <li class="item-tags">
+                                <span class="TagsLabel ">
+                                  <span class="TagLabel  colored" style="color: rgb(147, 84, 202); background-color: rgb(147, 84, 202);">
+                                    <span class="TagLabel-text">Feedback</span></span>
+                                </span>
+                              </li>
+                              <li class="item-terminalPost">
+                                <span>
+                                  <span class="username">ashkir</span>started
+                                  <time pubdate="true" datetime="2016-09-24T15:19:08+08:00" title="Saturday, September 24, 2016 3:19 PM" data-humantime="true">2 days ago</time></span>
+                              </li>
+                            </ul>
+                          </a>
+                          <span class="DiscussionListItem-count" title="Mark as Read">1</span></div>
+                      </div>
+                    </li>
+                    <li data-id="3823">
+                      <div class="DiscussionListItem">
+                        <div class="ButtonGroup Dropdown dropdown DiscussionListItem-controls itemCount1">
+                          <button class="Dropdown-toggle Button Button--icon Button--flat Slidable-underneath Slidable-underneath--right" data-toggle="dropdown">
+                            <i class="icon fa fa-fw fa-ellipsis-v Button-icon"></i>
+                            <span class="Button-label"></span>
+                            <i class="icon fa fa-fw fa-caret-down Button-caret"></i>
+                          </button>
+                          <ul class="Dropdown-menu dropdown-menu ">
+                            <li class="item-subscription">
+                              <button class=" hasIcon" type="button" title="Follow">
+                                <i class="icon fa fa-fw fa-star Button-icon"></i>
+                                <span class="Button-label">Follow</span></button>
+                            </li>
+                          </ul>
+                        </div>
+                        <a class="Slidable-underneath Slidable-underneath--left Slidable-underneath--elastic disabled">
+                          <i class="icon fa fa-fw fa-check "></i>
+                        </a>
+                        <div class="DiscussionListItem-content Slidable-content read">
+                          <a href="/u/pseudo-bash" class="DiscussionListItem-author" title="" data-original-title="pseudo-bash started 2 days ago">
+                            <img class="Avatar " src="https://discuss.flarum.org/assets/avatars/elg67qb8naw70whs.jpg"></a>
+                          <ul class="DiscussionListItem-badges badges"></ul>
+                          <a href="/d/3823-deleted-a-tag-and-now-site-is-blank/24" class="DiscussionListItem-main">
+                            <h3 class="DiscussionListItem-title">Deleted a tag, and now site is blank</h3>
+                            <ul class="DiscussionListItem-info">
+                              <li class="item-tags">
+                                <span class="TagsLabel ">
+                                  <span class="TagLabel  colored" style="color: rgb(75, 147, 209); background-color: rgb(75, 147, 209);">
+                                    <span class="TagLabel-text">Support</span></span>
+                                </span>
+                              </li>
+                              <li class="item-terminalPost">
+                                <span>
+                                  <i class="icon fa fa-fw fa-reply "></i>
+                                  <span class="username">Kulga</span>replied
+                                  <time pubdate="true" datetime="2016-09-24T11:01:24+08:00" title="Saturday, September 24, 2016 11:01 AM" data-humantime="true">2 days ago</time></span>
+                              </li>
+                            </ul>
+                          </a>
+                          <span class="DiscussionListItem-count" title="">23</span></div>
+                      </div>
+                    </li>
+                    <li data-id="2679">
+                      <div class="DiscussionListItem">
+                        <div class="ButtonGroup Dropdown dropdown DiscussionListItem-controls itemCount1">
+                          <button class="Dropdown-toggle Button Button--icon Button--flat Slidable-underneath Slidable-underneath--right" data-toggle="dropdown">
+                            <i class="icon fa fa-fw fa-ellipsis-v Button-icon"></i>
+                            <span class="Button-label"></span>
+                            <i class="icon fa fa-fw fa-caret-down Button-caret"></i>
+                          </button>
+                          <ul class="Dropdown-menu dropdown-menu ">
+                            <li class="item-subscription">
+                              <button class=" hasIcon" type="button" title="Follow">
+                                <i class="icon fa fa-fw fa-star Button-icon"></i>
+                                <span class="Button-label">Follow</span></button>
+                            </li>
+                          </ul>
+                        </div>
+                        <a class="Slidable-underneath Slidable-underneath--left Slidable-underneath--elastic disabled">
+                          <i class="icon fa fa-fw fa-check "></i>
+                        </a>
+                        <div class="DiscussionListItem-content Slidable-content read">
+                          <a href="/u/tenten8401" class="DiscussionListItem-author" title="" data-original-title="tenten8401 started 27 Apr">
+                            <img class="Avatar " src="https://discuss.flarum.org/assets/avatars/wttxxtbfrkjuu4rj.jpg"></a>
+                          <ul class="DiscussionListItem-badges badges"></ul>
+                          <a href="/d/2679-image-header/11" class="DiscussionListItem-main">
+                            <h3 class="DiscussionListItem-title">Image header</h3>
+                            <ul class="DiscussionListItem-info">
+                              <li class="item-tags">
+                                <span class="TagsLabel ">
+                                  <span class="TagLabel  colored" style="color: rgb(72, 191, 131); background-color: rgb(72, 191, 131);">
+                                    <span class="TagLabel-text">Extensions</span></span>
+                                  <span class="TagLabel ">
+                                    <span class="TagLabel-text">Themes</span></span>
+                                </span>
+                              </li>
+                              <li class="item-terminalPost">
+                                <span>
+                                  <i class="icon fa fa-fw fa-reply "></i>
+                                  <span class="username">kvnqprezo</span>replied
+                                  <time pubdate="true" datetime="2016-09-24T08:55:44+08:00" title="Saturday, September 24, 2016 8:55 AM" data-humantime="true">2 days ago</time></span>
+                              </li>
+                            </ul>
+                          </a>
+                          <span class="DiscussionListItem-count" title="">9</span></div>
+                      </div>
+                    </li>
+                    <li data-id="3766">
+                      <div class="DiscussionListItem">
+                        <div class="ButtonGroup Dropdown dropdown DiscussionListItem-controls itemCount1">
+                          <button class="Dropdown-toggle Button Button--icon Button--flat Slidable-underneath Slidable-underneath--right" data-toggle="dropdown">
+                            <i class="icon fa fa-fw fa-ellipsis-v Button-icon"></i>
+                            <span class="Button-label"></span>
+                            <i class="icon fa fa-fw fa-caret-down Button-caret"></i>
+                          </button>
+                          <ul class="Dropdown-menu dropdown-menu ">
+                            <li class="item-subscription">
+                              <button class=" hasIcon" type="button" title="Follow">
+                                <i class="icon fa fa-fw fa-star Button-icon"></i>
+                                <span class="Button-label">Follow</span></button>
+                            </li>
+                          </ul>
+                        </div>
+                        <a class="Slidable-underneath Slidable-underneath--left Slidable-underneath--elastic disabled">
+                          <i class="icon fa fa-fw fa-check "></i>
+                        </a>
+                        <div class="DiscussionListItem-content Slidable-content read">
+                          <a href="/u/PiR-P" class="DiscussionListItem-author" title="" data-original-title="PiR-P started 11 days ago">
+                            <img class="Avatar " src="https://discuss.flarum.org/assets/avatars/g86eccygl4lgzfdi.jpg"></a>
+                          <ul class="DiscussionListItem-badges badges"></ul>
+                          <a href="/d/3766-password-encoding-process/6" class="DiscussionListItem-main">
+                            <h3 class="DiscussionListItem-title">Password encoding process</h3>
+                            <ul class="DiscussionListItem-info">
+                              <li class="item-tags">
+                                <span class="TagsLabel ">
+                                  <span class="TagLabel  colored" style="color: rgb(65, 65, 65); background-color: rgb(65, 65, 65);">
+                                    <span class="TagLabel-text">Dev</span></span>
+                                </span>
+                              </li>
+                              <li class="item-terminalPost">
+                                <span>
+                                  <i class="icon fa fa-fw fa-reply "></i>
+                                  <span class="username">orpheus</span>replied
+                                  <time pubdate="true" datetime="2016-09-24T06:33:07+08:00" title="Saturday, September 24, 2016 6:33 AM" data-humantime="true">2 days ago</time></span>
+                              </li>
+                            </ul>
+                          </a>
+                          <span class="DiscussionListItem-count" title="">4</span></div>
+                      </div>
+                    </li>
+                    <li data-id="3819">
+                      <div class="DiscussionListItem">
+                        <div class="ButtonGroup Dropdown dropdown DiscussionListItem-controls itemCount1">
+                          <button class="Dropdown-toggle Button Button--icon Button--flat Slidable-underneath Slidable-underneath--right" data-toggle="dropdown">
+                            <i class="icon fa fa-fw fa-ellipsis-v Button-icon"></i>
+                            <span class="Button-label"></span>
+                            <i class="icon fa fa-fw fa-caret-down Button-caret"></i>
+                          </button>
+                          <ul class="Dropdown-menu dropdown-menu ">
+                            <li class="item-subscription">
+                              <button class=" hasIcon" type="button" title="Follow">
+                                <i class="icon fa fa-fw fa-star Button-icon"></i>
+                                <span class="Button-label">Follow</span></button>
+                            </li>
+                          </ul>
+                        </div>
+                        <a class="Slidable-underneath Slidable-underneath--left Slidable-underneath--elastic disabled">
+                          <i class="icon fa fa-fw fa-check "></i>
+                        </a>
+                        <div class="DiscussionListItem-content Slidable-content read">
+                          <a href="/u/cristic" class="DiscussionListItem-author" title="" data-original-title="cristic started 3 days ago">
+                            <img class="Avatar " src="https://discuss.flarum.org/assets/avatars/wqbxutztgcljjnbd.jpg"></a>
+                          <ul class="DiscussionListItem-badges badges"></ul>
+                          <a href="/d/3819-invalid-confirmation-token/4" class="DiscussionListItem-main">
+                            <h3 class="DiscussionListItem-title">Invalid confirmation token</h3>
+                            <ul class="DiscussionListItem-info">
+                              <li class="item-tags">
+                                <span class="TagsLabel ">
+                                  <span class="TagLabel  colored" style="color: rgb(75, 147, 209); background-color: rgb(75, 147, 209);">
+                                    <span class="TagLabel-text">Support</span></span>
+                                  <span class="TagLabel  colored" style="color: rgb(109, 187, 62); background-color: rgb(109, 187, 62);">
+                                    <span class="TagLabel-text">Solved</span></span>
+                                  <span class="TagLabel ">
+                                    <span class="TagLabel-text">Reported</span></span>
+                                </span>
+                              </li>
+                              <li class="item-terminalPost">
+                                <span>
+                                  <i class="icon fa fa-fw fa-reply "></i>
+                                  <span class="username">orpheus</span>replied
+                                  <time pubdate="true" datetime="2016-09-24T06:22:59+08:00" title="Saturday, September 24, 2016 6:22 AM" data-humantime="true">2 days ago</time></span>
+                              </li>
+                            </ul>
+                          </a>
+                          <span class="DiscussionListItem-count" title="">2</span></div>
+                      </div>
+                    </li>
+                  </ul>
+                  <div class="DiscussionList-loadMore">
+                    <button class="Button" type="button" title="Load More">
+                      <span class="Button-label">Load More</span></button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div id="flarum-loading" style="display: none;">Loading...</div>
+        <div class="App-composer">
+          <div class="container">
+            <div id="composer">
+              <div class="Composer " style="display: none; bottom: -700px; height: 438px;">
+                <div class="Composer-handle" style="cursor: row-resize;"></div>
+                <ul class="Composer-controls">
+                  <li class="item-minimize App-backControl">
+                    <button title="Minimize" itemclassname="App-backControl" class="Button Button--icon Button--link hasIcon" type="button">
+                      <i class="icon fa fa-fw fa-minus minimize Button-icon"></i>
+                    </button>
+                  </li>
+                  <li class="item-fullScreen">
+                    <button title="Full Screen" class="Button Button--icon Button--link hasIcon" type="button">
+                      <i class="icon fa fa-fw fa-expand Button-icon"></i>
+                    </button>
+                  </li>
+                  <li class="item-close">
+                    <button title="Close" class="Button Button--icon Button--link hasIcon" type="button">
+                      <i class="icon fa fa-fw fa-times Button-icon"></i>
+                    </button>
+                  </li>
+                </ul>
+                <div class="Composer-content"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </main>
     </div>
+    <div id="modal">
+      <div class="ModalManager modal fade"></div>
+    </div>
+    <div id="alerts">
+      <div class="AlertManager"></div>
+    </div>
+  </body>
 
-    <script src="/static/js/jquery-2.1.1.min.js"></script>
-        <script src="/static/bootstrap-3.2.0-dist/js/bootstrap.min.js"></script>
-        <script src="/static/bootstrap-switch-master/dist/js/bootstrap-switch.min.js"></script>
-        <script src="/static/bootstrapvalidator/bootstrapValidator.min.js"></script>
-        <script src="/static/js/jquery.bootstrap-autohidingnavbar.js"></script>
-        
-        
-
-        {% block javascript %}{% endblock %}
-
-        <script type="text/javascript">
-
-            $(document).ready(function() {
-                $('#global-scoreboard').autoHidingNavbar();
-
-                    {% if user_info == none %}
-                    $(".username-input").focus(function() {
-                        $(".bootstrap-switch-id-gender-switch").hide();
-                    });
-
-                    $(".username-input").focusout(function() {
-                        $(".bootstrap-switch-id-gender-switch").show();
-                    });
-
-                    $('.signin-form').bootstrapValidator({
-                        message: 'This value is not valid',
-                        feedbackIcons: {
-                            valid: 'glyphicon glyphicon-ok',
-                            invalid: 'glyphicon glyphicon-remove',
-                            validating: 'glyphicon glyphicon-refresh'
-                        },
-                        fields: {
-                            mobile: {
-                                validators: {
-                                    notEmpty: {
-                                        message: '手机不能为空'
-                                    },
-                                    regexp : {
-                                        regexp : /^\d{11}$/,
-                                        message : '手机号码为11位数字'
-                                    }
-                                }
-                            },
-                            password: {
-                                validators: {
-                                    notEmpty: {
-                                        message: '密码不能为空'
-                                    },
-                                    stringLength: {
-                                        min: 6,
-                                        max: 64,
-                                        message: '密码长度在 6 - 64 个字符之间'
-                                    }
-                                }
-                            },
-                        }
-                    });
-
-                    $('.signup-form').bootstrapValidator({
-                        message: 'This value is not valid',
-                        feedbackIcons: {
-                            valid: 'glyphicon glyphicon-ok',
-                            invalid: 'glyphicon glyphicon-remove',
-                            validating: 'glyphicon glyphicon-refresh'
-                        },
-                        fields: {
-                            username: {
-                                message: '用户名格式错误',
-                                validators: {
-                                    notEmpty: {
-                                        message: '用户名不能为空'
-                                    },
-                                    stringLength: {
-                                        min: 3,
-                                        max: 16,
-                                        message: '用户名长度在 3 - 16 个字符之间'
-                                    },
-                                    regexp: {
-                                        regexp: /^(?!_)(?!.*?_$)(?!\d+)[a-zA-Z0-9_\u4e00-\u9fa5]+$/,
-                                        message: "用户名可由中英文，数字，'_' 构成，但 '_' 不可在首尾，也不能全为数字"
-                                    }
-                                }
-                            },
-                            mobile: {
-                                validators: {
-                                    notEmpty: {
-                                        message: '手机不能为空'
-                                    },
-                                    regexp : {
-                                        regexp : /^\d{11}$/,
-                                        message : '手机号码为11位数字'
-                                    }
-                                }
-                            },
-                            password: {
-                                validators: {
-                                    notEmpty: {
-                                        message: '密码不能为空'
-                                    },
-                                    stringLength: {
-                                        min: 6,
-                                        max: 64,
-                                        message: '密码长度在 6 - 64 个字符之间'
-                                    }
-                                }
-                            },
-                            invite: {
-                                message: '邀请码错误',
-                                validators: {
-                                    notEmpty: {
-                                        message: '邀请码不能为空'
-                                    },
-                                    uuid: {
-                                        message: '邀请码格式不正确'
-                                    },
-                                }
-                            },
-                        }
-                    });
-
-                    {% if error == none %}
-                    {% if sign_in_up == "signin" %}
-                    $('#loginModal').modal('show');
-                    $('.signin-error').hide();
-                    $('.signup-error').hide();
-                    var link = $('#loginModal').attr('data-link');
-                    var link2 = $('#loginModal').attr('data-link2');
-                    var action;
-                    if (link != null) {
-                        action = "/signin?r=" + link;
-                        if (link2 != null) {
-                            action = action + "&n=" + link2;
-                        }
-                        $(".signin-form").attr("action", action);
-                    }
-                    {% endif %}
-
-                    {% if sign_in_up == "signup" %}
-                    {% if invite %}
-                    var invite = $('.invite-input').val()
-                    $('.invite-input').parent().hide();
-                    {% endif %}
-                    $('#loginModal').modal('show');
-                    $('.signin-form').hide();
-                    $('.signup-form').show();
-                    $('.signin-error').hide();
-                    $('.signup-error').hide();
-                    var link = $('#loginModal').attr('data-link');
-                    var link2 = $('#loginModal').attr('data-link2');
-                    var action;
-                    if (link != null) {
-                        action = "/signup?r=" + link;
-                        if (link2 != null) {
-
-                            action = action + "&n=" + link2;
-                        }
-                        $(".signin-form").attr("action", action);
-                    }
-                    {% endif %}
-                    {% else %}
-                    {% if sign_in_up == "signin" %}
-                    $('#loginModal').modal('show');
-                    $('.signin-form').hide();
-                    $('.signup-form').hide();
-                    $('.signup-error').hide();
-                    var error = $('.signin-error').attr("data-error");
-                    var error_text = ""
-                    if (error=="1") {
-                        error_text = "该手机号注册的用户不存在，请检查重试。";
-                    } else if (error=="2") {
-                        error_text = "输入的用户密码有误，请检查重试。";
-                    }
-                    $('.signin-error .error-text').text(error_text);
-                    $('.signin-error').show();
-                    {% endif %}
-
-                    {% if sign_in_up == "signup" %}
-                    $('#loginModal').modal('show');
-                    $('.signin-form').hide();
-                    $('.signup-form').hide();
-                    $('.signin-error').hide();
-                    var error = $('.signup-error').attr("data-error");
-                    var error_text = ""
-                    if (error=="2") {
-                        error_text = "你输入的邀请码有误，请输入正确的邀请码重试。";
-                    } else if (error=="3") {
-                        error_text = "所填手机号已经被注册过，请更改手机号重试。";
-                    } else if (error=="4") {
-                        error_text = "所填用户名已经被注册过，请更改用户名重试。";
-                    } else {
-                        error_text = "你输入的注册信息有误，请重试。";
-                    }
-                    $('.signup-error .error-text').text(error_text);
-                    $('.signup-error').show();
-                    {% endif %}
-                    {% endif %}
-
-                    $(document).on('click', '.unlogin', function() {
-                        $('#loginModal').modal('show');
-                        $('.signin-form').show();
-                        $('.signup-form').hide();
-                        $('.signin-error').hide();
-                        $('.signup-error').hide();
-                        var link = $(this).attr('data-link');
-                        var link2 = $(this).attr('data-link2');
-                        var action;
-                        if (link != null) {
-                            action = "/signin?r=" + link;
-                            if (link2 != null) {
-                                action = action + "&n=" + link2;
-                            }
-                            $(".signin-form").attr("action", action);
-                        }
-                    });
-
-                    $(".input").focusin(function() {
-                        $(this).find("span").animate({
-                            "opacity": "0"
-                        }, 200);
-                    });
-
-                    $(".input").focusout(function() {
-                        $(this).find("span").animate({
-                            "opacity": "1"
-                        }, 300);
-                    });
-
-                    $(document).on('click', '.signup-switch', function() {
-                        $('.signin-form').hide();
-                        $('.signup-form').show();
-                        $('.signin-error').hide();
-                        $('.signup-error').hide();
-                    });
-
-                    $(document).on('click', '.signin-switch', function() {
-                        $('.signup-form').hide();
-                        $('.signin-form').show();
-                        $('.signin-error').hide();
-                        $('.signup-error').hide();
-                    });
-
-                    $(document).on('click', '.nav-signup', function() {
-                        $('#loginModal').modal('show');
-                        $('.signin-form').hide();
-                        $('.signup-form').show();
-                        $('.signin-error').hide();
-                        $('.signup-error').hide();
-                    });
-
-                    $("#gender-switch").bootstrapSwitch();
-                    {% endif %}
-                });
-        </script>
-</body>
 </html>
