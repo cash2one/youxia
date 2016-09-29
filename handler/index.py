@@ -60,7 +60,7 @@ class IndexHandler(BaseHandler):
 
         all_newsfeeds = self.newsfeed_model.get_all_newsfeeds(current_page = p)
         template_variables["all_newsfeeds"] = all_newsfeeds
-        print all_newsfeeds
+        template_variables["page_name"] = "App--index"
 
         if(user_info):
             print 'ddd'
@@ -138,6 +138,7 @@ class PostHandler(BaseHandler):
         template_variables["post"] = post
         template_variables["tags"] = self.post_tag_model.get_post_all_tags(post_id)
         '''
+        template_variables["page_name"] = "App--discussion"
 
         self.render(self.template_path+"post.html", **template_variables)
 

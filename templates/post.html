@@ -1,121 +1,10 @@
-<!DOCTYPE html>
-<html>
-  
-  <head>
-    <meta charset="utf-8">
-    <title>26 岁了，希望能拥有一辆自己的汽车，但似乎又没有使用场景，应该买吗？r - Flarum Community</title>
-    <meta name="description" content="">
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1">
-    <meta name="theme-color" content="#E7672E">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://discuss.flarum.org/assets/forum-64c7858d.css">
-    <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Open+Sans:400italic,700italic,400,700,600">
-    <script src="https://use.fontawesome.com/328dabcfd7.js"></script>
-    <link rel="stylesheet" href="/static/css/main.css">
-  </head>
+{% extends 'layout.html' %}
 
-  <body class="no-touch">
-    <div id="app" class="App affix hasPane App--discussion">
-      <div id="app-navigation" class="App-navigation">
-        <div class="Navigation ButtonGroup App-backControl">
-          <a class="Button Navigation-back  hasIcon" href="/" active="false" type="button" title="">
-            <i class="icon fa fa-fw fa-chevron-left Button-icon"></i>
-            <span class="Button-label">
-              <i class="icon fa fa-fw fa-bars "></i>
-            </span>
-          </a>
-          <button class="Button Button--icon Navigation-pin hasIcon" type="button">
-            <i class="icon fa fa-fw fa-thumb-tack Button-icon"></i>
-          </button>
-        </div>
-      </div>
-      <div id="drawer" class="App-drawer">
-        <header id="header" class="App-header">
-          <div id="header-navigation" class="Header-navigation">
-            <div class="Navigation ButtonGroup ">
-              <a class="Button Navigation-back  hasIcon" href="/" active="false" type="button" title="">
-                <i class="icon fa fa-fw fa-chevron-left Button-icon"></i>
-                <span class="Button-label">
-                  <i class="icon fa fa-fw fa-bars "></i>
-                </span>
-              </a>
-              <button class="Button Button--icon Navigation-pin hasIcon" type="button">
-                <i class="icon fa fa-fw fa-thumb-tack Button-icon"></i>
-              </button>
-            </div>
-          </div>
-          <div class="container">
-            <h1 class="Header-title">
-              <a href="https://discuss.flarum.org" id="home-link">
-                <img src="https://discuss.flarum.org/assets/header.png" alt="" height="27"></a>
-            </h1>
-            <div class="Header-primary">
-              <ul class="Header-controls">
-                <li>
-                  <a href="http://flarum.org" class="Button Button--link">Home</a></li>
-                <li>
-                  <a href="http://discuss.flarum.org/d/859-flarum-community-guidelines" class="Button Button--link">Guidelines</a></li>
-                <li>
-                  <a href="http://flarum.org/docs/faq" class="Button Button--link">FAQ</a></li>
-                <li>
-                  <a href="https://gitter.im/flarum/flarum" class="Button Button--link" target="_blank">Chat</a></li>
-                <li>
-                  <a href="http://flarum.org/docs/contributing" class="Button Button--link" target="_blank">Report a Bug</a></li>
-              </ul>
-              <div id="header-primary">
-                <ul class="Header-controls"></ul>
-              </div>
-            </div>
-            <div id="header-secondary" class="Header-secondary">
-              <ul class="Header-controls">
-                <li class="item-search">
-                  <div class="Search ">
-                    <div class="Search-input">
-                      <input class="FormControl" placeholder="Search Forum"></div>
-                    <ul class="Dropdown-menu Search-results"></ul>
-                  </div>
-                </li>
-                <li class="item-notifications">
-                  <div class="ButtonGroup Dropdown dropdown NotificationsDropdown itemCount0">
-                    <button class="Dropdown-toggle Button Button--flat" data-toggle="dropdown" title="Notifications">
-                      <i class="icon fa fa-fw fa-bell Button-icon"></i>
-                      <span class="Button-label">Notifications</span></button>
-                    <div class="Dropdown-menu Dropdown-menu--right"></div>
-                  </div>
-                </li>
-                <li class="item-session">
-                  <div class="ButtonGroup Dropdown dropdown SessionDropdown itemCount4">
-                    <button class="Dropdown-toggle Button Button--user Button--flat" data-toggle="dropdown">
-                      <span class="Avatar " style="background: rgb(160, 176, 229);">G</span>
-                      <span class="Button-label">
-                        <span class="username">gaolinjie</span></span>
-                    </button>
-                    <ul class="Dropdown-menu dropdown-menu Dropdown-menu--right">
-                      <li class="item-profile">
-                        <a href="/u/gaolinjie" active="false" class=" hasIcon" type="button" title="Profile">
-                          <i class="icon fa fa-fw fa-user Button-icon"></i>
-                          <span class="Button-label">Profile</span></a>
-                      </li>
-                      <li class="item-settings">
-                        <a href="/settings" active="false" class=" hasIcon" type="button" title="Settings">
-                          <i class="icon fa fa-fw fa-cog Button-icon"></i>
-                          <span class="Button-label">Settings</span></a>
-                      </li>
-                      <li class="Dropdown-separator"></li>
-                      <li class="item-logOut">
-                        <button class=" hasIcon" type="button" title="Log Out">
-                          <i class="icon fa fa-fw fa-sign-out Button-icon"></i>
-                          <span class="Button-label">Log Out</span></button>
-                      </li>
-                    </ul>
-                  </div>
-                </li>
-              </ul>
-            </div>
-          </div>
-        </header>
-      </div>
-      <main class="App-content">
+{% block stylesheet %}
+{% endblock %} 
+
+{% block main %}
+<main class="App-content">
         <div id="content" style="padding-bottom: 0px;">
           <div class="DiscussionPage">
             <div class="DiscussionPage-list">
@@ -2045,7 +1934,7 @@
                         <div>
                           <div class="Post-tags">
                             <span class="TagsLabel ">
-                              <a class="TagLabel  colored" title="基于 Flarum 轻论坛的中文增强发行版，集成了一些比较实用的插件，使其更符合国内场景" href="/t/flarumone" style="color: rgb(214, 48, 48); background-color: rgb(214, 48, 48);">
+                              <a class="TagLabel  colored" title="基于 Flarum 轻论坛的中文增强发行版，集成了一些比较实用的插件，使其更符合国内场景" href="/t/flarumone" style="color: rgb(239, 86, 79); background-color: rgb(239, 86, 79);">
                                 <span class="TagLabel-text">FlarumOne</span></a>
                               <a class="TagLabel  colored" title="" href="/t/help" style="color: rgb(96, 176, 173); background-color: rgb(96, 176, 173);">
                                 <span class="TagLabel-text">求助</span></a>
@@ -2849,40 +2738,32 @@
         </div>
         <div id="flarum-loading" style="display: none;">Loading...</div>
         <div class="App-composer">
-          <div class="container">
-            <div id="composer">
-              <div class="Composer " style="display: none; bottom: -46px; top: auto; height: 300px;">
-                <div class="Composer-handle" style="cursor: row-resize;"></div>
-                <ul class="Composer-controls">
-                  <li class="item-minimize App-backControl">
-                    <button title="Minimize" itemclassname="App-backControl" class="Button Button--icon Button--link hasIcon" type="button">
-                      <i class="icon fa fa-fw fa-minus minimize Button-icon"></i>
-                    </button>
-                  </li>
-                  <li class="item-fullScreen">
-                    <button title="Full Screen" class="Button Button--icon Button--link hasIcon" type="button">
-                      <i class="icon fa fa-fw fa-expand Button-icon"></i>
-                    </button>
-                  </li>
-                  <li class="item-close">
-                    <button title="Close" class="Button Button--icon Button--link hasIcon" type="button">
-                      <i class="icon fa fa-fw fa-times Button-icon"></i>
-                    </button>
-                  </li>
-                </ul>
-                <div class="Composer-content"></div>
-              </div>
-            </div>
-          </div>
-        </div>
+      <div class="container">
+        <div id="composer"><div class="Composer" style="display: none; bottom: 0px; height: 300px;"><div class="Composer-handle" style="cursor: row-resize;"></div><ul class="Composer-controls"><li class="item-minimize App-backControl"><button title="Minimize" itemclassname="App-backControl" class="Button Button--icon Button--link hasIcon" type="button"><i class="icon fa fa-fw fa-minus minimize Button-icon"></i></button></li><li class="item-fullScreen"><button title="Full Screen" class="Button Button--icon Button--link hasIcon" type="button"><i class="icon fa fa-fw fa-expand Button-icon"></i></button></li><li class="item-close"><button title="Close" class="Button Button--icon Button--link hasIcon" type="button"><i class="icon fa fa-fw fa-times Button-icon"></i></button></li></ul><div class="Composer-content"><div class="ComposerBody "><span class="Avatar ComposerBody-avatar" style="background: rgb(160, 176, 229);">G</span><div class="ComposerBody-content"><ul class="ComposerBody-header"><li class="item-title"><h3><i class="icon fa fa-fw fa-reply "></i>  <a href="/d/2352-flarum-v0-1-0-beta-5-released">Flarum v0.1.0-beta.5 released</a></h3></li></ul><div class="ComposerBody-editor"><div class="TextEditor"><div class="ComposerBody-emojiWrapper"><div class="ComposerBody-mentionsWrapper"><textarea class="FormControl Composer-flexible" placeholder="Write a Reply..." style="height: 192px;"></textarea><div class="ComposerBody-mentionsDropdownContainer"></div></div><div class="ComposerBody-emojiDropdownContainer"></div></div><ul class="TextEditor-controls Composer-footer"><li class="item-submit App-primaryControl"><button class="Button Button--primary hasIcon" itemclassname="App-primaryControl" type="button" title="Post Reply"><i class="icon fa fa-fw fa-check Button-icon"></i><span class="Button-label">Post Reply</span></button></li><li class="item-preview"><button class="Button Button--icon hasIcon" type="button"><i class="icon fa fa-fw fa-eye Button-icon"></i></button></li></ul></div></div></div><div class="LoadingIndicator ComposerBody-loading"><div class="spinner" role="progressbar" style="position: absolute; width: 0px; z-index: auto; left: 50%; top: 50%;"><div style="position: absolute; top: -1px; opacity: 0.25; animation: opacity-100-25-0-8 1s linear infinite;"><div style="position: absolute; width: 7px; height: 3px; box-shadow: rgba(0, 0, 0, 0.0980392) 0px 0px 1px; transform-origin: left center 0px; transform: rotate(0deg) translate(5px, 0px); border-radius: 1px; background: rgb(102, 125, 153);"></div></div><div style="position: absolute; top: -1px; opacity: 0.25; animation: opacity-100-25-1-8 1s linear infinite;"><div style="position: absolute; width: 7px; height: 3px; box-shadow: rgba(0, 0, 0, 0.0980392) 0px 0px 1px; transform-origin: left center 0px; transform: rotate(45deg) translate(5px, 0px); border-radius: 1px; background: rgb(102, 125, 153);"></div></div><div style="position: absolute; top: -1px; opacity: 0.25; animation: opacity-100-25-2-8 1s linear infinite;"><div style="position: absolute; width: 7px; height: 3px; box-shadow: rgba(0, 0, 0, 0.0980392) 0px 0px 1px; transform-origin: left center 0px; transform: rotate(90deg) translate(5px, 0px); border-radius: 1px; background: rgb(102, 125, 153);"></div></div><div style="position: absolute; top: -1px; opacity: 0.25; animation: opacity-100-25-3-8 1s linear infinite;"><div style="position: absolute; width: 7px; height: 3px; box-shadow: rgba(0, 0, 0, 0.0980392) 0px 0px 1px; transform-origin: left center 0px; transform: rotate(135deg) translate(5px, 0px); border-radius: 1px; background: rgb(102, 125, 153);"></div></div><div style="position: absolute; top: -1px; opacity: 0.25; animation: opacity-100-25-4-8 1s linear infinite;"><div style="position: absolute; width: 7px; height: 3px; box-shadow: rgba(0, 0, 0, 0.0980392) 0px 0px 1px; transform-origin: left center 0px; transform: rotate(180deg) translate(5px, 0px); border-radius: 1px; background: rgb(102, 125, 153);"></div></div><div style="position: absolute; top: -1px; opacity: 0.25; animation: opacity-100-25-5-8 1s linear infinite;"><div style="position: absolute; width: 7px; height: 3px; box-shadow: rgba(0, 0, 0, 0.0980392) 0px 0px 1px; transform-origin: left center 0px; transform: rotate(225deg) translate(5px, 0px); border-radius: 1px; background: rgb(102, 125, 153);"></div></div><div style="position: absolute; top: -1px; opacity: 0.25; animation: opacity-100-25-6-8 1s linear infinite;"><div style="position: absolute; width: 7px; height: 3px; box-shadow: rgba(0, 0, 0, 0.0980392) 0px 0px 1px; transform-origin: left center 0px; transform: rotate(270deg) translate(5px, 0px); border-radius: 1px; background: rgb(102, 125, 153);"></div></div><div style="position: absolute; top: -1px; opacity: 0.25; animation: opacity-100-25-7-8 1s linear infinite;"><div style="position: absolute; width: 7px; height: 3px; box-shadow: rgba(0, 0, 0, 0.0980392) 0px 0px 1px; transform-origin: left center 0px; transform: rotate(315deg) translate(5px, 0px); border-radius: 1px; background: rgb(102, 125, 153);"></div></div></div>&nbsp;</div></div></div></div></div>
+      </div>
+    </div>>
       </main>
-    </div>
-    <div id="modal">
-      <div class="ModalManager modal fade"></div>
-    </div>
+{% endblock %}
+
+{% block modal %}
+    <div id="modal"><div class="ModalManager modal fade" style=""><div class="Modal modal-dialog FlagPostModal Modal--small"><div class="Modal-content"><div class="Modal-close App-backControl"><button class="Button Button--icon Button--link hasIcon" type="button"><i class="icon fa fa-fw fa-times Button-icon"></i></button></div><form><div class="Modal-header"><h3 class="App-titleControl App-titleControl--text">Flag Post</h3></div><div class="Modal-alert"></div><div class="Modal-body"><div class="Form Form--centered"><div class="Form-group"><div><label class="checkbox"><input type="radio" name="reason" value="off_topic"><strong>Off-topic</strong>This post is not relevant to the current discussion and should be moved elsewhere.</label><label class="checkbox"><input type="radio" name="reason" value="inappropriate"><strong>Inappropriate</strong>This post is offensive, abusive, or violates our <a>community guidelines</a>.</label><label class="checkbox"><input type="radio" name="reason" value="spam"><strong>Spam</strong>This post is an advertisement.</label><label class="checkbox"><input type="radio" name="reason" value="other"><strong>Other</strong></label></div></div><div class="Form-group"><button class="Button Button--primary Button--block disabled" type="submit" disabled="" title="Flag Post"><span class="Button-label">Flag Post</span></button></div></div></div></form></div></div></div></div>
     <div id="alerts">
       <div class="AlertManager"></div>
     </div>
-  </body>
+{% endblock %}
 
-</html>
+{% block javascript %}
+<script type="text/javascript">
+$(document).ready(function() {
+  $(document).on('click', '.item-flag', function() {
+    $('.modal').modal('show');
+  });
+
+  $(document).on('click', '.item-controls', function() {
+    $('.Composer').addClass('normal'); 
+    $('.Composer').addClass('visible');
+    $('.Composer').css("display", "block");
+  });
+});
+</script>
+{% endblock %}
