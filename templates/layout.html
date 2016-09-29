@@ -21,7 +21,7 @@
   </head>
   
   <body class="no-touch">
-    <div id="app" class="App affix {{page_name}} scrolled" style="min-height: 775px;">
+    <div id="app" class="App affix {{page_name}}" style="min-height: 775px;">
       <div id="app-navigation" class="App-navigation">
         <div class="Navigation ButtonGroup App-backControl">
           <button class="Button Button--icon Navigation-drawer hasIcon" type="button">
@@ -134,7 +134,14 @@ $(document).ready(function() {
     $('.Composer').css("display", "none");
   });
 
-
+   $(document).scroll(function() {
+      var offset = $(document).scrollTop();
+      if (offset < 1) {
+        $('#app').removeClass('scrolled');
+      } else {
+        $('#app').addClass('scrolled');
+      }
+    });
 });
 </script>
     {% block javascript %}{% endblock %}
