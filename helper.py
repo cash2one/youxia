@@ -33,6 +33,7 @@ class Filters():
         self.jinja2.filters["img_content_process"] = self.img_content_process
         self.jinja2.filters["list_content_process"] = self.list_content_process
         self.jinja2.filters["markdown"] = self.markdown
+        self.jinja2.filters["format_username"] = self.format_username
         return self.jinja2
 
     def dump_errors(self, errors):
@@ -261,3 +262,7 @@ class Filters():
         if not content:
             return ""
         return markdown(content, extensions = ['codehilite', 'fenced_code', 'mathjax'], safe_mode = 'escape')
+
+    def format_username(self, name):
+        
+        return name[0].upper()

@@ -53,14 +53,13 @@ class IndexHandler(BaseHandler):
         user_info = self.current_user
         template_variables["static_path"] = self.static_path
         template_variables["user_info"] = user_info
+        template_variables["page_name"] = "App--index"
 
         p = int(self.get_argument("p", "1"))
-        all_nowfeeds = self.nowfeed_model.get_all_nowfeeds(current_page = p)
-        template_variables["all_nowfeeds"] = all_nowfeeds
 
-        all_newsfeeds = self.newsfeed_model.get_all_newsfeeds(current_page = p)
-        template_variables["all_newsfeeds"] = all_newsfeeds
-        template_variables["page_name"] = "App--index"
+        all_posts = self.post_model.get_all_posts(current_page = p)
+        template_variables["all_posts"] = all_posts
+        
 
         if(user_info):
             print 'ddd'

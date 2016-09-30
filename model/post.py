@@ -41,3 +41,11 @@ class PostModel(Query):
     def delete_post_by_post_id(self, post_id):
         where = "post.id = %s" % post_id
         return self.where(where).delete()
+
+    def get_all_posts(self, num = 20, current_page = 1):
+        order = "post.id DESC"
+        join = "LEFT JOIN user AS author_user ON post.author_id = author_user.uid"
+        field = "post.*, \
+                author_user.username as author_username, \
+                author_user.avatar as author_avatar"
+        return self.order(order).join(join).field(field).pages(current_page = current_page, list_rows = num) 
