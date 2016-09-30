@@ -264,5 +264,4 @@ class Filters():
         return markdown(content, extensions = ['codehilite', 'fenced_code', 'mathjax'], safe_mode = 'escape')
 
     def format_username(self, name):
-        
         return name[0].upper()

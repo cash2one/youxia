@@ -160,7 +160,6 @@ class NewHandler(BaseHandler):
 
         post_info = getJsonKeyValue(data, post_info, "title")
         post_info = getJsonKeyValue(data, post_info, "content")
-        post_info = getJsonKeyValue(data, post_info, "cover")
 
         post_info["author_id"] = self.current_user["uid"]
         post_info["updated"] = time.strftime('%Y-%m-%d %H:%M:%S')
@@ -170,7 +169,7 @@ class NewHandler(BaseHandler):
         if post_id:
             success = 0
             message = "成功新建帖子"
-            redirect = "/p/"+str(post_id)
+            redirect = "/post/"+str(post_id)
         else:
             success = -1
             message = "新建帖子失败"
@@ -182,6 +181,7 @@ class NewHandler(BaseHandler):
             "redirect": redirect
         }))
 
+        '''
         # process tags
         tagStr = data["tags"]
         print tagStr
@@ -192,6 +192,7 @@ class NewHandler(BaseHandler):
                 if tag:
                     self.post_tag_model.add_new_post_tag({"post_id": post_id, "tag_id": tag.id})
                     self.tag_model.update_tag_by_tag_id(tag.id, {"post_num": tag.post_num+1})
+        '''
 
         
 
