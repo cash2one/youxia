@@ -102,8 +102,8 @@
                   </div>
                 </li>
                 {%else%}
-                <li class="item-signUp unlogin"><button class="Button Button--link" type="button" title="注册"><span class="Button-label">注册</span></button></li>
-                <li class="item-logIn unlogin"><button class="Button Button--link" type="button" title="登录"><span class="Button-label">登录</span></button></li>
+                <li class="item-signUp signUp"><button class="Button Button--link" type="button" title="注册"><span class="Button-label">注册</span></button></li>
+                <li class="item-logIn logIn"><button class="Button Button--link" type="button" title="登录"><span class="Button-label">登录</span></button></li>
                 {%endif%}
               </ul>
             </div>
@@ -147,6 +147,36 @@ $(document).ready(function() {
         $('#app').addClass('scrolled');
       }
     });
+
+   $('.modal').on('hidden.bs.modal', function () {
+    $('.ModalManager').html("");
+    });
+   $(document).on('click', '.Modal-close', function() {
+    $('.modal').modal('hide');
+  });
+
+
+   $(document).on('click', '.logIn', function() {
+    var modal = '<div class="Modal modal-dialog LogInModal Modal--small"><div class="Modal-content"><div class="Modal-close App-backControl"><button class="Button Button--icon Button--link hasIcon" type="button"><i class="icon fa fa-fw fa-times Button-icon"></i></button></div><form><div class="Modal-header"><h3 class="App-titleControl App-titleControl--text">登录</h3></div><div class="Modal-alert"></div><div class="Modal-body"><div class="LogInButtons"><button class="Button LogInButton--facebook LogInButton hasIcon" path="/auth/facebook" type="button" title="Log In with Facebook"><i class="icon fa fa-fw fa-facebook-official Button-icon"></i><span class="Button-label">Log In with Facebook</span></button><button class="Button LogInButton--github LogInButton hasIcon" path="/auth/github" type="button" title="Log In with GitHub"><i class="icon fa fa-fw fa-github Button-icon"></i><span class="Button-label">Log In with GitHub</span></button><button class="Button LogInButton--twitter LogInButton hasIcon" path="/auth/twitter" type="button" title="Log In with Twitter"><i class="icon fa fa-fw fa-twitter Button-icon"></i><span class="Button-label">Log In with Twitter</span></button></div><div class="Form Form--centered"><div class="Form-group"><input class="FormControl" name="email" type="text" placeholder="用户名或邮箱" bidi="function b(){arguments.length&amp;&amp;(a=arguments[0]);return a}"></div><div class="Form-group"><input class="FormControl" name="password" type="password" placeholder="密码" bidi="function b(){arguments.length&amp;&amp;(a=arguments[0]);return a}"></div><div class="Form-group"><button class="Button Button--primary Button--block" type="submit" title="登录"><span class="Button-label">登录</span></button></div></div></div><div class="Modal-footer"><p class="LogInModal-forgotPassword"><a class="forgotPassword">忘记密码?</a></p><p class="LogInModal-signUp">还没有账户? <a class="signUp">去注册</a></p></div></form></div></div>';
+    $('.ModalManager').html(modal);
+    $('.modal').modal('show');
+  });
+
+  $(document).on('click', '.signUp', function() {
+    var modal = '<div class="Modal modal-dialog Modal--small SignUpModal"><div class="Modal-content"><div class="Modal-close App-backControl"><button class="Button Button--icon Button--link hasIcon" type="button"><i class="icon fa fa-fw fa-times Button-icon"></i></button></div><form><div class="Modal-header"><h3 class="App-titleControl App-titleControl--text">注册</h3></div><div class="Modal-alert"></div><div class="Modal-body"><div class="LogInButtons"><button class="Button LogInButton--facebook LogInButton hasIcon" path="/auth/facebook" type="button" title="Log In with Facebook"><i class="icon fa fa-fw fa-facebook-official Button-icon"></i><span class="Button-label">Log In with Facebook</span></button><button class="Button LogInButton--github LogInButton hasIcon" path="/auth/github" type="button" title="Log In with GitHub"><i class="icon fa fa-fw fa-github Button-icon"></i><span class="Button-label">Log In with GitHub</span></button><button class="Button LogInButton--twitter LogInButton hasIcon" path="/auth/twitter" type="button" title="Log In with Twitter"><i class="icon fa fa-fw fa-twitter Button-icon"></i><span class="Button-label">Log In with Twitter</span></button></div><div class="Form Form--centered"><div class="Form-group"><input class="FormControl" name="username" type="text" placeholder="用户名"></div><div class="Form-group"><input class="FormControl" name="email" type="email" placeholder="邮箱"></div><div class="Form-group"><input class="FormControl" name="password" type="password" placeholder="密码"></div><div class="Form-group"><button class="Button Button--primary Button--block" type="submit" title="注册"><span class="Button-label">注册</span></button></div></div></div><div class="Modal-footer"><p class="SignUpModal-logIn">已有帐户? <a class="logIn">去登录</a></p></div></form></div></div>';
+    $('.ModalManager').html(modal);
+    $('.modal').modal('show');
+  });
+
+$(document).on('click', '.forgotPassword', function() {
+    var modal = '<div class="Modal modal-dialog ForgotPasswordModal Modal--small"><div class="Modal-content"><div class="Modal-close App-backControl"><button class="Button Button--icon Button--link hasIcon" type="button"><i class="icon fa fa-fw fa-times Button-icon"></i></button></div><form><div class="Modal-header"><h3 class="App-titleControl App-titleControl--text">重置密码</h3></div><div class="Modal-alert"></div><div class="Modal-body"><div class="Form Form--centered"><p class="helpText">请输入你的邮箱地址我们会发送一个密码重置链接到你的邮箱中.</p><div class="Form-group"><input class="FormControl" name="email" type="email" placeholder="邮箱"></div><div class="Form-group"><button class="Button Button--primary Button--block" type="submit" title="重置密码"><span class="Button-label">重置密码</span></button></div></div></div></form></div></div>';
+    $('.ModalManager').html(modal);
+    $('.modal').modal('show');
+  });
+
+
+
+   
 });
 </script>
     {% block javascript %}{% endblock %}
