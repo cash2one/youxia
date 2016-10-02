@@ -80,15 +80,15 @@ class SigninHandler(BaseHandler):
 
         form = SigninForm(self)
 
-        user_info = self.user_model.get_user_by_mobile(form.mobile.data)
+        user_info = self.user_model.get_user_by_email(form.email.data)
         if user_info == None:
             self.redirect("/?s=signin&e=1")
             return
         
         secure_password = hashlib.sha1(form.password.data).hexdigest()
         secure_password_md5 = hashlib.md5(form.password.data).hexdigest()
-        user_info = self.user_model.get_user_by_mobile_and_password(form.mobile.data, secure_password)
-        user_info = user_info or self.user_model.get_user_by_mobile_and_password(form.mobile.data, secure_password_md5)
+        user_info = self.user_model.get_user_by_email_and_password(form.email.data, secure_password)
+        user_info = user_info or self.user_model.get_user_by_email_and_password(form.email.data, secure_password_md5)
         
         if(user_info):
             do_login(self, user_info["uid"])
@@ -145,21 +145,19 @@ class SignupHandler(BaseHandler):
 
         form = SignupForm(self)
 
+        '''
         if not form.validate():
             self.get({"errors": form.errors})
             return
 
+        
         challenge=form.geetest_challenge.data
         validate=form.geetest_validate.data
         seccode=form.geetest_seccode.data
         print 'challenge'+challenge;print 'validate'+validate;print 'seccode'+seccode
         if not gt.geetest_validate(challenge,validate,seccode):
             return
-
-        if form.gender.data=="on":
-            form.gender.data="男"
-        else:
-            form.gender.data="女"
+        '''
 
         if not DEBUG_FLAG:
             # validate invite code
@@ -168,11 +166,11 @@ class SignupHandler(BaseHandler):
                 self.redirect("/?s=signup&e=2")
                 return
         # validate duplicated
-        duplicated_mobile = self.user_model.get_user_by_mobile(form.mobile.data)
+        duplicated_email = self.user_model.get_user_by_email(form.email.data)
         duplicated_username = self.user_model.get_user_by_username(form.username.data)
 
-        if(duplicated_mobile or duplicated_username):
-            if(duplicated_mobile):
+        if(duplicated_email or duplicated_username):
+            if(duplicated_email):
                 self.redirect("/?s=signup&e=3")
                 return
 
@@ -194,13 +192,12 @@ class SignupHandler(BaseHandler):
         #avatar = self.avatar_model.get_rand_avatar(form.gender.data)
 
         user_info = {
-            "mobile": form.mobile.data,
+            "email": form.email.data,
             "password": secure_password,
             "username": form.username.data,
-            #s"avatar": avatar[0].avatar,
+            #"avatar": avatar[0].avatar,
             "intro": "",
-            "gender": form.gender.data,
-            "admin": "normal",
+            #"gender": form.gender.data,
             "created": time.strftime('%Y-%m-%d %H:%M:%S')
         }
 
@@ -210,10 +207,9 @@ class SignupHandler(BaseHandler):
         user_id = self.user_model.add_new_user(user_info)
         
         if(user_id):
-            
-
             do_login(self, user_id)
 
+            '''
             if not DEBUG_FLAG:
                 follow_info = {
                     "author_id": user_id,
@@ -228,8 +224,7 @@ class SignupHandler(BaseHandler):
                 user_created_invite = self.user_model.get_user_by_uid(icode.user_created)
                 self.user_model.update_user_info_by_user_id(icode.user_created, {"income": user_created_invite.income+100})
                 self.balance_model.add_new_balance({"author_id":  icode.user_created, "balance_type": 12, "amount": 100, "balance": user_created_invite.income-user_created_invite.expend+100, "created": time.strftime('%Y-%m-%d %H:%M:%S')})
-
-            
+            '''
 
         self.redirect(self.get_argument("next", "/"))
 

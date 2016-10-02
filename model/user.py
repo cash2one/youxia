@@ -47,6 +47,10 @@ class UserModel(Query):
         where = "mobile = '%s' AND password = '%s'" % (mobile, secure_password)
         return self.where(where).find()
 
+    def get_user_by_email_and_password(self, email, secure_password):
+        where = "email = '%s' AND password = '%s'" % (email, secure_password)
+        return self.where(where).find()
+
     def get_user_by_email_and_uid(self, email, uid):
         where = "email = '%s' AND uid = '%s'" % (email, uid)
         return self.where(where).find()
