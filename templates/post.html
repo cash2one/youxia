@@ -118,9 +118,13 @@
                               <li class="item-user">
                                 <div class="PostUser">
                                   <h3>
-                                    <a href="/u/tenten8401">
-                                      <img class="Avatar PostUser-avatar" src="https://discuss.flarum.org/assets/avatars/wttxxtbfrkjuu4rj.jpg">
-                                      <span class="username">tenten8401</span></a>
+                                    <a href="/user/{{post.author_username}}">
+                                      {%if post.author_avatar%}
+        <img class="Avatar PostUser-avatar" src="{{post.author_avatar}}"></a>
+        {%else%}
+        <span class="Avatar PostUser-avatar" style="background: rgb(208, 160, 229);">{{post.author_username|format_username}}</span>
+        {%endif%}
+                                      <span class="username">{{post.author_username}}</span></a>
                                   </h3>
                                   <ul class="PostUser-badges badges"></ul>
                                 </div>
@@ -128,7 +132,7 @@
                               <li class="item-meta">
                                 <div class="Dropdown PostMeta">
                                   <a class="Dropdown-toggle" data-toggle="dropdown">
-                                    <time pubdate="true" datetime="2016-04-27T08:34:10+08:00" title="Wednesday, April 27, 2016 8:34 AM" data-humantime="true">27 Apr</time></a>
+                                    <time pubdate="true" datetime="2016-04-27T08:34:10+08:00" title="Wednesday, April 27, 2016 8:34 AM" data-humantime="true">{{post.created|pretty_date}}</time></a>
                                   <div class="Dropdown-menu dropdown-menu">
                                     <span class="PostMeta-number">Post #1</span>
                                     <span class="PostMeta-time">
@@ -138,18 +142,13 @@
                                 </div>
                               </li>
                               <li class="item-edited">
-                                <span class="PostEdited" title="" data-original-title="tenten8401 edited 2 Aug">Edited</span></li>
+                                <span class="PostEdited" title="" data-original-title="tenten8401 edited 2 Aug">编辑</span></li>
                             </ul>
                           </header>
                           <div class="Post-title">
-                            <h2 class="DiscussionHero-title">26 岁了，希望能拥有一辆自己的汽车，但似乎又没有使用场景，应该买吗？</h2></div>
+                            <h2 class="DiscussionHero-title">{{post.title}}</h2></div>
                           <div class="Post-body">
-                            <p>坐标武汉，月入8.5税前。房租800.开销2000.</p>
-                            <p>租房离公司步行15分钟。每天两点一线。</p>
-                            <p>老家离武汉200多公里。坐动车2个小时。来回车费150元。一个月回去一次。如果自己开车回去来回成本是多少？是400吗？</p>
-                            <p>觉得买了车似乎没有什么使用场景。</p>
-                            <p>在武汉还没有房，老家有房</p>
-                            <p>该不该卖车，心里痒痒。。。。</p>
+                            {{post.content}}
                           </div>
                           <aside class="Post-actions">
                             <ul>
@@ -197,707 +196,24 @@
                       </article>
                       <div class="Post-quoteButtonContainer"></div>
                     </div>
-                    <div class="PostStream-item" data-index="1" data-time="2016-04-27T00:41:30.000Z" data-number="2" data-id="23078" data-type="comment" style="display: block;">
-                      <article class="Post undefined CommentPost">
-                        <div>
-                          <header class="Post-header">
-                            <ul>
-                              <li class="item-user">
-                                <div class="PostUser">
-                                  <h3>
-                                    <a href="/u/Kakifrucht">
-                                      <img class="Avatar PostUser-avatar" src="https://discuss.flarum.org/assets/avatars/apkri5lmzrt1nbkb.jpg">
-                                      <span class="username">Kakifrucht</span></a>
-                                  </h3>
-                                  <ul class="PostUser-badges badges"></ul>
-                                </div>
-                              </li>
-                              <li class="item-meta">
-                                <div class="Dropdown PostMeta">
-                                  <a class="Dropdown-toggle" data-toggle="dropdown">
-                                    <time pubdate="true" datetime="2016-04-27T08:41:30+08:00" title="Wednesday, April 27, 2016 8:41 AM" data-humantime="true">27 Apr</time></a>
-                                  <div class="Dropdown-menu dropdown-menu">
-                                    <span class="PostMeta-number">Post #2</span>
-                                    <span class="PostMeta-time">
-                                      <time pubdate="true" datetime="2016-04-27T08:41:30+08:00">Wednesday, April 27, 2016 8:41 AM</time></span>
-                                    <span class="PostMeta-ip"></span>
-                                    <input class="FormControl PostMeta-permalink"></div>
-                                </div>
-                              </li>
-                            </ul>
-                          </header>
-                          <div class="Post-body">
-                            <p>Looks cool. I saw that your buttons were difficult to read, maybe this helps you:
-                              <a href="https://discuss.flarum.org/d/2360-custom-css-bar-buttons/5" target="_blank" rel="nofollow noreferrer">https://discuss.flarum.org/d/2360-custom-css-bar-buttons/5</a></p>
-                          </div>
-                          <aside class="Post-actions">
-                            <ul>
-                              <li class="item-like">
-                                <button class="Button Button--link" type="button" title="赞">
-                                  <span class="Button-label">赞</span></button>
-                              </li>
-                              <li class="item-reply">
-                                <button class="Button Button--link" type="button" title="回复">
-                                  <span class="Button-label">回复</span></button>
-                              </li>
-                              <li>
-                                <div class="ButtonGroup Dropdown dropdown Post-controls itemCount1">
-                                  <button class="Dropdown-toggle Button Button--icon Button--flat" data-toggle="dropdown">
-                                    <i class="icon fa fa-fw fa-ellipsis-h Button-icon"></i>
-                                    <span class="Button-label"></span>
-                                    <i class="icon fa fa-fw fa-caret-down Button-caret"></i>
-                                  </button>
-                                  <ul class="Dropdown-menu dropdown-menu Dropdown-menu--right">
-                                    <li class="item-flag">
-                                      <button class=" hasIcon" type="button" title="举报">
-                                        <i class="icon fa fa-fw fa-flag Button-icon"></i>
-                                        <span class="Button-label">举报</span></button>
-                                    </li>
-                                  </ul>
-                                </div>
-                              </li>
-                            </ul>
-                          </aside>
-                          <footer class="Post-footer">
-                            <ul>
-                              <li class="item-liked">
-                                <div class="Post-likedBy">
-                                  <i class="icon fa fa-fw fa-thumbs-o-up "></i>
-                                  <a href="/u/datitisev">
-                                    <span class="username">datitisev</span></a>likes this.</div>
-                              </li>
-                            </ul>
-                          </footer>
-                        </div>
-                      </article>
-                      <div class="Post-quoteButtonContainer"></div>
-                    </div>
-                    <div class="PostStream-item" data-index="2" data-time="2016-04-27T00:44:38.000Z" data-number="3" data-id="23079" data-type="comment" style="display: block;">
-                      <article class="Post undefined CommentPost">
-                        <div>
-                          <header class="Post-header">
-                            <ul>
-                              <li class="item-user">
-                                <div class="PostUser">
-                                  <h3>
-                                    <a href="/u/tenten8401">
-                                      <img class="Avatar PostUser-avatar" src="https://discuss.flarum.org/assets/avatars/wttxxtbfrkjuu4rj.jpg">
-                                      <span class="username">tenten8401</span></a>
-                                  </h3>
-                                  <ul class="PostUser-badges badges"></ul>
-                                </div>
-                              </li>
-                              <li class="item-meta">
-                                <div class="Dropdown PostMeta">
-                                  <a class="Dropdown-toggle" data-toggle="dropdown">
-                                    <time pubdate="true" datetime="2016-04-27T08:44:38+08:00" title="Wednesday, April 27, 2016 8:44 AM" data-humantime="true">27 Apr</time></a>
-                                  <div class="Dropdown-menu dropdown-menu">
-                                    <span class="PostMeta-number">Post #3</span>
-                                    <span class="PostMeta-time">
-                                      <time pubdate="true" datetime="2016-04-27T08:44:38+08:00">Wednesday, April 27, 2016 8:44 AM</time></span>
-                                    <span class="PostMeta-ip"></span>
-                                    <input class="FormControl PostMeta-permalink"></div>
-                                </div>
-                              </li>
-                            </ul>
-                          </header>
-                          <div class="Post-body">
-                            <p>
-                              <a href="https://discuss.flarum.org/d/2679/2" class="PostMention" data-id="23078">Kakifrucht</a>Your making a minecraft site too, XD
-                              <br>Anyways, updated the theme.</p></div>
-                          <aside class="Post-actions">
-                            <ul>
-                              <li class="item-like">
-                                <button class="Button Button--link" type="button" title="赞">
-                                  <span class="Button-label">赞</span></button>
-                              </li>
-                              <li class="item-reply">
-                                <button class="Button Button--link" type="button" title="回复">
-                                  <span class="Button-label">回复</span></button>
-                              </li>
-                              <li>
-                                <div class="ButtonGroup Dropdown dropdown Post-controls itemCount1">
-                                  <button class="Dropdown-toggle Button Button--icon Button--flat" data-toggle="dropdown">
-                                    <i class="icon fa fa-fw fa-ellipsis-h Button-icon"></i>
-                                    <span class="Button-label"></span>
-                                    <i class="icon fa fa-fw fa-caret-down Button-caret"></i>
-                                  </button>
-                                  <ul class="Dropdown-menu dropdown-menu Dropdown-menu--right">
-                                    <li class="item-flag">
-                                      <button class=" hasIcon" type="button" title="举报">
-                                        <i class="icon fa fa-fw fa-flag Button-icon"></i>
-                                        <span class="Button-label">举报</span></button>
-                                    </li>
-                                  </ul>
-                                </div>
-                              </li>
-                            </ul>
-                          </aside>
-                          <footer class="Post-footer">
-                            <ul>
-                              <li class="item-liked">
-                                <div class="Post-likedBy">
-                                  <i class="icon fa fa-fw fa-thumbs-o-up "></i>
-                                  <a href="/u/datitisev">
-                                    <span class="username">datitisev</span></a>likes this.</div>
-                              </li>
-                            </ul>
-                          </footer>
-                        </div>
-                        <ul class="Dropdown-menu PostMention-preview fade"></ul>
-                      </article>
-                      <div class="Post-quoteButtonContainer"></div>
-                    </div>
-                    <div class="PostStream-item" data-index="3" data-time="2016-08-01T21:47:57.000Z" data-number="5" data-id="28470" data-type="comment" style="display: block;">
-                      <div class="PostStream-timeGap">
-                        <span>3 months later</span></div>
-                      <article class="Post undefined CommentPost">
-                        <div>
-                          <header class="Post-header">
-                            <ul>
-                              <li class="item-user">
-                                <div class="PostUser">
-                                  <h3>
-                                    <a href="/u/WriterStat">
-                                      <img class="Avatar PostUser-avatar" src="https://discuss.flarum.org/assets/avatars/ebd4wd3cck6o0lms.jpg">
-                                      <span class="username">WriterStat</span></a>
-                                  </h3>
-                                  <ul class="PostUser-badges badges"></ul>
-                                </div>
-                              </li>
-                              <li class="item-meta">
-                                <div class="Dropdown PostMeta">
-                                  <a class="Dropdown-toggle" data-toggle="dropdown">
-                                    <time pubdate="true" datetime="2016-08-02T05:47:57+08:00" title="Tuesday, August 2, 2016 5:47 AM" data-humantime="true">2 Aug</time></a>
-                                  <div class="Dropdown-menu dropdown-menu">
-                                    <span class="PostMeta-number">Post #5</span>
-                                    <span class="PostMeta-time">
-                                      <time pubdate="true" datetime="2016-08-02T05:47:57+08:00">Tuesday, August 2, 2016 5:47 AM</time></span>
-                                    <span class="PostMeta-ip"></span>
-                                    <input class="FormControl PostMeta-permalink"></div>
-                                </div>
-                              </li>
-                            </ul>
-                          </header>
-                          <div class="Post-body">
-                            <p>The demo link eventually goes to some sort of email software if you click the links and not a demo. Remove it?</p>
-                          </div>
-                          <aside class="Post-actions">
-                            <ul>
-                              <li class="item-like">
-                                <button class="Button Button--link" type="button" title="赞">
-                                  <span class="Button-label">赞</span></button>
-                              </li>
-                              <li class="item-reply">
-                                <button class="Button Button--link" type="button" title="回复">
-                                  <span class="Button-label">回复</span></button>
-                              </li>
-                              <li>
-                                <div class="ButtonGroup Dropdown dropdown Post-controls itemCount1">
-                                  <button class="Dropdown-toggle Button Button--icon Button--flat" data-toggle="dropdown">
-                                    <i class="icon fa fa-fw fa-ellipsis-h Button-icon"></i>
-                                    <span class="Button-label"></span>
-                                    <i class="icon fa fa-fw fa-caret-down Button-caret"></i>
-                                  </button>
-                                  <ul class="Dropdown-menu dropdown-menu Dropdown-menu--right">
-                                    <li class="item-flag">
-                                      <button class=" hasIcon" type="button" title="举报">
-                                        <i class="icon fa fa-fw fa-flag Button-icon"></i>
-                                        <span class="Button-label">举报</span></button>
-                                    </li>
-                                  </ul>
-                                </div>
-                              </li>
-                            </ul>
-                          </aside>
-                          <footer class="Post-footer">
-                            <ul>
-                              <li class="item-replies">
-                                <div class="Post-mentionedBy">
-                                  <span class="Post-mentionedBy-summary">
-                                    <i class="icon fa fa-fw fa-reply "></i>
-                                    <a href="/d/2679-image-header/6" data-number="6">
-                                      <span class="username">jordanjay29</span></a>and
-                                    <a href="/d/2679-image-header/7" data-number="7">
-                                      <span class="username">tenten8401</span></a>replied to this.</span>
-                                  <ul class="Dropdown-menu Post-mentionedBy-preview fade"></ul>
-                                </div>
-                              </li>
-                            </ul>
-                          </footer>
-                        </div>
-                      </article>
-                      <div class="Post-quoteButtonContainer"></div>
-                    </div>
-                    <div class="PostStream-item" data-index="4" data-time="2016-08-01T22:25:46.000Z" data-number="6" data-id="28472" data-type="comment" style="display: block;">
-                      <article class="Post undefined CommentPost">
-                        <div>
-                          <header class="Post-header">
-                            <ul>
-                              <li class="item-user">
-                                <div class="PostUser">
-                                  <h3>
-                                    <a href="/u/jordanjay29">
-                                      <img class="Avatar PostUser-avatar" src="https://discuss.flarum.org/assets/avatars/2z8loehblw60llng.jpg">
-                                      <span class="username">jordanjay29</span></a>
-                                  </h3>
-                                  <ul class="PostUser-badges badges">
-                                    <li class="item-group1">
-                                      <span class="Badge Badge--group--1 " title="" style="background-color: rgb(183, 42, 42);" data-original-title="Admin">
-                                        <i class="icon fa fa-fw fa-wrench Badge-icon"></i>
-                                      </span>
-                                    </li>
-                                  </ul>
-                                </div>
-                              </li>
-                              <li class="item-meta">
-                                <div class="Dropdown PostMeta">
-                                  <a class="Dropdown-toggle" data-toggle="dropdown">
-                                    <time pubdate="true" datetime="2016-08-02T06:25:46+08:00" title="Tuesday, August 2, 2016 6:25 AM" data-humantime="true">2 Aug</time></a>
-                                  <div class="Dropdown-menu dropdown-menu">
-                                    <span class="PostMeta-number">Post #6</span>
-                                    <span class="PostMeta-time">
-                                      <time pubdate="true" datetime="2016-08-02T06:25:46+08:00">Tuesday, August 2, 2016 6:25 AM</time></span>
-                                    <span class="PostMeta-ip"></span>
-                                    <input class="FormControl PostMeta-permalink"></div>
-                                </div>
-                              </li>
-                            </ul>
-                          </header>
-                          <div class="Post-body">
-                            <p>
-                              <a href="https://discuss.flarum.org/d/2679/5" class="PostMention" data-id="28470">WriterStat</a>Thanks.</p></div>
-                          <aside class="Post-actions">
-                            <ul>
-                              <li class="item-like">
-                                <button class="Button Button--link" type="button" title="赞">
-                                  <span class="Button-label">赞</span></button>
-                              </li>
-                              <li class="item-reply">
-                                <button class="Button Button--link" type="button" title="回复">
-                                  <span class="Button-label">回复</span></button>
-                              </li>
-                              <li>
-                                <div class="ButtonGroup Dropdown dropdown Post-controls itemCount1">
-                                  <button class="Dropdown-toggle Button Button--icon Button--flat" data-toggle="dropdown">
-                                    <i class="icon fa fa-fw fa-ellipsis-h Button-icon"></i>
-                                    <span class="Button-label"></span>
-                                    <i class="icon fa fa-fw fa-caret-down Button-caret"></i>
-                                  </button>
-                                  <ul class="Dropdown-menu dropdown-menu Dropdown-menu--right">
-                                    <li class="item-flag">
-                                      <button class=" hasIcon" type="button" title="举报">
-                                        <i class="icon fa fa-fw fa-flag Button-icon"></i>
-                                        <span class="Button-label">举报</span></button>
-                                    </li>
-                                  </ul>
-                                </div>
-                              </li>
-                            </ul>
-                          </aside>
-                          <footer class="Post-footer">
-                            <ul>
-                              <li class="item-liked">
-                                <div class="Post-likedBy">
-                                  <i class="icon fa fa-fw fa-thumbs-o-up "></i>
-                                  <a href="/u/WriterStat">
-                                    <span class="username">WriterStat</span></a>likes this.</div>
-                              </li>
-                              <li class="item-replies">
-                                <div class="Post-mentionedBy">
-                                  <span class="Post-mentionedBy-summary">
-                                    <i class="icon fa fa-fw fa-reply "></i>
-                                    <a href="/d/2679-image-header/11" data-number="11">
-                                      <span class="username">kvnqprezo</span></a>replied to this.</span>
-                                  <ul class="Dropdown-menu Post-mentionedBy-preview fade"></ul>
-                                </div>
-                              </li>
-                            </ul>
-                          </footer>
-                        </div>
-                        <ul class="Dropdown-menu PostMention-preview fade"></ul>
-                      </article>
-                      <div class="Post-quoteButtonContainer"></div>
-                    </div>
-                    <div class="PostStream-item" data-index="5" data-time="2016-08-02T04:02:30.000Z" data-number="7" data-id="28477" data-type="comment" style="display: block;">
-                      <article class="Post undefined CommentPost">
-                        <div>
-                          <header class="Post-header">
-                            <ul>
-                              <li class="item-user">
-                                <div class="PostUser">
-                                  <h3>
-                                    <a href="/u/tenten8401">
-                                      <img class="Avatar PostUser-avatar" src="https://discuss.flarum.org/assets/avatars/wttxxtbfrkjuu4rj.jpg">
-                                      <span class="username">tenten8401</span></a>
-                                  </h3>
-                                  <ul class="PostUser-badges badges"></ul>
-                                </div>
-                              </li>
-                              <li class="item-meta">
-                                <div class="Dropdown PostMeta">
-                                  <a class="Dropdown-toggle" data-toggle="dropdown">
-                                    <time pubdate="true" datetime="2016-08-02T12:02:30+08:00" title="Tuesday, August 2, 2016 12:02 PM" data-humantime="true">2 Aug</time></a>
-                                  <div class="Dropdown-menu dropdown-menu">
-                                    <span class="PostMeta-number">Post #7</span>
-                                    <span class="PostMeta-time">
-                                      <time pubdate="true" datetime="2016-08-02T12:02:30+08:00">Tuesday, August 2, 2016 12:02 PM</time></span>
-                                    <span class="PostMeta-ip"></span>
-                                    <input class="FormControl PostMeta-permalink"></div>
-                                </div>
-                              </li>
-                            </ul>
-                          </header>
-                          <div class="Post-body">
-                            <p>
-                              <a href="https://discuss.flarum.org/d/2679/5" class="PostMention" data-id="28470">WriterStat</a>apologies, domain name changed but forgot to update.</p></div>
-                          <aside class="Post-actions">
-                            <ul>
-                              <li class="item-like">
-                                <button class="Button Button--link" type="button" title="赞">
-                                  <span class="Button-label">赞</span></button>
-                              </li>
-                              <li class="item-reply">
-                                <button class="Button Button--link" type="button" title="回复">
-                                  <span class="Button-label">回复</span></button>
-                              </li>
-                              <li>
-                                <div class="ButtonGroup Dropdown dropdown Post-controls itemCount1">
-                                  <button class="Dropdown-toggle Button Button--icon Button--flat" data-toggle="dropdown">
-                                    <i class="icon fa fa-fw fa-ellipsis-h Button-icon"></i>
-                                    <span class="Button-label"></span>
-                                    <i class="icon fa fa-fw fa-caret-down Button-caret"></i>
-                                  </button>
-                                  <ul class="Dropdown-menu dropdown-menu Dropdown-menu--right">
-                                    <li class="item-flag">
-                                      <button class=" hasIcon" type="button" title="举报">
-                                        <i class="icon fa fa-fw fa-flag Button-icon"></i>
-                                        <span class="Button-label">举报</span></button>
-                                    </li>
-                                  </ul>
-                                </div>
-                              </li>
-                            </ul>
-                          </aside>
-                          <footer class="Post-footer">
-                            <ul>
-                              <li class="item-liked">
-                                <div class="Post-likedBy">
-                                  <i class="icon fa fa-fw fa-thumbs-o-up "></i>
-                                  <a href="/u/WriterStat">
-                                    <span class="username">WriterStat</span></a>and
-                                  <a href="/u/datitisev">
-                                    <span class="username">datitisev</span></a>like this.</div>
-                              </li>
-                            </ul>
-                          </footer>
-                        </div>
-                        <ul class="Dropdown-menu PostMention-preview fade"></ul>
-                      </article>
-                      <div class="Post-quoteButtonContainer"></div>
-                    </div>
-                    <div class="PostStream-item" data-index="6" data-time="2016-08-09T19:38:00.000Z" data-number="8" data-id="28725" data-type="comment" style="display: block;">
-                      <div class="PostStream-timeGap">
-                        <span>8 days later</span></div>
-                      <article class="Post undefined CommentPost">
-                        <div>
-                          <header class="Post-header">
-                            <ul>
-                              <li class="item-user">
-                                <div class="PostUser">
-                                  <h3>
-                                    <a href="/u/WriterStat">
-                                      <img class="Avatar PostUser-avatar" src="https://discuss.flarum.org/assets/avatars/ebd4wd3cck6o0lms.jpg">
-                                      <span class="username">WriterStat</span></a>
-                                  </h3>
-                                  <ul class="PostUser-badges badges"></ul>
-                                </div>
-                              </li>
-                              <li class="item-meta">
-                                <div class="Dropdown PostMeta">
-                                  <a class="Dropdown-toggle" data-toggle="dropdown">
-                                    <time pubdate="true" datetime="2016-08-10T03:38:00+08:00" title="Wednesday, August 10, 2016 3:38 AM" data-humantime="true">10 Aug</time></a>
-                                  <div class="Dropdown-menu dropdown-menu">
-                                    <span class="PostMeta-number">Post #8</span>
-                                    <span class="PostMeta-time">
-                                      <time pubdate="true" datetime="2016-08-10T03:38:00+08:00">Wednesday, August 10, 2016 3:38 AM</time></span>
-                                    <span class="PostMeta-ip"></span>
-                                    <input class="FormControl PostMeta-permalink"></div>
-                                </div>
-                              </li>
-                            </ul>
-                          </header>
-                          <div class="Post-body">
-                            <p>
-                              <a href="https://discuss.flarum.org/d/2679/7" class="PostMention" data-id="28477">tenten8401</a>No worries. =) RockOn! -C</p></div>
-                          <aside class="Post-actions">
-                            <ul>
-                              <li class="item-like">
-                                <button class="Button Button--link" type="button" title="赞">
-                                  <span class="Button-label">赞</span></button>
-                              </li>
-                              <li class="item-reply">
-                                <button class="Button Button--link" type="button" title="回复">
-                                  <span class="Button-label">回复</span></button>
-                              </li>
-                              <li>
-                                <div class="ButtonGroup Dropdown dropdown Post-controls itemCount1">
-                                  <button class="Dropdown-toggle Button Button--icon Button--flat" data-toggle="dropdown">
-                                    <i class="icon fa fa-fw fa-ellipsis-h Button-icon"></i>
-                                    <span class="Button-label"></span>
-                                    <i class="icon fa fa-fw fa-caret-down Button-caret"></i>
-                                  </button>
-                                  <ul class="Dropdown-menu dropdown-menu Dropdown-menu--right">
-                                    <li class="item-flag">
-                                      <button class=" hasIcon" type="button" title="举报">
-                                        <i class="icon fa fa-fw fa-flag Button-icon"></i>
-                                        <span class="Button-label">举报</span></button>
-                                    </li>
-                                  </ul>
-                                </div>
-                              </li>
-                            </ul>
-                          </aside>
-                          <footer class="Post-footer">
-                            <ul>
-                              <li class="item-liked">
-                                <div class="Post-likedBy">
-                                  <i class="icon fa fa-fw fa-thumbs-o-up "></i>
-                                  <a href="/u/kvnqprezo">
-                                    <span class="username">kvnqprezo</span></a>likes this.</div>
-                              </li>
-                            </ul>
-                          </footer>
-                        </div>
-                        <ul class="Dropdown-menu PostMention-preview fade"></ul>
-                      </article>
-                      <div class="Post-quoteButtonContainer"></div>
-                    </div>
-                    <div class="PostStream-item" data-index="7" data-time="2016-09-22T00:24:49.000Z" data-number="9" data-id="30727" data-type="comment" style="display: block;">
-                      <div class="PostStream-timeGap">
-                        <span>a month later</span></div>
-                      <article class="Post undefined CommentPost">
-                        <div>
-                          <header class="Post-header">
-                            <ul>
-                              <li class="item-user">
-                                <div class="PostUser">
-                                  <h3>
-                                    <a href="/u/Mot">
-                                      <span class="Avatar PostUser-avatar" style="background: rgb(229, 160, 224);">M</span>
-                                      <span class="username">Mot</span></a>
-                                  </h3>
-                                  <ul class="PostUser-badges badges"></ul>
-                                </div>
-                              </li>
-                              <li class="item-meta">
-                                <div class="Dropdown PostMeta">
-                                  <a class="Dropdown-toggle" data-toggle="dropdown">
-                                    <time pubdate="true" datetime="2016-09-22T08:24:49+08:00" title="Thursday, September 22, 2016 8:24 AM" data-humantime="true">5 days ago</time></a>
-                                  <div class="Dropdown-menu dropdown-menu">
-                                    <span class="PostMeta-number">Post #9</span>
-                                    <span class="PostMeta-time">
-                                      <time pubdate="true" datetime="2016-09-22T08:24:49+08:00">Thursday, September 22, 2016 8:24 AM</time></span>
-                                    <span class="PostMeta-ip"></span>
-                                    <input class="FormControl PostMeta-permalink"></div>
-                                </div>
-                              </li>
-                            </ul>
-                          </header>
-                          <div class="Post-body">
-                            <p>Hey
-                              <a href="https://discuss.flarum.org/u/tenten8401" class="UserMention">@tenten8401</a>the demo appears to be a bad link. This still up? Thanks in advance legend!
-                              <img alt=":)" class="emoji" draggable="false" src="//cdn.jsdelivr.net/emojione/assets/png/1f642.png"></p></div>
-                          <aside class="Post-actions">
-                            <ul>
-                              <li class="item-like">
-                                <button class="Button Button--link" type="button" title="赞">
-                                  <span class="Button-label">赞</span></button>
-                              </li>
-                              <li class="item-reply">
-                                <button class="Button Button--link" type="button" title="回复">
-                                  <span class="Button-label">回复</span></button>
-                              </li>
-                              <li>
-                                <div class="ButtonGroup Dropdown dropdown Post-controls itemCount1">
-                                  <button class="Dropdown-toggle Button Button--icon Button--flat" data-toggle="dropdown">
-                                    <i class="icon fa fa-fw fa-ellipsis-h Button-icon"></i>
-                                    <span class="Button-label"></span>
-                                    <i class="icon fa fa-fw fa-caret-down Button-caret"></i>
-                                  </button>
-                                  <ul class="Dropdown-menu dropdown-menu Dropdown-menu--right">
-                                    <li class="item-flag">
-                                      <button class=" hasIcon" type="button" title="举报">
-                                        <i class="icon fa fa-fw fa-flag Button-icon"></i>
-                                        <span class="Button-label">举报</span></button>
-                                    </li>
-                                  </ul>
-                                </div>
-                              </li>
-                            </ul>
-                          </aside>
-                          <footer class="Post-footer">
-                            <ul></ul>
-                          </footer>
-                        </div>
-                      </article>
-                      <div class="Post-quoteButtonContainer"></div>
-                    </div>
-                    <div class="PostStream-item" data-index="8" data-time="2016-09-22T00:50:48.000Z" data-number="10" data-id="30728" data-type="comment" style="display: block;">
-                      <article class="Post undefined CommentPost">
-                        <div>
-                          <header class="Post-header">
-                            <ul>
-                              <li class="item-user">
-                                <div class="PostUser">
-                                  <h3>
-                                    <a href="/u/jordanjay29">
-                                      <img class="Avatar PostUser-avatar" src="https://discuss.flarum.org/assets/avatars/2z8loehblw60llng.jpg">
-                                      <span class="username">jordanjay29</span></a>
-                                  </h3>
-                                  <ul class="PostUser-badges badges">
-                                    <li class="item-group1">
-                                      <span class="Badge Badge--group--1 " title="" style="background-color: rgb(183, 42, 42);" data-original-title="Admin">
-                                        <i class="icon fa fa-fw fa-wrench Badge-icon"></i>
-                                      </span>
-                                    </li>
-                                  </ul>
-                                </div>
-                              </li>
-                              <li class="item-meta">
-                                <div class="Dropdown PostMeta">
-                                  <a class="Dropdown-toggle" data-toggle="dropdown">
-                                    <time pubdate="true" datetime="2016-09-22T08:50:48+08:00" title="Thursday, September 22, 2016 8:50 AM" data-humantime="true">5 days ago</time></a>
-                                  <div class="Dropdown-menu dropdown-menu">
-                                    <span class="PostMeta-number">Post #10</span>
-                                    <span class="PostMeta-time">
-                                      <time pubdate="true" datetime="2016-09-22T08:50:48+08:00">Thursday, September 22, 2016 8:50 AM</time></span>
-                                    <span class="PostMeta-ip"></span>
-                                    <input class="FormControl PostMeta-permalink"></div>
-                                </div>
-                              </li>
-                            </ul>
-                          </header>
-                          <div class="Post-body">
-                            <p>
-                              <a href="https://discuss.flarum.org/d/2679/9" class="PostMention" data-id="30727">Mot</a>You could use the
-                              <a href="https://discuss.flarum.org/d/697-devflarum-sandbox-server/" target="_blank" rel="nofollow noreferrer">devflarum</a>site to try out the CSS for yourself. After that it's simply a matter of changing the first line to match your image file.</p></div>
-                          <aside class="Post-actions">
-                            <ul>
-                              <li class="item-like">
-                                <button class="Button Button--link" type="button" title="赞">
-                                  <span class="Button-label">赞</span></button>
-                              </li>
-                              <li class="item-reply">
-                                <button class="Button Button--link" type="button" title="回复">
-                                  <span class="Button-label">回复</span></button>
-                              </li>
-                              <li>
-                                <div class="ButtonGroup Dropdown dropdown Post-controls itemCount1">
-                                  <button class="Dropdown-toggle Button Button--icon Button--flat" data-toggle="dropdown">
-                                    <i class="icon fa fa-fw fa-ellipsis-h Button-icon"></i>
-                                    <span class="Button-label"></span>
-                                    <i class="icon fa fa-fw fa-caret-down Button-caret"></i>
-                                  </button>
-                                  <ul class="Dropdown-menu dropdown-menu Dropdown-menu--right">
-                                    <li class="item-flag">
-                                      <button class=" hasIcon" type="button" title="举报">
-                                        <i class="icon fa fa-fw fa-flag Button-icon"></i>
-                                        <span class="Button-label">举报</span></button>
-                                    </li>
-                                  </ul>
-                                </div>
-                              </li>
-                            </ul>
-                          </aside>
-                          <footer class="Post-footer">
-                            <ul>
-                              <li class="item-liked">
-                                <div class="Post-likedBy">
-                                  <i class="icon fa fa-fw fa-thumbs-o-up "></i>
-                                  <a href="/u/Mot">
-                                    <span class="username">Mot</span></a>likes this.</div>
-                              </li>
-                            </ul>
-                          </footer>
-                        </div>
-                        <ul class="Dropdown-menu PostMention-preview fade"></ul>
-                      </article>
-                      <div class="Post-quoteButtonContainer"></div>
-                    </div>
-                    <div class="PostStream-item" data-index="9" data-time="2016-09-24T00:55:44.000Z" data-number="11" data-id="30881" data-type="comment" style="display: block;">
-                      <article class="Post undefined CommentPost">
-                        <div>
-                          <header class="Post-header">
-                            <ul>
-                              <li class="item-user">
-                                <div class="PostUser">
-                                  <h3>
-                                    <a href="/u/kvnqprezo">
-                                      <span class="Avatar PostUser-avatar" style="background: rgb(215, 160, 229);">K</span>
-                                      <span class="username">kvnqprezo</span></a>
-                                  </h3>
-                                  <ul class="PostUser-badges badges"></ul>
-                                </div>
-                              </li>
-                              <li class="item-meta">
-                                <div class="Dropdown PostMeta">
-                                  <a class="Dropdown-toggle" data-toggle="dropdown">
-                                    <time pubdate="true" datetime="2016-09-24T08:55:44+08:00" title="Saturday, September 24, 2016 8:55 AM" data-humantime="true">3 days ago</time></a>
-                                  <div class="Dropdown-menu dropdown-menu">
-                                    <span class="PostMeta-number">Post #11</span>
-                                    <span class="PostMeta-time">
-                                      <time pubdate="true" datetime="2016-09-24T08:55:44+08:00">Saturday, September 24, 2016 8:55 AM</time></span>
-                                    <span class="PostMeta-ip"></span>
-                                    <input class="FormControl PostMeta-permalink"></div>
-                                </div>
-                              </li>
-                            </ul>
-                          </header>
-                          <div class="Post-body">
-                            <p>
-                              <a href="https://discuss.flarum.org/d/2679/6" class="PostMention" data-id="28472">jordanjay29</a>
-                              <br>Demo site not opening</p></div>
-                          <aside class="Post-actions">
-                            <ul>
-                              <li class="item-like">
-                                <button class="Button Button--link" type="button" title="赞">
-                                  <span class="Button-label">赞</span></button>
-                              </li>
-                              <li class="item-reply">
-                                <button class="Button Button--link" type="button" title="回复">
-                                  <span class="Button-label">回复</span></button>
-                              </li>
-                              <li>
-                                <div class="ButtonGroup Dropdown dropdown Post-controls itemCount1">
-                                  <button class="Dropdown-toggle Button Button--icon Button--flat" data-toggle="dropdown">
-                                    <i class="icon fa fa-fw fa-ellipsis-h Button-icon"></i>
-                                    <span class="Button-label"></span>
-                                    <i class="icon fa fa-fw fa-caret-down Button-caret"></i>
-                                  </button>
-                                  <ul class="Dropdown-menu dropdown-menu Dropdown-menu--right">
-                                    <li class="item-flag">
-                                      <button class=" hasIcon" type="button" title="举报">
-                                        <i class="icon fa fa-fw fa-flag Button-icon"></i>
-                                        <span class="Button-label">举报</span></button>
-                                    </li>
-                                  </ul>
-                                </div>
-                              </li>
-                            </ul>
-                          </aside>
-                          <footer class="Post-footer">
-                            <ul></ul>
-                          </footer>
-                        </div>
-                        <ul class="Dropdown-menu PostMention-preview fade"></ul>
-                      </article>
-                      <div class="Post-quoteButtonContainer"></div>
-                    </div>
+
+                    
+
+                    <div class="PostStream-item" data-index="2555"><div class="Post CommentPost LoadingPost"><header class="Post-header"><span class="Avatar PostUser-avatar"></span><div class="fakeText"></div></header><div class="Post-body"><div class="fakeText"></div><div class="fakeText"></div><div class="fakeText"></div></div></div></div>
+                    <div class="PostStream-item" data-index="2555"><div class="Post CommentPost LoadingPost"><header class="Post-header"><span class="Avatar PostUser-avatar"></span><div class="fakeText"></div></header><div class="Post-body"><div class="fakeText"></div><div class="fakeText"></div><div class="fakeText"></div></div></div></div>
+                    <div class="PostStream-item" data-index="2555"><div class="Post CommentPost LoadingPost"><header class="Post-header"><span class="Avatar PostUser-avatar"></span><div class="fakeText"></div></header><div class="Post-body"><div class="fakeText"></div><div class="fakeText"></div><div class="fakeText"></div></div></div></div>
+                    <div class="PostStream-item" data-index="2555"><div class="Post CommentPost LoadingPost"><header class="Post-header"><span class="Avatar PostUser-avatar"></span><div class="fakeText"></div></header><div class="Post-body"><div class="fakeText"></div><div class="fakeText"></div><div class="fakeText"></div></div></div></div>
+                    <div class="PostStream-item" data-index="2555"><div class="Post CommentPost LoadingPost"><header class="Post-header"><span class="Avatar PostUser-avatar"></span><div class="fakeText"></div></header><div class="Post-body"><div class="fakeText"></div><div class="fakeText"></div><div class="fakeText"></div></div></div></div>
+                    <div class="PostStream-item" data-index="2555"><div class="Post CommentPost LoadingPost"><header class="Post-header"><span class="Avatar PostUser-avatar"></span><div class="fakeText"></div></header><div class="Post-body"><div class="fakeText"></div><div class="fakeText"></div><div class="fakeText"></div></div></div></div>
+                    <div class="PostStream-item" data-index="2555"><div class="Post CommentPost LoadingPost"><header class="Post-header"><span class="Avatar PostUser-avatar"></span><div class="fakeText"></div></header><div class="Post-body"><div class="fakeText"></div><div class="fakeText"></div><div class="fakeText"></div></div></div></div>
+                    <div class="PostStream-item" data-index="2555"><div class="Post CommentPost LoadingPost"><header class="Post-header"><span class="Avatar PostUser-avatar"></span><div class="fakeText"></div></header><div class="Post-body"><div class="fakeText"></div><div class="fakeText"></div><div class="fakeText"></div></div></div></div>
+                    <div class="PostStream-item" data-index="2555"><div class="Post CommentPost LoadingPost"><header class="Post-header"><span class="Avatar PostUser-avatar"></span><div class="fakeText"></div></header><div class="Post-body"><div class="fakeText"></div><div class="fakeText"></div><div class="fakeText"></div></div></div></div>
+                    <div class="PostStream-item" data-index="2555"><div class="Post CommentPost LoadingPost"><header class="Post-header"><span class="Avatar PostUser-avatar"></span><div class="fakeText"></div></header><div class="Post-body"><div class="fakeText"></div><div class="fakeText"></div><div class="fakeText"></div></div></div></div>
+
                     <div class="PostStream-item">
                       <article class="Post ReplyPlaceholder">
                         <header class="Post-header">
-                          <span class="Avatar PostUser-avatar" style="background: rgb(160, 176, 229);">G</span>回复一发...</header></article>
+                          <span class="Avatar PostUser-avatar" style="background: rgb(160, 176, 229);">{{user_info.username|format_username}}</span>回复一发...</header></article>
                     </div>
                   </div>
                 </div>
@@ -908,9 +224,9 @@
         <div id="flarum-loading" style="display: none;">Loading...</div>
         <div class="App-composer">
       <div class="container">
-        <div id="composer"><div class="Composer" style="display: none; bottom: 0px; height: 300px;"><div class="Composer-handle" style="cursor: row-resize;"></div><ul class="Composer-controls"><li class="item-minimize App-backControl"><button title="Minimize" itemclassname="App-backControl" class="Button Button--icon Button--link hasIcon" type="button"><i class="icon fa fa-fw fa-minus minimize Button-icon"></i></button></li><li class="item-fullScreen"><button title="Full Screen" class="Button Button--icon Button--link hasIcon" type="button"><i class="icon fa fa-fw fa-expand Button-icon"></i></button></li><li class="item-close"><button title="Close" class="Button Button--icon Button--link hasIcon" type="button"><i class="icon fa fa-fw fa-times Button-icon"></i></button></li></ul><div class="Composer-content"><div class="ComposerBody "><span class="Avatar ComposerBody-avatar" style="background: rgb(160, 176, 229);">G</span><div class="ComposerBody-content"><ul class="ComposerBody-header"><li class="item-title"><h3><i class="icon fa fa-fw fa-reply "></i>  <a href="/d/2352-flarum-v0-1-0-beta-5-released">Flarum v0.1.0-beta.5 released</a></h3></li></ul><div class="ComposerBody-editor"><div class="TextEditor"><div class="ComposerBody-emojiWrapper"><div class="ComposerBody-mentionsWrapper"><textarea class="FormControl Composer-flexible" placeholder="回复一发..." style="height: 192px;"></textarea><div class="ComposerBody-mentionsDropdownContainer"></div></div><div class="ComposerBody-emojiDropdownContainer"></div></div><ul class="TextEditor-controls Composer-footer"><li class="item-submit App-primaryControl"><button class="Button Button--primary hasIcon" itemclassname="App-primaryControl" type="button" title="Post Reply"><i class="icon fa fa-fw fa-check Button-icon"></i><span class="Button-label">回复</span></button></li><li class="item-preview"><button class="Button Button--icon hasIcon" type="button"><i class="icon fa fa-fw fa-eye Button-icon"></i></button></li></ul></div></div></div><div class="LoadingIndicator ComposerBody-loading"><div class="spinner" role="progressbar" style="position: absolute; width: 0px; z-index: auto; left: 50%; top: 50%;"><div style="position: absolute; top: -1px; opacity: 0.25; animation: opacity-100-25-0-8 1s linear infinite;"><div style="position: absolute; width: 7px; height: 3px; box-shadow: rgba(0, 0, 0, 0.0980392) 0px 0px 1px; transform-origin: left center 0px; transform: rotate(0deg) translate(5px, 0px); border-radius: 1px; background: rgb(102, 125, 153);"></div></div><div style="position: absolute; top: -1px; opacity: 0.25; animation: opacity-100-25-1-8 1s linear infinite;"><div style="position: absolute; width: 7px; height: 3px; box-shadow: rgba(0, 0, 0, 0.0980392) 0px 0px 1px; transform-origin: left center 0px; transform: rotate(45deg) translate(5px, 0px); border-radius: 1px; background: rgb(102, 125, 153);"></div></div><div style="position: absolute; top: -1px; opacity: 0.25; animation: opacity-100-25-2-8 1s linear infinite;"><div style="position: absolute; width: 7px; height: 3px; box-shadow: rgba(0, 0, 0, 0.0980392) 0px 0px 1px; transform-origin: left center 0px; transform: rotate(90deg) translate(5px, 0px); border-radius: 1px; background: rgb(102, 125, 153);"></div></div><div style="position: absolute; top: -1px; opacity: 0.25; animation: opacity-100-25-3-8 1s linear infinite;"><div style="position: absolute; width: 7px; height: 3px; box-shadow: rgba(0, 0, 0, 0.0980392) 0px 0px 1px; transform-origin: left center 0px; transform: rotate(135deg) translate(5px, 0px); border-radius: 1px; background: rgb(102, 125, 153);"></div></div><div style="position: absolute; top: -1px; opacity: 0.25; animation: opacity-100-25-4-8 1s linear infinite;"><div style="position: absolute; width: 7px; height: 3px; box-shadow: rgba(0, 0, 0, 0.0980392) 0px 0px 1px; transform-origin: left center 0px; transform: rotate(180deg) translate(5px, 0px); border-radius: 1px; background: rgb(102, 125, 153);"></div></div><div style="position: absolute; top: -1px; opacity: 0.25; animation: opacity-100-25-5-8 1s linear infinite;"><div style="position: absolute; width: 7px; height: 3px; box-shadow: rgba(0, 0, 0, 0.0980392) 0px 0px 1px; transform-origin: left center 0px; transform: rotate(225deg) translate(5px, 0px); border-radius: 1px; background: rgb(102, 125, 153);"></div></div><div style="position: absolute; top: -1px; opacity: 0.25; animation: opacity-100-25-6-8 1s linear infinite;"><div style="position: absolute; width: 7px; height: 3px; box-shadow: rgba(0, 0, 0, 0.0980392) 0px 0px 1px; transform-origin: left center 0px; transform: rotate(270deg) translate(5px, 0px); border-radius: 1px; background: rgb(102, 125, 153);"></div></div><div style="position: absolute; top: -1px; opacity: 0.25; animation: opacity-100-25-7-8 1s linear infinite;"><div style="position: absolute; width: 7px; height: 3px; box-shadow: rgba(0, 0, 0, 0.0980392) 0px 0px 1px; transform-origin: left center 0px; transform: rotate(315deg) translate(5px, 0px); border-radius: 1px; background: rgb(102, 125, 153);"></div></div></div>&nbsp;</div></div></div></div></div>
+        <div id="composer"><div class="Composer" style="display: none; bottom: 0px; height: 300px;"><div class="Composer-handle" style="cursor: row-resize;"></div><ul class="Composer-controls"><li class="item-minimize App-backControl"><button title="Minimize" itemclassname="App-backControl" class="Button Button--icon Button--link hasIcon" type="button"><i class="icon fa fa-fw fa-minus minimize Button-icon"></i></button></li><li class="item-fullScreen"><button title="Full Screen" class="Button Button--icon Button--link hasIcon" type="button"><i class="icon fa fa-fw fa-expand Button-icon"></i></button></li><li class="item-close"><button title="Close" class="Button Button--icon Button--link hasIcon" type="button"><i class="icon fa fa-fw fa-times Button-icon"></i></button></li></ul><div class="Composer-content"><div class="ComposerBody "><span class="Avatar ComposerBody-avatar" style="background: rgb(160, 176, 229);">{{user_info.username|format_username}}</span><div class="ComposerBody-content"><ul class="ComposerBody-header"><li class="item-title"><h3><i class="icon fa fa-fw fa-reply "></i>  <a href="/post/{{post.id}}">{{post.title}}</a></h3></li></ul><div class="ComposerBody-editor"><div class="TextEditor"><div class="ComposerBody-emojiWrapper"><div class="ComposerBody-mentionsWrapper"><textarea class="FormControl Composer-flexible" placeholder="回复一发..." style="height: 192px;"></textarea><div class="ComposerBody-mentionsDropdownContainer"></div></div><div class="ComposerBody-emojiDropdownContainer"></div></div><ul class="TextEditor-controls Composer-footer"><li class="item-submit App-primaryControl"><button class="Button Button--primary hasIcon" itemclassname="App-primaryControl" type="button" title="Post Reply"><i class="icon fa fa-fw fa-check Button-icon"></i><span class="Button-label">回复</span></button></li><li class="item-preview"><button class="Button Button--icon hasIcon" type="button"><i class="icon fa fa-fw fa-eye Button-icon"></i></button></li></ul></div></div></div><div class="LoadingIndicator ComposerBody-loading"><div class="spinner" style="position: absolute; width: 0px; z-index: auto; left: 50%; top: 50%;" role="progressbar"><div style="position: absolute; top: -1px; opacity: 0.25; animation: opacity-100-25-0-8 1s linear infinite;"><div style="position: absolute; width: 7px; height: 3px; box-shadow: rgba(0, 0, 0, 0.0980392) 0px 0px 1px; transform-origin: left center 0px; transform: rotate(0deg) translate(5px, 0px); border-radius: 1px; background: rgb(102, 125, 153);"></div></div><div style="position: absolute; top: -1px; opacity: 0.25; animation: opacity-100-25-1-8 1s linear infinite;"><div style="position: absolute; width: 7px; height: 3px; box-shadow: rgba(0, 0, 0, 0.0980392) 0px 0px 1px; transform-origin: left center 0px; transform: rotate(45deg) translate(5px, 0px); border-radius: 1px; background: rgb(102, 125, 153);"></div></div><div style="position: absolute; top: -1px; opacity: 0.25; animation: opacity-100-25-2-8 1s linear infinite;"><div style="position: absolute; width: 7px; height: 3px; box-shadow: rgba(0, 0, 0, 0.0980392) 0px 0px 1px; transform-origin: left center 0px; transform: rotate(90deg) translate(5px, 0px); border-radius: 1px; background: rgb(102, 125, 153);"></div></div><div style="position: absolute; top: -1px; opacity: 0.25; animation: opacity-100-25-3-8 1s linear infinite;"><div style="position: absolute; width: 7px; height: 3px; box-shadow: rgba(0, 0, 0, 0.0980392) 0px 0px 1px; transform-origin: left center 0px; transform: rotate(135deg) translate(5px, 0px); border-radius: 1px; background: rgb(102, 125, 153);"></div></div><div style="position: absolute; top: -1px; opacity: 0.25; animation: opacity-100-25-4-8 1s linear infinite;"><div style="position: absolute; width: 7px; height: 3px; box-shadow: rgba(0, 0, 0, 0.0980392) 0px 0px 1px; transform-origin: left center 0px; transform: rotate(180deg) translate(5px, 0px); border-radius: 1px; background: rgb(102, 125, 153);"></div></div><div style="position: absolute; top: -1px; opacity: 0.25; animation: opacity-100-25-5-8 1s linear infinite;"><div style="position: absolute; width: 7px; height: 3px; box-shadow: rgba(0, 0, 0, 0.0980392) 0px 0px 1px; transform-origin: left center 0px; transform: rotate(225deg) translate(5px, 0px); border-radius: 1px; background: rgb(102, 125, 153);"></div></div><div style="position: absolute; top: -1px; opacity: 0.25; animation: opacity-100-25-6-8 1s linear infinite;"><div style="position: absolute; width: 7px; height: 3px; box-shadow: rgba(0, 0, 0, 0.0980392) 0px 0px 1px; transform-origin: left center 0px; transform: rotate(270deg) translate(5px, 0px); border-radius: 1px; background: rgb(102, 125, 153);"></div></div><div style="position: absolute; top: -1px; opacity: 0.25; animation: opacity-100-25-7-8 1s linear infinite;"><div style="position: absolute; width: 7px; height: 3px; box-shadow: rgba(0, 0, 0, 0.0980392) 0px 0px 1px; transform-origin: left center 0px; transform: rotate(315deg) translate(5px, 0px); border-radius: 1px; background: rgb(102, 125, 153);"></div></div></div>&nbsp;</div></div></div></div></div>
       </div>
-    </div>>
+    </div>
       </main>
 {% endblock %}
 
@@ -938,6 +254,33 @@ $(document).ready(function() {
     $('.Composer').addClass('visible');
     $('.Composer').css("display", "block");
   });
+  $(document).on('click', '.item-submit', function() {
+    $('.ComposerBody-loading').addClass('active');
+    var content = $('.Composer-flexible').val();
+    $.ajax({
+            type: "POST",
+            contentType: "application/json; charset=utf-8",
+            dataType: "json",
+            url: "/reply/{{post.id}}",
+            data: JSON.stringify({
+                content: content,
+            }),
+            success: function(msg) {
+                if (msg.success == 1) {
+                    $('.ComposerBody-loading').removeClass('active');
+                    $('.Composer-flexible').val("");
+                    $('.Composer').removeClass('normal'); 
+                    $('.Composer').removeClass('active');
+                    $('.Composer').removeClass('visible');
+                    $('.Composer').css("display", "none");
+                }
+            },
+            error: function(msg) {
+                alert("error");
+            }
+        });
+  });
+  
   
 });
 </script>

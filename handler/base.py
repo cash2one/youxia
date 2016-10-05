@@ -81,6 +81,10 @@ class BaseHandler(tornado.web.RequestHandler):
         return self.application.post_tag_model
 
     @property
+    def like_model(self):
+        return self.application.like_model
+
+    @property
     def debug_flag(self):
         return self.application.debug_flag
 

@@ -124,12 +124,25 @@ DROP TABLE IF EXISTS `reply`;
 CREATE TABLE `reply` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `reply_type` text,
-  `obj_id` int(11) DEFAULT NULL,
+  `post_id` int(11) DEFAULT NULL,
+  `reply_id` int(11) DEFAULT NULL,
   `content` text,
-  `up_num` int(11) DEFAULT 0,
-  `down_num` int(11) DEFAULT 0,
+  `like_num` int(11) DEFAULT 0,
   `author_id` int(11) DEFAULT NULL,
-  `reply_to` int(11) DEFAULT NULL,
+  `created` datetime DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+--  Table structure for `like`
+-- ----------------------------
+DROP TABLE IF EXISTS `like`;
+CREATE TABLE `like` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `like_type` text,
+  `post_id` int(11) DEFAULT NULL,
+  `reply_id` int(11) DEFAULT NULL,
+  `author_id` int(11) DEFAULT NULL,
   `created` datetime DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;

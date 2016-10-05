@@ -132,11 +132,11 @@ class PostHandler(BaseHandler):
         template_variables["static_path"] = self.static_path
         template_variables["user_info"] = user_info
         p = int(self.get_argument("p", "1"))
-        '''
+
         post = self.post_model.get_post_by_post_id(post_id)
         template_variables["post"] = post
-        template_variables["tags"] = self.post_tag_model.get_post_all_tags(post_id)
-        '''
+        #template_variables["tags"] = self.post_tag_model.get_post_all_tags(post_id)
+
         template_variables["page_name"] = "App--discussion"
 
         self.render(self.template_path+"post.html", **template_variables)
@@ -247,7 +247,7 @@ class ReplyHandler(BaseHandler):
         user_info = self.current_user
 
         data = json.loads(self.request.body)
-        reply_content = data["reply_content"]
+        content = data["content"]
 
         if(user_info):
             post = self.post_model.get_post_by_post_id(post_id)
@@ -258,10 +258,9 @@ class ReplyHandler(BaseHandler):
 
             reply_info = {
                 "author_id": user_info["uid"],
-                "obj_id": post_id,
-                "content": reply_content,
+                "post_id": post_id,
+                "content": content,
                 "reply_type": "post",
-                "reply_to": post.author_id,
                 "created": time.strftime('%Y-%m-%d %H:%M:%S'),
             }
             reply_id = self.reply_model.add_new_reply(reply_info)
