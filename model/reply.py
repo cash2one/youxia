@@ -58,7 +58,7 @@ class ReplyModel(Query):
         return self.where(where).order(order).join(join).field(field).pages(current_page = current_page, list_rows = num)
 
     def get_post_all_replys_sort_by_created2(self, post_id, num = 50, current_page = 1):
-        where = "reply.obj_id = %s AND reply.reply_type='post'" % post_id
+        where = "reply.post_id = %s AND reply.reply_type='post'" % post_id
         join = "LEFT JOIN user ON reply.author_id = user.uid"
         order = "reply.created ASC, reply.id ASC"
         field = "reply.*, \

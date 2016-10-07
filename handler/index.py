@@ -232,12 +232,14 @@ class ReplyHandler(BaseHandler):
         p = int(self.get_argument("p", "1"))
 
         all_replys = self.reply_model.get_post_all_replys_sort_by_created2(post_id, current_page = p)
+        '''
         print 'cccccc@@@@@@@@@@@@@@@@@@@'
         print all_replys
         print 'ddddd'
         for reply in all_replys['list']:
             reply['reply_replys'] = self.reply_model.get_reply_all_replys_sort_by_created(reply.id)
         print 'eeeee'
+        '''
         replys_json = json.dumps(all_replys, cls=DateEncoder)
         print replys_json
         self.write(replys_json)
