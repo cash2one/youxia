@@ -200,3 +200,37 @@ CREATE TABLE `car_data` (
   `bgcolor` text,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;
+
+
+
+-- ----------------------------
+--  Table structure for `item`
+-- ----------------------------
+DROP TABLE IF EXISTS `item`;
+CREATE TABLE `item` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `post_id` int(11) DEFAULT NULL,
+  `first_type` text,
+  `second_type` text,
+  `reply_to` int(11) DEFAULT NULL,
+  `title` text,
+  `content` text,
+  `cover` text,
+  `last_reply_user` text,
+  `last_reply_time` datetime DEFAULT NULL,
+  `item_status` text,
+  `like_num` int(11) DEFAULT 0,
+  `like_users` text,
+  `reply_num` int(11) DEFAULT 0,
+  `reply_users` text,
+  `view_num` int(11) DEFAULT 0,
+  `follow_num` int(11) DEFAULT 0,
+  `report_num` int(11) DEFAULT 0,
+  `all_tags` text,
+  `add_tags` text,
+  `remove_tags` text,
+  `author_id` int(11) DEFAULT NULL,
+  `updated` datetime DEFAULT NULL,
+  `created` datetime DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;

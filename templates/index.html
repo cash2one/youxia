@@ -206,7 +206,7 @@ $(document).on('click', '.DiscussionComposer-changeTags', function() {
 
   $(document).on('click', '.item-submit', function() {
     var title = $('.item-discussionTitle input').val();
-    var content = $('.ComposerBody-editor textarea').text();
+    var content = $('.ComposerBody-editor textarea').val();
     $.ajax({
             type: "POST",
             contentType: "application/json; charset=utf-8",

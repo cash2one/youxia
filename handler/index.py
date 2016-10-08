@@ -133,7 +133,7 @@ class PostHandler(BaseHandler):
         template_variables["user_info"] = user_info
         p = int(self.get_argument("p", "1"))
 
-        post = self.post_model.get_post_by_post_id(post_id)
+        post = self.item_model.get_post_by_post_id(post_id)
         template_variables["post"] = post
         #template_variables["tags"] = self.post_tag_model.get_post_all_tags(post_id)
 
@@ -165,8 +165,16 @@ class NewHandler(BaseHandler):
         post_info["updated"] = time.strftime('%Y-%m-%d %H:%M:%S')
         post_info["created"] = time.strftime('%Y-%m-%d %H:%M:%S')
 
-        post_id = self.post_model.add_new_post(post_info)
-        if post_id:
+        last_post_id = self.item_model.get_max_post_id()
+        if last_post_id:
+            post_id = last_post_id + 1
+        else:
+            post_id = 1
+        post_info["post_id"] = post_id
+        post_info["first_type"] = "post"
+
+        item_id = self.item_model.add_new_item(post_info)
+        if item_id:
             success = 0
             message = "成功新建帖子"
             redirect = "/post/"+str(post_id)
@@ -231,7 +239,7 @@ class ReplyHandler(BaseHandler):
         user_info = self.current_user
         p = int(self.get_argument("p", "1"))
 
-        all_replys = self.reply_model.get_post_all_replys_sort_by_created2(post_id, current_page = p)
+        all_replys = self.item_model.get_post_all_replys_sort_by_created(post_id, current_page = p)
         '''
         print 'cccccc@@@@@@@@@@@@@@@@@@@'
         print all_replys
@@ -252,9 +260,11 @@ class ReplyHandler(BaseHandler):
         content = data["content"]
 
         if(user_info):
-            post = self.post_model.get_post_by_post_id(post_id)
-            self.post_model.update_post_by_post_id(post_id, {
-                "reply_num": post.reply_num+1, 
+            post_item = self.item_model.get_post_by_post_id(post_id)
+            self.item_model.update_item_by_id(post_item.id, {
+                "reply_num": post_item.reply_num+1, 
+                "last_reply_user": user_info.username,
+                "last_reply_time": time.strftime('%Y-%m-%d %H:%M:%S'),
                 "updated": time.strftime('%Y-%m-%d %H:%M:%S'),
             })
 
@@ -262,10 +272,11 @@ class ReplyHandler(BaseHandler):
                 "author_id": user_info["uid"],
                 "post_id": post_id,
                 "content": content,
-                "reply_type": "post",
+                "first_type": "reply",
+                "second_type": "reply_post",
                 "created": time.strftime('%Y-%m-%d %H:%M:%S'),
             }
-            reply_id = self.reply_model.add_new_reply(reply_info)
+            reply_id = self.item_model.add_new_item(reply_info)
 
             self.write(lib.jsonp.print_JSON({
                     "success": 1,

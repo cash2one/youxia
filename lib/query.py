@@ -275,6 +275,20 @@ class Query(object):
         self.__close()
         return self.db.get(sql)["SUM(%s)" % field] if not cheat else sql
 
+    def max(self, field, cheat = False):
+        sql = "SELECT MAX(%s) FROM %s" % (field, self.__protected["__table_name"])
+        sql = self.__sqlbuild(sql, ["where"])
+        sql = self.__sqlfix(sql)
+        self.__close()
+        return self.db.get(sql)["MAX(%s)" % field] if not cheat else sql
+
+    def min(self, field, cheat = False):
+        sql = "SELECT MIN(%s) FROM %s" % (field, self.__protected["__table_name"])
+        sql = self.__sqlbuild(sql, ["where"])
+        sql = self.__sqlfix(sql)
+        self.__close()
+        return self.db.get(sql)["MIN(%s)" % field] if not cheat else sql
+
     def find(self, cheat = False):
         try:
             return self.select()[0] if not cheat else self.select(cheat)
