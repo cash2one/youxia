@@ -57,7 +57,7 @@ class IndexHandler(BaseHandler):
 
         p = int(self.get_argument("p", "1"))
 
-        all_posts = self.post_model.get_all_posts(current_page = p)
+        all_posts = self.item_model.get_all_posts(current_page = p)
         template_variables["all_posts"] = all_posts
         
 
