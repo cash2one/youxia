@@ -66,34 +66,6 @@
                         </ul>
                       </div>
                     </li>
-                    <li class="item-scrubber">
-                      <div class="PostStreamScrubber Dropdown App-titleControl">
-                        <button class="Button Dropdown-toggle" data-toggle="dropdown">
-                          <span class="Scrubber-index">1</span>of
-                          <span class="Scrubber-count">10</span>posts
-                          <i class="icon fa fa-fw fa-sort "></i></button>
-                        <div class="Dropdown-menu dropdown-menu">
-                          <div class="Scrubber">
-                            <a class="Scrubber-first">
-                              <i class="icon fa fa-fw fa-angle-double-up "></i>最先发布</a>
-                            <div class="Scrubber-scrollbar" style="max-height: 489px; cursor: pointer; -webkit-user-select: none;">
-                              <div class="Scrubber-before" style="height: 0%;"></div>
-                              <div class="Scrubber-handle" style="cursor: move; height: 16.6667%;">
-                                <div class="Scrubber-bar"></div>
-                                <div class="Scrubber-info">
-                                  <strong>
-                                    <span class="Scrubber-index">1</span>of
-                                    <span class="Scrubber-count">10</span>楼</strong>
-                                  <span class="Scrubber-description">April 2016</span></div>
-                              </div>
-                              <div class="Scrubber-after" style="height: 83.3333%;"></div>
-                              <div class="Scrubber-unread" style="top: 100%; height: 0%;">unread</div></div>
-                            <a class="Scrubber-last">
-                              <i class="icon fa fa-fw fa-angle-double-down "></i>最后回复</a>
-                          </div>
-                        </div>
-                      </div>
-                    </li>
                   </ul>
                 </nav>
                 <div class="DiscussionPage-stream">
@@ -120,7 +92,7 @@
                                   <h3>
                                     <a href="/user/{{post.author_username}}">
                                       {%if post.author_avatar%}
-        <img class="Avatar PostUser-avatar" src="{{post.author_avatar}}"></a>
+        <img class="Avatar PostUser-avatar" src="{{post.author_avatar}}">
         {%else%}
         <span class="Avatar PostUser-avatar" style="background: rgb(208, 160, 229);">{{post.author_username|format_username}}</span>
         {%endif%}
@@ -300,7 +272,7 @@ $(document).ready(function() {
             } else {
               avatar_text = '<span class="Avatar PostUser-avatar" style="background: rgb(208, 160, 229); text-transform: capitalize;">'+reply.author_username.substring(0,1)+'</span>';
             }
-            var reply_text = '<article class="Post undefined CommentPost"><div><header class="Post-header"><ul><li class="item-user"><div class="PostUser"><h3><a href="/user/'+reply.author_username+'">'+avatar_text+'<span class="username">'+reply.author_username+'</span></a></h3><ul class="PostUser-badges badges"></ul></div></li><li class="item-meta"><div class="Dropdown PostMeta"><a class="Dropdown-toggle" data-toggle="dropdown"><time pubdate="true" datetime="2016-03-29T17:53:03+08:00" title="Tuesday, March 29, 2016 5:53 PM" data-humantime="true">29 Mar</time></a><div class="Dropdown-menu dropdown-menu"><span class="PostMeta-number">Post #6</span> <span class="PostMeta-time"><time pubdate="true" datetime="2016-03-29T17:53:03+08:00">Tuesday, March 29, 2016 5:53 PM</time></span> <span class="PostMeta-ip"></span><input class="FormControl PostMeta-permalink"></div></div></li></ul></header><div class="Post-body">'+reply.content+'</div><aside class="Post-actions"><ul><li class="item-like"><button class="Button Button--link" type="button" title="赞"><span class="Button-label">赞</span></button></li><li class="item-reply"><button class="Button Button--link" type="button" title="回复"><span class="Button-label">回复</span></button></li><li><div class="ButtonGroup Dropdown dropdown Post-controls itemCount1"><button class="Dropdown-toggle Button Button--icon Button--flat" data-toggle="dropdown"><i class="icon fa fa-fw fa-ellipsis-h Button-icon"></i><span class="Button-label"></span><i class="icon fa fa-fw fa-caret-down Button-caret"></i></button><ul class="Dropdown-menu dropdown-menu Dropdown-menu--right"><li class="item-flag"><button class=" hasIcon" type="button" title="举报"><i class="icon fa fa-fw fa-flag Button-icon"></i><span class="Button-label">举报</span></button></li></ul></div></li></ul></aside><footer class="Post-footer"><ul><li class="item-liked"><div class="Post-likedBy"><i class="icon fa fa-fw fa-thumbs-o-up "></i><a href="/u/ThnhMinhV"><span class="username">ThnhMinhV</span></a>, <a href="/u/datitisev"><span class="username">datitisev</span></a>, and <a href="/u/Franz"><span class="username">Franz</span></a> like this.</div></li><li class="item-replies"><div class="Post-mentionedBy"><span class="Post-mentionedBy-summary"><i class="icon fa fa-fw fa-reply "></i><a href="/d/2352-flarum-v0-1-0-beta-5-released/31" data-number="31"><span class="username">louisw128</span></a> replied to this.</span><ul class="Dropdown-menu Post-mentionedBy-preview fade"></ul></div></li></ul></footer></div></article>'
+            var reply_text = '<article class="Post undefined CommentPost"><div><header class="Post-header"><ul><li class="item-user"><div class="PostUser"><h3><a href="/user/'+reply.author_username+'">'+avatar_text+'<span class="username">'+reply.author_username+'</span></a></h3><ul class="PostUser-badges badges"></ul></div></li><li class="item-meta"><div class="Dropdown PostMeta"><a class="Dropdown-toggle" data-toggle="dropdown"><time pubdate="true" datetime="2016-03-29T17:53:03+08:00" title="Tuesday, March 29, 2016 5:53 PM" data-humantime="true">29 Mar</time></a><div class="Dropdown-menu dropdown-menu"><span class="PostMeta-number">Post #6</span> <span class="PostMeta-time"><time pubdate="true" datetime="2016-03-29T17:53:03+08:00">Tuesday, March 29, 2016 5:53 PM</time></span> <span class="PostMeta-ip"></span><input class="FormControl PostMeta-permalink"></div></div><span class="item-index">#'+index+'</span></li></ul></header><div class="Post-body">'+reply.content+'</div><aside class="Post-actions"><ul><li class="item-like"><button class="Button Button--link" type="button" title="赞"><span class="Button-label">赞</span></button></li><li class="item-reply"><button class="Button Button--link" type="button" title="回复"><span class="Button-label">回复</span></button></li><li><div class="ButtonGroup Dropdown dropdown Post-controls itemCount1"><button class="Dropdown-toggle Button Button--icon Button--flat" data-toggle="dropdown"><i class="icon fa fa-fw fa-ellipsis-h Button-icon"></i><span class="Button-label"></span><i class="icon fa fa-fw fa-caret-down Button-caret"></i></button><ul class="Dropdown-menu dropdown-menu Dropdown-menu--right"><li class="item-flag"><button class=" hasIcon" type="button" title="举报"><i class="icon fa fa-fw fa-flag Button-icon"></i><span class="Button-label">举报</span></button></li></ul></div></li></ul></aside><footer class="Post-footer"><ul><li class="item-liked"><div class="Post-likedBy"><i class="icon fa fa-fw fa-thumbs-o-up "></i><a href="/u/ThnhMinhV"><span class="username">ThnhMinhV</span></a>, <a href="/u/datitisev"><span class="username">datitisev</span></a>, and <a href="/u/Franz"><span class="username">Franz</span></a> like this.</div></li><li class="item-replies"><div class="Post-mentionedBy"><span class="Post-mentionedBy-summary"><i class="icon fa fa-fw fa-reply "></i><a href="/d/2352-flarum-v0-1-0-beta-5-released/31" data-number="31"><span class="username">louisw128</span></a> replied to this.</span><ul class="Dropdown-menu Post-mentionedBy-preview fade"></ul></div></li></ul></footer></div></article>'
 
             $("[data-index='"+index+"']").html(reply_text);
             $("[data-index='"+index+"']").attr("id", "reply"+index);
@@ -308,85 +280,7 @@ $(document).ready(function() {
         }
 
         $(".LoadingPost").parent().remove();
-    });
-  
-
-  //historyState对象，提供push历史数据和获取历史数据方法。
-//linkFly原创，引用请注明出处，谢谢
-var historyState = {
-    checkCanPush: function () {
-        /// <summary>
-        ///     检测浏览器是否支持pushState方法
-        /// </summary>
-        /// <returns type="Boolean" />
-        if (window.history.pushState)
-        
-            return true;
-        return false;
-    },
-    pushState: function (data, url) {
-        /// <summary>
-        ///     状态保持方法（需要高版本浏览器支持），当canPush为true的时候表示浏览器可以进行push状态，则进行状态push并返回是否成功
-        ///     &#10;   1.1 - pushState(data,url) 将指定的data,和url push到浏览器会话历史进行状态保持【注意Url不允许跨域】
-        /// </summary>
-        /// <param name="url" type="String">
-        ///     需要写入浏览器会话历史的url
-        /// </param>
-        /// <returns type="Boolean" />
-        if (historyState.checkCanPush()) {
-            //注意data虽然可以保存数据，但是不能保存仍然引用着当前页面元素的对象，例如$("DOM")这样一个对象，就会出现ObjectCloneError
-            window.history.pushState(data, document.title, url);
-            return true;
-        }
-        return false;
-    },
-    getUrlParameter: function (fieldName) {
-        /// <summary>
-        ///     1: 获取地址栏参数方法
-        ///     &#10;    - getUrlParameter(fieldName) - 在当前Url中查询指定的参数，返回查询得到的值，当不支持pushState或没有查询到参数的时候返回空字符串
-        /// </summary>
-        /// <param name="fieldName" type="String">
-        ///     要查询的字符串
-        /// </param>
-        /// <returns type="String" />
-        if (historyState.checkCanPush()) {
-            var urlString = document.location.search;
-            if (urlString != null) {
-                var typeQu = fieldName + "=";
-                var urlEnd = urlString.indexOf(typeQu);
-                if (urlEnd != -1) {
-                    var paramsUrl = urlString.substring(urlEnd + typeQu.length);
-                    var isEnd = paramsUrl.indexOf('&');
-                    if (isEnd != -1) {
-                        return paramsUrl.substring(0, isEnd);
-                    }
-                    else {
-                        return paramsUrl;
-                    }
-                }
-                else {
-                    return "";
-                }
-            }
-            else {
-                return "";
-            }
-        } else {
-            return '';
-        }
-    }
-}
-
-//historyState对象调用示例
-window.onload = function () {
-    //写入历史会话
-    historyState.pushState({ reply: 1 }, window.location.pathname + '?reply=1');
-    //获取历史会话的数据（获取url的参数数据）
-    var pageIndex = historyState.getUrlParameter('reply');
-    //进行数据还原操作...
-
-}
-  
+    });  
 });
 </script>
 {% endblock %}
