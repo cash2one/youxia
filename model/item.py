@@ -46,7 +46,7 @@ class ItemModel(Query):
         where = "item.id = %s " % item_id
         return self.where(where).delete()
 
-    def get_post_all_replys_sort_by_created(self, post_id, num = 50, current_page = 1):
+    def get_post_all_replys_sort_by_created(self, post_id, num = 100, current_page = 1):
         where = "item.post_id = %s AND item.first_type='reply'" % post_id
         join = "LEFT JOIN user ON item.author_id = user.uid"
         order = "item.created ASC, item.id ASC"
