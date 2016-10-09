@@ -20,6 +20,23 @@ h2 {
 	margin-top: 1px;
 	font-size: 11px;
 }
+.dropload-down {
+    display: none;
+}
 
+.Post-body {
+    white-space: pre-wrap;
+        margin-bottom: 1em;
+}
 
-
+.Composer-flexible blockquote {
+    font-size: inherit;
+    border: 0;
+    background: #e7edf3;
+    color: #667d99;
+    border-radius: 4px;
+    padding: 8px 15px;
+    border-top: 2px dotted #fff;
+    border-bottom: 2px dotted #fff;
+    margin: 1em 0;
+}

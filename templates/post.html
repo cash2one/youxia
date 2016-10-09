@@ -119,9 +119,7 @@
                           </header>
                           <div class="Post-title">
                             <h2 class="DiscussionHero-title">{{post.title}}</h2></div>
-                          <div class="Post-body">
-                            {{post.content}}
-                          </div>
+                          <div class="Post-body">{{post.content}}</div>
                           <aside class="Post-actions">
                             <ul>
                               <li class="item-like">
@@ -175,16 +173,7 @@
 
                     
 
-                    <div class="PostStream-item" data-index="1"><div class="Post CommentPost LoadingPost"><header class="Post-header"><span class="Avatar PostUser-avatar"></span><div class="fakeText"></div></header><div class="Post-body"><div class="fakeText"></div><div class="fakeText"></div><div class="fakeText"></div></div></div></div>
-                    <div class="PostStream-item" data-index="2"><div class="Post CommentPost LoadingPost"><header class="Post-header"><span class="Avatar PostUser-avatar"></span><div class="fakeText"></div></header><div class="Post-body"><div class="fakeText"></div><div class="fakeText"></div><div class="fakeText"></div></div></div></div>
-                    <div class="PostStream-item" data-index="3"><div class="Post CommentPost LoadingPost"><header class="Post-header"><span class="Avatar PostUser-avatar"></span><div class="fakeText"></div></header><div class="Post-body"><div class="fakeText"></div><div class="fakeText"></div><div class="fakeText"></div></div></div></div>
-                    <div class="PostStream-item" data-index="4"><div class="Post CommentPost LoadingPost"><header class="Post-header"><span class="Avatar PostUser-avatar"></span><div class="fakeText"></div></header><div class="Post-body"><div class="fakeText"></div><div class="fakeText"></div><div class="fakeText"></div></div></div></div>
-                    <div class="PostStream-item" data-index="5"><div class="Post CommentPost LoadingPost"><header class="Post-header"><span class="Avatar PostUser-avatar"></span><div class="fakeText"></div></header><div class="Post-body"><div class="fakeText"></div><div class="fakeText"></div><div class="fakeText"></div></div></div></div>
-                    <div class="PostStream-item" data-index="6"><div class="Post CommentPost LoadingPost"><header class="Post-header"><span class="Avatar PostUser-avatar"></span><div class="fakeText"></div></header><div class="Post-body"><div class="fakeText"></div><div class="fakeText"></div><div class="fakeText"></div></div></div></div>
-                    <div class="PostStream-item" data-index="7"><div class="Post CommentPost LoadingPost"><header class="Post-header"><span class="Avatar PostUser-avatar"></span><div class="fakeText"></div></header><div class="Post-body"><div class="fakeText"></div><div class="fakeText"></div><div class="fakeText"></div></div></div></div>
-                    <div class="PostStream-item" data-index="8"><div class="Post CommentPost LoadingPost"><header class="Post-header"><span class="Avatar PostUser-avatar"></span><div class="fakeText"></div></header><div class="Post-body"><div class="fakeText"></div><div class="fakeText"></div><div class="fakeText"></div></div></div></div>
-                    <div class="PostStream-item" data-index="9"><div class="Post CommentPost LoadingPost"><header class="Post-header"><span class="Avatar PostUser-avatar"></span><div class="fakeText"></div></header><div class="Post-body"><div class="fakeText"></div><div class="fakeText"></div><div class="fakeText"></div></div></div></div>
-                    <div class="PostStream-item" data-index="10"><div class="Post CommentPost LoadingPost"><header class="Post-header"><span class="Avatar PostUser-avatar"></span><div class="fakeText"></div></header><div class="Post-body"><div class="fakeText"></div><div class="fakeText"></div><div class="fakeText"></div></div></div></div>
+                    <div class="ReplyList"></div>
 
                     <div class="PostStream-item">
                       <article class="Post ReplyPlaceholder">
@@ -211,7 +200,63 @@
 {% endblock %}
 
 {% block javascript %}
+<script src="{{static_path}}/js/dropload.min.js"></script>
+
 <script type="text/javascript">
+$(function(){
+        //$("img").lazyload();
+        
+    var pageNum = 1;
+
+    // dropload
+    $('#content').dropload({
+        scrollArea : window,
+        loadDownFn : function(me){
+            $.ajax({
+                type: 'GET',
+                url: '/reply/{{post.post_id}}?page='+pageNum,
+                dataType: 'json',
+                success: function(data){
+
+                    var all_replys_text = '';
+        var all_replys = data.list;
+        for (var i=0;i<all_replys.length;i++)
+        {
+            var reply = all_replys[i];
+            
+            var index = i + 1;
+            var avatar_text;
+            if (reply.author_avatar) {
+              avatar_text = '<img class="Avatar PostUser-avatar" src="'+reply.author_avatar+'">';
+            } else {
+              avatar_text = '<span class="Avatar PostUser-avatar" style="background: rgb(208, 160, 229); text-transform: capitalize;">'+reply.author_username.substring(0,1)+'</span>';
+            }
+            var reply_text = '<div class="PostStream-item" data-index="0" data-time="2016-04-27T00:34:10.000Z" data-number="1" data-id="23077" data-type="comment" style="display: block;"><article class="Post undefined CommentPost"><div><header class="Post-header"><ul><li class="item-user"><div class="PostUser"><h3><a href="/user/'+reply.author_username+'">'+avatar_text+'<span class="username">'+reply.author_username+'</span></a></h3><ul class="PostUser-badges badges"></ul></div></li><li class="item-meta"><div class="Dropdown PostMeta"><a class="Dropdown-toggle" data-toggle="dropdown"><time pubdate="true" datetime="2016-03-29T17:53:03+08:00" title="Tuesday, March 29, 2016 5:53 PM" data-humantime="true">29 Mar</time></a><div class="Dropdown-menu dropdown-menu"><span class="PostMeta-number">Post #6</span> <span class="PostMeta-time"><time pubdate="true" datetime="2016-03-29T17:53:03+08:00">Tuesday, March 29, 2016 5:53 PM</time></span> <span class="PostMeta-ip"></span><input class="FormControl PostMeta-permalink"></div></div><span class="item-index">#'+index+'</span></li></ul></header><div class="Post-body">'+reply.content+'</div><aside class="Post-actions"><ul><li class="item-like"><button class="Button Button--link" type="button" title="赞"><span class="Button-label">赞</span></button></li><li class="item-reply"><button class="Button Button--link" type="button" title="回复"><span class="Button-label">回复</span></button></li><li><div class="ButtonGroup Dropdown dropdown Post-controls itemCount1"><button class="Dropdown-toggle Button Button--icon Button--flat" data-toggle="dropdown"><i class="icon fa fa-fw fa-ellipsis-h Button-icon"></i><span class="Button-label"></span><i class="icon fa fa-fw fa-caret-down Button-caret"></i></button><ul class="Dropdown-menu dropdown-menu Dropdown-menu--right"><li class="item-flag"><button class=" hasIcon" type="button" title="举报"><i class="icon fa fa-fw fa-flag Button-icon"></i><span class="Button-label">举报</span></button></li></ul></div></li></ul></aside><footer class="Post-footer"><ul><li class="item-liked"><div class="Post-likedBy"><i class="icon fa fa-fw fa-thumbs-o-up "></i><a href="/u/ThnhMinhV"><span class="username">ThnhMinhV</span></a>, <a href="/u/datitisev"><span class="username">datitisev</span></a>, and <a href="/u/Franz"><span class="username">Franz</span></a> like this.</div></li><li class="item-replies"><div class="Post-mentionedBy"><span class="Post-mentionedBy-summary"><i class="icon fa fa-fw fa-reply "></i><a href="/d/2352-flarum-v0-1-0-beta-5-released/31" data-number="31"><span class="username">louisw128</span></a> replied to this.</span><ul class="Dropdown-menu Post-mentionedBy-preview fade"></ul></div></li></ul></footer></div></article></div>'
+              all_replys_text += reply_text;
+            
+        }
+
+                        $('.ReplyPlaceholder').parent().before(all_replys_text);
+                        // 每次数据加载完，必须重置
+                        me.resetload();
+
+                        pageNum++;
+                        if (pageNum > data.page.pages) {
+                            me.lock();
+                            me.noData();
+                        }
+
+                },
+                error: function(xhr, type){
+                    alert('Ajax error!');
+                    // 即使加载出错，也得重置
+                    me.resetload();
+                }
+            });
+        }
+    });
+});
+
 $(document).ready(function() {
   $(document).on('click', '.item-flag', function() {
     var modal = '<div class="Modal modal-dialog FlagPostModal Modal--small"><div class="Modal-content"><div class="Modal-close App-backControl"><button class="Button Button--icon Button--link hasIcon" type="button"><i class="icon fa fa-fw fa-times Button-icon"></i></button></div><form><div class="Modal-header"><h3 class="App-titleControl App-titleControl--text">Flag Post</h3></div><div class="Modal-alert"></div><div class="Modal-body"><div class="Form Form--centered"><div class="Form-group"><div><label class="checkbox"><input type="radio" name="reason" value="off_topic"><strong>Off-topic</strong>This post is not relevant to the current discussion and should be moved elsewhere.</label><label class="checkbox"><input type="radio" name="reason" value="inappropriate"><strong>Inappropriate</strong>This post is offensive, abusive, or violates our <a>community guidelines</a>.</label><label class="checkbox"><input type="radio" name="reason" value="spam"><strong>Spam</strong>This post is an advertisement.</label><label class="checkbox"><input type="radio" name="reason" value="other"><strong>Other</strong></label></div></div><div class="Form-group"><button class="Button Button--primary Button--block disabled" type="submit" disabled="" title="Flag Post"><span class="Button-label">Flag Post</span></button></div></div></div></form></div></div>';
@@ -249,38 +294,20 @@ $(document).ready(function() {
                     $('.Composer').removeClass('active');
                     $('.Composer').removeClass('visible');
                     $('.Composer').css("display", "none");
+
+                    var reply_text = '<div class="PostStream-item" data-index="0" data-time="2016-04-27T00:34:10.000Z" data-number="1" data-id="23077" data-type="comment" style="display: block;"><article class="Post undefined CommentPost"><div><header class="Post-header"><ul><li class="item-user"><div class="PostUser"><h3><a href="/user/{{user_info.username}}">{%if post.author_avatar%}<img class="Avatar PostUser-avatar" src="{{user_info.avatar}}">{%else%}<span class="Avatar PostUser-avatar" style="background: rgb(208, 160, 229);">{{user_info.username|format_username}}</span>{%endif%}<span class="username">{{user_info.username}}</span></a></h3><ul class="PostUser-badges badges"></ul></div></li><li class="item-meta"><div class="Dropdown PostMeta"><a class="Dropdown-toggle" data-toggle="dropdown"><time pubdate="true" datetime="2016-03-29T17:53:03+08:00" title="Tuesday, March 29, 2016 5:53 PM" data-humantime="true">29 Mar</time></a><div class="Dropdown-menu dropdown-menu"><span class="PostMeta-number">Post #6</span> <span class="PostMeta-time"><time pubdate="true" datetime="2016-03-29T17:53:03+08:00">Tuesday, March 29, 2016 5:53 PM</time></span> <span class="PostMeta-ip"></span><input class="FormControl PostMeta-permalink"></div></div><span class="item-index">#0</span></li></ul></header><div class="Post-body">'+content+'</div><aside class="Post-actions"><ul><li class="item-like"><button class="Button Button--link" type="button" title="赞"><span class="Button-label">赞</span></button></li><li class="item-reply"><button class="Button Button--link" type="button" title="回复"><span class="Button-label">回复</span></button></li><li><div class="ButtonGroup Dropdown dropdown Post-controls itemCount1"><button class="Dropdown-toggle Button Button--icon Button--flat" data-toggle="dropdown"><i class="icon fa fa-fw fa-ellipsis-h Button-icon"></i><span class="Button-label"></span><i class="icon fa fa-fw fa-caret-down Button-caret"></i></button><ul class="Dropdown-menu dropdown-menu Dropdown-menu--right"><li class="item-flag"><button class=" hasIcon" type="button" title="举报"><i class="icon fa fa-fw fa-flag Button-icon"></i><span class="Button-label">举报</span></button></li></ul></div></li></ul></aside><footer class="Post-footer"><ul><li class="item-liked"><div class="Post-likedBy"><i class="icon fa fa-fw fa-thumbs-o-up "></i><a href="/u/ThnhMinhV"><span class="username">ThnhMinhV</span></a>, <a href="/u/datitisev"><span class="username">datitisev</span></a>, and <a href="/u/Franz"><span class="username">Franz</span></a> like this.</div></li><li class="item-replies"><div class="Post-mentionedBy"><span class="Post-mentionedBy-summary"><i class="icon fa fa-fw fa-reply "></i><a href="/d/2352-flarum-v0-1-0-beta-5-released/31" data-number="31"><span class="username">louisw128</span></a> replied to this.</span><ul class="Dropdown-menu Post-mentionedBy-preview fade"></ul></div></li></ul></footer></div></article></div>'
+                    $('.ReplyPlaceholder').parent().before(reply_text);
+
+        $('html, body').animate({
+          scrollTop: $(document).height()
+        }, 1000);
                 }
             },
             error: function(msg) {
                 alert("error");
             }
         });
-  });
-
-  $.getJSON('/reply/{{post.id}}', function(data) {
-        var all_replys_text = '';
-        var all_replys = data.list;
-        var last_index;
-        for (var i=0;i<all_replys.length;i++)
-        {
-            var reply = all_replys[i];
-            
-            var index = i + 1;
-            var avatar_text;
-            if (reply.author_avatar) {
-              avatar_text = '<img class="Avatar PostUser-avatar" src="'+reply.author_avatar+'">';
-            } else {
-              avatar_text = '<span class="Avatar PostUser-avatar" style="background: rgb(208, 160, 229); text-transform: capitalize;">'+reply.author_username.substring(0,1)+'</span>';
-            }
-            var reply_text = '<article class="Post undefined CommentPost"><div><header class="Post-header"><ul><li class="item-user"><div class="PostUser"><h3><a href="/user/'+reply.author_username+'">'+avatar_text+'<span class="username">'+reply.author_username+'</span></a></h3><ul class="PostUser-badges badges"></ul></div></li><li class="item-meta"><div class="Dropdown PostMeta"><a class="Dropdown-toggle" data-toggle="dropdown"><time pubdate="true" datetime="2016-03-29T17:53:03+08:00" title="Tuesday, March 29, 2016 5:53 PM" data-humantime="true">29 Mar</time></a><div class="Dropdown-menu dropdown-menu"><span class="PostMeta-number">Post #6</span> <span class="PostMeta-time"><time pubdate="true" datetime="2016-03-29T17:53:03+08:00">Tuesday, March 29, 2016 5:53 PM</time></span> <span class="PostMeta-ip"></span><input class="FormControl PostMeta-permalink"></div></div><span class="item-index">#'+index+'</span></li></ul></header><div class="Post-body">'+reply.content+'</div><aside class="Post-actions"><ul><li class="item-like"><button class="Button Button--link" type="button" title="赞"><span class="Button-label">赞</span></button></li><li class="item-reply"><button class="Button Button--link" type="button" title="回复"><span class="Button-label">回复</span></button></li><li><div class="ButtonGroup Dropdown dropdown Post-controls itemCount1"><button class="Dropdown-toggle Button Button--icon Button--flat" data-toggle="dropdown"><i class="icon fa fa-fw fa-ellipsis-h Button-icon"></i><span class="Button-label"></span><i class="icon fa fa-fw fa-caret-down Button-caret"></i></button><ul class="Dropdown-menu dropdown-menu Dropdown-menu--right"><li class="item-flag"><button class=" hasIcon" type="button" title="举报"><i class="icon fa fa-fw fa-flag Button-icon"></i><span class="Button-label">举报</span></button></li></ul></div></li></ul></aside><footer class="Post-footer"><ul><li class="item-liked"><div class="Post-likedBy"><i class="icon fa fa-fw fa-thumbs-o-up "></i><a href="/u/ThnhMinhV"><span class="username">ThnhMinhV</span></a>, <a href="/u/datitisev"><span class="username">datitisev</span></a>, and <a href="/u/Franz"><span class="username">Franz</span></a> like this.</div></li><li class="item-replies"><div class="Post-mentionedBy"><span class="Post-mentionedBy-summary"><i class="icon fa fa-fw fa-reply "></i><a href="/d/2352-flarum-v0-1-0-beta-5-released/31" data-number="31"><span class="username">louisw128</span></a> replied to this.</span><ul class="Dropdown-menu Post-mentionedBy-preview fade"></ul></div></li></ul></footer></div></article>'
-
-            $("[data-index='"+index+"']").html(reply_text);
-            $("[data-index='"+index+"']").attr("id", "reply"+index);
-            last_index = i;
-        }
-
-        $(".LoadingPost").parent().remove();
-    });  
+  }); 
 });
 </script>
 {% endblock %}

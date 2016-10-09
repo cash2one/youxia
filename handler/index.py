@@ -136,6 +136,7 @@ class PostHandler(BaseHandler):
         post = self.item_model.get_post_by_post_id(post_id)
         template_variables["post"] = post
         #template_variables["tags"] = self.post_tag_model.get_post_all_tags(post_id)
+        print "@@@"+post.content
 
         template_variables["page_name"] = "App--discussion"
 
@@ -237,7 +238,7 @@ class ReplyHandler(BaseHandler):
     def get(self, post_id, template_variables = {}):
         print 'fdsafsadf'
         user_info = self.current_user
-        p = int(self.get_argument("p", "1"))
+        p = int(self.get_argument("page", "1"))
 
         all_replys = self.item_model.get_post_all_replys_sort_by_created(post_id, current_page = p)
         '''

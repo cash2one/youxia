@@ -55,7 +55,7 @@ class ItemModel(Query):
                 user.avatar as author_avatar"
         return self.where(where).order(order).join(join).field(field).pages(current_page = current_page, list_rows = num)
 
-    def get_all_posts(self, num = 20, current_page = 1):
+    def get_all_posts(self, num = 5, current_page = 1):
         where = "item.first_type='post'"
         order = "item.post_id DESC"
         join = "LEFT JOIN user AS author_user ON item.author_id = author_user.uid"
