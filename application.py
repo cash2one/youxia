@@ -66,6 +66,7 @@ class Application(tornado.web.Application):
             (r"/post/(\d+)", handler.index.PostHandler),
             (r"/d/(.*)", handler.index.PostHandler),
             (r"/reply/(\d+)", handler.index.ReplyHandler),
+            (r"/like/(\d+)", handler.index.LikeHandler),
             (r"/upload/image", handler.index.UploadImageHandler),
             (r"/signin", handler.user.SigninHandler),
             (r"/signout", handler.user.SignoutHandler),

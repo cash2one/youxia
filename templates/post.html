@@ -525,6 +525,25 @@ $(document).ready(function() {
         $('.item-submit').attr('data-type', 'to_reply');
         $('.item-submit').attr('data-id', data_id);
     });
+
+    $(document).on('click', '.item-like', function() {
+        var item_like = $(this);
+        if (item_like.hasClass('liked')) {
+          return;
+        }
+        var item = $(this).parent().parent().parent().parent().parent();
+        var data_id = item.attr('data-id');
+        $.getJSON('/like/'+data_id, function(data) {
+          if (data.success == 1) {
+              item_like.find('span').text('已赞');
+              item_like.addClass('liked');
+          } else {
+            alert('error');
+          }
+        });
+    });
+
+    
 });
 </script>
 {% endblock %}

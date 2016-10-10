@@ -27,6 +27,11 @@ class ItemModel(Query):
                 author_user.sign as author_sign"
         return self.where(where).join(join).field(field).find()
 
+    def get_like_by_author_and_item_id(self, author_id, item_id):
+        where = "item.author_id = %s AND item.id = %s AND item.first_type='like'" % (author_id, item_id)
+        return self.where(where).find()
+        
+
     def update_item_by_id(self, item_id, item_info):
         where = "item.id = %s" % item_id
         return self.where(where).data(item_info).save()

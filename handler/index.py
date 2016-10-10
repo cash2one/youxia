@@ -306,6 +306,35 @@ class ReplyHandler(BaseHandler):
                     "message": "failed",
             }))
 
+class LikeHandler(BaseHandler):
+    def get(self, item_id, template_variables = {}):
+        user_info = self.current_user
+
+        if(user_info):
+            like = self.item_model.get_like_by_author_and_item_id(user_info.uid, item_id)
+            if not like:
+                item = self.item_model.get_item_by_id(item_id)
+                self.item_model.update_item_by_id(item_id, {
+                    "like_num": item.like_num+1,
+                    "like_users": (item.like_users if item.like_users else '') + user_info.username + ',',  })
+                self.item_model.add_new_item({
+                    "post_id": item.post_id,
+                    "first_type": "like",
+                    "second_type": item.first_type,
+                    "author_id": user_info.uid,
+                    "created": time.strftime('%Y-%m-%d %H:%M:%S')
+                })
+                
+            self.write(lib.jsonp.print_JSON({
+                    "success": 1,
+                    "message": "successed",
+                }))
+        else:
+            self.write(lib.jsonp.print_JSON({
+                    "success": 0,
+                    "message": "successed",
+                }))
+
 class TagsHandler(BaseHandler):
     def get(self, template_variables = {}):
         user_info = self.current_user
