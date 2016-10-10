@@ -40,3 +40,12 @@ h2 {
     border-bottom: 2px dotted #fff;
     margin: 1em 0;
 }
+
+.Composer-flexible {
+        background-color: #fff;
+}
+.Composer-flexible:focus {
+        border-color: transparent;
+}
+
+    

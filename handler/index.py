@@ -259,8 +259,11 @@ class ReplyHandler(BaseHandler):
 
         data = json.loads(self.request.body)
         content = data["content"]
+        second_type = data["second_type"]
+        reply_to = data["reply_to"]
 
         if(user_info):
+            # update post
             post_item = self.item_model.get_post_by_post_id(post_id)
             self.item_model.update_item_by_id(post_item.id, {
                 "reply_num": post_item.reply_num+1, 
@@ -269,12 +272,25 @@ class ReplyHandler(BaseHandler):
                 "updated": time.strftime('%Y-%m-%d %H:%M:%S'),
             })
 
+            # update reply_item
+            if (second_type == 'to_reply'):
+                reply_item = self.item_model.get_item_by_id(reply_to)
+                self.item_model.update_item_by_id(reply_item.id, {
+                    "reply_num": reply_item.reply_num+1,
+                    "reply_users": (reply_item.reply_users if reply_item.reply_users else '') + user_info.username + ',',  
+                    "last_reply_user": user_info.username,
+                    "last_reply_time": time.strftime('%Y-%m-%d %H:%M:%S'),
+                    "updated": time.strftime('%Y-%m-%d %H:%M:%S'),
+                })
+
+
             reply_info = {
                 "author_id": user_info["uid"],
                 "post_id": post_id,
                 "content": content,
                 "first_type": "reply",
-                "second_type": "reply_post",
+                "second_type": second_type,
+                "reply_to": reply_to,
                 "created": time.strftime('%Y-%m-%d %H:%M:%S'),
             }
             reply_id = self.item_model.add_new_item(reply_info)
