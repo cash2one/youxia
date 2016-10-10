@@ -2,199 +2,196 @@
 <html>
 
 <head>
-  <meta charset="utf-8">
-  <title>游侠车迷社区</title>
-  <meta name="description" content="">
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1">
-  <meta name="theme-color" content="#E7672E">
-
-  <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Open+Sans:400italic,700italic,400,700,600">
-  <style type="text/css" adt="123"></style>
-  <style type="text/css"></style>
-
-  <link rel="stylesheet" href="/static/css/font-awesome-4.6.3/css/font-awesome.min.css">
-  <link rel="stylesheet" href="/static/css/forum-64c7858d.css">
-  <link rel="stylesheet" href="/static/css/main.css">{% block stylesheet %}{% endblock %}</head>
+    <meta charset="utf-8">
+    <title>游侠车迷社区</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1">
+    <meta name="theme-color" content="#E7672E">
+    <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Open+Sans:400italic,700italic,400,700,600">
+    <style type="text/css" adt="123"></style>
+    <style type="text/css"></style>
+    <link rel="stylesheet" href="/static/css/font-awesome-4.6.3/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/static/css/forum-64c7858d.css">
+    <link rel="stylesheet" href="/static/css/main.css">{% block stylesheet %}{% endblock %}</head>
 
 <body class="no-touch">
-  <div id="app" class="App affix {{page_name}}" style="min-height: 775px;">
-    <div id="app-navigation" class="App-navigation">
-      <div class="Navigation ButtonGroup App-backControl">
-        <button class="Button Button--icon Navigation-drawer hasIcon" type="button"> <i class="icon fa fa-fw fa-reorder Button-icon"></i>
-        </button>
-      </div>
-    </div>
-    <div id="drawer" class="App-drawer">
-      <header id="header" class="App-header">
-        <div id="header-navigation" class="Header-navigation">
-          <div class="Navigation ButtonGroup "></div>
+    <div id="app" class="App affix {{page_name}}" style="min-height: 775px;">
+        <div id="app-navigation" class="App-navigation">
+            <div class="Navigation ButtonGroup App-backControl">
+                <button class="Button Button--icon Navigation-drawer hasIcon" type="button"> <i class="icon fa fa-fw fa-reorder Button-icon"></i>
+                </button>
+            </div>
         </div>
-        <div class="container">
-          <h1 class="Header-title">
+        <div id="drawer" class="App-drawer">
+            <header id="header" class="App-header">
+                <div id="header-navigation" class="Header-navigation">
+                    <div class="Navigation ButtonGroup "></div>
+                </div>
+                <div class="container">
+                    <h1 class="Header-title">
             <a href="/" id="home-link">
               <img src="https://discuss.flarum.org/assets/header.png" alt="" height="27"></a>
           </h1>
-          <div class="Header-primary">
-            <ul class="Header-controls">
-              <li>
-                <a href="/" class="Button Button--link">首页</a>
-              </li>
-              <li>
-                <a href="http://discuss.flarum.org/d/859-flarum-community-guidelines" class="Button Button--link">车评</a>
-              </li>
-              <li>
-                <a href="http://flarum.org/docs/faq" class="Button Button--link">好店</a>
-              </li>
-              <li>
-                <a href="https://gitter.im/flarum/flarum" class="Button Button--link" target="_blank">值得买</a>
-              </li>
-              <li>
-                <a href="http://flarum.org/docs/contributing" class="Button Button--link" target="_blank">社区</a>
-              </li>
-            </ul>
-            <div id="header-primary">
-              <ul class="Header-controls"></ul>
-            </div>
-          </div>
-          <div id="header-secondary" class="Header-secondary">
-            <ul class="Header-controls">
-              <li class="item-search">
-                <div class="Search ">
-                  <div class="Search-input">
-                    <input class="FormControl" placeholder="搜索"></div>
-                  <ul class="Dropdown-menu Search-results"></ul>
-                </div>
-              </li>
-              <li class="item-notifications">
-                <div class="ButtonGroup Dropdown dropdown NotificationsDropdown itemCount0">
-                  <button class="Dropdown-toggle Button Button--flat" data-toggle="dropdown" title="消息"> <i class="icon fa fa-fw fa-bell Button-icon"></i>
-                    <span class="Button-label">消息</span>
-                  </button>
-                  <div class="Dropdown-menu Dropdown-menu--right"></div>
-                </div>
-              </li>
-              {%if user_info%}
-              <li class="item-session">
-                <div class="ButtonGroup Dropdown dropdown SessionDropdown itemCount4">
-                  <button class="Dropdown-toggle Button Button--user Button--flat" data-toggle="dropdown">
-                    {%if user_info.avatar%}
-                    <img class="Avatar " src="{{user_info.avatar}}">
-                    {%else%}
-                    <span class="Avatar " style="background: rgb(208, 160, 229);">{{user_info.username|format_username}}</span>
-                    {%endif%}
-                    <span class="Button-label">
+                    <div class="Header-primary">
+                        <ul class="Header-controls">
+                            <li>
+                                <a href="/" class="Button Button--link">首页</a>
+                            </li>
+                            <li>
+                                <a href="http://discuss.flarum.org/d/859-flarum-community-guidelines" class="Button Button--link">车评</a>
+                            </li>
+                            <li>
+                                <a href="http://flarum.org/docs/faq" class="Button Button--link">好店</a>
+                            </li>
+                            <li>
+                                <a href="https://gitter.im/flarum/flarum" class="Button Button--link" target="_blank">值得买</a>
+                            </li>
+                            <li>
+                                <a href="http://flarum.org/docs/contributing" class="Button Button--link" target="_blank">社区</a>
+                            </li>
+                        </ul>
+                        <div id="header-primary">
+                            <ul class="Header-controls"></ul>
+                        </div>
+                    </div>
+                    <div id="header-secondary" class="Header-secondary">
+                        <ul class="Header-controls">
+                            <li class="item-search">
+                                <div class="Search ">
+                                    <div class="Search-input">
+                                        <input class="FormControl" placeholder="搜索">
+                                    </div>
+                                    <ul class="Dropdown-menu Search-results"></ul>
+                                </div>
+                            </li>
+                            <li class="item-notifications">
+                                <div class="ButtonGroup Dropdown dropdown NotificationsDropdown itemCount0">
+                                    <button class="Dropdown-toggle Button Button--flat" data-toggle="dropdown" title="消息"> <i class="icon fa fa-fw fa-bell Button-icon"></i>
+                                        <span class="Button-label">消息</span>
+                                    </button>
+                                    <div class="Dropdown-menu Dropdown-menu--right"></div>
+                                </div>
+                            </li>
+                            {%if user_info%}
+                            <li class="item-session">
+                                <div class="ButtonGroup Dropdown dropdown SessionDropdown itemCount4">
+                                    <button class="Dropdown-toggle Button Button--user Button--flat" data-toggle="dropdown">
+                                        {%if user_info.avatar%}
+                                        <img class="Avatar " src="{{user_info.avatar}}"> {%else%}
+                                        <span class="Avatar " style="background: rgb(208, 160, 229);">{{user_info.username|format_username}}</span> {%endif%}
+                                        <span class="Button-label">
                       <span class="username">{{user_info.username}}</span>
-                    </span>
-                  </button>
-                  <ul class="Dropdown-menu dropdown-menu Dropdown-menu--right">
-                    <li class="item-profile">
-                      <a href="/user/{{user_info.username}}" active="false" class=" hasIcon" type="button" title="Profile">
-                        <i class="icon fa fa-fw fa-user Button-icon"></i>
-                        <span class="Button-label">我的主页</span>
-                      </a>
-                    </li>
-                    <li class="item-settings">
-                      <a href="/settings" active="false" class=" hasIcon" type="button" title="Settings">
-                        <i class="icon fa fa-fw fa-cog Button-icon"></i>
-                        <span class="Button-label">设置</span>
-                      </a>
-                    </li>
-                    <li class="Dropdown-separator"></li>
-                    <li class="item-logOut">
-                      <a href="/signout" class=" hasIcon" type="button" title="登出">
-                        <i class="icon fa fa-fw fa-sign-out Button-icon"></i>
-                        <span class="Button-label">登出</span>
-                      </a>
-                    </li>
-                  </ul>
+                                        </span>
+                                    </button>
+                                    <ul class="Dropdown-menu dropdown-menu Dropdown-menu--right">
+                                        <li class="item-profile">
+                                            <a href="/user/{{user_info.username}}" active="false" class=" hasIcon" type="button" title="Profile">
+                                                <i class="icon fa fa-fw fa-user Button-icon"></i>
+                                                <span class="Button-label">我的主页</span>
+                                            </a>
+                                        </li>
+                                        <li class="item-settings">
+                                            <a href="/settings" active="false" class=" hasIcon" type="button" title="Settings">
+                                                <i class="icon fa fa-fw fa-cog Button-icon"></i>
+                                                <span class="Button-label">设置</span>
+                                            </a>
+                                        </li>
+                                        <li class="Dropdown-separator"></li>
+                                        <li class="item-logOut">
+                                            <a href="/signout" class=" hasIcon" type="button" title="登出">
+                                                <i class="icon fa fa-fw fa-sign-out Button-icon"></i>
+                                                <span class="Button-label">登出</span>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </li>
+                            {%else%}
+                            <li class="item-signUp signUp">
+                                <button class="Button Button--link" type="button" title="注册">
+                                    <span class="Button-label">注册</span>
+                                </button>
+                            </li>
+                            <li class="item-logIn logIn">
+                                <button class="Button Button--link" type="button" title="登录">
+                                    <span class="Button-label">登录</span>
+                                </button>
+                            </li>
+                            {%endif%}
+                        </ul>
+                    </div>
                 </div>
-              </li>
-              {%else%}
-              <li class="item-signUp signUp">
-                <button class="Button Button--link" type="button" title="注册">
-                  <span class="Button-label">注册</span>
-                </button>
-              </li>
-              <li class="item-logIn logIn">
-                <button class="Button Button--link" type="button" title="登录">
-                  <span class="Button-label">登录</span>
-                </button>
-              </li>
-              {%endif%}
-            </ul>
-          </div>
+            </header>
         </div>
-      </header>
+        {% block main %}{% endblock %}
     </div>
-    {% block main %}{% endblock %}
-  </div>
-  {% block modal %}{% endblock %}
-  <script src="/static/js/jquery-2.1.1.min.js"></script>
-  <script src="/static/bootstrap-3.2.0-dist/js/bootstrap.min.js"></script>
-  <script type="text/javascript">
-$(document).ready(function() {
-  $(document).on('click', '.normal .item-fullScreen', function() {
-    $('.Composer').removeClass('normal');
-    $('.Composer').addClass('fullScreen');
-    $('.fullScreen .item-minimize').css("display", "none");
-    $('.fullScreen .item-close').css("display", "none");
-  });
+    {% block modal %}{% endblock %}
+    <script src="/static/js/jquery-2.1.1.min.js"></script>
+    <script src="/static/bootstrap-3.2.0-dist/js/bootstrap.min.js"></script>
+    <script type="text/javascript">
+    $(document).ready(function() {
+        $(document).on('click', '.normal .item-fullScreen', function() {
+            $('.Composer').removeClass('normal');
+            $('.Composer').addClass('fullScreen');
+            $('.fullScreen .item-minimize').css("display", "none");
+            $('.fullScreen .item-close').css("display", "none");
+        });
 
-  $(document).on('click', '.fullScreen .item-fullScreen', function() {
-    $('.Composer').removeClass('fullScreen');
-    $('.Composer').addClass('normal');
-    $('.normal .item-minimize').css("display", "");
-    $('.normal .item-close').css("display", "");
-  });
+        $(document).on('click', '.fullScreen .item-fullScreen', function() {
+            $('.Composer').removeClass('fullScreen');
+            $('.Composer').addClass('normal');
+            $('.normal .item-minimize').css("display", "");
+            $('.normal .item-close').css("display", "");
+        });
 
-  $(document).on('click', '.normal .item-close', function() {
-    $('.Composer').removeClass('normal'); 
-    $('.Composer').removeClass('active');
-    $('.Composer').removeClass('visible');
-    $('.Composer').css("display", "none");
-  });
+        $(document).on('click', '.normal .item-close', function() {
+            $('.Composer').removeClass('normal');
+            $('.Composer').removeClass('active');
+            $('.Composer').removeClass('visible');
+            $('.Composer').css("display", "none");
+        });
 
-   $(document).scroll(function() {
-      var offset = $(document).scrollTop();
-      if (offset < 1) {
-        $('#app').removeClass('scrolled');
-      } else {
-        $('#app').addClass('scrolled');
-      }
+        $(document).scroll(function() {
+            var offset = $(document).scrollTop();
+            if (offset < 1) {
+                $('#app').removeClass('scrolled');
+            } else {
+                $('#app').addClass('scrolled');
+            }
+        });
+
+        $('.modal').on('hidden.bs.modal', function() {
+            $('.ModalManager').html("");
+        });
+        $(document).on('click', '.Modal-close', function() {
+            $('.modal').modal('hide');
+        });
+
+
+        $(document).on('click', '.logIn', function() {
+            var modal = '<div class="Modal modal-dialog LogInModal Modal--small"><div class="Modal-content"><div class="Modal-close App-backControl"><button class="Button Button--icon Button--link hasIcon" type="button"><i class="icon fa fa-fw fa-times Button-icon"></i></button></div><form action="/signin" method="POST"><div class="Modal-header"><h3 class="App-titleControl App-titleControl--text">登录</h3></div><div class="Modal-alert"></div><div class="Modal-body"><div class="LogInButtons"><button class="Button LogInButton--facebook LogInButton hasIcon" path="/auth/facebook" type="button" title="Log In with Facebook"><i class="icon fa fa-fw fa-facebook-official Button-icon"></i><span class="Button-label">Log In with Facebook</span></button><button class="Button LogInButton--github LogInButton hasIcon" path="/auth/github" type="button" title="Log In with GitHub"><i class="icon fa fa-fw fa-github Button-icon"></i><span class="Button-label">Log In with GitHub</span></button><button class="Button LogInButton--twitter LogInButton hasIcon" path="/auth/twitter" type="button" title="Log In with Twitter"><i class="icon fa fa-fw fa-twitter Button-icon"></i><span class="Button-label">Log In with Twitter</span></button></div><div class="Form Form--centered"><div class="Form-group"><input class="FormControl" name="email" type="text" placeholder="用户名或邮箱" bidi="function b(){arguments.length&amp;&amp;(a=arguments[0]);return a}"></div><div class="Form-group"><input class="FormControl" name="password" type="password" placeholder="密码" bidi="function b(){arguments.length&amp;&amp;(a=arguments[0]);return a}"></div><div class="Form-group"><button class="Button Button--primary Button--block" type="submit" title="登录"><span class="Button-label">登录</span></button></div></div></div><div class="Modal-footer"><p class="LogInModal-forgotPassword"><a class="forgotPassword">忘记密码?</a></p><p class="LogInModal-signUp">还没有账户? <a class="signUp">去注册</a></p></div></form></div></div>';
+            $('.ModalManager').html(modal);
+            $('.modal').modal('show');
+        });
+
+        $(document).on('click', '.signUp', function() {
+            var modal = '<div class="Modal modal-dialog Modal--small SignUpModal"><div class="Modal-content"><div class="Modal-close App-backControl"><button class="Button Button--icon Button--link hasIcon" type="button"><i class="icon fa fa-fw fa-times Button-icon"></i></button></div><form action="/signup" method="POST"><div class="Modal-header"><h3 class="App-titleControl App-titleControl--text">注册</h3></div><div class="Modal-alert"></div><div class="Modal-body"><div class="LogInButtons"><button class="Button LogInButton--facebook LogInButton hasIcon" path="/auth/facebook" type="button" title="Log In with Facebook"><i class="icon fa fa-fw fa-facebook-official Button-icon"></i><span class="Button-label">Log In with Facebook</span></button><button class="Button LogInButton--github LogInButton hasIcon" path="/auth/github" type="button" title="Log In with GitHub"><i class="icon fa fa-fw fa-github Button-icon"></i><span class="Button-label">Log In with GitHub</span></button><button class="Button LogInButton--twitter LogInButton hasIcon" path="/auth/twitter" type="button" title="Log In with Twitter"><i class="icon fa fa-fw fa-twitter Button-icon"></i><span class="Button-label">Log In with Twitter</span></button></div><div class="Form Form--centered"><div class="Form-group"><input class="FormControl" name="username" type="text" placeholder="用户名"></div><div class="Form-group"><input class="FormControl" name="email" type="email" placeholder="邮箱"></div><div class="Form-group"><input class="FormControl" name="password" type="password" placeholder="密码"></div><div class="Form-group"><button class="Button Button--primary Button--block" type="submit" title="注册"><span class="Button-label">注册</span></button></div></div></div><div class="Modal-footer"><p class="SignUpModal-logIn">已有帐户? <a class="logIn">去登录</a></p></div></form></div></div>';
+            $('.ModalManager').html(modal);
+            $('.modal').modal('show');
+        });
+
+        $(document).on('click', '.forgotPassword', function() {
+            var modal = '<div class="Modal modal-dialog ForgotPasswordModal Modal--small"><div class="Modal-content"><div class="Modal-close App-backControl"><button class="Button Button--icon Button--link hasIcon" type="button"><i class="icon fa fa-fw fa-times Button-icon"></i></button></div><form><div class="Modal-header"><h3 class="App-titleControl App-titleControl--text">重置密码</h3></div><div class="Modal-alert"></div><div class="Modal-body"><div class="Form Form--centered"><p class="helpText">请输入你的邮箱地址我们会发送一个密码重置链接到你的邮箱中.</p><div class="Form-group"><input class="FormControl" name="email" type="email" placeholder="邮箱"></div><div class="Form-group"><button class="Button Button--primary Button--block" type="submit" title="重置密码"><span class="Button-label">重置密码</span></button></div></div></div></form></div></div>';
+            $('.ModalManager').html(modal);
+            $('.modal').modal('show');
+        });
+
+
+
+
     });
-
-   $('.modal').on('hidden.bs.modal', function () {
-    $('.ModalManager').html("");
-    });
-   $(document).on('click', '.Modal-close', function() {
-    $('.modal').modal('hide');
-  });
-
-
-   $(document).on('click', '.logIn', function() {
-    var modal = '<div class="Modal modal-dialog LogInModal Modal--small"><div class="Modal-content"><div class="Modal-close App-backControl"><button class="Button Button--icon Button--link hasIcon" type="button"><i class="icon fa fa-fw fa-times Button-icon"></i></button></div><form action="/signin" method="POST"><div class="Modal-header"><h3 class="App-titleControl App-titleControl--text">登录</h3></div><div class="Modal-alert"></div><div class="Modal-body"><div class="LogInButtons"><button class="Button LogInButton--facebook LogInButton hasIcon" path="/auth/facebook" type="button" title="Log In with Facebook"><i class="icon fa fa-fw fa-facebook-official Button-icon"></i><span class="Button-label">Log In with Facebook</span></button><button class="Button LogInButton--github LogInButton hasIcon" path="/auth/github" type="button" title="Log In with GitHub"><i class="icon fa fa-fw fa-github Button-icon"></i><span class="Button-label">Log In with GitHub</span></button><button class="Button LogInButton--twitter LogInButton hasIcon" path="/auth/twitter" type="button" title="Log In with Twitter"><i class="icon fa fa-fw fa-twitter Button-icon"></i><span class="Button-label">Log In with Twitter</span></button></div><div class="Form Form--centered"><div class="Form-group"><input class="FormControl" name="email" type="text" placeholder="用户名或邮箱" bidi="function b(){arguments.length&amp;&amp;(a=arguments[0]);return a}"></div><div class="Form-group"><input class="FormControl" name="password" type="password" placeholder="密码" bidi="function b(){arguments.length&amp;&amp;(a=arguments[0]);return a}"></div><div class="Form-group"><button class="Button Button--primary Button--block" type="submit" title="登录"><span class="Button-label">登录</span></button></div></div></div><div class="Modal-footer"><p class="LogInModal-forgotPassword"><a class="forgotPassword">忘记密码?</a></p><p class="LogInModal-signUp">还没有账户? <a class="signUp">去注册</a></p></div></form></div></div>';
-    $('.ModalManager').html(modal);
-    $('.modal').modal('show');
-  });
-
-  $(document).on('click', '.signUp', function() {
-    var modal = '<div class="Modal modal-dialog Modal--small SignUpModal"><div class="Modal-content"><div class="Modal-close App-backControl"><button class="Button Button--icon Button--link hasIcon" type="button"><i class="icon fa fa-fw fa-times Button-icon"></i></button></div><form action="/signup" method="POST"><div class="Modal-header"><h3 class="App-titleControl App-titleControl--text">注册</h3></div><div class="Modal-alert"></div><div class="Modal-body"><div class="LogInButtons"><button class="Button LogInButton--facebook LogInButton hasIcon" path="/auth/facebook" type="button" title="Log In with Facebook"><i class="icon fa fa-fw fa-facebook-official Button-icon"></i><span class="Button-label">Log In with Facebook</span></button><button class="Button LogInButton--github LogInButton hasIcon" path="/auth/github" type="button" title="Log In with GitHub"><i class="icon fa fa-fw fa-github Button-icon"></i><span class="Button-label">Log In with GitHub</span></button><button class="Button LogInButton--twitter LogInButton hasIcon" path="/auth/twitter" type="button" title="Log In with Twitter"><i class="icon fa fa-fw fa-twitter Button-icon"></i><span class="Button-label">Log In with Twitter</span></button></div><div class="Form Form--centered"><div class="Form-group"><input class="FormControl" name="username" type="text" placeholder="用户名"></div><div class="Form-group"><input class="FormControl" name="email" type="email" placeholder="邮箱"></div><div class="Form-group"><input class="FormControl" name="password" type="password" placeholder="密码"></div><div class="Form-group"><button class="Button Button--primary Button--block" type="submit" title="注册"><span class="Button-label">注册</span></button></div></div></div><div class="Modal-footer"><p class="SignUpModal-logIn">已有帐户? <a class="logIn">去登录</a></p></div></form></div></div>';
-    $('.ModalManager').html(modal);
-    $('.modal').modal('show');
-  });
-
-$(document).on('click', '.forgotPassword', function() {
-    var modal = '<div class="Modal modal-dialog ForgotPasswordModal Modal--small"><div class="Modal-content"><div class="Modal-close App-backControl"><button class="Button Button--icon Button--link hasIcon" type="button"><i class="icon fa fa-fw fa-times Button-icon"></i></button></div><form><div class="Modal-header"><h3 class="App-titleControl App-titleControl--text">重置密码</h3></div><div class="Modal-alert"></div><div class="Modal-body"><div class="Form Form--centered"><p class="helpText">请输入你的邮箱地址我们会发送一个密码重置链接到你的邮箱中.</p><div class="Form-group"><input class="FormControl" name="email" type="email" placeholder="邮箱"></div><div class="Form-group"><button class="Button Button--primary Button--block" type="submit" title="重置密码"><span class="Button-label">重置密码</span></button></div></div></div></form></div></div>';
-    $('.ModalManager').html(modal);
-    $('.modal').modal('show');
-  });
-
-
-
-   
-});
-</script>
-  {% block javascript %}{% endblock %}
+    </script>
+    {% block javascript %}{% endblock %}
 </body>
 
 </html>
