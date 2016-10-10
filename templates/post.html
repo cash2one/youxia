@@ -1,96 +1,96 @@
 {% extends 'layout.html' %} {% block stylesheet %} {% endblock %} {% block main %}
 <main class="App-content">
-    <div id="content" style="padding-bottom: 0px;">
-        <div class="DiscussionPage">
-            <div class="DiscussionPage-discussion">
-                <div class="container">
-                    <nav class="DiscussionPage-nav">
-                        <ul>
-                            <li class="item-controls">
-                                <div class="ButtonGroup Dropdown dropdown App-primaryControl Dropdown--split itemCount1">
-                                    <button class=" SplitDropdown-button Button Button--primary hasIcon" type="button" title="回复"> <i class="icon fa fa-fw fa-reply Button-icon"></i>
-                                        <span class="Button-label">回复</span>
-                                    </button>
-                                    <button class="Dropdown-toggle Button Button--icon Button--primary" data-toggle="dropdown"> <i class="icon fa fa-fw fa-ellipsis-v Button-icon"></i>
-                                        <i class="icon fa fa-fw fa-caret-down Button-caret"></i>
-                                    </button>
-                                    <ul class="Dropdown-menu dropdown-menu  Dropdown-menu--right">
-                                        <li class="item-reply">
-                                            <button class=" hasIcon" type="button" title="回复">
-                                                <i class="icon fa fa-fw fa-reply Button-icon"></i>
-                                                <span class="Button-label">回复</span>
-                                            </button>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </li>
-                            <li class="item-subscription">
-                                <div class="Dropdown ButtonGroup SubscriptionMenu">
-                                    <button class="Button SubscriptionMenu-button SubscriptionMenu-button--false hasIcon" title="" type="button" data-original-title="Get an email when there are new posts">
-                                        <i class="icon fa fa-fw fa-star-o Button-icon"></i>
-                                        <span class="Button-label">关注</span>
-                                    </button>
-                                    <button class="Dropdown-toggle Button Button--icon SubscriptionMenu-button--false" data-toggle="dropdown">
-                                        <i class="icon fa fa-fw fa-caret-down Button-icon"></i>
-                                    </button>
-                                    <ul class="Dropdown-menu dropdown-menu Dropdown-menu--right">
-                                        <li>
-                                            <button class="SubscriptionMenuItem hasIcon">
-                                                <i class="icon fa fa-fw fa-check Button-icon"></i>
-                                                <span class="SubscriptionMenuItem-label">
+  <div id="content" style="padding-bottom: 0px;">
+    <div class="DiscussionPage">
+      <div class="DiscussionPage-discussion">
+        <div class="container">
+          <nav class="DiscussionPage-nav">
+            <ul>
+              <li class="item-controls">
+                <div class="ButtonGroup Dropdown dropdown App-primaryControl Dropdown--split itemCount1">
+                  <button class=" SplitDropdown-button Button Button--primary hasIcon" type="button" title="回复"> <i class="icon fa fa-fw fa-reply Button-icon"></i>
+                    <span class="Button-label">回复</span>
+                  </button>
+                  <button class="Dropdown-toggle Button Button--icon Button--primary" data-toggle="dropdown"> <i class="icon fa fa-fw fa-ellipsis-v Button-icon"></i>
+                    <i class="icon fa fa-fw fa-caret-down Button-caret"></i>
+                  </button>
+                  <ul class="Dropdown-menu dropdown-menu  Dropdown-menu--right">
+                    <li class="item-reply">
+                      <button class=" hasIcon" type="button" title="回复">
+                        <i class="icon fa fa-fw fa-reply Button-icon"></i>
+                        <span class="Button-label">回复</span>
+                      </button>
+                    </li>
+                  </ul>
+                </div>
+              </li>
+              <li class="item-subscription">
+                <div class="Dropdown ButtonGroup SubscriptionMenu">
+                  <button class="Button SubscriptionMenu-button SubscriptionMenu-button--false hasIcon" title="" type="button" data-original-title="Get an email when there are new posts">
+                    <i class="icon fa fa-fw fa-star-o Button-icon"></i>
+                    <span class="Button-label">关注</span>
+                  </button>
+                  <button class="Dropdown-toggle Button Button--icon SubscriptionMenu-button--false" data-toggle="dropdown">
+                    <i class="icon fa fa-fw fa-caret-down Button-icon"></i>
+                  </button>
+                  <ul class="Dropdown-menu dropdown-menu Dropdown-menu--right">
+                    <li>
+                      <button class="SubscriptionMenuItem hasIcon">
+                        <i class="icon fa fa-fw fa-check Button-icon"></i>
+                        <span class="SubscriptionMenuItem-label">
                           <i class="icon fa fa-fw fa-star-o Button-icon"></i> <strong>取消关注</strong>
                           <span class="SubscriptionMenuItem-description">仅在有人@提到我时提醒我.</span>
-                                                </span>
-                                            </button>
-                                        </li>
-                                        <li>
-                                            <button class="SubscriptionMenuItem hasIcon">
-                                                <span class="SubscriptionMenuItem-label">
+                        </span>
+                      </button>
+                    </li>
+                    <li>
+                      <button class="SubscriptionMenuItem hasIcon">
+                        <span class="SubscriptionMenuItem-label">
                           <i class="icon fa fa-fw fa-star Button-icon"></i> <strong>正在关注</strong>
                           <span class="SubscriptionMenuItem-description">当有人回复此帖子时提醒我.</span>
-                                                </span>
-                                            </button>
-                                        </li>
-                                        <li>
-                                            <button class="SubscriptionMenuItem hasIcon">
-                                                <span class="SubscriptionMenuItem-label">
+                        </span>
+                      </button>
+                    </li>
+                    <li>
+                      <button class="SubscriptionMenuItem hasIcon">
+                        <span class="SubscriptionMenuItem-label">
                           <i class="icon fa fa-fw fa-eye-slash Button-icon"></i>
                           <strong>忽略</strong>
                           <span class="SubscriptionMenuItem-description">不接收任何提醒并隐藏此帖子.</span>
-                                                </span>
-                                            </button>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </li>
-                        </ul>
-                    </nav>
-                    <div class="DiscussionPage-stream">
-                        <div class="PostStream">
-                            <div class="PostStream-item" data-index="0" data-time="2016-04-27T00:34:10.000Z" data-number="1" data-id="23077" data-type="comment" style="display: block;">
-                                <article class="Post undefined CommentPost Post--edited">
-                                    <div>
-                                        <div class="Post-tags">
-                                            <span class="TagsLabel ">
+                        </span>
+                      </button>
+                    </li>
+                  </ul>
+                </div>
+              </li>
+            </ul>
+          </nav>
+          <div class="DiscussionPage-stream">
+            <div class="PostStream">
+              <div class="PostStream-item" data-index="0" data-time="2016-04-27T00:34:10.000Z" data-number="1" data-id="23077" data-type="comment" style="display: block;">
+                <article class="Post undefined CommentPost Post--edited">
+                  <div>
+                    <div class="Post-tags">
+                      <span class="TagsLabel ">
                         <a class="TagLabel  colored" title="基于 Flarum 轻论坛的中文增强发行版，集成了一些比较实用的插件，使其更符合国内场景" href="/t/flarumone" style="color: rgb(239, 86, 79); background-color: rgb(239, 86, 79);">
                           <span class="TagLabel-text">FlarumOne</span>
-                                            </a>
-                                            <a class="TagLabel  colored" title="" href="/t/help" style="color: rgb(96, 176, 173); background-color: rgb(96, 176, 173);">
-                                                <span class="TagLabel-text">求助</span>
-                                            </a>
-                                            <a class="TagLabel  colored" title="" href="/t/fix" style="color: rgb(155, 193, 102); background-color: rgb(155, 193, 102);">
-                                                <span class="TagLabel-text">已解决</span>
-                                            </a>
-                                            <a class="TagLabel  colored" title="锁帖" href="/t/closed" style="color: rgb(170, 171, 140); background-color: rgb(170, 171, 140);">
-                                                <span class="TagLabel-text">已归档</span>
-                                            </a>
-                                            </span>
-                                        </div>
-                                        <header class="Post-header">
-                                            <ul>
-                                                <li class="item-user">
-                                                    <div class="PostUser">
-                                                        <h3>
+                        </a>
+                        <a class="TagLabel  colored" title="" href="/t/help" style="color: rgb(96, 176, 173); background-color: rgb(96, 176, 173);">
+                          <span class="TagLabel-text">求助</span>
+                        </a>
+                        <a class="TagLabel  colored" title="" href="/t/fix" style="color: rgb(155, 193, 102); background-color: rgb(155, 193, 102);">
+                          <span class="TagLabel-text">已解决</span>
+                        </a>
+                        <a class="TagLabel  colored" title="锁帖" href="/t/closed" style="color: rgb(170, 171, 140); background-color: rgb(170, 171, 140);">
+                          <span class="TagLabel-text">已归档</span>
+                        </a>
+                      </span>
+                    </div>
+                    <header class="Post-header">
+                      <ul>
+                        <li class="item-user">
+                          <div class="PostUser">
+                            <h3>
                               <a href="/user/{{post.author_username}}">
                                 {%if post.author_avatar%}
                                 <img class="Avatar PostUser-avatar" src="{{post.author_avatar}}">
@@ -100,274 +100,275 @@
                                 <span class="username">{{post.author_username}}</span>
                               </a>
                             </h3>
-                                                        <ul class="PostUser-badges badges"></ul>
-                                                    </div>
-                                                </li>
-                                                <li class="item-meta">
-                                                    <div class="Dropdown PostMeta">
-                                                        <a class="Dropdown-toggle" data-toggle="dropdown">
-                                                            <time pubdate="true" datetime="2016-04-27T08:34:10+08:00" title="Wednesday, April 27, 2016 8:34 AM" data-humantime="true">{{post.created|pretty_date}}</time>
-                                                        </a>
-                                                        <div class="Dropdown-menu dropdown-menu">
-                                                            <span class="PostMeta-number">Post #1</span>
-                                                            <span class="PostMeta-time">
+                            <ul class="PostUser-badges badges"></ul>
+                          </div>
+                        </li>
+                        <li class="item-meta">
+                          <div class="Dropdown PostMeta">
+                            <a class="Dropdown-toggle" data-toggle="dropdown">
+                              <time pubdate="true" datetime="2016-04-27T08:34:10+08:00" title="Wednesday, April 27, 2016 8:34 AM" data-humantime="true">{{post.created|pretty_date}}</time>
+                            </a>
+                            <div class="Dropdown-menu dropdown-menu">
+                              <span class="PostMeta-number">Post #1</span>
+                              <span class="PostMeta-time">
                                 <time pubdate="true" datetime="2016-04-27T08:34:10+08:00">Wednesday, April 27, 2016 8:34 AM</time>
                               </span>
-                                                            <span class="PostMeta-ip"></span>
-                                                            <input class="FormControl PostMeta-permalink">
-                                                        </div>
-                                                    </div>
-                                                </li>
-                                                <li class="item-edited">
-                                                    <span class="PostEdited" title="" data-original-title="tenten8401 edited 2 Aug">编辑</span>
-                                                </li>
-                                            </ul>
-                                        </header>
-                                        <div class="Post-title">
-                                            <h2 class="DiscussionHero-title">{{post.title}}</h2>
-                                        </div>
-                                        <div class="Post-body">{{post.content}}</div>
-                                        <aside class="Post-actions">
-                                            <ul>
-                                                <li class="item-like">
-                                                    <button class="Button Button--link" type="button" title="赞">
-                                                        <span class="Button-label">赞</span>
-                                                    </button>
-                                                </li>
-                                                <li class="item-reply">
-                                                    <button class="Button Button--link" type="button" title="回复">
-                                                        <span class="Button-label">回复</span>
-                                                    </button>
-                                                </li>
-                                                <li>
-                                                    <div class="ButtonGroup Dropdown dropdown Post-controls itemCount1">
-                                                        <button class="Dropdown-toggle Button Button--icon Button--flat" data-toggle="dropdown">
-                                                            <i class="icon fa fa-fw fa-ellipsis-h Button-icon"></i>
-                                                            <span class="Button-label"></span>
-                                                            <i class="icon fa fa-fw fa-caret-down Button-caret"></i>
-                                                        </button>
-                                                        <ul class="Dropdown-menu dropdown-menu Dropdown-menu--right">
-                                                            <li class="item-flag">
-                                                                <button class=" hasIcon" type="button" title="举报">
-                                                                    <i class="icon fa fa-fw fa-flag Button-icon"></i>
-                                                                    <span class="Button-label">举报</span>
-                                                                </button>
-                                                            </li>
-                                                        </ul>
-                                                    </div>
-                                                </li>
-                                            </ul>
-                                        </aside>
-                                        <footer class="Post-footer">
-                                            <ul>
-                                                <li class="item-liked">
-                                                    <div class="Post-likedBy">
-                                                        <i class="icon fa fa-fw fa-thumbs-o-up "></i>
-                                                        <a href="/u/CaptDarkStar">
-                                                            <span class="username">CaptDarkStar</span>
-                                                        </a>
-                                                        ,
-                                                        <a href="/u/datitisev">
-                                                            <span class="username">datitisev</span>
-                                                        </a>
-                                                        , and
-                                                        <a href="/u/Juchem">
-                                                            <span class="username">Juchem</span>
-                                                        </a>
-                                                        like this.
-                                                    </div>
-                                                </li>
-                                            </ul>
-                                        </footer>
-                                    </div>
-                                </article>
-                                <div class="Post-quoteButtonContainer"></div>
-                            </div>
-                            <div class="PostStream-item" data-index="0" data-time="2015-10-16T11:25:18.000Z" data-number="2" data-id="382" style="display: block;">
-                                <article class="Post EventPost DiscussionTaggedPost">
-                                    <div>
-                                        <i class="icon fa fa-fw fa-tag EventPost-icon"></i>
-                                        <div class="EventPost-info">
-                                            <a class="EventPost-user" href="/u/admin">
-                                                <span class="username">admin</span>
-                                            </a>
-                                            添加
-                                            <span class="TagsLabel ">
+                              <span class="PostMeta-ip"></span>
+                              <input class="FormControl PostMeta-permalink"></div>
+                          </div>
+                        </li>
+                        <li class="item-edited">
+                          <span class="PostEdited" title="" data-original-title="tenten8401 edited 2 Aug">编辑</span>
+                        </li>
+                      </ul>
+                    </header>
+                    <div class="Post-title">
+                      <h2 class="DiscussionHero-title">{{post.title}}</h2>
+                    </div>
+                    <div class="Post-body">{{post.content}}</div>
+                    <aside class="Post-actions">
+                      <ul>
+                        <li class="item-like">
+                          <button class="Button Button--link" type="button" title="赞">
+                            <span class="Button-label">赞</span>
+                          </button>
+                        </li>
+                        <li class="item-reply">
+                          <button class="Button Button--link" type="button" title="回复">
+                            <span class="Button-label">回复</span>
+                          </button>
+                        </li>
+                        <li>
+                          <div class="ButtonGroup Dropdown dropdown Post-controls itemCount1">
+                            <button class="Dropdown-toggle Button Button--icon Button--flat" data-toggle="dropdown">
+                              <i class="icon fa fa-fw fa-ellipsis-h Button-icon"></i>
+                              <span class="Button-label"></span>
+                              <i class="icon fa fa-fw fa-caret-down Button-caret"></i>
+                            </button>
+                            <ul class="Dropdown-menu dropdown-menu Dropdown-menu--right">
+                              <li class="item-flag">
+                                <button class=" hasIcon" type="button" title="举报">
+                                  <i class="icon fa fa-fw fa-flag Button-icon"></i>
+                                  <span class="Button-label">举报</span>
+                                </button>
+                              </li>
+                            </ul>
+                          </div>
+                        </li>
+                      </ul>
+                    </aside>
+                    <footer class="Post-footer">
+                      <ul>
+                        <li class="item-liked">
+                          <div class="Post-likedBy">
+                            <i class="icon fa fa-fw fa-thumbs-o-up "></i>
+                            <a href="/u/CaptDarkStar">
+                              <span class="username">CaptDarkStar</span>
+                            </a>
+                            ,
+                            <a href="/u/datitisev">
+                              <span class="username">datitisev</span>
+                            </a>
+                            , and
+                            <a href="/u/Juchem">
+                              <span class="username">Juchem</span>
+                            </a>
+                            like this.
+                          </div>
+                        </li>
+                      </ul>
+                    </footer>
+                  </div>
+                </article>
+                <div class="Post-quoteButtonContainer"></div>
+              </div>
+              <div class="PostStream-item" data-index="0" data-time="2015-10-16T11:25:18.000Z" data-number="2" data-id="382" style="display: block;">
+                <article class="Post EventPost DiscussionTaggedPost">
+                  <div>
+                    <i class="icon fa fa-fw fa-tag EventPost-icon"></i>
+                    <div class="EventPost-info">
+                      <a class="EventPost-user" href="/u/admin">
+                        <span class="username">admin</span>
+                      </a>
+                      添加
+                      <span class="TagsLabel ">
                         <a class="TagLabel  colored" title="非程序核心的问题" href="/t/extensions" style="color: rgb(56, 203, 186); background-color: rgb(56, 203, 186);">
                           <span class="TagLabel-text">插件</span>
-                                            </a>
-                                            </span>
-                                            和 移除
-                                            <span class="TagsLabel ">
+                        </a>
+                      </span>
+                      和 移除
+                      <span class="TagsLabel ">
                         <a class="TagLabel  colored" title="非以上项目的问题，可以归类到该标签下" href="/t/other" style="color: rgb(157, 176, 175); background-color: rgb(157, 176, 175);">
                           <span class="TagLabel-text">其它</span>
-                                            </a>
-                                            </span>
-                                            标签
-                                        </div>
-                                        <aside class="Post-actions">
-                                            <ul></ul>
-                                        </aside>
-                                        <footer class="Post-footer">
-                                            <ul></ul>
-                                        </footer>
-                                    </div>
-                                </article>
-                            </div>
-                            <div class="PostStream-item" data-index="0" data-time="2015-10-16T11:30:03.000Z" data-number="3" data-id="383" style="display: block;">
-                                <article class="Post EventPost DiscussionStickiedPost">
-                                    <div>
-                                        <i class="icon fa fa-fw fa-thumb-tack EventPost-icon"></i>
-                                        <div class="EventPost-info">
-                                            <a class="EventPost-user" href="/u/admin">
-                                                <span class="username">admin</span>
-                                            </a>
-                                            置顶了此帖子
-                                        </div>
-                                        <aside class="Post-actions">
-                                            <ul></ul>
-                                        </aside>
-                                        <footer class="Post-footer">
-                                            <ul></ul>
-                                        </footer>
-                                    </div>
-                                </article>
-                            </div>
-                            <div class="PostStream-item" data-index="0" data-time="2016-06-23T23:06:38.000Z" data-number="43" data-id="27277" data-type="discussionRenamed" style="display: block;">
-                                <article class="Post undefined EventPost DiscussionRenamedPost">
-                                    <div>
-                                        <i class="icon fa fa-fw fa-pencil EventPost-icon"></i>
-                                        <div class="EventPost-info">
-                                            <span title="The old title was: &quot;International support&quot;">
+                        </a>
+                      </span>
+                      标签
+                    </div>
+                    <aside class="Post-actions">
+                      <ul></ul>
+                    </aside>
+                    <footer class="Post-footer">
+                      <ul></ul>
+                    </footer>
+                  </div>
+                </article>
+              </div>
+              <div class="PostStream-item" data-index="0" data-time="2015-10-16T11:30:03.000Z" data-number="3" data-id="383" style="display: block;">
+                <article class="Post EventPost DiscussionStickiedPost">
+                  <div>
+                    <i class="icon fa fa-fw fa-thumb-tack EventPost-icon"></i>
+                    <div class="EventPost-info">
+                      <a class="EventPost-user" href="/u/admin">
+                        <span class="username">admin</span>
+                      </a>
+                      置顶了此帖子
+                    </div>
+                    <aside class="Post-actions">
+                      <ul></ul>
+                    </aside>
+                    <footer class="Post-footer">
+                      <ul></ul>
+                    </footer>
+                  </div>
+                </article>
+              </div>
+              <div class="PostStream-item" data-index="0" data-time="2016-06-23T23:06:38.000Z" data-number="43" data-id="27277" data-type="discussionRenamed" style="display: block;">
+                <article class="Post undefined EventPost DiscussionRenamedPost">
+                  <div>
+                    <i class="icon fa fa-fw fa-pencil EventPost-icon"></i>
+                    <div class="EventPost-info">
+                      <span title="The old title was: &quot;International support&quot;">
                         <a class="EventPost-user" href="/u/Dominion">
                           <span class="username">Dominion</span>
-                                            </a>
-                                            changed the title to
-                                            <strong class="DiscussionRenamedPost-new">International support sites</strong> .
-                                            </span>
-                                        </div>
-                                        <aside class="Post-actions">
-                                            <ul></ul>
-                                        </aside>
-                                        <footer class="Post-footer">
-                                            <ul></ul>
-                                        </footer>
-                                    </div>
-                                </article>
-                            </div>
-                            <div class="ReplyList"></div>
-                            <div class="PostStream-item">
-                                <article class="Post ReplyPlaceholder">
-                                    <header class="Post-header">
-                                        <span class="Avatar PostUser-avatar" style="background: rgb(160, 176, 229);">{{user_info.username|format_username}}</span> 回复一发...
-                                    </header>
-                                </article>
-                            </div>
-                        </div>
+                        </a>
+                        changed the title to
+                        <strong class="DiscussionRenamedPost-new">International support sites</strong>
+                        .
+                      </span>
                     </div>
-                </div>
+                    <aside class="Post-actions">
+                      <ul></ul>
+                    </aside>
+                    <footer class="Post-footer">
+                      <ul></ul>
+                    </footer>
+                  </div>
+                </article>
+              </div>
+              <div class="ReplyList"></div>
+              <div class="PostStream-item">
+                <article class="Post ReplyPlaceholder">
+                  <header class="Post-header">
+                    <span class="Avatar PostUser-avatar" style="background: rgb(160, 176, 229);">{{user_info.username|format_username}}</span>
+                    回复一发...
+                  </header>
+                </article>
+              </div>
             </div>
+          </div>
         </div>
+      </div>
     </div>
-    <div id="flarum-loading" style="display: none;">Loading...</div>
-    <div class="App-composer">
-        <div class="container">
-            <div id="composer">
-                <div class="Composer" style="display: none; bottom: 0px; height: 300px;">
-                    <div class="Composer-handle" style="cursor: row-resize;"></div>
-                    <ul class="Composer-controls">
-                        <li class="item-minimize App-backControl">
-                            <button title="Minimize" itemclassname="App-backControl" class="Button Button--icon Button--link hasIcon" type="button">
-                                <i class="icon fa fa-fw fa-minus minimize Button-icon"></i>
-                            </button>
-                        </li>
-                        <li class="item-fullScreen">
-                            <button title="Full Screen" class="Button Button--icon Button--link hasIcon" type="button">
-                                <i class="icon fa fa-fw fa-expand Button-icon"></i>
-                            </button>
-                        </li>
-                        <li class="item-close">
-                            <button title="Close" class="Button Button--icon Button--link hasIcon" type="button">
-                                <i class="icon fa fa-fw fa-times Button-icon"></i>
-                            </button>
-                        </li>
-                    </ul>
-                    <div class="Composer-content">
-                        <div class="ComposerBody ">
-                            <span class="Avatar ComposerBody-avatar" style="background: rgb(160, 176, 229);">{{user_info.username|format_username}}</span>
-                            <div class="ComposerBody-content">
-                                <ul class="ComposerBody-header">
-                                    <li class="item-title">
-                                        <h3>
+  </div>
+  <div id="flarum-loading" style="display: none;">Loading...</div>
+  <div class="App-composer">
+    <div class="container">
+      <div id="composer">
+        <div class="Composer" style="display: none; bottom: 0px; height: 300px;">
+          <div class="Composer-handle" style="cursor: row-resize;"></div>
+          <ul class="Composer-controls">
+            <li class="item-minimize App-backControl">
+              <button title="Minimize" itemclassname="App-backControl" class="Button Button--icon Button--link hasIcon" type="button">
+                <i class="icon fa fa-fw fa-minus minimize Button-icon"></i>
+              </button>
+            </li>
+            <li class="item-fullScreen">
+              <button title="Full Screen" class="Button Button--icon Button--link hasIcon" type="button">
+                <i class="icon fa fa-fw fa-expand Button-icon"></i>
+              </button>
+            </li>
+            <li class="item-close">
+              <button title="Close" class="Button Button--icon Button--link hasIcon" type="button">
+                <i class="icon fa fa-fw fa-times Button-icon"></i>
+              </button>
+            </li>
+          </ul>
+          <div class="Composer-content">
+            <div class="ComposerBody ">
+              <span class="Avatar ComposerBody-avatar" style="background: rgb(160, 176, 229);">{{user_info.username|format_username}}</span>
+              <div class="ComposerBody-content">
+                <ul class="ComposerBody-header">
+                  <li class="item-title">
+                    <h3>
                       <i class="icon fa fa-fw fa-reply "></i>
                       <a href="/post/{{post.id}}">{{post.title}}</a>
                     </h3>
-                                    </li>
-                                </ul>
-                                <div class="ComposerBody-editor">
-                                    <div class="TextEditor">
-                                        <div class="ComposerBody-emojiWrapper">
-                                            <div class="ComposerBody-mentionsWrapper">
-                                                <div class="FormControl Composer-flexible" placeholder="回复一发..." style="height: 192px;" contenteditable="true"></div>
-                                                <div class="ComposerBody-mentionsDropdownContainer"></div>
-                                            </div>
-                                            <div class="ComposerBody-emojiDropdownContainer"></div>
-                                        </div>
-                                        <ul class="TextEditor-controls Composer-footer">
-                                            <li class="item-submit App-primaryControl">
-                                                <button class="Button Button--primary hasIcon" itemclassname="App-primaryControl" type="button" title="Post Reply">
-                                                    <i class="icon fa fa-fw fa-check Button-icon"></i>
-                                                    <span class="Button-label">回复</span>
-                                                </button>
-                                            </li>
-                                            <li class="item-preview">
-                                                <button class="Button Button--icon hasIcon" type="button">
-                                                    <i class="icon fa fa-fw fa-eye Button-icon"></i>
-                                                </button>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="LoadingIndicator ComposerBody-loading">
-                                <div class="spinner" style="position: absolute; width: 0px; z-index: auto; left: 50%; top: 50%;" role="progressbar">
-                                    <div style="position: absolute; top: -1px; opacity: 0.25; animation: opacity-100-25-0-8 1s linear infinite;">
-                                        <div style="position: absolute; width: 7px; height: 3px; box-shadow: rgba(0, 0, 0, 0.0980392) 0px 0px 1px; transform-origin: left center 0px; transform: rotate(0deg) translate(5px, 0px); border-radius: 1px; background: rgb(102, 125, 153);"></div>
-                                    </div>
-                                    <div style="position: absolute; top: -1px; opacity: 0.25; animation: opacity-100-25-1-8 1s linear infinite;">
-                                        <div style="position: absolute; width: 7px; height: 3px; box-shadow: rgba(0, 0, 0, 0.0980392) 0px 0px 1px; transform-origin: left center 0px; transform: rotate(45deg) translate(5px, 0px); border-radius: 1px; background: rgb(102, 125, 153);"></div>
-                                    </div>
-                                    <div style="position: absolute; top: -1px; opacity: 0.25; animation: opacity-100-25-2-8 1s linear infinite;">
-                                        <div style="position: absolute; width: 7px; height: 3px; box-shadow: rgba(0, 0, 0, 0.0980392) 0px 0px 1px; transform-origin: left center 0px; transform: rotate(90deg) translate(5px, 0px); border-radius: 1px; background: rgb(102, 125, 153);"></div>
-                                    </div>
-                                    <div style="position: absolute; top: -1px; opacity: 0.25; animation: opacity-100-25-3-8 1s linear infinite;">
-                                        <div style="position: absolute; width: 7px; height: 3px; box-shadow: rgba(0, 0, 0, 0.0980392) 0px 0px 1px; transform-origin: left center 0px; transform: rotate(135deg) translate(5px, 0px); border-radius: 1px; background: rgb(102, 125, 153);"></div>
-                                    </div>
-                                    <div style="position: absolute; top: -1px; opacity: 0.25; animation: opacity-100-25-4-8 1s linear infinite;">
-                                        <div style="position: absolute; width: 7px; height: 3px; box-shadow: rgba(0, 0, 0, 0.0980392) 0px 0px 1px; transform-origin: left center 0px; transform: rotate(180deg) translate(5px, 0px); border-radius: 1px; background: rgb(102, 125, 153);"></div>
-                                    </div>
-                                    <div style="position: absolute; top: -1px; opacity: 0.25; animation: opacity-100-25-5-8 1s linear infinite;">
-                                        <div style="position: absolute; width: 7px; height: 3px; box-shadow: rgba(0, 0, 0, 0.0980392) 0px 0px 1px; transform-origin: left center 0px; transform: rotate(225deg) translate(5px, 0px); border-radius: 1px; background: rgb(102, 125, 153);"></div>
-                                    </div>
-                                    <div style="position: absolute; top: -1px; opacity: 0.25; animation: opacity-100-25-6-8 1s linear infinite;">
-                                        <div style="position: absolute; width: 7px; height: 3px; box-shadow: rgba(0, 0, 0, 0.0980392) 0px 0px 1px; transform-origin: left center 0px; transform: rotate(270deg) translate(5px, 0px); border-radius: 1px; background: rgb(102, 125, 153);"></div>
-                                    </div>
-                                    <div style="position: absolute; top: -1px; opacity: 0.25; animation: opacity-100-25-7-8 1s linear infinite;">
-                                        <div style="position: absolute; width: 7px; height: 3px; box-shadow: rgba(0, 0, 0, 0.0980392) 0px 0px 1px; transform-origin: left center 0px; transform: rotate(315deg) translate(5px, 0px); border-radius: 1px; background: rgb(102, 125, 153);"></div>
-                                    </div>
-                                </div>
-                                &nbsp;
-                            </div>
-                        </div>
+                  </li>
+                </ul>
+                <div class="ComposerBody-editor">
+                  <div class="TextEditor">
+                    <div class="ComposerBody-emojiWrapper">
+                      <div class="ComposerBody-mentionsWrapper">
+                        <div class="FormControl Composer-flexible" placeholder="回复一发..." style="height: 192px;" contenteditable="true"></div>
+                        <div class="ComposerBody-mentionsDropdownContainer"></div>
+                      </div>
+                      <div class="ComposerBody-emojiDropdownContainer"></div>
                     </div>
+                    <ul class="TextEditor-controls Composer-footer">
+                      <li class="item-submit App-primaryControl">
+                        <button class="Button Button--primary hasIcon" itemclassname="App-primaryControl" type="button" title="Post Reply">
+                          <i class="icon fa fa-fw fa-check Button-icon"></i>
+                          <span class="Button-label">回复</span>
+                        </button>
+                      </li>
+                      <li class="item-preview">
+                        <button class="Button Button--icon hasIcon" type="button">
+                          <i class="icon fa fa-fw fa-eye Button-icon"></i>
+                        </button>
+                      </li>
+                    </ul>
+                  </div>
                 </div>
+              </div>
+              <div class="LoadingIndicator ComposerBody-loading">
+                <div class="spinner" style="position: absolute; width: 0px; z-index: auto; left: 50%; top: 50%;" role="progressbar">
+                  <div style="position: absolute; top: -1px; opacity: 0.25; animation: opacity-100-25-0-8 1s linear infinite;">
+                    <div style="position: absolute; width: 7px; height: 3px; box-shadow: rgba(0, 0, 0, 0.0980392) 0px 0px 1px; transform-origin: left center 0px; transform: rotate(0deg) translate(5px, 0px); border-radius: 1px; background: rgb(102, 125, 153);"></div>
+                  </div>
+                  <div style="position: absolute; top: -1px; opacity: 0.25; animation: opacity-100-25-1-8 1s linear infinite;">
+                    <div style="position: absolute; width: 7px; height: 3px; box-shadow: rgba(0, 0, 0, 0.0980392) 0px 0px 1px; transform-origin: left center 0px; transform: rotate(45deg) translate(5px, 0px); border-radius: 1px; background: rgb(102, 125, 153);"></div>
+                  </div>
+                  <div style="position: absolute; top: -1px; opacity: 0.25; animation: opacity-100-25-2-8 1s linear infinite;">
+                    <div style="position: absolute; width: 7px; height: 3px; box-shadow: rgba(0, 0, 0, 0.0980392) 0px 0px 1px; transform-origin: left center 0px; transform: rotate(90deg) translate(5px, 0px); border-radius: 1px; background: rgb(102, 125, 153);"></div>
+                  </div>
+                  <div style="position: absolute; top: -1px; opacity: 0.25; animation: opacity-100-25-3-8 1s linear infinite;">
+                    <div style="position: absolute; width: 7px; height: 3px; box-shadow: rgba(0, 0, 0, 0.0980392) 0px 0px 1px; transform-origin: left center 0px; transform: rotate(135deg) translate(5px, 0px); border-radius: 1px; background: rgb(102, 125, 153);"></div>
+                  </div>
+                  <div style="position: absolute; top: -1px; opacity: 0.25; animation: opacity-100-25-4-8 1s linear infinite;">
+                    <div style="position: absolute; width: 7px; height: 3px; box-shadow: rgba(0, 0, 0, 0.0980392) 0px 0px 1px; transform-origin: left center 0px; transform: rotate(180deg) translate(5px, 0px); border-radius: 1px; background: rgb(102, 125, 153);"></div>
+                  </div>
+                  <div style="position: absolute; top: -1px; opacity: 0.25; animation: opacity-100-25-5-8 1s linear infinite;">
+                    <div style="position: absolute; width: 7px; height: 3px; box-shadow: rgba(0, 0, 0, 0.0980392) 0px 0px 1px; transform-origin: left center 0px; transform: rotate(225deg) translate(5px, 0px); border-radius: 1px; background: rgb(102, 125, 153);"></div>
+                  </div>
+                  <div style="position: absolute; top: -1px; opacity: 0.25; animation: opacity-100-25-6-8 1s linear infinite;">
+                    <div style="position: absolute; width: 7px; height: 3px; box-shadow: rgba(0, 0, 0, 0.0980392) 0px 0px 1px; transform-origin: left center 0px; transform: rotate(270deg) translate(5px, 0px); border-radius: 1px; background: rgb(102, 125, 153);"></div>
+                  </div>
+                  <div style="position: absolute; top: -1px; opacity: 0.25; animation: opacity-100-25-7-8 1s linear infinite;">
+                    <div style="position: absolute; width: 7px; height: 3px; box-shadow: rgba(0, 0, 0, 0.0980392) 0px 0px 1px; transform-origin: left center 0px; transform: rotate(315deg) translate(5px, 0px); border-radius: 1px; background: rgb(102, 125, 153);"></div>
+                  </div>
+                </div>
+                &nbsp;
+              </div>
             </div>
+          </div>
         </div>
+      </div>
     </div>
+  </div>
 </main>
 {% endblock %} {% block modal %}
 <div id="modal">
-    <div class="ModalManager modal fade" style=""></div>
+  <div class="ModalManager modal fade" style=""></div>
 </div>
 {% endblock %} {% block javascript %}
 <script src="{{static_path}}/js/dropload.min.js"></script>
