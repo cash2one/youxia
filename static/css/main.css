@@ -51,4 +51,7 @@ h2 {
 	color: #f36322;
 	cursor:text;
 }
-    
+  
+.Composer-flexible {
+    white-space: pre-line;
+}  
