@@ -63,9 +63,9 @@
                   <ul class="Dropdown-menu Search-results"></ul>
                 </div>
               </li>
-              <li class="item-notifications">
+              <li class="item-notifications ">
                 <div class="ButtonGroup Dropdown dropdown NotificationsDropdown itemCount0">
-                  <button class="Dropdown-toggle Button Button--flat" data-toggle="dropdown" title="消息"> <i class="icon fa fa-fw fa-bell Button-icon"></i>
+                  <button class="Dropdown-toggle Button Button--flat {%if not user_info%}logIn{%endif%}" data-toggle="dropdown" title="消息"> <i class="icon fa fa-fw fa-bell Button-icon"></i>
                     <span class="Button-label">消息</span>
                   </button>
                   <div class="Dropdown-menu Dropdown-menu--right"></div>
