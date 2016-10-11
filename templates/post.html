@@ -69,7 +69,7 @@
           </nav>
           <div class="DiscussionPage-stream">
             <div class="PostStream">
-              <div class="PostStream-item" data-index="0" data-time="2016-04-27T00:34:10.000Z" data-number="1" data-id="23077" data-type="comment" style="display: block;">
+              <div class="PostStream-item" data-index="0" data-time="{{post.created}}" data-number="0" data-id="{{post.id}}" data-type="comment" style="display: block;">
                 <article class="Post undefined CommentPost Post--edited">
                   <div>
                     <div class="Post-tags">
@@ -108,12 +108,12 @@
                         <li class="item-meta">
                           <div class="Dropdown PostMeta">
                             <a class="Dropdown-toggle" data-toggle="dropdown">
-                              <time pubdate="true" datetime="2016-04-27T08:34:10+08:00" title="Wednesday, April 27, 2016 8:34 AM" data-humantime="true">{{post.created|pretty_date}}</time>
+                              <time pubdate="true" datetime="{{post.created}}" title="{{post.created}}" data-humantime="true">{{post.created|pretty_date}}</time>
                             </a>
                             <div class="Dropdown-menu dropdown-menu">
-                              <span class="PostMeta-number">Post #1</span>
+                              <span class="PostMeta-number">#0 楼</span>
                               <span class="PostMeta-time">
-                                <time pubdate="true" datetime="2016-04-27T08:34:10+08:00">Wednesday, April 27, 2016 8:34 AM</time>
+                                <time pubdate="true" datetime="2016-04-27T08:34:10+08:00">{{post.created}}</time>
                               </span>
                               <span class="PostMeta-ip"></span>
                               <input class="FormControl PostMeta-permalink"></div>
@@ -130,9 +130,9 @@
                     <div class="Post-body">{{post.content}}</div>
                     <aside class="Post-actions">
                       <ul>
-                        <li class="item-like">
-                          <button class="Button Button--link" type="button" title="赞">
-                            <span class="Button-label">赞</span>
+                        <li class="item-like {%if post.like_id%}liked{%endif%}">
+                          <button class="Button Button--link" type="button" title="{%if post.like_id%}已赞{%else%}赞{%endif%}">
+                            <span class="Button-label">{%if post.like_id%}已赞{%else%}赞{%endif%}</span>
                           </button>
                         </li>
                         <li class="item-reply">
@@ -161,23 +161,20 @@
                     </aside>
                     <footer class="Post-footer">
                       <ul>
+                        {%if post.like_users%}
                         <li class="item-liked">
                           <div class="Post-likedBy">
                             <i class="icon fa fa-fw fa-thumbs-o-up "></i>
-                            <a href="/u/CaptDarkStar">
-                              <span class="username">CaptDarkStar</span>
+                            <a href="/user/{{post.like_user}}">
+                              <span class="username">{{post.like_user}}</span>
                             </a>
-                            ,
-                            <a href="/u/datitisev">
-                              <span class="username">datitisev</span>
-                            </a>
-                            , and
-                            <a href="/u/Juchem">
-                              <span class="username">Juchem</span>
-                            </a>
-                            like this.
+                            赞了它.
                           </div>
                         </li>
+                        {%endif%}
+                        {%if post.reply_users%}
+                        <li class="item-replies"><div class="Post-mentionedBy"><span class="Post-mentionedBy-summary"><i class="icon fa fa-fw fa-reply "></i><a href="/post/{{post.post_id}}?reply=0" data-number="0"><span class="username">{{post.reply_users}}</span></a> 回复了它.</span><ul class="Dropdown-menu Post-mentionedBy-preview fade"></ul></div></li>
+                        {%endif%}
                       </ul>
                     </footer>
                   </div>

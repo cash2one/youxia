@@ -132,13 +132,17 @@ class PostHandler(BaseHandler):
         template_variables["static_path"] = self.static_path
         template_variables["user_info"] = user_info
         p = int(self.get_argument("p", "1"))
+        template_variables["page_name"] = "App--discussion"
 
-        post = self.item_model.get_post_by_post_id(post_id)
+        if user_info:
+            post = self.item_model.get_post_by_post_id_with_user(post_id, user_info.uid)
+        else:
+            post = self.item_model.get_post_by_post_id(post_id)
         template_variables["post"] = post
         #template_variables["tags"] = self.post_tag_model.get_post_all_tags(post_id)
         print "@@@"+post.content
 
-        template_variables["page_name"] = "App--discussion"
+        
 
         self.render(self.template_path+"post.html", **template_variables)
 

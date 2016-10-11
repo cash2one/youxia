@@ -27,6 +27,16 @@ class ItemModel(Query):
                 author_user.sign as author_sign"
         return self.where(where).join(join).field(field).find()
 
+    def get_post_by_post_id_with_user(self, post_id, user_id):
+        where = "item.post_id = %s AND item.first_type='post'" % post_id
+        join = "LEFT JOIN user AS author_user ON item.author_id = author_user.uid\
+                LEFT JOIN item AS like_item ON item.id = like_item.reply_to AND like_item.author_id = %s" % user_id
+        field = "item.*, \
+                author_user.username as author_username, \
+                author_user.avatar as author_avatar,\
+                like_item.id as like_id"
+        return self.where(where).join(join).field(field).find()
+
     def get_like_by_author_and_item_id(self, author_id, item_id):
         where = "item.author_id = %s AND item.id = %s AND item.first_type='like'" % (author_id, item_id)
         return self.where(where).find()
