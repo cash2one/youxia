@@ -240,7 +240,11 @@ class ReplyHandler(BaseHandler):
         user_info = self.current_user
         p = int(self.get_argument("page", "1"))
 
-        all_replys = self.item_model.get_post_all_replys_sort_by_created(post_id, current_page = p)
+        if user_info:
+            all_replys = self.item_model.get_post_all_replys_with_user_sort_by_created(post_id, user_info.uid, current_page = p)
+        else:
+            all_replys = self.item_model.get_post_all_replys_sort_by_created(post_id, current_page = p)
+        
         '''
         print 'cccccc@@@@@@@@@@@@@@@@@@@'
         print all_replys
@@ -321,6 +325,7 @@ class LikeHandler(BaseHandler):
                     "post_id": item.post_id,
                     "first_type": "like",
                     "second_type": item.first_type,
+                    "reply_to": item_id,
                     "author_id": user_info.uid,
                     "created": time.strftime('%Y-%m-%d %H:%M:%S')
                 })

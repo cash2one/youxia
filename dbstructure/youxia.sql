@@ -136,8 +136,8 @@ CREATE TABLE `reply` (
 -- ----------------------------
 --  Table structure for `like`
 -- ----------------------------
-DROP TABLE IF EXISTS `like`;
-CREATE TABLE `like` (
+DROP TABLE IF EXISTS `like2`;
+CREATE TABLE `like2` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `like_type` text,
   `post_id` int(11) DEFAULT NULL,

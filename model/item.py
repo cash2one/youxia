@@ -60,6 +60,17 @@ class ItemModel(Query):
                 user.avatar as author_avatar"
         return self.where(where).order(order).join(join).field(field).pages(current_page = current_page, list_rows = num)
 
+    def get_post_all_replys_with_user_sort_by_created(self, post_id, user_id, num = 100, current_page = 1):
+        where = "item.post_id = %s AND item.first_type='reply'" % post_id
+        join = "LEFT JOIN user ON item.author_id = user.uid\
+                LEFT JOIN item AS like_item ON item.id = like_item.reply_to AND like_item.author_id = %s" % user_id
+        order = "item.created ASC, item.id ASC"
+        field = "item.*, \
+                user.username as author_username, \
+                user.avatar as author_avatar, \
+                like_item.id as like_id"
+        return self.where(where).order(order).join(join).field(field).pages(current_page = current_page, list_rows = num)
+
     def get_all_posts(self, num = 5, current_page = 1):
         where = "item.first_type='post'"
         order = "item.post_id DESC"
