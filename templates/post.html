@@ -119,9 +119,6 @@
                               <input class="FormControl PostMeta-permalink"></div>
                           </div>
                         </li>
-                        <li class="item-edited">
-                          <span class="PostEdited" title="" data-original-title="tenten8401 edited 2 Aug">编辑</span>
-                        </li>
                       </ul>
                     </header>
                     <div class="Post-title">
@@ -148,12 +145,16 @@
                               <i class="icon fa fa-fw fa-caret-down Button-caret"></i>
                             </button>
                             <ul class="Dropdown-menu dropdown-menu Dropdown-menu--right">
+                              {%if user_info.uid == post.author_id%}
+                              <li class="item-edit"><button class=" hasIcon" type="button" title="Edit"><i class="icon fa fa-fw fa-pencil Button-icon"></i><span class="Button-label">Edit</span></button></li><li class="Dropdown-separator"></li><li class="item-hide"><button class=" hasIcon" type="button" title="Delete"><i class="icon fa fa-fw fa-trash-o Button-icon"></i><span class="Button-label">Delete</span></button></li>
+                              {%else%}
                               <li class="item-flag {%if not user_info%}logIn{%endif%}">
                                 <button class=" hasIcon" type="button" title="举报">
                                   <i class="icon fa fa-fw fa-flag Button-icon"></i>
                                   <span class="Button-label">举报</span>
                                 </button>
                               </li>
+                              {%endif%}
                             </ul>
                           </div>
                         </li>
@@ -429,8 +430,15 @@ $(function() {
                         } else {
                           like_button = '<li class="item-like {%if not user_info%}logIn{%endif%}"><button class="Button Button--link" type="button" title="赞"><span class="Button-label">赞</span></button></li>';
                         }
+
+                        var Dropdown_menu = '';
+                        if (String(reply.author_id) == "{{user_info.uid}}") {
+                            Dropdown_menu = '<li class="item-edit"><button class=" hasIcon" type="button" title="Edit"><i class="icon fa fa-fw fa-pencil Button-icon"></i><span class="Button-label">Edit</span></button></li><li class="Dropdown-separator"></li><li class="item-hide"><button class=" hasIcon" type="button" title="Delete"><i class="icon fa fa-fw fa-trash-o Button-icon"></i><span class="Button-label">Delete</span></button></li>';
+                        } else {
+                            Dropdown_menu = '<li class="item-flag {%if not user_info%}logIn{%endif%}"><button class=" hasIcon" type="button" title="举报"><i class="icon fa fa-fw fa-flag Button-icon"></i><span class="Button-label">举报</span></button></li></ul></div></li>';
+                        }
                         var created = new timeago(null, 'zh_CN').format(reply.created);
-                        var reply_text = '<div class="PostStream-item" data-index="' + index + '" data-time="' + reply.created + '" data-number="' + index + '" data-id="' + reply.id + '" data-type="comment" style="display: block;"><article class="Post undefined CommentPost"><div><header class="Post-header"><ul><li class="item-user"><div class="PostUser"><h3><a href="/user/' + reply.author_username + '">' + avatar_text + '<span class="username">' + reply.author_username + '</span></a></h3><ul class="PostUser-badges badges"></ul></div></li><li class="item-meta"><div class="Dropdown PostMeta"><a class="Dropdown-toggle" data-toggle="dropdown"><time pubdate="true" datetime="' + reply.created + '" title="' + reply.created + '" data-humantime="true">' + created + '</time></a><div class="Dropdown-menu dropdown-menu"><span class="PostMeta-number">#' + index + ' 楼</span> <span class="PostMeta-time"><time pubdate="true" datetime="' + reply.created + '">' + reply.created + '</time></span> <span class="PostMeta-ip"></span><input class="FormControl PostMeta-permalink"></div></div><span class="item-index">#' + index + '</span></li></ul></header><div class="Post-body">' + reply.content + '</div><aside class="Post-actions"><ul>'+like_button+'<li class="item-reply {%if not user_info%}logIn{%endif%}"><button class="Button Button--link" type="button" title="回复"><span class="Button-label">回复</span></button></li><li><div class="ButtonGroup Dropdown dropdown Post-controls itemCount1"><button class="Dropdown-toggle Button Button--icon Button--flat" data-toggle="dropdown"><i class="icon fa fa-fw fa-ellipsis-h Button-icon"></i><span class="Button-label"></span><i class="icon fa fa-fw fa-caret-down Button-caret"></i></button><ul class="Dropdown-menu dropdown-menu Dropdown-menu--right"><li class="item-flag {%if not user_info%}logIn{%endif%}"><button class=" hasIcon" type="button" title="举报"><i class="icon fa fa-fw fa-flag Button-icon"></i><span class="Button-label">举报</span></button></li></ul></div></li></ul></aside><footer class="Post-footer"><ul>' + like_users_text + reply_users_text + '</ul></footer></div></article><div class="Post-quoteButtonContainer"></div></div>';
+                        var reply_text = '<div class="PostStream-item" data-index="' + index + '" data-time="' + reply.created + '" data-number="' + index + '" data-id="' + reply.id + '" data-type="comment" style="display: block;"><article class="Post undefined CommentPost"><div><header class="Post-header"><ul><li class="item-user"><div class="PostUser"><h3><a href="/user/' + reply.author_username + '">' + avatar_text + '<span class="username">' + reply.author_username + '</span></a></h3><ul class="PostUser-badges badges"></ul></div></li><li class="item-meta"><div class="Dropdown PostMeta"><a class="Dropdown-toggle" data-toggle="dropdown"><time pubdate="true" datetime="' + reply.created + '" title="' + reply.created + '" data-humantime="true">' + created + '</time></a><div class="Dropdown-menu dropdown-menu"><span class="PostMeta-number">#' + index + ' 楼</span> <span class="PostMeta-time"><time pubdate="true" datetime="' + reply.created + '">' + reply.created + '</time></span> <span class="PostMeta-ip"></span><input class="FormControl PostMeta-permalink"></div></div><span class="item-index">#' + index + '</span></li></ul></header><div class="Post-body">' + reply.content + '</div><aside class="Post-actions"><ul>'+like_button+'<li class="item-reply {%if not user_info%}logIn{%endif%}"><button class="Button Button--link" type="button" title="回复"><span class="Button-label">回复</span></button></li><li><div class="ButtonGroup Dropdown dropdown Post-controls itemCount1"><button class="Dropdown-toggle Button Button--icon Button--flat" data-toggle="dropdown"><i class="icon fa fa-fw fa-ellipsis-h Button-icon"></i><span class="Button-label"></span><i class="icon fa fa-fw fa-caret-down Button-caret"></i></button><ul class="Dropdown-menu dropdown-menu Dropdown-menu--right">'+ Dropdown_menu +'</ul></aside><footer class="Post-footer"><ul>' + like_users_text + reply_users_text + '</ul></footer></div></article><div class="Post-quoteButtonContainer"></div></div>';
                         all_replys_text += reply_text;
 
                     }
