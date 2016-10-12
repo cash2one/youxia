@@ -146,7 +146,7 @@
                             </button>
                             <ul class="Dropdown-menu dropdown-menu Dropdown-menu--right">
                               {%if user_info.uid == post.author_id%}
-                              <li class="item-edit"><button class=" hasIcon" type="button" title="Edit"><i class="icon fa fa-fw fa-pencil Button-icon"></i><span class="Button-label">Edit</span></button></li><li class="Dropdown-separator"></li><li class="item-hide"><button class=" hasIcon" type="button" title="Delete"><i class="icon fa fa-fw fa-trash-o Button-icon"></i><span class="Button-label">Delete</span></button></li>
+                              <li class="item-edit"><button class=" hasIcon" type="button" title="编辑"><i class="icon fa fa-fw fa-pencil Button-icon"></i><span class="Button-label">编辑</span></button></li><li class="Dropdown-separator"></li><li class="item-hide"><button class=" hasIcon" type="button" title="删除"><i class="icon fa fa-fw fa-trash-o Button-icon"></i><span class="Button-label">删除</span></button></li>
                               {%else%}
                               <li class="item-flag {%if not user_info%}logIn{%endif%}">
                                 <button class=" hasIcon" type="button" title="举报">
@@ -433,7 +433,7 @@ $(function() {
 
                         var Dropdown_menu = '';
                         if (String(reply.author_id) == "{{user_info.uid}}") {
-                            Dropdown_menu = '<li class="item-edit"><button class=" hasIcon" type="button" title="Edit"><i class="icon fa fa-fw fa-pencil Button-icon"></i><span class="Button-label">Edit</span></button></li><li class="Dropdown-separator"></li><li class="item-hide"><button class=" hasIcon" type="button" title="Delete"><i class="icon fa fa-fw fa-trash-o Button-icon"></i><span class="Button-label">Delete</span></button></li>';
+                            Dropdown_menu = '<li class="item-edit"><button class=" hasIcon" type="button" title="编辑"><i class="icon fa fa-fw fa-pencil Button-icon"></i><span class="Button-label">编辑</span></button></li><li class="Dropdown-separator"></li><li class="item-hide"><button class=" hasIcon" type="button" title="删除"><i class="icon fa fa-fw fa-trash-o Button-icon"></i><span class="Button-label">删除</span></button></li>';
                         } else {
                             Dropdown_menu = '<li class="item-flag {%if not user_info%}logIn{%endif%}"><button class=" hasIcon" type="button" title="举报"><i class="icon fa fa-fw fa-flag Button-icon"></i><span class="Button-label">举报</span></button></li></ul></div></li>';
                         }
@@ -501,6 +501,27 @@ $(document).on('mousedown', 'body', function(e) {
     $('.PostQuoteButton').remove();
   }      
 });
+
+
+$(document).on('mouseenter', '.PostUser-avatar', function(e) {
+  var avatar_text = $(this).removeClass('PostUser-avatar').prop("outerHTML");
+  $(this).addClass('PostUser-avatar');
+  var username_text = $(this).parent().find('.username').prop("outerHTML");
+  $(this).parent().parent().parent().append('<div class="UserCard UserCard--popover" style="background-color: rgb(222, 160, 229);"><div class="darkenBackground"><div class="container"><div class="UserCard-profile"><h2 class="UserCard-identity"><a href="/u/wowmac"><div class="UserCard-avatar">'+avatar_text+'</div>'+username_text+'</a></h2><ul class="UserCard-info"><li class="item-bio"><div class="UserBio "><div class="UserBio-content"></div></div></li><li class="item-lastSeen"><span class="UserCard-lastSeen"><i class="icon fa fa-fw fa-clock-o "></i> 19 hours ago</span></li><li class="item-joined">Joined 20 hours ago</li></ul></div></div></div></div>');
+  setTimeout(function() {
+            $('.UserCard--popover').addClass('in');
+        }, 200);
+});
+
+$(document).on('mouseleave', '.UserCard--popover', function(e) {
+  $('.UserCard--popover').removeClass('in');
+  setTimeout(function() {
+            $('.UserCard--popover').remove();
+        }, 200);
+  
+});
+
+
     
     {%if user_info%}
     $(document).on('click', '.PostQuoteButton', function(e) { 
