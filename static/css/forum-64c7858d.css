@@ -5623,7 +5623,8 @@ textarea.FormControl {
 	list-style-type: none;
 	padding: 0;
 	margin: 0;
-	font-size: 12px
+	font-size: 12px;
+	margin-top: 5px;
 }
 
 .DiscussionListItem-info > li {
@@ -5780,7 +5781,7 @@ textarea.FormControl {
 	.DiscussionListItem {
 		position: relative;
 		margin-right: -15px;
-		padding-right: 25px;
+		padding-right: 15px;
 		padding-left: 15px;
 		margin-left: -15px;
 		border-radius: 4px;
@@ -5815,7 +5816,6 @@ textarea.FormControl {
 
 	.DiscussionListItem-content {
 		padding-left: 52px;
-		padding-right: 80px;
 		border-bottom: 1px solid #e7edf3;
 	}
 
@@ -5850,11 +5850,19 @@ textarea.FormControl {
 
 	.DiscussionListItem-count {
 		margin-top: 21px;
-		margin-right: -70px;
-		width: 55px;
 		color: #667d99;
-		font-size: 14px;
-		padding-left: 21px
+		font-size: 12px;
+		line-height: 12px;
+    font-weight: bold;
+    color: white;
+    background-color: #aab0c6;
+    display: inline-block;
+    padding: 2px 10px 2px 10px;
+    -moz-border-radius: 12px;
+    -webkit-border-radius: 12px;
+    border-radius: 12px;
+    text-decoration: none;
+    margin-right: 1px;
 	}
 
 	.DiscussionListItem-count:before {
@@ -5864,7 +5872,6 @@ textarea.FormControl {
 		text-rendering: auto;
 		-webkit-font-smoothing: antialiased;
 		-moz-osx-font-smoothing: grayscale;
-		content: "\f0e5";
 		float: left;
 		margin-left: -21px;
 		margin-top: 3px
@@ -5884,19 +5891,6 @@ textarea.FormControl {
 
 	.DiscussionListItem-count:before.pull-right {
 		margin-left: .3em
-	}
-
-	.unread .DiscussionListItem-count {
-		color: #111;
-		font-weight: bold
-	}
-
-	.unread .DiscussionListItem-count:before {
-		content: "\f075"
-	}
-
-	.unread .DiscussionListItem-count:hover:before {
-		content: "\f00c"
 	}
 }
 
@@ -8562,15 +8556,9 @@ blockquote .PostMention,blockquote .UserMention {
 }
 
 @media (min-width: 768px) {
-	.IndexPage .DiscussionListItem-title,.UserPage .DiscussionListItem-title {
-		margin-right: 155px
-	}
 
 	.IndexPage .DiscussionListItem-info > .item-tags,.UserPage .DiscussionListItem-info > .item-tags {
 		margin-right: 0;
-		position: absolute;
-		right: 80px;
-		top: 23px;
 		max-width: 150px;
 		white-space: nowrap;
 		overflow: hidden;

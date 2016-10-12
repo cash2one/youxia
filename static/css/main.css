@@ -55,3 +55,16 @@ h2 {
 .Composer-flexible {
     white-space: pre-line;
 }  
+.DiscussionList-discussions .TagLabel.colored .TagLabel-text {
+    color: #999 !important;
+    font-size: 5px;
+    line-height: 10px;
+    display: inline-block;
+}
+
+.DiscussionList-discussions .TagLabel {
+    font-size: 10px;
+    font-weight: 100;
+    display: inline-block;
+    padding: .1em .5em;
+}
