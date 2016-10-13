@@ -160,18 +160,31 @@
                         <li class="item-tags">
                           <span class="TagsLabel ">
                             <span class="TagLabel  colored" style="color: #999; background-color: #f5f5f5;">
-                              <span class="TagLabel-text">君越2016款</span>
+                              <span class="TagLabel-text">汽车</span>
                             </span>
                           </span>
                         </li>
+                         &nbsp;•&nbsp; 
                         <li class="item-terminalPost">
                           <span>
-                            <i class="icon fa fa-fw fa-reply "></i>
-                            <span class="username">{{post.last_reply_user}}</span>
-                            最后回复于
+                            <span class="username">{{post.author_username}}</span>
+                          </span>
+                        </li>
+                        {%if post.last_reply_user%}
+                        &nbsp;•&nbsp; 
+                        <li class="item-terminalPost">
+                          <span>
                             <time pubdate="true" datetime="2016-09-30T14:27:27+08:00" title="Friday, September 30, 2016 2:27 PM" data-humantime="true">11 分钟前</time>
                           </span>
                         </li>
+                         &nbsp;•&nbsp; 
+                        <li class="item-terminalPost">
+                          <span>
+                            最后回复
+                            <span class="username">{{post.last_reply_user}}</span>
+                          </span>
+                        </li>
+                        {%endif%}
                       </ul>
                     </a>
                     <span class="DiscussionListItem-count" title="设为已读">{{post.reply_num}}</span>
@@ -336,6 +349,7 @@ $(document).ready(function() {
     });
 
     $(document).on('click', '.DiscussionList-loadMore', function() {
+      var loadMore = $(this);
       var pages = $(this).attr('data-pages');
       var current = $(this).attr('data-current');
       var next = $(this).attr('data-next');
@@ -344,7 +358,25 @@ $(document).ready(function() {
         return;
       }
       $.getJSON('/api/get/posts?page=' + next, function(data) {
-        alert(data.page.current);
+        var all_posts_text = '';
+        var all_posts = data.list;
+
+        for (var i = 0; i < all_posts.length; i++) {
+          var post = all_posts[i];
+
+          var post_text = '<li data-id="'+post.post_id+'"><div class="DiscussionListItem"><a class="Slidable-underneath Slidable-underneath--left Slidable-underneath--elastic"><i class="icon fa fa-fw fa-check "></i></a><div class="DiscussionListItem-content Slidable-content unread"><a href="/user/weazy" class="DiscussionListItem-author" title="" data-original-title="weazy started 13 minutes ago"><span class="Avatar " style="background: rgb(208, 160, 229);">K</span><ul class="DiscussionListItem-badges badges"></ul></a><a href="/post/1" class="DiscussionListItem-main"><span class="DiscussionListItem-title">'+post.title+'</span><ul class="DiscussionListItem-info"><li class="item-tags"><span class="TagsLabel "><span class="TagLabel  colored" style="color: #999; background-color: #f5f5f5;"><span class="TagLabel-text">汽车</span></span></span></li>&nbsp;•&nbsp;<li class="item-terminalPost"><span><span class="username">'+post.author_username+'</span></span></li>&nbsp;•&nbsp;<li class="item-terminalPost"><span><time pubdate="true" datetime="2016-09-30T14:27:27+08:00" title="Friday, September 30, 2016 2:27 PM" data-humantime="true">11 分钟前</time></span></li>&nbsp;•&nbsp;<li class="item-terminalPost"><span>最后回复<span class="username">土著研究所</span></span></li></ul></a><span class="DiscussionListItem-count" title="设为已读">28</span></div></div></li>';
+
+          all_posts_text += post_text;
+        }
+        $('.DiscussionList-discussions').append(all_posts_text);
+
+        loadMore.attr('data-pages', data.page.pages);
+        loadMore.attr('data-current', data.page.current);
+        loadMore.attr('data-next', data.page.next);
+
+        if (data.page.pages == data.page.current) {
+          loadMore.find('.Button-label').text('没有更多了');
+        }
       });
     });
 });
