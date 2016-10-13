@@ -157,9 +157,11 @@ CREATE TABLE `tag` (
   `thumb` text,
   `cover` text,
   `intro` text,
+  `category` text,
   `tag_type` text,
   `post_num` int(11) DEFAULT 0,
   `follow_num` int(11) DEFAULT 0,
+  `unfollow_num` int(11) DEFAULT 0,
   `created` datetime DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;
