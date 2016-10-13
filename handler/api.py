@@ -258,3 +258,13 @@ class TraceApiHandler(BaseHandler):
             update_info["username"] = user_info.username 
             update_info = getJsonKeyValue(data, update_info, "event_str")   
             self.trace_model.add_new_trace(update_info)
+
+class GetPostsApiHandler(BaseHandler):
+    def get(self, template_variables = {}):
+        user_info = self.current_user
+
+        p = int(self.get_argument("page", "1"))
+        all_posts = self.item_model.get_all_posts(current_page = p)
+
+        all_posts_json = json.dumps(all_posts, cls=DateEncoder)
+        self.write(all_posts_json)

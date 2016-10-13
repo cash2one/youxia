@@ -102,6 +102,7 @@ class Application(tornado.web.Application):
             (r"/api/update/user/base", handler.api.UpdateUserBaseInfoApiHandler),
             (r"/get/tags", handler.index.GetTagsHandler),
             (r"/tags", handler.index.TagsHandler),
+            (r"/api/get/posts", handler.api.GetPostsApiHandler),
         ]
 
         tornado.web.Application.__init__(self, handlers, **settings)

@@ -180,9 +180,9 @@
               </li>
               {%endfor%}
             </ul>
-            <div class="DiscussionList-loadMore">
-              <button class="Button" type="button" title="Load More">
-                <span class="Button-label">Load More</span>
+            <div class="DiscussionList-loadMore" data-pages="{{all_posts.page.pages}}" data-current="{{all_posts.page.current}}" data-next="{{all_posts.page.next}}">
+              <button class="Button" type="button" title="加载更多">
+                <span class="Button-label">加载更多</span>
               </button>
             </div>
           </div>
@@ -333,6 +333,19 @@ $(document).ready(function() {
                 alert("error");
             }
         });
+    });
+
+    $(document).on('click', '.DiscussionList-loadMore', function() {
+      var pages = $(this).attr('data-pages');
+      var current = $(this).attr('data-current');
+      var next = $(this).attr('data-next');
+
+      if (current == pages) {
+        return;
+      }
+      $.getJSON('/api/get/posts?page=' + next, function(data) {
+        alert(data.page.current);
+      });
     });
 });
 </script>

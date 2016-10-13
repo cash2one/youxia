@@ -55,7 +55,7 @@ class IndexHandler(BaseHandler):
         template_variables["user_info"] = user_info
         template_variables["page_name"] = "App--index"
 
-        p = int(self.get_argument("p", "1"))
+        p = int(self.get_argument("page", "1"))
 
         all_posts = self.item_model.get_all_posts(current_page = p)
         template_variables["all_posts"] = all_posts
