@@ -140,61 +140,9 @@
           </div>
           <div class="DiscussionList">
             <ul class="DiscussionList-discussions">
-              {%for post in all_posts.list%}
-              <li data-id="3852">
-                <div class="DiscussionListItem">
-                  <a class="Slidable-underneath Slidable-underneath--left Slidable-underneath--elastic">
-                    <i class="icon fa fa-fw fa-check "></i>
-                  </a>
-                  <div class="DiscussionListItem-content Slidable-content unread">
-                    <a href="/user/weazy" class="DiscussionListItem-author" title="" data-original-title="weazy started 13 minutes ago">
-                      {%if post.author_avatar%}
-                      <img class="Avatar " src="{{post.author_avatar}}"></a>
-                    {%else%}
-                    <span class="Avatar " style="background: rgb(208, 160, 229);">{{post.author_username|format_username}}</span>
-                    {%endif%}
-                    <ul class="DiscussionListItem-badges badges"></ul>
-                    <a href="/post/{{post.post_id}}" class="DiscussionListItem-main">
-                      <span class="DiscussionListItem-title">{{post.title}}</span>
-                      <ul class="DiscussionListItem-info">
-                        <li class="item-tags">
-                          <span class="TagsLabel ">
-                            <span class="TagLabel  colored" style="color: #999; background-color: #f5f5f5;">
-                              <span class="TagLabel-text">汽车</span>
-                            </span>
-                          </span>
-                        </li>
-                         &nbsp;•&nbsp; 
-                        <li class="item-terminalPost">
-                          <span>
-                            <span class="username">{{post.author_username}}</span>
-                          </span>
-                        </li>
-                        {%if post.last_reply_user%}
-                        &nbsp;•&nbsp; 
-                        <li class="item-terminalPost">
-                          <span>
-                            <time pubdate="true" datetime="2016-09-30T14:27:27+08:00" title="Friday, September 30, 2016 2:27 PM" data-humantime="true">11 分钟前</time>
-                          </span>
-                        </li>
-                         &nbsp;•&nbsp; 
-                        <li class="item-terminalPost">
-                          <span>
-                            最后回复
-                            <span class="username">{{post.last_reply_user}}</span>
-                          </span>
-                        </li>
-                        {%endif%}
-                      </ul>
-                    </a>
-                    <span class="DiscussionListItem-count" title="设为已读">{{post.reply_num}}</span>
-                  </div>
-                </div>
-              </li>
-              {%endfor%}
             </ul>
-            <div class="DiscussionList-loadMore" data-pages="{{all_posts.page.pages}}" data-current="{{all_posts.page.current}}" data-next="{{all_posts.page.next}}">
-              <button class="Button" type="button" title="加载更多">
+            <div class="DiscussionList-loadMore" data-pages="" data-current="" data-next="">
+              <button class="Button" type="button" title="">
                 <span class="Button-label">加载更多</span>
               </button>
             </div>
@@ -311,7 +259,35 @@
 </div>
 {% endblock %} {% block javascript %}
 <script type="text/javascript">
+function showPosts(data) {
+  var all_posts_text = '';
+        var all_posts = data.list;
+
+        for (var i = 0; i < all_posts.length; i++) {
+          var post = all_posts[i];
+
+          var post_text = '<li data-id="'+post.post_id+'"><div class="DiscussionListItem"><a class="Slidable-underneath Slidable-underneath--left Slidable-underneath--elastic"><i class="icon fa fa-fw fa-check "></i></a><div class="DiscussionListItem-content Slidable-content unread"><a href="/user/weazy" class="DiscussionListItem-author" title="" data-original-title="weazy started 13 minutes ago"><span class="Avatar " style="background: rgb(208, 160, 229);">K</span><ul class="DiscussionListItem-badges badges"></ul></a><a href="/post/'+post.post_id+'" class="DiscussionListItem-main"><span class="DiscussionListItem-title">'+post.title+'</span><ul class="DiscussionListItem-info"><li class="item-tags"><span class="TagsLabel "><span class="TagLabel  colored" style="color: #999; background-color: #f5f5f5;"><span class="TagLabel-text">汽车</span></span></span></li>&nbsp;•&nbsp;<li class="item-terminalPost"><span><span class="username">'+post.author_username+'</span></span></li>&nbsp;•&nbsp;<li class="item-terminalPost"><span><time pubdate="true" datetime="2016-09-30T14:27:27+08:00" title="Friday, September 30, 2016 2:27 PM" data-humantime="true">11 分钟前</time></span></li>&nbsp;•&nbsp;<li class="item-terminalPost"><span>最后回复<span class="username">土著研究所</span></span></li></ul></a><span class="DiscussionListItem-count" title="设为已读">28</span></div></div></li>';
+
+          all_posts_text += post_text;
+        }
+        $('.DiscussionList-discussions').append(all_posts_text);
+
+        var loadMore = $('.DiscussionList-loadMore');
+        loadMore.attr('data-pages', data.page.pages);
+        loadMore.attr('data-current', data.page.current);
+        loadMore.attr('data-next', data.page.next);
+
+        if (data.page.pages == data.page.current) {
+          loadMore.find('.Button-label').text('没有更多了');
+          loadMore.find('button').addClass('disabled');
+        }
+}
+
 $(document).ready(function() {
+    $.getJSON('/api/get/posts?page=1', function(data) {
+        showPosts(data);
+    });
+
     $(document).on('click', '.DiscussionComposer-changeTags', function() {
         var modal = '<div class="Modal modal-dialog TagDiscussionModal"><div class="Modal-content"><div class="Modal-close App-backControl"><button class="Button Button--icon Button--link hasIcon" type="button"><i class="icon fa fa-fw fa-times Button-icon"></i></button></div><form><div class="Modal-header"><h3 class="App-titleControl App-titleControl--text">Choose Tags for Your Discussion</h3></div><div class="Modal-alert"></div><div class="Modal-body"><div class="TagDiscussionModal-form"><div class="TagDiscussionModal-form-input"><div class="TagsInput FormControl "><span class="TagsInput-selected"></span><input class="FormControl" placeholder="Choose a primary tag"></div></div><div class="TagDiscussionModal-form-submit App-primaryControl"><button type="submit" class="Button Button--primary hasIcon disabled" disabled="" title="OK"><i class="icon fa fa-fw fa-check Button-icon"></i><span class="Button-label">OK</span></button></div></div></div><div class="Modal-footer"><ul class="TagDiscussionModal-list SelectTagList"><li data-index="20" class="pinned colored active" style="color: rgb(181, 158, 140);"><span class="icon TagIcon " style="background-color: rgb(181, 158, 140);"></span><span class="SelectTagListItem-name">Post tests here</span><span class="SelectTagListItem-description">Test out Flarum in this tag. Discussions in this tag will be deleted every so often.</span></li><li data-index="24" class="pinned colored" style="color: rgb(75, 147, 209);"><span class="icon TagIcon " style="background-color: rgb(75, 147, 209);"></span><span class="SelectTagListItem-name">Support</span><span class="SelectTagListItem-description">Get help setting up, using, and customising Flarum.</span></li><li data-index="69" class="pinned colored" style="color: rgb(147, 84, 202);"><span class="icon TagIcon " style="background-color: rgb(147, 84, 202);"></span><span class="SelectTagListItem-name">Feedback</span><span class="SelectTagListItem-description">For discussing Flarum core features and design. For issues use Support.</span></li><li data-index="48" class="pinned colored" style="color: rgb(72, 191, 131);"><span class="icon TagIcon " style="background-color: rgb(72, 191, 131);"></span><span class="SelectTagListItem-name">Extensions</span><span class="SelectTagListItem-description">Announce your extensions and provide help to users in this area. For requests/ideas, post in Feedback. For help building extensions, post in Dev &gt; Extensibility.</span></li><li data-index="4" class="pinned colored" style="color: rgb(65, 65, 65);"><span class="icon TagIcon " style="background-color: rgb(65, 65, 65);"></span><span class="SelectTagListItem-name">Dev</span><span class="SelectTagListItem-description">For developers. Get help hacking core, building extensions, themes, and translations.</span></li><li data-index="16" class="pinned colored" style="color: rgb(239, 86, 79);"><span class="icon TagIcon " style="background-color: rgb(239, 86, 79);"></span><span class="SelectTagListItem-name">Meta</span><span class="SelectTagListItem-description">Discussion about this community: its organisation and how we can improve it.</span></li><li data-index="52" class="pinned colored" style="color: rgb(98, 108, 120);"><span class="icon TagIcon " style="background-color: rgb(98, 108, 120);"></span><span class="SelectTagListItem-name">Resources</span><span class="SelectTagListItem-description">Share Flarum-related resources and services here: hosting, jobs, etc.</span></li><li data-index="1" class="pinned colored" style="color: rgb(214, 139, 79);"><span class="icon TagIcon " style="background-color: rgb(214, 139, 79);"></span><span class="SelectTagListItem-name">Off-topic</span><span class="SelectTagListItem-description">Off-topic discussions that dont fit into any other categories.</span></li><li data-index="60" class="colored" style="color: rgb(109, 187, 62);"><span class="icon TagIcon " style="background-color: rgb(109, 187, 62);"></span><span class="SelectTagListItem-name">Solved</span><span class="SelectTagListItem-description">Solved issues.</span></li><li data-index="19" class=""><span class="icon TagIcon "></span><span class="SelectTagListItem-name">Performance</span></li><li data-index="57" class=""><span class="icon TagIcon "></span><span class="SelectTagListItem-name">Integrations</span><span class="SelectTagListItem-description">Extensions for other software, like browsers or wordpress.</span></li><li data-index="70" class=""><span class="icon TagIcon "></span><span class="SelectTagListItem-name">Duplicate</span></li><li data-index="73" class=""><span class="icon TagIcon "></span><span class="SelectTagListItem-name">Reported</span></li><li data-index="45" class=""><span class="icon TagIcon "></span><span class="SelectTagListItem-name">Security</span></li><li data-index="71" class=""><span class="icon TagIcon "></span><span class="SelectTagListItem-name">Document</span></li></ul></div></form></div></div>';
         $('.ModalManager').html(modal);
@@ -358,25 +334,7 @@ $(document).ready(function() {
         return;
       }
       $.getJSON('/api/get/posts?page=' + next, function(data) {
-        var all_posts_text = '';
-        var all_posts = data.list;
-
-        for (var i = 0; i < all_posts.length; i++) {
-          var post = all_posts[i];
-
-          var post_text = '<li data-id="'+post.post_id+'"><div class="DiscussionListItem"><a class="Slidable-underneath Slidable-underneath--left Slidable-underneath--elastic"><i class="icon fa fa-fw fa-check "></i></a><div class="DiscussionListItem-content Slidable-content unread"><a href="/user/weazy" class="DiscussionListItem-author" title="" data-original-title="weazy started 13 minutes ago"><span class="Avatar " style="background: rgb(208, 160, 229);">K</span><ul class="DiscussionListItem-badges badges"></ul></a><a href="/post/1" class="DiscussionListItem-main"><span class="DiscussionListItem-title">'+post.title+'</span><ul class="DiscussionListItem-info"><li class="item-tags"><span class="TagsLabel "><span class="TagLabel  colored" style="color: #999; background-color: #f5f5f5;"><span class="TagLabel-text">汽车</span></span></span></li>&nbsp;•&nbsp;<li class="item-terminalPost"><span><span class="username">'+post.author_username+'</span></span></li>&nbsp;•&nbsp;<li class="item-terminalPost"><span><time pubdate="true" datetime="2016-09-30T14:27:27+08:00" title="Friday, September 30, 2016 2:27 PM" data-humantime="true">11 分钟前</time></span></li>&nbsp;•&nbsp;<li class="item-terminalPost"><span>最后回复<span class="username">土著研究所</span></span></li></ul></a><span class="DiscussionListItem-count" title="设为已读">28</span></div></div></li>';
-
-          all_posts_text += post_text;
-        }
-        $('.DiscussionList-discussions').append(all_posts_text);
-
-        loadMore.attr('data-pages', data.page.pages);
-        loadMore.attr('data-current', data.page.current);
-        loadMore.attr('data-next', data.page.next);
-
-        if (data.page.pages == data.page.current) {
-          loadMore.find('.Button-label').text('没有更多了');
-        }
+        showPosts(data);
       });
     });
 });

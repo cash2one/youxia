@@ -55,26 +55,7 @@ CREATE TABLE `user` (
   PRIMARY KEY (`uid`)
 ) ENGINE=MyISAM AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;
 
--- ----------------------------
---  Table structure for `post`
--- ----------------------------
-DROP TABLE IF EXISTS `post`;
-CREATE TABLE `post` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `title` text,
-  `content` text,
-  `cover` text,
-  `up_num` int(11) DEFAULT 0,
-  `reply_num` int(11) DEFAULT 0,
-  `view_num` int(11) DEFAULT 1,
-  `follow_num` int(11) DEFAULT 0,
-  `author_id` int(11) DEFAULT NULL,
-  `is_video` int(11) DEFAULT 0,
-  `video_time` int(11) DEFAULT NULL,
-  `updated` datetime DEFAULT NULL,
-  `created` datetime DEFAULT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;
+
 
 -- ----------------------------
 --  Table structure for `nowfeed`
@@ -231,6 +212,29 @@ CREATE TABLE `item` (
   `all_tags` text,
   `add_tags` text,
   `remove_tags` text,
+  `author_id` int(11) DEFAULT NULL,
+  `updated` datetime DEFAULT NULL,
+  `created` datetime DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+--  Table structure for `post`
+-- ----------------------------
+DROP TABLE IF EXISTS `post`;
+CREATE TABLE `post` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `post_type` text DEFAULT '',
+  `title` text DEFAULT '',
+  `content` text DEFAULT '',
+  `cover` text DEFAULT '',
+  `like_num` int(11) DEFAULT 0,
+  `like_users` text DEFAULT '',
+  `reply_num` int(11) DEFAULT 0,
+  `reply_users` text DEFAULT '',
+  `view_num` int(11) DEFAULT 1,
+  `follow_num` int(11) DEFAULT 0,
+  `follow_users` text DEFAULT '',
   `author_id` int(11) DEFAULT NULL,
   `updated` datetime DEFAULT NULL,
   `created` datetime DEFAULT NULL,

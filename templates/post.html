@@ -276,6 +276,11 @@
                 </article>
               </div>
               <div class="ReplyList"></div>
+              <div class="DiscussionList-loadMore" data-pages="" data-current="" data-next="">
+              <button class="Button" type="button" title="">
+                <span class="Button-label">加载更多</span>
+              </button>
+            </div>
               <div class="PostStream-item">
                 <article class="Post ReplyPlaceholder {%if not user_info%}logIn{%endif%}">
                   <header class="Post-header">
@@ -398,19 +403,7 @@
 <script src="{{static_path}}/js/dropload.min.js"></script>
 <script src="{{static_path}}/js/timeago.min.js"></script>
 <script type="text/javascript">
-$(function() {
-    var pageNum = 1;
-
-    // dropload
-    $('#content').dropload({
-        scrollArea: window,
-        loadDownFn: function(me) {
-            $.ajax({
-                type: 'GET',
-                url: '/reply/{{post.post_id}}?page=' + pageNum,
-                dataType: 'json',
-                success: function(data) {
-
+function showReplys(data) {
                     var all_replys_text = '';
                     var all_replys = data.list;
                     for (var i = 0; i < all_replys.length; i++) {
@@ -450,26 +443,19 @@ $(function() {
 
                     }
 
-                    $('.ReplyPlaceholder').parent().before(all_replys_text);
-                    // 每次数据加载完，必须重置
-                    me.resetload();
+                    $('.DiscussionList-loadMore').before(all_replys_text);
 
-                    pageNum++;
-                    if (pageNum > data.page.pages) {
-                        me.lock();
-                        me.noData();
-                    }
+                    var loadMore = $('.DiscussionList-loadMore');
+        loadMore.attr('data-pages', data.page.pages);
+        loadMore.attr('data-current', data.page.current);
+        loadMore.attr('data-next', data.page.next);
 
-                },
-                error: function(xhr, type) {
-                    alert('Ajax error!');
-                    // 即使加载出错，也得重置
-                    me.resetload();
-                }
-            });
+        if (data.page.pages == data.page.current) {
+          loadMore.find('.Button-label').text('没有更多了');
+          loadMore.find('button').addClass('disabled');
         }
-    });
-});
+}
+
 
 function getSelected() {
     if (window.getSelection) {
@@ -487,6 +473,23 @@ function getSelected() {
 }
 
 $(document).ready(function() {
+  $.getJSON('/reply/{{post.post_id}}?page=1', function(data) {
+        showReplys(data);
+  });
+
+  $(document).on('click', '.DiscussionList-loadMore', function() {
+      var loadMore = $(this);
+      var pages = $(this).attr('data-pages');
+      var current = $(this).attr('data-current');
+      var next = $(this).attr('data-next');
+
+      if (current == pages) {
+        return;
+      }
+      $.getJSON('/reply/{{post.post_id}}?page=' + next, function(data) {
+        showReplys(data);
+      });
+    });
 
 
     $(document).on('mouseup', '.Post-body', function(e) {
