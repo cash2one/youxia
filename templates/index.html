@@ -258,6 +258,7 @@
   <div class="ModalManager modal fade" style="display:none;"></div>
 </div>
 {% endblock %} {% block javascript %}
+<script src="{{static_path}}/js/timeago.min.js"></script>
 <script type="text/javascript">
 function showPosts(data) {
   var all_posts_text = '';
@@ -266,7 +267,13 @@ function showPosts(data) {
         for (var i = 0; i < all_posts.length; i++) {
           var post = all_posts[i];
 
-          var post_text = '<li data-id="'+post.post_id+'"><div class="DiscussionListItem"><a class="Slidable-underneath Slidable-underneath--left Slidable-underneath--elastic"><i class="icon fa fa-fw fa-check "></i></a><div class="DiscussionListItem-content Slidable-content unread"><a href="/user/weazy" class="DiscussionListItem-author" title="" data-original-title="weazy started 13 minutes ago"><span class="Avatar " style="background: rgb(208, 160, 229);">K</span><ul class="DiscussionListItem-badges badges"></ul></a><a href="/post/'+post.post_id+'" class="DiscussionListItem-main"><span class="DiscussionListItem-title">'+post.title+'</span><ul class="DiscussionListItem-info"><li class="item-tags"><span class="TagsLabel "><span class="TagLabel  colored" style="color: #999; background-color: #f5f5f5;"><span class="TagLabel-text">汽车</span></span></span></li>&nbsp;•&nbsp;<li class="item-terminalPost"><span><span class="username">'+post.author_username+'</span></span></li>&nbsp;•&nbsp;<li class="item-terminalPost"><span><time pubdate="true" datetime="2016-09-30T14:27:27+08:00" title="Friday, September 30, 2016 2:27 PM" data-humantime="true">11 分钟前</time></span></li>&nbsp;•&nbsp;<li class="item-terminalPost"><span>最后回复<span class="username">土著研究所</span></span></li></ul></a><span class="DiscussionListItem-count" title="设为已读">28</span></div></div></li>';
+          var last_reply_text = '';
+          if (post.last_reply_user) {
+            var last_reply_time_text = new timeago(null, 'zh_CN').format(post.last_reply_time);
+            last_reply_text = '&nbsp;•&nbsp;<li class="item-terminalPost"><span><time pubdate="true" datetime="'+post.last_reply_time+'" title="'+post.last_reply_time+'" data-humantime="true">'+last_reply_time_text+'</time></span></li>&nbsp;•&nbsp;<li class="item-terminalPost"><span>最后回复&nbsp;<span class="username">'+post.last_reply_user+'</span></span></li>';
+          }
+
+          var post_text = '<li data-id="'+post.id+'"><div class="DiscussionListItem"><a class="Slidable-underneath Slidable-underneath--left Slidable-underneath--elastic"><i class="icon fa fa-fw fa-check "></i></a><div class="DiscussionListItem-content Slidable-content unread"><a href="/user/weazy" class="DiscussionListItem-author" title="" data-original-title="weazy started 13 minutes ago"><span class="Avatar " style="background: rgb(208, 160, 229);">K</span><ul class="DiscussionListItem-badges badges"></ul></a><a href="/post/'+post.id+'" class="DiscussionListItem-main"><span class="DiscussionListItem-title">'+post.title+'</span><ul class="DiscussionListItem-info"><li class="item-tags"><span class="TagsLabel "><span class="TagLabel  colored" style="color: #999; background-color: #f5f5f5;"><span class="TagLabel-text">汽车</span></span></span></li>&nbsp;•&nbsp;<li class="item-terminalPost"><span><span class="username">'+post.author_username+'</span></span></li>'+last_reply_text+'</ul></a><span class="DiscussionListItem-count" title="设为已读">'+post.reply_num+'</span></div></div></li>';
 
           all_posts_text += post_text;
         }

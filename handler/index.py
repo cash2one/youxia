@@ -55,12 +55,11 @@ class IndexHandler(BaseHandler):
         template_variables["user_info"] = user_info
         template_variables["page_name"] = "App--index"
 
-        p = int(self.get_argument("page", "1"))
+        page = int(self.get_argument("page", "1"))
 
-        all_posts = self.item_model.get_all_posts(current_page = p)
+        all_posts = self.post_model.get_all_posts(current_page = page)
         template_variables["all_posts"] = all_posts
         
-
         if(user_info):
             print 'ddd'
         else:
@@ -135,14 +134,11 @@ class PostHandler(BaseHandler):
         template_variables["page_name"] = "App--discussion"
 
         if user_info:
-            post = self.item_model.get_post_by_post_id_with_user(post_id, user_info.uid)
+            post = self.post_model.get_post_by_post_id_with_user(post_id, user_info.uid)
         else:
-            post = self.item_model.get_post_by_post_id(post_id)
+            post = self.post_model.get_post_by_post_id(post_id)
         template_variables["post"] = post
         #template_variables["tags"] = self.post_tag_model.get_post_all_tags(post_id)
-        print "@@@"+post.content
-
-        
 
         self.render(self.template_path+"post.html", **template_variables)
 
@@ -166,20 +162,15 @@ class NewHandler(BaseHandler):
         post_info = getJsonKeyValue(data, post_info, "title")
         post_info = getJsonKeyValue(data, post_info, "content")
 
-        post_info["author_id"] = self.current_user["uid"]
+        post_info["author_id"] = user_info["uid"]
+        post_info["author_username"] = user_info["username"]
+        if user_info["avatar"]:
+            post_info["author_avatar"] = user_info["avatar"]
         post_info["updated"] = time.strftime('%Y-%m-%d %H:%M:%S')
         post_info["created"] = time.strftime('%Y-%m-%d %H:%M:%S')
 
-        last_post_id = self.item_model.get_max_post_id()
-        if last_post_id:
-            post_id = last_post_id + 1
-        else:
-            post_id = 1
-        post_info["post_id"] = post_id
-        post_info["first_type"] = "post"
-
-        item_id = self.item_model.add_new_item(post_info)
-        if item_id:
+        post_id = self.post_model.add_new_post(post_info)
+        if post_id:
             success = 0
             message = "成功新建帖子"
             redirect = "/post/"+str(post_id)
@@ -242,12 +233,12 @@ class ReplyHandler(BaseHandler):
     def get(self, post_id, template_variables = {}):
         print 'fdsafsadf'
         user_info = self.current_user
-        p = int(self.get_argument("page", "1"))
+        page = int(self.get_argument("page", "1"))
 
         if user_info:
-            all_replys = self.item_model.get_post_all_replys_with_user_sort_by_created(post_id, user_info.uid, current_page = p)
+            all_replys = self.reply_model.get_post_all_replys_with_user_sort_by_created(post_id, user_info.uid, current_page = page)
         else:
-            all_replys = self.item_model.get_post_all_replys_sort_by_created(post_id, current_page = p)
+            all_replys = self.reply_model.get_post_all_replys_sort_by_created(post_id, current_page = page)
         
         '''
         print 'cccccc@@@@@@@@@@@@@@@@@@@'
@@ -267,41 +258,41 @@ class ReplyHandler(BaseHandler):
 
         data = json.loads(self.request.body)
         content = data["content"]
-        second_type = data["second_type"]
+        reply_type = data["reply_type"]
         reply_to = data["reply_to"]
 
         if(user_info):
             # update post
-            post_item = self.item_model.get_post_by_post_id(post_id)
-            self.item_model.update_item_by_id(post_item.id, {
-                "reply_num": post_item.reply_num+1, 
+            post = self.post_model.get_post_by_post_id(post_id)
+            self.post_model.update_post_by_post_id(post.id, {
+                "reply_num": post.reply_num+1, 
                 "last_reply_user": user_info.username,
                 "last_reply_time": time.strftime('%Y-%m-%d %H:%M:%S'),
                 "updated": time.strftime('%Y-%m-%d %H:%M:%S'),
             })
 
             # update reply_item
-            if (second_type == 'to_reply'):
-                reply_item = self.item_model.get_item_by_id(reply_to)
-                self.item_model.update_item_by_id(reply_item.id, {
-                    "reply_num": reply_item.reply_num+1,
-                    "reply_users": (reply_item.reply_users if reply_item.reply_users else '') + user_info.username + ',',  
-                    "last_reply_user": user_info.username,
-                    "last_reply_time": time.strftime('%Y-%m-%d %H:%M:%S'),
+            if (reply_type == 'to_reply'):
+                reply = self.reply_model.get_reply_by_id(reply_to)
+                self.reply_model.update_reply_by_id(reply.id, {
+                    "reply_num": reply.reply_num+1,
+                    "reply_users": reply.reply_users if reply.reply_users else '' + user_info.username + ',',
                     "updated": time.strftime('%Y-%m-%d %H:%M:%S'),
                 })
 
 
             reply_info = {
                 "author_id": user_info["uid"],
+                "author_username": user_info["username"],
                 "post_id": post_id,
                 "content": content,
-                "first_type": "reply",
-                "second_type": second_type,
+                "reply_type": reply_type,
                 "reply_to": reply_to,
                 "created": time.strftime('%Y-%m-%d %H:%M:%S'),
             }
-            reply_id = self.item_model.add_new_item(reply_info)
+            if user_info["avatar"]:
+                reply_info["author_avatar"] = user_info["avatar"]
+            reply_id = self.reply_model.add_new_reply(reply_info)
 
             self.write(lib.jsonp.print_JSON({
                     "success": 1,
@@ -315,21 +306,33 @@ class ReplyHandler(BaseHandler):
             }))
 
 class LikeHandler(BaseHandler):
-    def get(self, item_id, template_variables = {}):
+    def get(self, like_to, template_variables = {}):
         user_info = self.current_user
 
+        like_type = self.get_argument("like_type", "to_reply")
+
         if(user_info):
-            like = self.item_model.get_like_by_author_and_item_id(user_info.uid, item_id)
+            if (like_type == "to_post"):
+                like = self.ylike_model.get_like_by_user_and_post(user_info.uid, like_to)
+            else:
+                like = self.ylike_model.get_like_by_user_and_reply(user_info.uid, like_to)
             if not like:
-                item = self.item_model.get_item_by_id(item_id)
-                self.item_model.update_item_by_id(item_id, {
-                    "like_num": item.like_num+1,
-                    "like_users": (item.like_users if item.like_users else '') + user_info.username + ',',  })
-                self.item_model.add_new_item({
-                    "post_id": item.post_id,
-                    "first_type": "like",
-                    "second_type": item.first_type,
-                    "reply_to": item_id,
+                if (like_type == "to_post"):
+                    post = self.post_model.get_post_by_post_id(like_to)
+                    self.post_model.update_post_by_post_id(like_to, {
+                        "like_num": post.like_num+1,
+                        "like_users": post.like_users if post.like_users else '' + user_info.username + ','
+                    })
+                else:
+                    reply = self.reply_model.get_reply_by_id(like_to)
+                    self.reply_model.update_reply_by_id(like_to, {
+                        "like_num": reply.like_num+1,
+                        "like_users": reply.like_users if reply.like_users else '' + user_info.username + ','
+                    })
+                
+                self.ylike_model.add_new_like({
+                    "like_type": like_type,
+                    "like_to": like_to,
                     "author_id": user_info.uid,
                     "created": time.strftime('%Y-%m-%d %H:%M:%S')
                 })

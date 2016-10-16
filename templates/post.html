@@ -187,7 +187,7 @@
                           <div class="Post-mentionedBy">
                             <span class="Post-mentionedBy-summary">
                               <i class="icon fa fa-fw fa-reply "></i>
-                              <a href="/post/{{post.post_id}}?reply=0" data-number="0">
+                              <a href="/post/{{post.id}}?reply=0" data-number="0">
                                 <span class="username">{{post.reply_users}}</span>
                               </a>
                               回复了它.
@@ -400,7 +400,6 @@
   <div class="ModalManager modal fade" style=""></div>
 </div>
 {% endblock %} {% block javascript %}
-<script src="{{static_path}}/js/dropload.min.js"></script>
 <script src="{{static_path}}/js/timeago.min.js"></script>
 <script type="text/javascript">
 function showReplys(data) {
@@ -422,7 +421,7 @@ function showReplys(data) {
                         }
                         var reply_users_text = '';
                         if (reply.reply_users) {
-                            reply_users_text = '<li class="item-replies"><div class="Post-mentionedBy"><span class="Post-mentionedBy-summary"><i class="icon fa fa-fw fa-reply "></i><a href="/post/{{post.post_id}}?reply=' + index + '" data-number="31"><span class="username">' + reply.reply_users + '</span></a> 回复了它.</span><ul class="Dropdown-menu Post-mentionedBy-preview fade"></ul></div></li>';
+                            reply_users_text = '<li class="item-replies"><div class="Post-mentionedBy"><span class="Post-mentionedBy-summary"><i class="icon fa fa-fw fa-reply "></i><a href="/post/{{post.id}}?reply=' + index + '" data-number="31"><span class="username">' + reply.reply_users + '</span></a> 回复了它.</span><ul class="Dropdown-menu Post-mentionedBy-preview fade"></ul></div></li>';
                         }
                         var like_button = '';
                         if (reply.like_id) {
@@ -473,7 +472,7 @@ function getSelected() {
 }
 
 $(document).ready(function() {
-  $.getJSON('/reply/{{post.post_id}}?page=1', function(data) {
+  $.getJSON('/reply/{{post.id}}?page=1', function(data) {
         showReplys(data);
   });
 
@@ -486,7 +485,7 @@ $(document).ready(function() {
       if (current == pages) {
         return;
       }
-      $.getJSON('/reply/{{post.post_id}}?page=' + next, function(data) {
+      $.getJSON('/reply/{{post.id}}?page=' + next, function(data) {
         showReplys(data);
       });
     });
@@ -584,10 +583,10 @@ $(document).ready(function() {
         $('.ComposerBody-loading').addClass('active');
         var content = $('.Composer-flexible').html();
 
-        var data_type = $(this).attr('data-type');
+        var data_reply = $(this).attr('data-reply');
         var data_id = $(this).attr('data-id');
-        if (data_type == undefined) {
-            data_type = 'to_post';
+        if (data_reply == undefined) {
+            data_reply = 'to_post';
         }
         if (data_id == undefined) {
             data_id = '{{post.id}}';
@@ -599,7 +598,7 @@ $(document).ready(function() {
             url: "/reply/{{post.id}}",
             data: JSON.stringify({
                 content: content,
-                second_type: data_type,
+                reply_type: data_reply,
                 reply_to: data_id
             }),
             success: function(msg) {
@@ -615,7 +614,7 @@ $(document).ready(function() {
                     $('.ReplyPlaceholder').parent().before(reply_text);
                     if (data_type == 'to_reply') {
                         var data_index = $("[data-id='" + data_id + "']").attr("data-index");
-                        $("[data-id='" + data_id + "']").find('footer ul').append('<li class="item-replies"><div class="Post-mentionedBy"><span class="Post-mentionedBy-summary"><i class="icon fa fa-fw fa-reply "></i><a href="/post/{{post.post_id}}?reply=' + data_index + '" data-number="' + data_index + '"><span class="username">你</span></a> 回复了它.</span><ul class="Dropdown-menu Post-mentionedBy-preview fade"></ul></div></li>');
+                        $("[data-id='" + data_id + "']").find('footer ul').append('<li class="item-replies"><div class="Post-mentionedBy"><span class="Post-mentionedBy-summary"><i class="icon fa fa-fw fa-reply "></i><a href="/post/{{post.id}}?reply=' + data_index + '" data-number="' + data_index + '"><span class="username">你</span></a> 回复了它.</span><ul class="Dropdown-menu Post-mentionedBy-preview fade"></ul></div></li>');
                     }
 
                     $('html, body').animate({
@@ -642,9 +641,9 @@ $(document).ready(function() {
         var data_index = item.attr('data-index');
         var username = item.find('.PostUser .username').text();
         //$('.Composer textarea').val('@'+username+'#'+data_id+' ');
-        $('.Composer .Composer-flexible').append('<a href="/post/{{post.post_id}}?reply=' + data_index + '" class="PostMention" data-id="' + data_id + '">' + username + '</a>&nbsp;');
+        $('.Composer .Composer-flexible').append('<a href="/post/{{post.id}}?reply=' + data_index + '" class="PostMention" data-id="' + data_id + '">' + username + '</a>&nbsp;');
 
-        $('.item-submit').attr('data-type', 'to_reply');
+        $('.item-submit').attr('data-reply', 'to_reply');
         $('.item-submit').attr('data-id', data_id);
     });
 
@@ -655,7 +654,14 @@ $(document).ready(function() {
         }
         var item = $(this).parent().parent().parent().parent().parent();
         var data_id = item.attr('data-id');
-        $.getJSON('/like/' + data_id, function(data) {
+        var data_index = item.attr('data-index');
+        var like_type = '';
+        if (data_index=='0') {
+          like_type = 'to_post';
+        } else {
+          like_type = 'to_reply';
+        }
+        $.getJSON('/like/' + data_id + '?like_type=' + like_type, function(data) {
             if (data.success == 1) {
                 item_like.find('span').text('已赞');
                 item_like.addClass('liked');

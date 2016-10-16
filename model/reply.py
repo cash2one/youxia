@@ -89,3 +89,18 @@ class ReplyModel(Query):
     def delete_reply_by_id(self, reply_id):
         where = "reply.id = %s " % reply_id
         return self.where(where).delete()
+
+    def get_post_all_replys_sort_by_created(self, post_id, num = 100, current_page = 1):
+        where = "reply.post_id = %s" % post_id
+        join = "LEFT JOIN user ON item.author_id = user.uid"
+        order = "reply.created ASC, item.id ASC"
+        field = "reply.*"
+        return self.where(where).order(order).join(join).field(field).pages(current_page = current_page, list_rows = num)
+
+    def get_post_all_replys_with_user_sort_by_created(self, post_id, user_id, num = 100, current_page = 1):
+        where = "reply.post_id = %s" % post_id
+        join = "LEFT JOIN ylike ON 'to_reply' = ylike.like_type AND reply.id = ylike.like_to AND ylike.author_id = %s" % user_id
+        order = "reply.created ASC, reply.id ASC"
+        field = "reply.*, \
+                ylike.id as like_id"
+        return self.where(where).order(order).join(join).field(field).pages(current_page = current_page, list_rows = num)

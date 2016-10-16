@@ -125,7 +125,7 @@ class Application(tornado.web.Application):
         self.tag_model = self.loader.use("tag.model")
         self.post_tag_model = self.loader.use("post_tag.model")
         self.car_data_model = self.loader.use("car_data.model")
-        self.like_model = self.loader.use("like.model")
+        self.ylike_model = self.loader.use("ylike.model")
         self.item_model = self.loader.use("item.model")
 
         # Have one global session controller

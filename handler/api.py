@@ -264,7 +264,7 @@ class GetPostsApiHandler(BaseHandler):
         user_info = self.current_user
 
         p = int(self.get_argument("page", "1"))
-        all_posts = self.item_model.get_all_posts(current_page = p)
+        all_posts = self.post_model.get_all_posts(current_page = p)
 
         all_posts_json = json.dumps(all_posts, cls=DateEncoder)
         self.write(all_posts_json)
