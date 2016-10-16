@@ -62,7 +62,7 @@ def do_login(self, user_id):
     user_id = user_info["uid"]
     self.session["uid"] = user_id
     self.session["username"] = user_info["username"]
-    self.session["mobile"] = user_info["mobile"]
+    self.session["email"] = user_info["email"]
     self.session["password"] = user_info["password"]
     self.session.save()
     self.set_secure_cookie("user", str(user_id))
@@ -71,7 +71,7 @@ def do_logout(self):
     # destroy sessions
     self.session["uid"] = None
     self.session["username"] = None
-    self.session["mobile"] = None
+    self.session["email"] = None
     self.session["password"] = None
     self.session.save()
 
@@ -90,7 +90,7 @@ class SigninAdminHandler(BaseHandler):
 
         form = SigninForm(self)
 
-        user_info = self.user_model.get_user_by_mobile(form.mobile.data)
+        user_info = self.user_model.get_user_by_email(form.email.data)
         if user_info == None:
             #self.redirect("/?s=signin&e=1")
             template_variables["errors"] = "用户名或密码错误！"
@@ -99,8 +99,8 @@ class SigninAdminHandler(BaseHandler):
         
         secure_password = hashlib.sha1(form.password.data).hexdigest()
         secure_password_md5 = hashlib.md5(form.password.data).hexdigest()
-        user_info = self.user_model.get_user_by_mobile_and_password(form.mobile.data, secure_password)
-        user_info = user_info or self.user_model.get_user_by_mobile_and_password(form.mobile.data, secure_password_md5)
+        user_info = self.user_model.get_user_by_email_and_password(form.email.data, secure_password)
+        user_info = user_info or self.user_model.get_user_by_email_and_password(form.email.data, secure_password_md5)
         
         if(user_info):
             do_login(self, user_info["uid"])
@@ -110,7 +110,7 @@ class SigninAdminHandler(BaseHandler):
             return
         else:
             #self.redirect("/?s=signin&e=2")
-            template_variables["errors"] = "手机或密码错误！"
+            template_variables["errors"] = "邮箱或密码错误！"
             self.render("admin/login.html", **template_variables)
             return
 
