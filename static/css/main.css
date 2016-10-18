@@ -86,3 +86,23 @@ h2 {
     margin-right: 8px;
 }
 }
+
+
+.TagLabel {
+    font-weight: normal;
+}
+
+.TagsLabel .TagLabel {
+        border-right: 1px dashed;
+    border-color: white;
+}
+.TagsLabel .TagLabel:first-child {
+    border: none;
+}
+.TagsLabel .TagLabel:last-child {
+    border: none;
+}
+.DiscussionListItem-title {
+    display: block;
+    padding-right: 38px;
+}
