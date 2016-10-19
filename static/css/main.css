@@ -106,3 +106,13 @@ h2 {
     display: block;
     padding-right: 38px;
 }
+
+.SelectTagListItem-description .TagsLabel .TagLabel {
+    border-radius: 4px;
+    border: none;
+    margin-right: 10px;
+}
+
+.SelectTagList > li.active {
+    background: #f3f6f9;
+}
