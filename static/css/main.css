@@ -118,4 +118,5 @@ h2 {
 }
 .SelectTagListItem-description {
     margin-top: 10px;
+    display: block;
 }

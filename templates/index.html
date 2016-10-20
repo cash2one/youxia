@@ -298,14 +298,39 @@ function showPosts(data) {
 }
 
 $(document).ready(function() {
+    
     $.getJSON('/api/get/posts?page=1', function(data) {
         showPosts(data);
     });
 
     $(document).on('click', '.DiscussionComposer-changeTags', function() {
-        var modal = '<div class="Modal modal-dialog TagDiscussionModal"><div class="Modal-content"><div class="Modal-close App-backControl"><button class="Button Button--icon Button--link hasIcon" type="button"><i class="icon fa fa-fw fa-times Button-icon"></i></button></div><form><div class="Modal-header"><h3 class="App-titleControl App-titleControl--text">选择帖子版块</h3></div><div class="Modal-alert"></div><div class="Modal-body"><div class="TagDiscussionModal-form"><div class="TagDiscussionModal-form-input"><div class="TagsInput FormControl "><span class="TagsInput-selected"></span><input class="FormControl" placeholder="选择合适的版块（必选）"></div></div><div class="TagDiscussionModal-form-submit App-primaryControl"><button type="submit" class="Button Button--primary hasIcon disabled" disabled="" title="确定"><i class="icon fa fa-fw fa-check Button-icon"></i><span class="Button-label">确定</span></button></div></div></div><div class="Modal-footer"><ul class="TagDiscussionModal-list SelectTagList"><li data-index="20" class="pinned colored" style="color: rgb(181, 158, 140);"><span class="icon TagIcon " style="background-color: rgb(181, 158, 140);"></span><span class="SelectTagListItem-name">汽车</span><span class="SelectTagListItem-description"><span class="TagsLabel "><span class="TagLabel"><span class="TagLabel-text">拍汽车</span></span><span class="TagLabel"><span class="TagLabel-text">行车实录</span></span><span class="TagLabel"><span class="TagLabel-text">赛车</span></span><span class="TagLabel"><span class="TagLabel-text">全地形车</span></span></span></span></li><li data-index="24" class="pinned colored" style="color: rgb(75, 147, 209);"><span class="icon TagIcon " style="background-color: rgb(75, 147, 209);"></span><span class="SelectTagListItem-name">数码科技</span><span class="SelectTagListItem-description"><span class="TagsLabel "><span class="TagLabel"><span class="TagLabel-text">拍汽车</span></span><span class="TagLabel"><span class="TagLabel-text">行车实录</span></span><span class="TagLabel"><span class="TagLabel-text">赛车</span></span><span class="TagLabel"><span class="TagLabel-text">全地形车</span></span></span></span></li><li data-index="69" class="pinned colored" style="color: rgb(147, 84, 202);"><span class="icon TagIcon " style="background-color: rgb(147, 84, 202);"></span><span class="SelectTagListItem-name">模型玩具</span><span class="SelectTagListItem-description"><span class="TagsLabel "><span class="TagLabel"><span class="TagLabel-text">拍汽车</span></span><span class="TagLabel"><span class="TagLabel-text">行车实录</span></span><span class="TagLabel"><span class="TagLabel-text">赛车</span></span><span class="TagLabel"><span class="TagLabel-text">全地形车</span></span></span></span></li><li data-index="48" class="pinned colored" style="color: rgb(72, 191, 131);"><span class="icon TagIcon " style="background-color: rgb(72, 191, 131);"></span><span class="SelectTagListItem-name">户外极限</span><span class="SelectTagListItem-description"><span class="TagsLabel "><span class="TagLabel"><span class="TagLabel-text">拍汽车</span></span><span class="TagLabel"><span class="TagLabel-text">行车实录</span></span><span class="TagLabel"><span class="TagLabel-text">赛车</span></span><span class="TagLabel"><span class="TagLabel-text">全地形车</span></span></span></span></li><li data-index="4" class="pinned colored" style="color: rgb(65, 65, 65);"><span class="icon TagIcon " style="background-color: rgb(65, 65, 65);"></span><span class="SelectTagListItem-name">时尚生活</span><span class="SelectTagListItem-description"><span class="TagsLabel "><span class="TagLabel"><span class="TagLabel-text">拍汽车</span></span><span class="TagLabel"><span class="TagLabel-text">行车实录</span></span><span class="TagLabel"><span class="TagLabel-text">赛车</span></span><span class="TagLabel"><span class="TagLabel-text">全地形车</span></span></span></span></li><li data-index="16" class="pinned colored" style="color: rgb(239, 86, 79);"><span class="icon TagIcon " style="background-color: rgb(239, 86, 79);"></span><span class="SelectTagListItem-name">Meta</span><span class="SelectTagListItem-description">Discussion about this community: its organisation and how we can improve it.</span></li><li data-index="52" class="pinned colored" style="color: rgb(98, 108, 120);"><span class="icon TagIcon " style="background-color: rgb(98, 108, 120);"></span><span class="SelectTagListItem-name">Resources</span><span class="SelectTagListItem-description">Share Flarum-related resources and services here: hosting, jobs, etc.</span></li><li data-index="1" class="pinned colored" style="color: rgb(214, 139, 79);"><span class="icon TagIcon " style="background-color: rgb(214, 139, 79);"></span><span class="SelectTagListItem-name">Off-topic</span><span class="SelectTagListItem-description">Off-topic discussions that dont fit into any other categories.</span></li><li data-index="60" class="colored" style="color: rgb(109, 187, 62);"><span class="icon TagIcon " style="background-color: rgb(109, 187, 62);"></span><span class="SelectTagListItem-name">Solved</span><span class="SelectTagListItem-description">Solved issues.</span></li><li data-index="19" class=""><span class="icon TagIcon "></span><span class="SelectTagListItem-name">Performance</span></li><li data-index="57" class=""><span class="icon TagIcon "></span><span class="SelectTagListItem-name">Integrations</span><span class="SelectTagListItem-description">Extensions for other software, like browsers or wordpress.</span></li><li data-index="70" class=""><span class="icon TagIcon "></span><span class="SelectTagListItem-name">Duplicate</span></li><li data-index="73" class=""><span class="icon TagIcon "></span><span class="SelectTagListItem-name">Reported</span></li><li data-index="45" class=""><span class="icon TagIcon "></span><span class="SelectTagListItem-name">Security</span></li><li data-index="71" class=""><span class="icon TagIcon "></span><span class="SelectTagListItem-name">Document</span></li></ul></div></form></div></div>';
+      $.getJSON('/api/get/tags', function(data) {
+
+        var pre_order = 1;
+        var tagListHtml = '';
+        var tagHtml = '';
+        var tag;
+        for (var i=0; i<data.length; i++) {
+          tag = data[i];
+          
+          if (pre_order != tag.category_order) {
+            tagListHtml += ('<li data-index="20" class="pinned colored" style="color: rgb(181, 158, 140);"><span class="icon TagIcon " style="background-color: rgb(181, 158, 140);"></span><span class="SelectTagListItem-name">'+data[i-1].category+'</span><span class="SelectTagListItem-description"><span class="TagsLabel ">'+tagHtml+'</span></span></li>'); 
+             pre_order = tag.category_order;
+             tagHtml = '';
+          }
+          tagHtml += '<span class="TagLabel"><span class="TagLabel-text">'+tag.name+'</span></span>';
+          
+        }
+        tagListHtml += ('<li data-index="20" class="pinned colored" style="color: rgb(181, 158, 140);"><span class="icon TagIcon " style="background-color: rgb(181, 158, 140);"></span><span class="SelectTagListItem-name">'+tag.category+'</span><span class="SelectTagListItem-description"><span class="TagsLabel ">'+tagHtml+'</span></span></li>'); 
+
+        
+
+        var modal = '<div class="Modal modal-dialog TagDiscussionModal"><div class="Modal-content"><div class="Modal-close App-backControl"><button class="Button Button--icon Button--link hasIcon" type="button"><i class="icon fa fa-fw fa-times Button-icon"></i></button></div><form><div class="Modal-header"><h3 class="App-titleControl App-titleControl--text">选择帖子版块</h3></div><div class="Modal-alert"></div><div class="Modal-body"><div class="TagDiscussionModal-form"><div class="TagDiscussionModal-form-input"><div class="TagsInput FormControl "><span class="TagsInput-selected"></span><input class="FormControl" placeholder="选择合适的版块（必选）"></div></div><div class="TagDiscussionModal-form-submit App-primaryControl"><button type="submit" class="Button Button--primary hasIcon disabled" disabled="" title="确定"><i class="icon fa fa-fw fa-check Button-icon"></i><span class="Button-label">确定</span></button></div></div></div><div class="Modal-footer"><ul class="TagDiscussionModal-list SelectTagList">'+tagListHtml+'</ul></div></form></div></div>';
         $('.ModalManager').html(modal);
         $('.modal').modal('show');
+    });
+
+        
     });
 
     $(document).on('click', '.item-newDiscussion', function() {
@@ -352,13 +377,12 @@ $(document).ready(function() {
       });
     });
 
-    $.getJSON('/api/get/tags', function(data) {
-        var category_order = 1;
-        for (var i=0; i<data.length; i++) {
-          console.log(data[i]);
-        }
-        
+    $(document).on('click', '.SelectTagListItem-description .TagLabel', function() {
+      var tagHtml = '<span class="TagsInput-tag">'+$(this).prop("outerHTML")+'</span>';
+      $('.TagsInput-selected').html(tagHtml);
     });
+
+    
 });
 </script>
 {% endblock %}
