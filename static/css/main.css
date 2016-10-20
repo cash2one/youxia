@@ -116,3 +116,6 @@ h2 {
 .SelectTagList > li.active {
     background: #f3f6f9;
 }
+.SelectTagListItem-description {
+    margin-top: 10px;
+}

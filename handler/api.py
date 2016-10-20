@@ -268,3 +268,13 @@ class GetPostsApiHandler(BaseHandler):
 
         all_posts_json = json.dumps(all_posts, cls=DateEncoder)
         self.write(all_posts_json)
+
+
+class GetTagsApiHandler(BaseHandler):
+    def get(self, template_variables = {}):
+        user_info = self.current_user
+        allTags = self.tag_model.get_all_tags2()
+        all_tags_json = json.dumps(allTags, cls=DateEncoder)
+        print all_tags_json
+
+        self.write(all_tags_json)

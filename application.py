@@ -100,9 +100,9 @@ class Application(tornado.web.Application):
             (r"/api/setting/password", handler.api.SettingPasswordApiHandler),
             (r"/api/get/user/base", handler.api.GetUserBaseInfoApiHandler),
             (r"/api/update/user/base", handler.api.UpdateUserBaseInfoApiHandler),
-            (r"/get/tags", handler.index.GetTagsHandler),
             (r"/tags", handler.index.TagsHandler),
             (r"/api/get/posts", handler.api.GetPostsApiHandler),
+            (r"/api/get/tags", handler.api.GetTagsApiHandler),
         ]
 
         tornado.web.Application.__init__(self, handlers, **settings)

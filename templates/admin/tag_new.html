@@ -30,6 +30,25 @@
                       <input id="name" type="text" class="form-control"/>
                     </div>
                     <div class="form-group">
+                      <label>Category</label>
+                      <input id="category" type="text" class="form-control"/>
+                    </div>
+                    <div class="form-group">
+                      <label>Order</label>
+                      <input id="category_order" type="text" class="form-control"/>
+                    </div>
+                    <div class="form-group">
+                      <label>Type</label>
+                      <select id="tag_type" class="form-control" >
+                        <option>官方版块</option>
+                        <option>用户版块</option>
+                        <option>文章标签</option>
+                        <option>汽车品牌</option>
+                        <option>汽车厂家</option>
+                        <option>汽车车型</option>
+                      </select>
+                    </div>
+                    <div class="form-group">
                       <label>Thumb</label>
                       <input id="thumb" type="text" class="form-control"/>
                     </div>
@@ -42,13 +61,8 @@
                       <input id="intro" type="text" class="form-control"/>
                     </div>
                     <div class="form-group">
-                      <label>Type</label>
-                      <select id="tag_type" class="form-control" >
-                        <option>普通标签</option>
-                        <option>汽车品牌</option>
-                        <option>汽车厂家</option>
-                        <option>汽车车型</option>
-                      </select>
+                      <label>Color</label>
+                      <input id="color" type="text" class="form-control"/>
                     </div>
                   </form>
                 </div><!-- /.box-body -->
@@ -88,7 +102,10 @@ $(document).on('click', '#save-tag', function() {
       thumb: $('#thumb').val(),
       cover: $('#cover').val(),
       intro: $('#intro').val(),
+      color: $('#color').val(),
       tag_type: $('#tag_type').val(),
+      category: $('#category').val(),
+      category_order: $('#category_order').val(),
     }),
     success: function(msg) {
       if (msg.success == 0) {

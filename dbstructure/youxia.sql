@@ -66,36 +66,7 @@ CREATE TABLE `newsfeed` (
 
 
 
--- ----------------------------
---  Table structure for `tag`
--- ----------------------------
-DROP TABLE IF EXISTS `tag`;
-CREATE TABLE `tag` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `name` text,
-  `thumb` text,
-  `cover` text,
-  `intro` text,
-  `category` text,
-  `tag_type` text,
-  `post_num` int(11) DEFAULT 0,
-  `follow_num` int(11) DEFAULT 0,
-  `unfollow_num` int(11) DEFAULT 0,
-  `created` datetime DEFAULT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;
 
--- ----------------------------
---  Table structure for `post_tag`
--- ----------------------------
-DROP TABLE IF EXISTS `post_tag`;
-CREATE TABLE `post_tag` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `post_id` int(11) DEFAULT NULL,
-  `tag_id` int(11) DEFAULT NULL,
-  `created` datetime DEFAULT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 --  Table structure for `car_data`
@@ -261,3 +232,38 @@ CREATE TABLE `user` (
   `admin` text,
   PRIMARY KEY (`uid`)
 ) ENGINE=MyISAM AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;
+
+
+-- ----------------------------
+--  Table structure for `tag`
+-- ----------------------------
+DROP TABLE IF EXISTS `tag`;
+CREATE TABLE `tag` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `name` text,
+  `thumb` text,
+  `cover` text,
+  `intro` text,
+  `color` text,
+  `category` text,
+  `category_order` int(11) DEFAULT 0,
+  `tag_type` text,
+  `post_num` int(11) DEFAULT 0,
+  `follow_num` int(11) DEFAULT 0,
+  `unfollow_num` int(11) DEFAULT 0,
+  `created` datetime DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+--  Table structure for `post_tag`
+-- ----------------------------
+DROP TABLE IF EXISTS `post_tag`;
+CREATE TABLE `post_tag` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `post_id` int(11) DEFAULT NULL,
+  `tag_id` int(11) DEFAULT NULL,
+  `car_year` int(11) DEFAULT NULL,
+  `created` datetime DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;

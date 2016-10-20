@@ -113,18 +113,6 @@ class TagHandler(BaseHandler):
        
         self.render(self.template_path+"tag.html", **template_variables)
 
-class GetTagsHandler(BaseHandler):
-    def get(self, template_variables = {}):
-        user_info = self.current_user
-        template_variables["user_info"] = user_info
-        allTags = self.tag_model.get_all_tags2()
-        print allTags
-        allTagJson = []
-        for tag in allTags:
-            allTagJson.append(tag.name)
-
-        self.write(json.dumps(allTagJson))
-
 class PostHandler(BaseHandler):
     def get(self, post_id, template_variables = {}):
         user_info = self.current_user

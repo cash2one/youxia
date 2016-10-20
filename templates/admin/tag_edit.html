@@ -30,6 +30,23 @@
                       <input id="name" type="text" class="form-control" value="{{view_tag.name or ''}}"/>
                     </div>
                     <div class="form-group">
+                      <label>Category</label>
+                      <input id="category" type="text" class="form-control"value="{{view_tag.category or ''}}"/>
+                    </div>
+                    <div class="form-group">
+                      <label>Order</label>
+                      <input id="category_order" type="text" class="form-control"value="{{view_tag.category_order or ''}}"/>
+                    </div>
+                    <div class="form-group">
+                      <label>Type</label>
+                      <select id="tag_type" class="form-control" value="{{view_tag.tag_type or 'text'}}">
+                        <option {% if view_tag.tag_type == '普通标签' %} selected="selected" {% endif %}>普通标签</option>
+                        <option {% if view_tag.tag_type == '汽车品牌' %} selected="selected" {% endif %}>汽车品牌</option>
+                        <option {% if view_tag.tag_type == '汽车厂家' %} selected="selected" {% endif %}>汽车厂家</option>
+                        <option {% if view_tag.tag_type == '汽车车型' %} selected="selected" {% endif %}>汽车车型</option>
+                      </select>
+                    </div>
+                    <div class="form-group">
                       <label>Thumb</label>
                       <input id="thumb" type="text" class="form-control" value="{{view_tag.thumb or ''}}"/>
                     </div>
@@ -42,13 +59,8 @@
                       <textarea id="intro" type="text" class="form-control">{{view_tag.intro or ''}}</textarea>
                     </div>
                     <div class="form-group">
-                      <label>Type</label>
-                      <select id="tag_type" class="form-control" value="{{view_tag.tag_type or 'text'}}">
-                        <option {% if view_tag.tag_type == '普通标签' %} selected="selected" {% endif %}>普通标签</option>
-                        <option {% if view_tag.tag_type == '汽车品牌' %} selected="selected" {% endif %}>汽车品牌</option>
-                        <option {% if view_tag.tag_type == '汽车厂家' %} selected="selected" {% endif %}>汽车厂家</option>
-                        <option {% if view_tag.tag_type == '汽车车型' %} selected="selected" {% endif %}>汽车车型</option>
-                      </select>
+                      <label>Color</label>
+                      <input id="color" type="text" class="form-control"value="{{view_tag.color or ''}}"/>
                     </div>
                   </form>
                 </div><!-- /.box-body -->
@@ -81,6 +93,10 @@ $(document).on('click', '#save-tag', function() {
       cover: $('#cover').val(),
       intro: $('#intro').val(),
       tag_type: $('#tag_type').val(),
+      color: $('#color').val(),
+      tag_type: $('#tag_type').val(),
+      category: $('#category').val(),
+      category_order: $('#category_order').val(),
     }),
     success: function(msg) {
       alert(msg.message);

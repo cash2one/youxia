@@ -17,7 +17,7 @@ class TagModel(Query):
         return self.order(order).pages(current_page = current_page, list_rows = num)
 
     def get_all_tags2(self):
-        order = "tag.post_num DESC, tag.id DESC"
+        order = "tag.category_order ASC, tag.id ASC"
         return self.order(order).select()
 
     def get_tag_by_tag_name(self, tag_name):

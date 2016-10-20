@@ -40,6 +40,8 @@
             <tr>
               <th>ID</th>
               <th>NAME</th>
+              <th>category</th>
+              <th>order</th>
               <th>TYPE</th>
               <th>post_num</th>
               <th>follow_num</th>
@@ -50,6 +52,8 @@
             <tr id="tag-{{tag.id}}">
               <td>{{tag.id}}</td>
               <td>{{tag.name or "/"}}</td>
+              <td>{{tag.category or "/"}}</td>
+              <td>{{tag.category_order or "/"}}</td>
               <td>{{tag.tag_type or "/"}}</td>
               <td>{{tag.post_num or "/"}}</td>
               <td>{{tag.follow_num or "/"}}</td>

@@ -527,6 +527,9 @@ class TagEditAdminHandler(BaseHandler):
             update_info = getJsonKeyValue(data, update_info, "cover")
             update_info = getJsonKeyValue(data, update_info, "intro")
             update_info = getJsonKeyValue(data, update_info, "tag_type")
+            update_info = getJsonKeyValue(data, update_info, "color")
+            update_info = getJsonKeyValue(data, update_info, "category")
+            update_info = getJsonKeyValue(data, update_info, "category_order")
             
             update_result = self.tag_model.update_tag_by_id(tag_id, update_info)
 
@@ -573,6 +576,9 @@ class TagNewAdminHandler(BaseHandler):
             update_info = getJsonKeyValue(data, update_info, "cover")
             update_info = getJsonKeyValue(data, update_info, "intro")
             update_info = getJsonKeyValue(data, update_info, "tag_type")
+            update_info = getJsonKeyValue(data, update_info, "color")
+            update_info = getJsonKeyValue(data, update_info, "category")
+            update_info = getJsonKeyValue(data, update_info, "category_order")
             update_info["created"] = time.strftime('%Y-%m-%d %H:%M:%S')
 
             update_result = self.tag_model.add_new_tag(update_info)

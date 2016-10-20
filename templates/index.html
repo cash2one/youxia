@@ -351,6 +351,14 @@ $(document).ready(function() {
         showPosts(data);
       });
     });
+
+    $.getJSON('/api/get/tags', function(data) {
+        var category_order = 1;
+        for (var i=0; i<data.length; i++) {
+          console.log(data[i]);
+        }
+        
+    });
 });
 </script>
 {% endblock %}
