@@ -151,7 +151,9 @@ CREATE TABLE `post` (
   `author_username` text,
   `author_avatar` text,
   `status` text,
-  `all_tags` text,
+  `board` text,
+  `models` text,
+  `tags` text,
   `updated` datetime DEFAULT NULL,
   `created` datetime DEFAULT NULL,
   PRIMARY KEY (`id`)

@@ -149,6 +149,7 @@ class NewHandler(BaseHandler):
 
         post_info = getJsonKeyValue(data, post_info, "title")
         post_info = getJsonKeyValue(data, post_info, "content")
+        post_info = getJsonKeyValue(data, post_info, "board")
 
         post_info["author_id"] = user_info["uid"]
         post_info["author_username"] = user_info["username"]
@@ -172,6 +173,11 @@ class NewHandler(BaseHandler):
             "message": message,
             "redirect": redirect
         }))
+
+        board_tag = self.tag_model.get_tag_by_tag_name(post_info["board"])
+        if board_tag:
+            self.post_tag_model.add_new_post_tag({"post_id": post_id, "tag_id": board_tag.id})
+            self.tag_model.update_tag_by_tag_id(board_tag.id, {"post_num": board_tag.post_num+1})
 
         '''
         # process tags
