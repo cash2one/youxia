@@ -150,6 +150,7 @@ CREATE TABLE `post` (
   `author_id` int(11) DEFAULT 0,
   `author_username` text,
   `author_avatar` text,
+  `author_color` text,
   `status` text,
   `board` text,
   `models` text,
@@ -177,6 +178,7 @@ CREATE TABLE `reply` (
   `author_id` int(11) DEFAULT 0,
   `author_username` text,
   `author_avatar` text,
+  `author_color` text,
   `status` text,
   `updated` datetime DEFAULT NULL,
   `created` datetime DEFAULT NULL,
@@ -212,6 +214,7 @@ CREATE TABLE `user` (
   `mobile` text,
   `sign` text,
   `avatar` text,
+  `color` text,
   `intro` text,
   `followees` int(11) DEFAULT 0,
   `followers` int(11) DEFAULT 0,
@@ -235,6 +238,16 @@ CREATE TABLE `user` (
   PRIMARY KEY (`uid`)
 ) ENGINE=MyISAM AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;
 
+-- ----------------------------
+--  Table structure for `color`
+-- ----------------------------
+DROP TABLE IF EXISTS `color`;
+CREATE TABLE `color` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `rgb` text,
+  `hex` text,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 --  Table structure for `tag`

@@ -865,7 +865,7 @@ class CarBrandsAdminHandler(BaseHandler):
 
         if(user_info):
             if(user_info.admin == "admin"):  
-                template_variables["all_datas"] = self.car_data_model.get_all_car_brands(current_page = p)
+                template_variables["all_datas"] = self.car_data_model.get_car_brands(current_page = p)
             self.render("admin/car_brand.html", **template_variables)
         else:
             self.redirect("/admin/signin")
@@ -879,7 +879,7 @@ class CarVendersAdminHandler(BaseHandler):
 
         if(user_info):
             if(user_info.admin == "admin"):  
-                template_variables["all_datas"] = self.car_data_model.get_all_car_venders(current_page = p)
+                template_variables["all_datas"] = self.car_data_model.get_car_venders(current_page = p)
             self.render("admin/car_vender.html", **template_variables)
         else:
             self.redirect("/admin/signin")
@@ -893,7 +893,7 @@ class CarModelsAdminHandler(BaseHandler):
 
         if(user_info):
             if(user_info.admin == "admin"):  
-                template_variables["all_datas"] = self.car_data_model.get_all_car_models(current_page = p)
+                template_variables["all_datas"] = self.car_data_model.get_car_models(current_page = p)
             self.render("admin/car_model.html", **template_variables)
         else:
             self.redirect("/admin/signin")

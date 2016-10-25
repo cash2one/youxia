@@ -27,28 +27,53 @@ class Car_dataModel(Query):
         where = "car_data.id = %s " % car_data_id
         return self.where(where).find()
 
-    def get_all_car_brands(self, num = 10, current_page = 1):
+    def get_car_brands(self, num = 10, current_page = 1):
     	where = "car_data.data_type = 'car_brand'"
         order = "car_data.id DESC"
         field = "car_data.*"
         return self.where(where).order(order).field(field).pages(current_page = current_page, list_rows = num) 
 
-    def get_all_car_venders(self, num = 10, current_page = 1):
+    def get_car_venders(self, num = 10, current_page = 1):
     	where = "car_data.data_type = 'car_vender'"
         order = "car_data.id DESC"
         field = "car_data.*"
         return self.where(where).order(order).field(field).pages(current_page = current_page, list_rows = num) 
 
-    def get_all_car_models(self, num = 10, current_page = 1):
+    def get_car_models(self, num = 10, current_page = 1):
     	where = "car_data.data_type = 'car_model'"
         order = "car_data.id DESC"
         field = "car_data.*"
         return self.where(where).order(order).field(field).pages(current_page = current_page, list_rows = num) 
 
-    def get_car_models_by_sort(self, car_sort, num = 4, current_page = 1):
+    def get_car_models_by_sort(self, car_sort, num = 10, current_page = 1):
         where = "car_data.data_type = 'car_model' AND car_data.car_sort = '%s'" % car_sort
         order = "car_data.id DESC"
         field = "car_data.*"
         return self.where(where).order(order).field(field).pages(current_page = current_page, list_rows = num) 
+
+
+    def get_all_car_brands(self):
+        where = "car_data.data_type = 'car_brand'"
+        order = "car_data.id DESC"
+        field = "car_data.*"
+        return self.where(where).order(order).field(field).select()
+
+    def get_all_car_venders_by_brand(self, brand_id):
+        where = "car_data.brand_id = %s AND car_data.data_type = 'car_vender'" % brand_id
+        order = "car_data.id DESC"
+        field = "car_data.*"
+        return self.where(where).order(order).field(field).select()
+
+    def get_all_car_models_by_vender(self, vender_id):
+        where = "car_data.vender_id = %s AND car_data.data_type = 'car_model'" % vender_id
+        order = "car_data.id DESC"
+        field = "car_data.*"
+        return self.where(where).order(order).field(field).select()
+
+    def get_all_car_models_by_sort(self, car_sort):
+        where = "car_data.data_type = 'car_model' AND car_data.car_sort = '%s'" % car_sort
+        order = "car_data.id DESC"
+        field = "car_data.*"
+        return self.where(where).order(order).field(field).select()
 
         

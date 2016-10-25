@@ -103,6 +103,7 @@ class Application(tornado.web.Application):
             (r"/tags", handler.index.TagsHandler),
             (r"/api/get/posts", handler.api.GetPostsApiHandler),
             (r"/api/get/tags", handler.api.GetTagsApiHandler),
+            (r"/api/get/cars", handler.api.GetCarsApiHandler),
         ]
 
         tornado.web.Application.__init__(self, handlers, **settings)
@@ -127,6 +128,7 @@ class Application(tornado.web.Application):
         self.car_data_model = self.loader.use("car_data.model")
         self.ylike_model = self.loader.use("ylike.model")
         self.item_model = self.loader.use("item.model")
+        self.color_model = self.loader.use("color.model")
 
         # Have one global session controller
         self.session_manager = SessionManager(settings["cookie_secret"], ["127.0.0.1:11211"], 0)

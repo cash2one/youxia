@@ -150,11 +150,14 @@ class NewHandler(BaseHandler):
         post_info = getJsonKeyValue(data, post_info, "title")
         post_info = getJsonKeyValue(data, post_info, "content")
         post_info = getJsonKeyValue(data, post_info, "board")
+        post_info = getJsonKeyValue(data, post_info, "models")
 
         post_info["author_id"] = user_info["uid"]
         post_info["author_username"] = user_info["username"]
         if user_info["avatar"]:
             post_info["author_avatar"] = user_info["avatar"]
+        if user_info["color"]:
+            post_info["author_color"] = user_info["color"]
         post_info["updated"] = time.strftime('%Y-%m-%d %H:%M:%S')
         post_info["created"] = time.strftime('%Y-%m-%d %H:%M:%S')
 
@@ -178,6 +181,12 @@ class NewHandler(BaseHandler):
         if board_tag:
             self.post_tag_model.add_new_post_tag({"post_id": post_id, "tag_id": board_tag.id})
             self.tag_model.update_tag_by_tag_id(board_tag.id, {"post_num": board_tag.post_num+1})
+
+        models_tag = self.tag_model.get_tag_by_tag_name(post_info["models"])
+        if models_tag:
+            self.post_tag_model.add_new_post_tag({"post_id": post_id, "tag_id": models_tag.id})
+            self.tag_model.update_tag_by_tag_id(models_tag.id, {"post_num": models_tag.post_num+1})
+
 
         '''
         # process tags
@@ -286,12 +295,14 @@ class ReplyHandler(BaseHandler):
             }
             if user_info["avatar"]:
                 reply_info["author_avatar"] = user_info["avatar"]
+            if user_info["color"]:
+                reply_info["author_color"] = user_info["color"]
             reply_id = self.reply_model.add_new_reply(reply_info)
-
+            reply_info["id"] = reply_id
             self.write(lib.jsonp.print_JSON({
                     "success": 1,
                     "message": "successed",
-                    "reply_id": reply_id
+                    "reply_info": reply_info
             }))
         else:
             self.write(lib.jsonp.print_JSON({

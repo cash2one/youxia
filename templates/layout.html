@@ -78,7 +78,7 @@
                     {%if user_info.avatar%}
                     <img class="Avatar " src="{{user_info.avatar}}">
                     {%else%}
-                    <span class="Avatar " style="background: rgb(208, 160, 229);">{{user_info.username|format_username}}</span>
+                    <span class="Avatar " style="background: {{user_info.color}};">{{user_info.username|format_username}}</span>
                     {%endif%}
                     <span class="Button-label">
                       <span class="username">{{user_info.username}}</span>
@@ -136,6 +136,9 @@
             $('.Composer').addClass('fullScreen');
             $('.fullScreen .item-minimize').css("display", "none");
             $('.fullScreen .item-close').css("display", "none");
+            $('.Composer.fullScreen').css("height", $(window).height());
+            $('.Composer.fullScreen .Composer-flexible').css("height", $(window).height()-152);
+            //alert($(window).height()); 
         });
 
         $(document).on('click', '.fullScreen .item-fullScreen', function() {
@@ -143,6 +146,8 @@
             $('.Composer').addClass('normal');
             $('.normal .item-minimize').css("display", "");
             $('.normal .item-close').css("display", "");
+            $('.Composer.normal').css("height", 300);
+            $('.Composer.normal .Composer-flexible').css("height", 189);
         });
 
         $(document).on('click', '.normal .item-close', function() {

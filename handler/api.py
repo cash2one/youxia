@@ -278,3 +278,19 @@ class GetTagsApiHandler(BaseHandler):
         print all_tags_json
 
         self.write(all_tags_json)
+
+class GetCarsApiHandler(BaseHandler):
+    def get(self, template_variables = {}):
+        print 'dddd'
+        user_info = self.current_user
+        all_car_brands = self.car_data_model.get_all_car_brands()
+        for car_brand in all_car_brands:
+            all_car_venders = self.car_data_model.get_all_car_venders_by_brand(car_brand.id)
+            car_brand["all_car_venders"] = all_car_venders
+            for car_vender in all_car_venders:
+                all_car_models = self.car_data_model.get_all_car_models_by_vender(car_vender.id)
+                car_vender["all_car_models"] = all_car_models
+        all_cars_json = json.dumps(all_car_brands, cls=DateEncoder)
+        print all_cars_json
+
+        self.write(all_cars_json)

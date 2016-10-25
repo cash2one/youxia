@@ -89,6 +89,10 @@ class BaseHandler(tornado.web.RequestHandler):
         return self.application.item_model
 
     @property
+    def color_model(self):
+        return self.application.color_model
+
+    @property
     def debug_flag(self):
         return self.application.debug_flag
 
