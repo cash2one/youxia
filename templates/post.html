@@ -286,13 +286,12 @@
                 </article>
               </div>
               {%endif%}
-              <div class="ReplyList"></div>
               <div class="DiscussionList-loadMore" data-pages="" data-current="" data-next="">
               <button class="Button" type="button" title="">
                 <span class="Button-label">加载更多</span>
               </button>
             </div>
-              <div class="PostStream-item">
+              <div class="PostStream-item-reply">
                 <article class="Post ReplyPlaceholder {%if not user_info%}logIn{%endif%}">
                   <header class="Post-header">
                     {%if user_info.avatar%}
@@ -532,10 +531,12 @@ $(document).ready(function() {
 
 
     $(document).on('mouseenter', '.CommentPost .PostUser-avatar', function(e) {
+        var color = $(this).css("background-color");
         var avatar_text = $(this).removeClass('PostUser-avatar').prop("outerHTML");
         $(this).addClass('PostUser-avatar');
+        var username = $(this).parent().find('.username').text();
         var username_text = $(this).parent().find('.username').prop("outerHTML");
-        $(this).parent().parent().parent().append('<div class="UserCard UserCard--popover" style="background-color: rgb(222, 160, 229);"><div class="darkenBackground"><div class="container"><div class="UserCard-profile"><h2 class="UserCard-identity"><a href="/u/wowmac"><div class="UserCard-avatar">' + avatar_text + '</div>' + username_text + '</a></h2><ul class="UserCard-info"><li class="item-bio"><div class="UserBio "><div class="UserBio-content"></div></div></li><li class="item-lastSeen"><span class="UserCard-lastSeen"><i class="icon fa fa-fw fa-clock-o "></i> 19 小时前</span></li><li class="item-joined">加入于 20 小时前</li></ul></div></div></div></div>');
+        $(this).parent().parent().parent().append('<div class="UserCard UserCard--popover" style="background-color: '+color+';"><div class="darkenBackground"><div class="container"><div class="UserCard-profile"><h2 class="UserCard-identity"><a href="/user/'+username+'"><div class="UserCard-avatar">' + avatar_text + '</div>' + username_text + '</a></h2><ul class="UserCard-info"><li class="item-bio"><div class="UserBio "><div class="UserBio-content"></div></div></li><li class="item-lastSeen"><span class="UserCard-lastSeen"><i class="icon fa fa-fw fa-clock-o "></i> 19 小时前</span></li><li class="item-joined">加入于 20 小时前</li></ul></div></div></div></div>');
         setTimeout(function() {
             $('.UserCard--popover').addClass('in');
         }, 200);
@@ -543,10 +544,12 @@ $(document).ready(function() {
 
     $(document).on('mouseenter', 'h3 .username', function(e) {
         var avatar = $(this).parent().find('.PostUser-avatar')
+        var color = avatar.css("background-color");
         var avatar_text = avatar.removeClass('PostUser-avatar').prop("outerHTML");
         avatar.addClass('PostUser-avatar');
+        var username = $(this).parent().find('.username').text();
         var username_text = $(this).prop("outerHTML");
-        $(this).parent().parent().parent().append('<div class="UserCard UserCard--popover" style="background-color: rgb(222, 160, 229);"><div class="darkenBackground"><div class="container"><div class="UserCard-profile"><h2 class="UserCard-identity"><a href="/u/wowmac"><div class="UserCard-avatar">' + avatar_text + '</div>' + username_text + '</a></h2><ul class="UserCard-info"><li class="item-bio"><div class="UserBio "><div class="UserBio-content"></div></div></li><li class="item-lastSeen"><span class="UserCard-lastSeen"><i class="icon fa fa-fw fa-clock-o "></i> 19 小时前</span></li><li class="item-joined">加入于 20 小时前</li></ul></div></div></div></div>');
+        $(this).parent().parent().parent().append('<div class="UserCard UserCard--popover" style="background-color: '+color+';"><div class="darkenBackground"><div class="container"><div class="UserCard-profile"><h2 class="UserCard-identity"><a href="/user/'+username+'"><div class="UserCard-avatar">' + avatar_text + '</div>' + username_text + '</a></h2><ul class="UserCard-info"><li class="item-bio"><div class="UserBio "><div class="UserBio-content"></div></div></li><li class="item-lastSeen"><span class="UserCard-lastSeen"><i class="icon fa fa-fw fa-clock-o "></i> 19 小时前</span></li><li class="item-joined">加入于 20 小时前</li></ul></div></div></div></div>');
         setTimeout(function() {
             $('.UserCard--popover').addClass('in');
         }, 200);
@@ -640,8 +643,10 @@ $(document).ready(function() {
 
                         var Dropdown_menu = '<li class="item-edit"><button class=" hasIcon" type="button" title="编辑"><i class="icon fa fa-fw fa-pencil Button-icon"></i><span class="Button-label">编辑</span></button></li><li class="Dropdown-separator"></li><li class="item-hide"><button class=" hasIcon" type="button" title="删除"><i class="icon fa fa-fw fa-trash-o Button-icon"></i><span class="Button-label">删除</span></button></li>';
 
+                        var index =  parseInt($(".PostStream-item:last").attr('data-index')) + 1;
+
                         var created = new timeago(null, 'zh_CN').format(reply.created);
-                        var reply_text = '<div class="PostStream-item" data-index="' + '0' + '" data-time="' + reply.created + '" data-number="' + '0' + '" data-id="' + reply.id + '" data-type="comment" style="display: block;"><article class="Post undefined CommentPost"><div><header class="Post-header"><ul><li class="item-user"><div class="PostUser"><h3><a href="/user/' + reply.author_username + '">' + avatar_text + '<span class="username">' + reply.author_username + '</span></a></h3><ul class="PostUser-badges badges"></ul></div></li><li class="item-meta"><div class="Dropdown PostMeta"><a class="Dropdown-toggle" data-toggle="dropdown"><time pubdate="true" datetime="' + reply.created + '" title="' + reply.created + '" data-humantime="true">' + created + '</time></a><div class="Dropdown-menu dropdown-menu"><span class="PostMeta-number">#' + '0' + ' 楼</span> <span class="PostMeta-time"><time pubdate="true" datetime="' + reply.created + '">' + reply.created + '</time></span> <span class="PostMeta-ip"></span><input class="FormControl PostMeta-permalink"></div></div><span class="item-index">#' + '0' + '</span></li></ul></header><div class="Post-body">' + reply.content + '</div><aside class="Post-actions"><ul>' + like_button + '<li class="item-reply {%if not user_info%}logIn{%endif%}"><button class="Button Button--link" type="button" title="回复"><span class="Button-label">回复</span></button></li><li><div class="ButtonGroup Dropdown dropdown Post-controls itemCount1"><button class="Dropdown-toggle Button Button--icon Button--flat" data-toggle="dropdown"><i class="icon fa fa-fw fa-ellipsis-h Button-icon"></i><span class="Button-label"></span><i class="icon fa fa-fw fa-caret-down Button-caret"></i></button><ul class="Dropdown-menu dropdown-menu Dropdown-menu--right">' + Dropdown_menu + '</ul></aside><footer class="Post-footer"><ul>' + like_users_text + reply_users_text + '</ul></footer></div></article><div class="Post-quoteButtonContainer"></div></div>';
+                        var reply_text = '<div class="PostStream-item" data-index="' + index + '" data-time="' + reply.created + '" data-number="' + index + '" data-id="' + reply.id + '" data-type="comment" style="display: block;"><article class="Post undefined CommentPost"><div><header class="Post-header"><ul><li class="item-user"><div class="PostUser"><h3><a href="/user/' + reply.author_username + '">' + avatar_text + '<span class="username">' + reply.author_username + '</span></a></h3><ul class="PostUser-badges badges"></ul></div></li><li class="item-meta"><div class="Dropdown PostMeta"><a class="Dropdown-toggle" data-toggle="dropdown"><time pubdate="true" datetime="' + reply.created + '" title="' + reply.created + '" data-humantime="true">' + created + '</time></a><div class="Dropdown-menu dropdown-menu"><span class="PostMeta-number">#' + index + ' 楼</span> <span class="PostMeta-time"><time pubdate="true" datetime="' + reply.created + '">' + reply.created + '</time></span> <span class="PostMeta-ip"></span><input class="FormControl PostMeta-permalink"></div></div><span class="item-index">#' + index + '</span></li></ul></header><div class="Post-body">' + reply.content + '</div><aside class="Post-actions"><ul>' + like_button + '<li class="item-reply {%if not user_info%}logIn{%endif%}"><button class="Button Button--link" type="button" title="回复"><span class="Button-label">回复</span></button></li><li><div class="ButtonGroup Dropdown dropdown Post-controls itemCount1"><button class="Dropdown-toggle Button Button--icon Button--flat" data-toggle="dropdown"><i class="icon fa fa-fw fa-ellipsis-h Button-icon"></i><span class="Button-label"></span><i class="icon fa fa-fw fa-caret-down Button-caret"></i></button><ul class="Dropdown-menu dropdown-menu Dropdown-menu--right">' + Dropdown_menu + '</ul></aside><footer class="Post-footer"><ul>' + like_users_text + reply_users_text + '</ul></footer></div></article><div class="Post-quoteButtonContainer"></div></div>';
 
                     $('.DiscussionList-loadMore').before(reply_text);
                     if (data_type == 'to_reply') {

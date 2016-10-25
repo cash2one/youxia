@@ -176,7 +176,11 @@
           </ul>
           <div class="Composer-content">
             <div class="ComposerBody ComposerBody--discussion">
-              <span class="Avatar ComposerBody-avatar" style="background: rgb(160, 176, 229);">G</span>
+              {%if user_info.avatar%}
+                                <img class="Avatar ComposerBody-avatar" src="{{user_info.avatar}}">
+                                {%else%}
+                                <span class="Avatar ComposerBody-avatar" style="background: {{user_info.color}};">{{user_info.username|format_username}}</span>
+                                {%endif%}
               <div class="ComposerBody-content">
                 <ul class="ComposerBody-header">
                   <li class="item-title">
