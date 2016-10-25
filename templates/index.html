@@ -9,7 +9,7 @@
         <nav class="IndexPage-nav sideNav">
           <ul>
             <li class="item-newDiscussion App-primaryControl">
-              <button class="Button Button--primary IndexPage-newDiscussion hasIcon" itemclassname="App-primaryControl" type="button" title="发布帖子"> <i class="icon fa fa-fw fa-edit Button-icon"></i>
+              <button class="Button Button--primary IndexPage-newDiscussion hasIcon {%if not user_info%}logIn{%endif%}" itemclassname="App-primaryControl" type="button" title="发布帖子"> <i class="icon fa fa-fw fa-edit Button-icon"></i>
                 <span class="Button-label">发布帖子</span>
               </button>
             </li>
@@ -174,6 +174,7 @@
               </button>
             </li>
           </ul>
+          {%if user_info%}
           <div class="Composer-content">
             <div class="ComposerBody ComposerBody--discussion">
               {%if user_info.avatar%}
@@ -252,6 +253,7 @@
               </div>
             </div>
           </div>
+          {%endif%}
         </div>
       </div>
     </div>
@@ -309,6 +311,22 @@ $(document).ready(function() {
     $.getJSON('/api/get/posts?page=1', function(data) {
         showPosts(data);
     });
+
+    $(document).on('click', '.DiscussionList-loadMore', function() {
+      var loadMore = $(this);
+      var pages = $(this).attr('data-pages');
+      var current = $(this).attr('data-current');
+      var next = $(this).attr('data-next');
+
+      if (current == pages) {
+        return;
+      }
+      $.getJSON('/api/get/posts?page=' + next, function(data) {
+        showPosts(data);
+      });
+    });
+
+    {%if user_info%}
 
     $(document).on('click', '.board .DiscussionComposer-changeTags', function() {
       $.getJSON('/api/get/tags', function(data) {
@@ -373,20 +391,6 @@ $(document).ready(function() {
         });
     });
 
-    $(document).on('click', '.DiscussionList-loadMore', function() {
-      var loadMore = $(this);
-      var pages = $(this).attr('data-pages');
-      var current = $(this).attr('data-current');
-      var next = $(this).attr('data-next');
-
-      if (current == pages) {
-        return;
-      }
-      $.getJSON('/api/get/posts?page=' + next, function(data) {
-        showPosts(data);
-      });
-    });
-
     $(document).on('click', '.BoardModal .SelectTagListItem-description .TagLabel', function() {
       var tagHtml = '<span class="TagsInput-tag">'+$(this).prop("outerHTML")+'</span>';
       $('.TagsInput-selected').html(tagHtml);
@@ -449,6 +453,7 @@ $(document).on('click', '.ModelModal .SelectTagListItem-description .TagLabel', 
       $('.model .DiscussionComposer-changeTags').html(tagHtml);
       $('.modal').modal('hide');
     });
+    {%endif%}
 
     
 

@@ -83,6 +83,7 @@
                           <span class="TagLabel-text">{{post.models}}</span>
                         </a>
                       </span>
+                      {%if post.tags%}
                       <span class="TagsLabel ">
                         <a class="TagLabel  colored" title="" href="/t/fix" style="color: rgb(214, 139, 79); background-color: rgb(214, 139, 79);">
                           <span class="TagLabel-text">标签</span>
@@ -94,6 +95,7 @@
                           <span class="TagLabel-text">全新君越</span>
                         </a>
                       </span>
+                      {%endif%}
                     </div>
                     <header class="Post-header">
                       <ul>
@@ -294,10 +296,14 @@
               <div class="PostStream-item-reply">
                 <article class="Post ReplyPlaceholder {%if not user_info%}logIn{%endif%}">
                   <header class="Post-header">
+                  {%if user_info%}
                     {%if user_info.avatar%}
                                 <img class="Avatar PostUser-avatar" src="{{user_info.avatar}}">
                                 {%else%}
                                 <span class="Avatar PostUser-avatar" style="background: {{user_info.color}};">{{user_info.username|format_username}}</span>
+                                {%endif%}
+                                {%else%}
+                                <span class="Avatar PostUser-avatar"></span>
                                 {%endif%}
                     回复一发...
                   </header>
@@ -310,6 +316,7 @@
     </div>
   </div>
   <div id="flarum-loading" style="display: none;">Loading...</div>
+  {%if user_info%}
   <div class="App-composer">
     <div class="container">
       <div id="composer">
@@ -408,6 +415,7 @@
       </div>
     </div>
   </div>
+  {%endif%}
 </main>
 {% endblock %} {% block modal %}
 <div id="modal">
