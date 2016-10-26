@@ -127,6 +127,7 @@
     {% block main %}{% endblock %}
   </div>
   {% block modal %}{% endblock %}
+  {% block alert %}{% endblock %}
   <script src="/static/js/jquery-2.1.1.min.js"></script>
   <script src="/static/bootstrap-3.2.0-dist/js/bootstrap.min.js"></script>
   <script type="text/javascript">
@@ -156,6 +157,12 @@
             $('.Composer').removeClass('visible');
             $('.Composer').css("display", "none");
         });
+
+        $(document).on('click', '.Alert-dismiss', function() {
+            $('.AlertManager').html('');
+        });
+
+        
 
         $(document).scroll(function() {
             var offset = $(document).scrollTop();

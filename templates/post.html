@@ -63,6 +63,7 @@
                   </ul>
                 </div>
               </li>
+              <li class="item-scrubber"><div class="PostStreamScrubber Dropdown App-titleControl"><button class="Button Dropdown-toggle" data-toggle="dropdown"><span class="Scrubber-index">68</span> of <span class="Scrubber-count">69</span> posts <i class="icon fa fa-fw fa-sort "></i></button><div class="Dropdown-menu dropdown-menu"><div class="Scrubber"><a class="Scrubber-first"><i class="icon fa fa-fw fa-angle-double-up "></i> Original Post</a><div class="Scrubber-scrollbar" style="max-height: 286px; cursor: pointer; -webkit-user-select: none;"><div class="Scrubber-before" style="height: 51.433%;"></div><div class="Scrubber-handle" style="cursor: move; height: 47.1698%;"><div class="Scrubber-bar"></div><div class="Scrubber-info"><strong><span class="Scrubber-index">68</span> of <span class="Scrubber-count">69</span> posts</strong><span class="Scrubber-description">October 2016</span></div></div><div class="Scrubber-after" style="height: 1.39724%;"></div><div class="Scrubber-unread" style="top: 91.3043%; height: 8.69565%;">6 unread</div></div><a class="Scrubber-last"><i class="icon fa fa-fw fa-angle-double-down "></i> Now</a></div></div></div></li>
             </ul>
           </nav>
           <div class="DiscussionPage-stream">
@@ -421,6 +422,9 @@
 <div id="modal">
   <div class="ModalManager modal fade" style=""></div>
 </div>
+{% endblock %}
+{% block alert %}
+<div id="alerts"><div class="AlertManager"></div></div>
 {% endblock %} {% block javascript %}
 <script src="{{static_path}}/js/timeago.min.js"></script>
 <script type="text/javascript">
@@ -665,8 +669,14 @@ $(document).ready(function() {
                     $('html, body').animate({
                         scrollTop: $(document).height()
                     }, 1000);
-
-
+                } else {
+                  $('.ComposerBody-loading').removeClass('active');
+                    $('.Composer-flexible').val("");
+                    $('.Composer').removeClass('normal');
+                    $('.Composer').removeClass('active');
+                    $('.Composer').removeClass('visible');
+                    $('.Composer').css("display", "none");
+                  $('.AlertManager').html('<div class="AlertManager-alert"><div class="Alert Alert--error "><span class="Alert-body">You do not have permission to do that.</span><ul class="Alert-controls"><li class=""><button class="Button Button--link Button--icon Alert-dismiss hasIcon" type="button"><i class="icon fa fa-fw fa-times Button-icon"></i></button></li></ul></div></div>');
                 }
             },
             error: function(msg) {
