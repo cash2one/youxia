@@ -1,0 +1,72 @@
+{% extends 'layout.html' %} {% block title %}{{view_user.username}} - 游侠{% endblock %} {% block stylesheet %} {% endblock %} {% block main %}
+<main class="App-content">
+    <div id="content"><div class="UserPage"><div class="UserCard Hero UserHero" style="background-color: {{view_user.color}};"><div class="darkenBackground"><div class="container"><div class="UserCard-profile"><h2 class="UserCard-identity"><a href="/u/{{view_user.username}}"><div class="UserCard-avatar">{%if view_user.avatar%}<img class="Avatar" src="{{view_user.avatar}}">{%else%}<span class="Avatar" style="background: {{view_user.color}};">{{view_user.username|format_username}}</span>{%endif%}</div><span class="username">{{view_user.username}}</span></a></h2><ul class="UserCard-info"><li class="item-bio"><div class="UserBio "><div class="UserBio-content"><p>Flarum founder and lead developer. <a href="http://twitter.com/tobscure" rel="nofollow">http://twitter.com/tobscure</a></p></div></div></li><li class="item-lastSeen"><span class="UserCard-lastSeen"><i class="icon fa fa-fw fa-clock-o "></i> {{view_user.created|pretty_date}}</span></li><li class="item-joined">加入于{{view_user.created|pretty_date}}</li></ul></div></div></div></div><div class="container"><nav class="sideNav UserPage-nav"><ul class="affix-top"><li class="item-nav"><div class="ButtonGroup Dropdown dropdown App-titleControl Dropdown--select itemCount3"><button class="Dropdown-toggle Button" data-toggle="dropdown"><span class="Button-label">发布的帖子</span><i class="icon fa fa-fw fa-sort Button-caret"></i></button><ul class="Dropdown-menu dropdown-menu "><li class="item-posts active"><a href="/u/radadam" active="true" class=" hasIcon" type="button" title="Posts2"><i class="icon fa fa-fw fa-comment-o Button-icon"></i><span class="Button-label">发布的帖子<span class="Button-badge">2</span></span></a></li><li class="item-discussions"><a href="/u/radadam/discussions" active="false" class=" hasIcon" type="button" title="Discussions1"><i class="icon fa fa-fw fa-reorder Button-icon"></i><span class="Button-label">TA 的回复<span class="Button-badge">1</span></span></a></li><li class="item-mentions"><a href="/u/radadam/mentions" name="mentions" active="false" class=" hasIcon" type="button" title="Mentions"><i class="icon fa fa-fw fa-at Button-icon"></i><span class="Button-label">提到 TA 的</span></a></li></ul></div></li></ul></nav><div class="sideNavOffset UserPage-content"><div class="PostsUserPage"><ul class="PostsUserPage-list"><li><div class="PostsUserPage-discussion">In <a href="/d/4086-can-you-have-mobile-alerts-through-flarum-on-iphones-androids/2">Can you have mobile alerts through Flarum on iphones/androids?</a></div><article class="Post undefined CommentPost"><div><header class="Post-header"><ul><li class="item-user"><div class="PostUser"><h3><a href="/u/radadam"><span class="Avatar PostUser-avatar" style="background: rgb(229, 160, 167);">R</span> <span class="username">radadam</span></a></h3><ul class="PostUser-badges badges"></ul></div></li><li class="item-meta"><div class="Dropdown PostMeta"><a class="Dropdown-toggle" data-toggle="dropdown"><time pubdate="true" datetime="2016-10-27T00:50:38+08:00" title="Thursday, October 27, 2016 12:50 AM" data-humantime="true">10 hours ago</time></a><div class="Dropdown-menu dropdown-menu"><span class="PostMeta-number">Post #2</span> <span class="PostMeta-time"><time pubdate="true" datetime="2016-10-27T00:50:38+08:00">Thursday, October 27, 2016 12:50 AM</time></span> <span class="PostMeta-ip"></span><input class="FormControl PostMeta-permalink"></div></div></li></ul></header><div class="Post-body"><p><a href="https://discuss.flarum.org/d/4086/1" class="PostMention" data-id="32597">radadam</a> can you post images?</p>
+</div><aside class="Post-actions"><ul><li class="item-like"><button class="Button Button--link" type="button" title="Like"><span class="Button-label">Like</span></button></li><li class="item-reply"><button class="Button Button--link" type="button" title="Reply"><span class="Button-label">Reply</span></button></li><li><div class="ButtonGroup Dropdown dropdown Post-controls itemCount1"><button class="Dropdown-toggle Button Button--icon Button--flat" data-toggle="dropdown"><i class="icon fa fa-fw fa-ellipsis-h Button-icon"></i><span class="Button-label"></span><i class="icon fa fa-fw fa-caret-down Button-caret"></i></button><ul class="Dropdown-menu dropdown-menu Dropdown-menu--right"><li class="item-flag"><button class=" hasIcon" type="button" title="Flag"><i class="icon fa fa-fw fa-flag Button-icon"></i><span class="Button-label">Flag</span></button></li></ul></div></li></ul></aside><footer class="Post-footer"><ul></ul></footer></div><ul class="Dropdown-menu PostMention-preview fade"></ul></article><div class="Post-quoteButtonContainer"></div></li><li><div class="PostsUserPage-discussion">In <a href="/d/4086-can-you-have-mobile-alerts-through-flarum-on-iphones-androids">Can you have mobile alerts through Flarum on iphones/androids?</a></div><article class="Post undefined CommentPost"><div><header class="Post-header"><ul><li class="item-user"><div class="PostUser"><h3><a href="/u/radadam"><span class="Avatar PostUser-avatar" style="background: rgb(229, 160, 167);">R</span> <span class="username">radadam</span></a></h3><ul class="PostUser-badges badges"></ul></div></li><li class="item-meta"><div class="Dropdown PostMeta"><a class="Dropdown-toggle" data-toggle="dropdown"><time pubdate="true" datetime="2016-10-27T00:50:18+08:00" title="Thursday, October 27, 2016 12:50 AM" data-humantime="true">10 hours ago</time></a><div class="Dropdown-menu dropdown-menu"><span class="PostMeta-number">Post #1</span> <span class="PostMeta-time"><time pubdate="true" datetime="2016-10-27T00:50:18+08:00">Thursday, October 27, 2016 12:50 AM</time></span> <span class="PostMeta-ip"></span><input class="FormControl PostMeta-permalink"></div></div></li></ul></header><div class="Post-body"><p>Pretty nice so far</p></div><aside class="Post-actions"><ul><li class="item-like"><button class="Button Button--link" type="button" title="Like"><span class="Button-label">Like</span></button></li><li class="item-reply"><button class="Button Button--link" type="button" title="Reply"><span class="Button-label">Reply</span></button></li><li><div class="ButtonGroup Dropdown dropdown Post-controls itemCount1"><button class="Dropdown-toggle Button Button--icon Button--flat" data-toggle="dropdown"><i class="icon fa fa-fw fa-ellipsis-h Button-icon"></i><span class="Button-label"></span><i class="icon fa fa-fw fa-caret-down Button-caret"></i></button><ul class="Dropdown-menu dropdown-menu Dropdown-menu--right"><li class="item-flag"><button class=" hasIcon" type="button" title="Flag"><i class="icon fa fa-fw fa-flag Button-icon"></i><span class="Button-label">Flag</span></button></li></ul></div></li></ul></aside><footer class="Post-footer"><ul></ul></footer></div></article><div class="Post-quoteButtonContainer"></div></li></ul></div></div></div></div></div>
+
+    <div id="flarum-loading" style="display: none;">
+  Loading...
+</div>
+
+  <noscript>
+    &lt;div class="Alert"&gt;
+      &lt;div class="container"&gt;
+        This site is best viewed in a modern browser with JavaScript enabled.
+      &lt;/div&gt;
+    &lt;/div&gt;
+
+    
+  </noscript>
+
+
+    <div class="App-composer">
+      <div class="container">
+        <div id="composer"><div class="Composer " style="display: none; bottom: -300px; height: 300px;"><div class="Composer-handle" style="cursor: row-resize;"></div><ul class="Composer-controls"><li class="item-minimize App-backControl"><button title="Minimize" itemclassname="App-backControl" class="Button Button--icon Button--link hasIcon" type="button"><i class="icon fa fa-fw fa-minus minimize Button-icon"></i></button></li><li class="item-fullScreen"><button title="Full Screen" class="Button Button--icon Button--link hasIcon" type="button"><i class="icon fa fa-fw fa-expand Button-icon"></i></button></li><li class="item-close"><button title="Close" class="Button Button--icon Button--link hasIcon" type="button"><i class="icon fa fa-fw fa-times Button-icon"></i></button></li></ul><div class="Composer-content"></div></div></div>
+      </div>
+    </div>
+  </main>
+{% endblock %} {% block modal %}
+<div id="modal">
+  <div class="ModalManager modal fade" style=""></div>
+</div>
+{% endblock %}
+{% block alert %}
+<div id="alerts"><div class="AlertManager"></div></div>
+{% endblock %} {% block javascript %}
+<script src="{{static_path}}/js/timeago.min.js"></script>
+<script type="text/javascript">
+$(document).ready(function() {
+    $(document).on('mouseenter', '.CommentPost .PostUser-avatar', function(e) {
+        var color = $(this).css("background-color");
+        var avatar_text = $(this).removeClass('PostUser-avatar').prop("outerHTML");
+        $(this).addClass('PostUser-avatar');
+        var username = $(this).parent().find('.username').text();
+        var username_text = $(this).parent().find('.username').prop("outerHTML");
+        $(this).parent().parent().parent().append('<div class="UserCard UserCard--popover" style="background-color: '+color+';"><div class="darkenBackground"><div class="container"><div class="UserCard-profile"><h2 class="UserCard-identity"><a href="/user/'+username+'"><div class="UserCard-avatar">' + avatar_text + '</div>' + username_text + '</a></h2><ul class="UserCard-info"><li class="item-bio"><div class="UserBio "><div class="UserBio-content"></div></div></li><li class="item-lastSeen"><span class="UserCard-lastSeen"><i class="icon fa fa-fw fa-clock-o "></i> 19 小时前</span></li><li class="item-joined">加入于 20 小时前</li></ul></div></div></div></div>');
+        setTimeout(function() {
+            $('.UserCard--popover').addClass('in');
+        }, 200);
+    });
+
+    $(document).on('mouseenter', 'h3 .username', function(e) {
+        var avatar = $(this).parent().find('.PostUser-avatar')
+        var color = avatar.css("background-color");
+        var avatar_text = avatar.removeClass('PostUser-avatar').prop("outerHTML");
+        avatar.addClass('PostUser-avatar');
+        var username = $(this).parent().find('.username').text();
+        var username_text = $(this).prop("outerHTML");
+        $(this).parent().parent().parent().append('<div class="UserCard UserCard--popover" style="background-color: '+color+';"><div class="darkenBackground"><div class="container"><div class="UserCard-profile"><h2 class="UserCard-identity"><a href="/user/'+username+'"><div class="UserCard-avatar">' + avatar_text + '</div>' + username_text + '</a></h2><ul class="UserCard-info"><li class="item-bio"><div class="UserBio "><div class="UserBio-content"></div></div></li><li class="item-lastSeen"><span class="UserCard-lastSeen"><i class="icon fa fa-fw fa-clock-o "></i> 19 小时前</span></li><li class="item-joined">加入于 20 小时前</li></ul></div></div></div></div>');
+        setTimeout(function() {
+            $('.UserCard--popover').addClass('in');
+        }, 200);
+    });
+
+    $(document).on('mouseleave', '.UserCard--popover', function(e) {
+        $('.UserCard--popover').removeClass('in');
+        setTimeout(function() {
+            $('.UserCard--popover').remove();
+        }, 200);
+
+    });
+});
+</script>
+{% endblock %}
