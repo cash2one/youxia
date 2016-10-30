@@ -1,0 +1,376 @@
+{% extends 'layout.html' %} {% block title %}设置 - 游侠{% endblock %} {% block stylesheet %} {% endblock %} {% block main %}
+<main class="App-content">
+      <div id="content">
+        <div class="UserPage">
+          <div class="UserCard Hero UserHero" style="background-color: {{user_info.color}};">
+            <div class="darkenBackground">
+              <div class="container">
+                <div class="UserCard-profile">
+                  <h2 class="UserCard-identity">
+                    <div class="AvatarEditor Dropdown UserCard-avatar">
+                      {%if user_info.avatar%}
+                      <img class="Avatar" src="{{user_info.avatar}}">
+                      {%else%}
+                      <span class="Avatar" style="background: {{user_info.color}};">{{user_info.username|format_username}}</span>
+                      {%endif%}
+                      <a class="Dropdown-toggle AvatarEditor--noAvatar" title="Upload a new avatar" data-toggle="dropdown">
+                        <i class="icon fa fa-fw fa-plus-circle "></i>
+                      </a>
+                      <ul class="Dropdown-menu Menu">
+                        <li class="item-upload">
+                          <button class=" hasIcon" type="button" title="Upload">
+                            <i class="icon fa fa-fw fa-upload Button-icon"></i>
+                            <span class="Button-label">Upload</span>
+                          </button>
+                        </li>
+                        <li class="item-remove">
+                          <button class=" hasIcon" type="button" title="Remove">
+                            <i class="icon fa fa-fw fa-times Button-icon"></i>
+                            <span class="Button-label">Remove</span>
+                          </button>
+                        </li>
+                      </ul>
+                    </div>
+                    <span class="username">{{user_info.username}}</span>
+                  </h2>
+                  <ul class="UserCard-info">
+                    <li class="item-bio">
+                      <div class="UserBio editable">
+                        <div class="UserBio-content">
+                          <p class="UserBio-placeholder">写点什么介绍一下自己吧~~</p>
+                        </div>
+                      </div>
+                    </li>
+                    <li class="item-lastSeen">
+                      <span class="UserCard-lastSeen online">
+                        <i class="icon fa fa-fw fa-circle "></i>
+                        在线
+                      </span>
+                    </li>
+                    <li class="item-joined">加入于{{user_info.created|pretty_date}}</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="container">
+            <nav class="sideNav UserPage-nav">
+              <ul class="affix-top">
+                <li class="item-nav">
+                  <div class="ButtonGroup Dropdown dropdown App-titleControl Dropdown--select Dropdown--select itemCount5">
+                    <button class="Dropdown-toggle Button" data-toggle="dropdown">
+                      <span class="Button-label">Settings</span>
+                      <i class="icon fa fa-fw fa-sort Button-caret"></i>
+                    </button>
+                    <ul class="Dropdown-menu dropdown-menu ">
+                                    <li class="item-posts">
+                                        <a href="/user/{{user_info.username}}" active="false" class=" hasIcon" type="button" title="Posts2">
+                                            <i class="icon fa fa-fw fa-reorder Button-icon"></i>
+                                            <span class="Button-label">
+                                                发布的帖子
+                                                <span class="Button-badge">2</span>
+                                            </span>
+                                        </a>
+                                    </li>
+                                    <li class="item-replys">
+                                        <a href="/user/{{user_info.username}}/replies" active="false" class=" hasIcon" type="button" title="Discussions1">
+                                            <i class="icon fa fa-fw fa-comment-o Button-icon"></i>
+                                            <span class="Button-label">
+                                                TA 的回复
+                                                <span class="Button-badge">1</span>
+                                            </span>
+                                        </a>
+                                    </li>
+                                    <li class="item-mentions">
+                                        <a href="/user/{{user_info.username}}/mentions" name="mentions" active="false" class=" hasIcon" type="button" title="Mentions">
+                                            <i class="icon fa fa-fw fa-at Button-icon"></i>
+                                            <span class="Button-label">提到 TA 的</span>
+                                        </a>
+                                    </li>
+                                    <li class="Dropdown-separator"></li>
+                      <li class="item-settings active">
+                        <a href="/settings" active="true" class=" hasIcon" type="button" title="Settings">
+                          <i class="icon fa fa-fw fa-cog Button-icon"></i>
+                          <span class="Button-label">设置</span>
+                        </a>
+                      </li>
+                                </ul>
+                  </div>
+                </li>
+              </ul>
+            </nav>
+            <div class="sideNavOffset UserPage-content">
+              <div class="SettingsPage">
+                <ul>
+                  <li class="item-account">
+                    <fieldset class="Settings-account">
+                      <legend>账号</legend>
+                      <ul>
+                        <li class="item-changePassword">
+                          <button class="Button" type="button" title="Change Password">
+                            <span class="Button-label">修改密码</span>
+                          </button>
+                        </li>
+                        <li class="item-changeEmail">
+                          <button class="Button" type="button" title="Change Email">
+                            <span class="Button-label">变更邮箱地址</span>
+                          </button>
+                        </li>
+                      </ul>
+                    </fieldset>
+                  </li>
+                  <li class="item-notifications">
+                    <fieldset class="Settings-notifications">
+                      <legend>通知</legend>
+                      <ul>
+                        <li class="item-notificationGrid">
+                          <table class="NotificationGrid">
+                            <thead>
+                              <tr>
+                                <td></td>
+                                <th class="NotificationGrid-groupToggle">
+                                  <i class="icon fa fa-fw fa-bell "></i>
+                                  网页
+                                </th>
+                                <th class="NotificationGrid-groupToggle">
+                                  <i class="icon fa fa-fw fa-envelope-o "></i>
+                                  邮箱
+                                </th>
+                              </tr>
+                            </thead>
+                            <tbody>
+                              <tr>
+                                <td class="NotificationGrid-groupToggle">
+                                  <i class="icon fa fa-fw fa-pencil "></i>
+                                  有人重命名了我的一个帖子
+                                </td>
+                                <td class="NotificationGrid-checkbox">
+                                  <label class="Checkbox on ">
+                                    <input type="checkbox">
+                                    <div class="Checkbox-display">
+                                      <i class="icon fa fa-fw fa-check "></i>
+                                    </div>
+                                  </label>
+                                </td>
+                                <td class="NotificationGrid-checkbox">
+                                  <label class="Checkbox off  disabled">
+                                    <input type="checkbox" disabled="">
+                                    <div class="Checkbox-display">
+                                      <i class="icon fa fa-fw fa-times "></i>
+                                    </div>
+                                  </label>
+                                </td>
+                              </tr>
+                              <tr>
+                                <td class="NotificationGrid-groupToggle">
+                                  <i class="icon fa fa-fw fa-thumbs-o-up "></i>
+                                  有人赞了我的内容
+                                </td>
+                                <td class="NotificationGrid-checkbox">
+                                  <label class="Checkbox on ">
+                                    <input type="checkbox">
+                                    <div class="Checkbox-display">
+                                      <i class="icon fa fa-fw fa-check "></i>
+                                    </div>
+                                  </label>
+                                </td>
+                                <td class="NotificationGrid-checkbox">
+                                  <label class="Checkbox off  disabled">
+                                    <input type="checkbox" disabled="">
+                                    <div class="Checkbox-display">
+                                      <i class="icon fa fa-fw fa-times "></i>
+                                    </div>
+                                  </label>
+                                </td>
+                              </tr>
+                              <tr>
+                                <td class="NotificationGrid-groupToggle">
+                                  <i class="icon fa fa-fw fa-lock "></i>
+                                  我的帖子被锁定
+                                </td>
+                                <td class="NotificationGrid-checkbox">
+                                  <label class="Checkbox on ">
+                                    <input type="checkbox">
+                                    <div class="Checkbox-display">
+                                      <i class="icon fa fa-fw fa-check "></i>
+                                    </div>
+                                  </label>
+                                </td>
+                                <td class="NotificationGrid-checkbox">
+                                  <label class="Checkbox off  disabled">
+                                    <input type="checkbox" disabled="">
+                                    <div class="Checkbox-display">
+                                      <i class="icon fa fa-fw fa-times "></i>
+                                    </div>
+                                  </label>
+                                </td>
+                              </tr>
+                              <tr><td class="NotificationGrid-groupToggle"><i class="icon fa fa-fw fa-thumb-tack "></i>我的帖子被置顶</td><td class="NotificationGrid-checkbox"><label class="Checkbox on "><input type="checkbox"><div class="Checkbox-display"><i class="icon fa fa-fw fa-check "></i></div></label></td><td class="NotificationGrid-checkbox"><label class="Checkbox off  disabled"><input type="checkbox" disabled=""><div class="Checkbox-display"><i class="icon fa fa-fw fa-times "></i></div></label></td></tr>
+                              <tr>
+                                <td class="NotificationGrid-groupToggle">
+                                  <i class="icon fa fa-fw fa-reply "></i>
+                                  有人回复我的内容
+                                </td>
+                                <td class="NotificationGrid-checkbox">
+                                  <label class="Checkbox on ">
+                                    <input type="checkbox">
+                                    <div class="Checkbox-display">
+                                      <i class="icon fa fa-fw fa-check "></i>
+                                    </div>
+                                  </label>
+                                </td>
+                                <td class="NotificationGrid-checkbox">
+                                  <label class="Checkbox off ">
+                                    <input type="checkbox">
+                                    <div class="Checkbox-display">
+                                      <i class="icon fa fa-fw fa-times "></i>
+                                    </div>
+                                  </label>
+                                </td>
+                              </tr>
+                              <tr>
+                                <td class="NotificationGrid-groupToggle">
+                                  <i class="icon fa fa-fw fa-at "></i>
+                                  有人提到我
+                                </td>
+                                <td class="NotificationGrid-checkbox">
+                                  <label class="Checkbox on ">
+                                    <input type="checkbox">
+                                    <div class="Checkbox-display">
+                                      <i class="icon fa fa-fw fa-check "></i>
+                                    </div>
+                                  </label>
+                                </td>
+                                <td class="NotificationGrid-checkbox">
+                                  <label class="Checkbox off ">
+                                    <input type="checkbox">
+                                    <div class="Checkbox-display">
+                                      <i class="icon fa fa-fw fa-times "></i>
+                                    </div>
+                                  </label>
+                                </td>
+                              </tr>
+                              <tr>
+                                <td class="NotificationGrid-groupToggle">
+                                  <i class="icon fa fa-fw fa-star "></i>
+                                  我关注的帖子被回复
+                                </td>
+                                <td class="NotificationGrid-checkbox">
+                                  <label class="Checkbox on ">
+                                    <input type="checkbox">
+                                    <div class="Checkbox-display">
+                                      <i class="icon fa fa-fw fa-check "></i>
+                                    </div>
+                                  </label>
+                                </td>
+                                <td class="NotificationGrid-checkbox">
+                                  <label class="Checkbox on ">
+                                    <input type="checkbox">
+                                    <div class="Checkbox-display">
+                                      <i class="icon fa fa-fw fa-check "></i>
+                                    </div>
+                                  </label>
+                                </td>
+                              </tr>
+                            </tbody>
+                          </table>
+                        </li>
+                        <li class="item-followAfterReply">
+                          <label class="Checkbox off  Checkbox--switch Checkbox--switch">
+                            <input type="checkbox">
+                            <div class="Checkbox-display"></div>
+                            自动关注我回复的帖子
+                          </label>
+                        </li>
+                      </ul>
+                    </fieldset>
+                  </li>
+                  <li class="item-privacy">
+                    <fieldset class="Settings-privacy">
+                      <legend>隐私</legend>
+                      <ul>
+                        <li class="item-discloseOnline">
+                          <label class="Checkbox on  Checkbox--switch Checkbox--switch">
+                            <input type="checkbox">
+                            <div class="Checkbox-display"></div>
+                            允许其他人查看在线的状态
+                          </label>
+                        </li>
+                      </ul>
+                    </fieldset>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div id="flarum-loading" style="display: none;">Loading...</div>
+      <noscript>
+        &lt;div class="Alert"&gt; &lt;div class="container"&gt; This site is best viewed in a modern browser with JavaScript enabled. &lt;/div&gt; &lt;/div&gt;
+      </noscript>
+      <div class="App-composer">
+        <div class="container">
+          <div id="composer">
+            <div class="Composer " style="display: none; bottom: -300px; height: 300px;">
+              <div class="Composer-handle" style="cursor: row-resize;"></div>
+              <ul class="Composer-controls">
+                <li class="item-minimize App-backControl">
+                  <button title="Minimize" itemclassname="App-backControl" class="Button Button--icon Button--link hasIcon" type="button">
+                    <i class="icon fa fa-fw fa-minus minimize Button-icon"></i>
+                  </button>
+                </li>
+                <li class="item-fullScreen">
+                  <button title="Full Screen" class="Button Button--icon Button--link hasIcon" type="button">
+                    <i class="icon fa fa-fw fa-expand Button-icon"></i>
+                  </button>
+                </li>
+                <li class="item-close">
+                  <button title="Close" class="Button Button--icon Button--link hasIcon" type="button">
+                    <i class="icon fa fa-fw fa-times Button-icon"></i>
+                  </button>
+                </li>
+              </ul>
+              <div class="Composer-content"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+{% endblock %} {% block modal %}
+<div id="modal">
+    <div class="ModalManager modal fade" style=""></div>
+</div>
+{% endblock %} {% block alert %}
+<div id="alerts">
+    <div class="AlertManager"></div>
+</div>
+{% endblock %} 
+
+{% block javascript %}
+<script type="text/javascript">
+$(document).ready(function() {
+  $(document).on('click', '.UserCard-info .item-bio', function() {
+    $(this).html('<div class="UserBio editable editing"><textarea class="FormControl" placeholder="写点什么介绍一下自己吧~~" rows="3"></textarea></div>');
+    });
+
+  $(document).on('mouseup', 'body', function(e) {
+  var _con = $('.UserCard-info .item-bio');   // 设置目标区域
+  if(!_con.is(e.target) && _con.has(e.target).length === 0){ // Mark 1
+    $('.UserCard-info .item-bio').html('<div class="UserBio editable"><div class="UserBio-content"><p class="UserBio-placeholder">写点什么介绍一下自己吧~~</p></div></div>');
+  }
+  });
+
+  $(document).on('click', '.item-changePassword', function() {
+        var modal = '<div class="Modal modal-dialog ChangePasswordModal Modal--small"><div class="Modal-content"><div class="Modal-close App-backControl"><button class="Button Button--icon Button--link hasIcon" type="button"><i class="icon fa fa-fw fa-times Button-icon"></i></button></div><form><div class="Modal-header"><h3 class="App-titleControl App-titleControl--text">修改密码</h3></div><div class="Modal-alert"></div><div class="Modal-body"><div class="Form Form--centered"><p class="helpText">点击下面的按钮并检查您的电子邮件的链接来更改您的密码。</p><div class="Form-group"><button class="Button Button--primary Button--block" type="submit" title="Send Password Reset Email"><span class="Button-label">发送重置密码邮件</span></button></div></div></div></form></div></div>';
+        $('.ModalManager').html(modal);
+        $('.modal').modal('show');
+    });
+  $(document).on('click', '.item-changeEmail', function() {
+        var modal = '<div class="Modal modal-dialog ChangeEmailModal Modal--small"><div class="Modal-content"><div class="Modal-close App-backControl"><button class="Button Button--icon Button--link hasIcon" type="button"><i class="icon fa fa-fw fa-times Button-icon"></i></button></div><form><div class="Modal-header"><h3 class="App-titleControl App-titleControl--text">变更邮箱地址</h3></div><div class="Modal-alert"></div><div class="Modal-body"><div class="Form Form--centered"><div class="Form-group"><input type="email" name="email" class="FormControl" placeholder="新邮箱地址" bidi="function b(){arguments.length&amp;&amp;(a=arguments[0]);return a}"></div><div class="Form-group"><input type="password" name="password" class="FormControl" placeholder="确认密码" bidi="function b(){arguments.length&amp;&amp;(a=arguments[0]);return a}"></div><div class="Form-group"><button class="Button Button--primary Button--block" type="submit" title="Save Changes"><span class="Button-label">保存更改</span></button></div></div></div></form></div></div>';
+        $('.ModalManager').html(modal);
+        $('.modal').modal('show');
+    });
+});
+</script>
+{% endblock %}

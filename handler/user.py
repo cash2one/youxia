@@ -232,6 +232,7 @@ class UserHandler(BaseHandler):
     def get(self, username, template_variables = {}):
         user_info = self.current_user
         template_variables["user_info"] = user_info
+        template_variables["static_path"] = self.static_path
         p = int(self.get_argument("p", "1"))
 
         view_user = self.user_model.get_user_by_username(username)
@@ -260,19 +261,16 @@ class UserHandler(BaseHandler):
         '''
         self.render("user.html", **template_variables)
 
-class SettingHandler(BaseHandler):
+class SettingsHandler(BaseHandler):
     @tornado.web.authenticated
     def get(self, template_variables = {}):
         user_info = self.get_current_user()
         template_variables["user_info"] = user_info
         template_variables["gen_random"] = gen_random
         if user_info:
-            if is_mobile_browser(self):
-                self.render("mobile/user/setting.html", **template_variables)
-            else:
-                self.render("user/setting.html", **template_variables)
+            self.render(self.template_path+"settings.html", **template_variables)
         else:
-            self.render("404.html", **template_variables)
+            self.render(self.template_path+"404.html", **template_variables)
 
     @tornado.web.authenticated
     def post(self, template_variables = {}):

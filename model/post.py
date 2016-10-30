@@ -38,3 +38,17 @@ class PostModel(Query):
         order = "post.id DESC"
         field = "post.*"
         return self.order(order).field(field).pages(current_page = current_page, list_rows = num) 
+
+    def get_user_all_posts(self, user_name, num = 20, current_page = 1):
+        where = "post.author_username = '%s'" % user_name
+        order = "post.id DESC"
+        field = "post.*"
+        return self.where(where).order(order).field(field).pages(current_page = current_page, list_rows = num) 
+
+    def get_user_all_posts_with_user(self, user_name, user_id, num = 20, current_page = 1):
+        where = "post.author_username = '%s'" % user_name
+        join = "LEFT JOIN ylike ON 'to_post' = ylike.like_type AND post.id = ylike.like_to AND ylike.author_id = %s" % user_id
+        order = "post.id DESC"
+        field = "post.*, \
+                ylike.id as like_id"
+        return self.where(where).join(join).order(order).field(field).pages(current_page = current_page, list_rows = num) 

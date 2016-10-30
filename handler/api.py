@@ -269,6 +269,21 @@ class GetPostsApiHandler(BaseHandler):
         all_posts_json = json.dumps(all_posts, cls=DateEncoder)
         self.write(all_posts_json)
 
+class GetUserPostsApiHandler(BaseHandler):
+    def get(self, user_name, template_variables = {}):
+        user_info = self.current_user
+
+        p = int(self.get_argument("page", "1"))
+
+        if user_info:
+            all_posts = self.post_model.get_user_all_posts_with_user(user_name, user_info.uid, current_page = p)
+        else:
+            all_posts = self.post_model.get_user_all_posts(user_name, current_page = p)
+
+        all_posts_json = json.dumps(all_posts, cls=DateEncoder)
+        print all_posts_json
+        self.write(all_posts_json)
+
 
 class GetTagsApiHandler(BaseHandler):
     def get(self, template_variables = {}):

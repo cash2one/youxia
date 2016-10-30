@@ -1,6 +1,4 @@
-{% extends 'layout.html' %} 
-{% block title %}游侠车迷社区{% endblock %}
-{% block stylesheet %} {% endblock %} {% block main %}
+{% extends 'layout.html' %} {% block title %}游侠车迷社区{% endblock %} {% block stylesheet %} {% endblock %} {% block main %}
 <main class="App-content">
   <div id="content" style="padding-bottom: 0px;">
     <div class="IndexPage">
@@ -139,8 +137,7 @@
             </ul>
           </div>
           <div class="DiscussionList">
-            <ul class="DiscussionList-discussions">
-            </ul>
+            <ul class="DiscussionList-discussions"></ul>
             <div class="DiscussionList-loadMore" data-pages="" data-current="" data-next="">
               <button class="Button" type="button" title="">
                 <span class="Button-label">加载更多</span>
@@ -178,10 +175,10 @@
           <div class="Composer-content">
             <div class="ComposerBody ComposerBody--discussion">
               {%if user_info.avatar%}
-                                <img class="Avatar ComposerBody-avatar" src="{{user_info.avatar}}">
-                                {%else%}
-                                <span class="Avatar ComposerBody-avatar" style="background: {{user_info.color}};">{{user_info.username|format_username}}</span>
-                                {%endif%}
+              <img class="Avatar ComposerBody-avatar" src="{{user_info.avatar}}">
+              {%else%}
+              <span class="Avatar ComposerBody-avatar" style="background: {{user_info.color}};">{{user_info.username|format_username}}</span>
+              {%endif%}
               <div class="ComposerBody-content">
                 <ul class="ComposerBody-header">
                   <li class="item-title">
@@ -267,93 +264,93 @@
 <script src="{{static_path}}/js/timeago.min.js"></script>
 <script type="text/javascript">
 function showPosts(data) {
-  var all_posts_text = '';
-        var all_posts = data.list;
+    var all_posts_text = '';
+    var all_posts = data.list;
 
-        for (var i = 0; i < all_posts.length; i++) {
-          var post = all_posts[i];
+    for (var i = 0; i < all_posts.length; i++) {
+        var post = all_posts[i];
 
-          var created_text = new timeago(null, 'zh_CN').format(post.created);
-          created_text = post.author_username + ' 创建于' + created_text;
+        var created_text = new timeago(null, 'zh_CN').format(post.created);
+        created_text = post.author_username + ' 创建于' + created_text;
 
-          var last_reply_text = '';
-          if (post.last_reply_user) {
+        var last_reply_text = '';
+        if (post.last_reply_user) {
             var last_reply_time_text = new timeago(null, 'zh_CN').format(post.last_reply_time);
-            last_reply_text = '&nbsp;•&nbsp;<li class="item-terminalPost"><span><time pubdate="true" datetime="'+post.last_reply_time+'" title="'+post.last_reply_time+'" data-humantime="true">'+last_reply_time_text+'</time></span></li>&nbsp;•&nbsp;<li class="item-terminalPost"><span>最后回复&nbsp;<span class="username">'+post.last_reply_user+'</span></span></li>';
-          }
+            last_reply_text = '&nbsp;•&nbsp;<li class="item-terminalPost"><span><time pubdate="true" datetime="' + post.last_reply_time + '" title="' + post.last_reply_time + '" data-humantime="true">' + last_reply_time_text + '</time></span></li>&nbsp;•&nbsp;<li class="item-terminalPost"><span>最后回复&nbsp;<span class="username">' + post.last_reply_user + '</span></span></li>';
+        }
 
-          var avatar_text;
-          if (post.author_avatar) {
+        var avatar_text;
+        if (post.author_avatar) {
             avatar_text = '<img class="Avatar" src="' + post.author_avatar + '">';
-          } else {
-            avatar_text = '<span class="Avatar" style="background: '+post.author_color+'; text-transform: capitalize;">' + post.author_username.substring(0, 1) + '</span>';
-          }       
-
-          var post_text = '<li data-id="'+post.id+'"><div class="DiscussionListItem"><a class="Slidable-underneath Slidable-underneath--left Slidable-underneath--elastic"><i class="icon fa fa-fw fa-check "></i></a><div class="DiscussionListItem-content Slidable-content unread"><a href="/user/'+post.author_username+'" class="DiscussionListItem-author" title="'+created_text+'">'+avatar_text+'<ul class="DiscussionListItem-badges badges"></ul></a><a href="/post/'+post.id+'" class="DiscussionListItem-main"><span class="DiscussionListItem-title">'+post.title+'</span><ul class="DiscussionListItem-info"><li class="item-tags"><span class="TagsLabel "><span class="TagLabel"><span class="TagLabel-text">'+post.board+'</span></span></span></li>&nbsp;•&nbsp;<li class="item-terminalPost"><span><span class="username">'+post.author_username+'</span></span></li>'+last_reply_text+'</ul></a><span class="DiscussionListItem-count" title="设为已读">'+post.reply_num+'</span></div></div></li>';
-
-          all_posts_text += post_text;
+        } else {
+            avatar_text = '<span class="Avatar" style="background: ' + post.author_color + '; text-transform: capitalize;">' + post.author_username.substring(0, 1) + '</span>';
         }
-        $('.DiscussionList-discussions').append(all_posts_text);
 
-        var loadMore = $('.DiscussionList-loadMore');
-        loadMore.attr('data-pages', data.page.pages);
-        loadMore.attr('data-current', data.page.current);
-        loadMore.attr('data-next', data.page.next);
+        var post_text = '<li data-id="' + post.id + '"><div class="DiscussionListItem"><a class="Slidable-underneath Slidable-underneath--left Slidable-underneath--elastic"><i class="icon fa fa-fw fa-check "></i></a><div class="DiscussionListItem-content Slidable-content unread"><a href="/user/' + post.author_username + '" class="DiscussionListItem-author" title="' + created_text + '">' + avatar_text + '<ul class="DiscussionListItem-badges badges"></ul></a><a href="/post/' + post.id + '" class="DiscussionListItem-main"><span class="DiscussionListItem-title">' + post.title + '</span><ul class="DiscussionListItem-info"><li class="item-tags"><span class="TagsLabel "><span class="TagLabel"><span class="TagLabel-text">' + post.board + '</span></span></span></li>&nbsp;•&nbsp;<li class="item-terminalPost"><span><span class="username">' + post.author_username + '</span></span></li>' + last_reply_text + '</ul></a><span class="DiscussionListItem-count" title="设为已读">' + post.reply_num + '</span></div></div></li>';
 
-        if (data.page.pages == data.page.current) {
-          loadMore.find('.Button-label').text('没有更多了');
-          loadMore.find('button').addClass('disabled');
-        }
+        all_posts_text += post_text;
+    }
+    $('.DiscussionList-discussions').append(all_posts_text);
+
+    var loadMore = $('.DiscussionList-loadMore');
+    loadMore.attr('data-pages', data.page.pages);
+    loadMore.attr('data-current', data.page.current);
+    loadMore.attr('data-next', data.page.next);
+
+    if (data.page.pages == data.page.current) {
+        loadMore.find('.Button-label').text('没有更多了');
+        loadMore.find('button').addClass('disabled');
+    }
 }
 
 $(document).ready(function() {
-    
+
     $.getJSON('/api/get/posts?page=1', function(data) {
         showPosts(data);
     });
 
     $(document).on('click', '.DiscussionList-loadMore', function() {
-      var loadMore = $(this);
-      var pages = $(this).attr('data-pages');
-      var current = $(this).attr('data-current');
-      var next = $(this).attr('data-next');
+        var loadMore = $(this);
+        var pages = $(this).attr('data-pages');
+        var current = $(this).attr('data-current');
+        var next = $(this).attr('data-next');
 
-      if (current == pages) {
-        return;
-      }
-      $.getJSON('/api/get/posts?page=' + next, function(data) {
-        showPosts(data);
-      });
+        if (current == pages) {
+            return;
+        }
+        $.getJSON('/api/get/posts?page=' + next, function(data) {
+            showPosts(data);
+        });
     });
 
-    {%if user_info%}
+    {% if user_info %}
 
     $(document).on('click', '.board .DiscussionComposer-changeTags', function() {
-      $.getJSON('/api/get/tags', function(data) {
+        $.getJSON('/api/get/tags', function(data) {
 
-        var pre_order = 1;
-        var tagListHtml = '';
-        var tagHtml = '';
-        var tag;
-        for (var i=0; i<data.length; i++) {
-          tag = data[i];
-          
-          if (pre_order != tag.category_order) {
-            tagListHtml += ('<li data-index="20" class="pinned colored" style="color: rgb(181, 158, 140);"><span class="icon TagIcon " style="background-color: rgb(181, 158, 140);"></span><span class="SelectTagListItem-name">'+data[i-1].category+'</span><span class="SelectTagListItem-description"><span class="TagsLabel ">'+tagHtml+'</span></span></li>'); 
-             pre_order = tag.category_order;
-             tagHtml = '';
-          }
-          tagHtml += '<span class="TagLabel"><span class="TagLabel-text">'+tag.name+'</span></span>';
-          
-        }
-        tagListHtml += ('<li data-index="20" class="pinned colored" style="color: rgb(181, 158, 140);"><span class="icon TagIcon " style="background-color: rgb(181, 158, 140);"></span><span class="SelectTagListItem-name">'+tag.category+'</span><span class="SelectTagListItem-description"><span class="TagsLabel ">'+tagHtml+'</span></span></li>'); 
+            var pre_order = 1;
+            var tagListHtml = '';
+            var tagHtml = '';
+            var tag;
+            for (var i = 0; i < data.length; i++) {
+                tag = data[i];
 
-        
+                if (pre_order != tag.category_order) {
+                    tagListHtml += ('<li data-index="20" class="pinned colored" style="color: rgb(181, 158, 140);"><span class="icon TagIcon " style="background-color: rgb(181, 158, 140);"></span><span class="SelectTagListItem-name">' + data[i - 1].category + '</span><span class="SelectTagListItem-description"><span class="TagsLabel ">' + tagHtml + '</span></span></li>');
+                    pre_order = tag.category_order;
+                    tagHtml = '';
+                }
+                tagHtml += '<span class="TagLabel"><span class="TagLabel-text">' + tag.name + '</span></span>';
 
-        var modal = '<div class="Modal modal-dialog TagDiscussionModal BoardModal"><div class="Modal-content"><div class="Modal-close App-backControl"><button class="Button Button--icon Button--link hasIcon" type="button"><i class="icon fa fa-fw fa-times Button-icon"></i></button></div><div><div class="Modal-header"><h3 class="App-titleControl App-titleControl--text">选择帖子版块</h3></div><div class="Modal-alert"></div><div class="Modal-body"><div class="TagDiscussionModal-form"><div class="TagDiscussionModal-form-input"><div class="TagsInput FormControl "><span class="TagsInput-selected"></span><input class="FormControl" placeholder="选择合适的版块（必选）"></div></div><div class="TagDiscussionModal-form-submit App-primaryControl"><button  class="Button Button--primary hasIcon disabled" disabled="" title="确定"><i class="icon fa fa-fw fa-check Button-icon"></i><span class="Button-label">确定</span></button></div></div></div><div class="Modal-footer"><ul class="TagDiscussionModal-list SelectTagList">'+tagListHtml+'</ul></div></div></div></div>';
-        $('.ModalManager').html(modal);
-        $('.modal').modal('show');
-    }); 
+            }
+            tagListHtml += ('<li data-index="20" class="pinned colored" style="color: rgb(181, 158, 140);"><span class="icon TagIcon " style="background-color: rgb(181, 158, 140);"></span><span class="SelectTagListItem-name">' + tag.category + '</span><span class="SelectTagListItem-description"><span class="TagsLabel ">' + tagHtml + '</span></span></li>');
+
+
+
+            var modal = '<div class="Modal modal-dialog TagDiscussionModal BoardModal"><div class="Modal-content"><div class="Modal-close App-backControl"><button class="Button Button--icon Button--link hasIcon" type="button"><i class="icon fa fa-fw fa-times Button-icon"></i></button></div><div><div class="Modal-header"><h3 class="App-titleControl App-titleControl--text">选择帖子版块</h3></div><div class="Modal-alert"></div><div class="Modal-body"><div class="TagDiscussionModal-form"><div class="TagDiscussionModal-form-input"><div class="TagsInput FormControl "><span class="TagsInput-selected"></span><input class="FormControl" placeholder="选择合适的版块（必选）"></div></div><div class="TagDiscussionModal-form-submit App-primaryControl"><button  class="Button Button--primary hasIcon disabled" disabled="" title="确定"><i class="icon fa fa-fw fa-check Button-icon"></i><span class="Button-label">确定</span></button></div></div></div><div class="Modal-footer"><ul class="TagDiscussionModal-list SelectTagList">' + tagListHtml + '</ul></div></div></div></div>';
+            $('.ModalManager').html(modal);
+            $('.modal').modal('show');
+        });
     });
 
     $(document).on('click', '.item-newDiscussion', function() {
@@ -392,72 +389,68 @@ $(document).ready(function() {
     });
 
     $(document).on('click', '.BoardModal .SelectTagListItem-description .TagLabel', function() {
-      var tagHtml = '<span class="TagsInput-tag">'+$(this).prop("outerHTML")+'</span>';
-      $('.TagsInput-selected').html(tagHtml);
-      $('.TagDiscussionModal-form-submit button').removeClass('disabled');
-      $('.TagDiscussionModal-form-submit button').attr('disabled',false); 
+        var tagHtml = '<span class="TagsInput-tag">' + $(this).prop("outerHTML") + '</span>';
+        $('.TagsInput-selected').html(tagHtml);
+        $('.TagDiscussionModal-form-submit button').removeClass('disabled');
+        $('.TagDiscussionModal-form-submit button').attr('disabled', false);
     });
 
     $(document).on('click', '.BoardModal .TagDiscussionModal-form-submit', function() {
-      var tagHtml = '<span class="TagsLabel "><span class="TagLabel  colored" style="color: rgb(239, 86, 79); background-color: rgb(239, 86, 79);"><span class="TagLabel-text">版块</span></span>'+$('.TagsInput-selected .TagsInput-tag').html()+'</span>';
-      $('.board .DiscussionComposer-changeTags').html(tagHtml);
-      $('.modal').modal('hide');
+        var tagHtml = '<span class="TagsLabel "><span class="TagLabel  colored" style="color: rgb(239, 86, 79); background-color: rgb(239, 86, 79);"><span class="TagLabel-text">版块</span></span>' + $('.TagsInput-selected .TagsInput-tag').html() + '</span>';
+        $('.board .DiscussionComposer-changeTags').html(tagHtml);
+        $('.modal').modal('hide');
     });
 
 
 
     $(document).on('click', '.model .DiscussionComposer-changeTags', function() {
-      $.getJSON('/api/get/cars', function(data) {
+        $.getJSON('/api/get/cars', function(data) {
 
 
-        var all_car_brands_html = '';
-        for (var i=0; i<data.length; i++) {
+            var all_car_brands_html = '';
+            for (var i = 0; i < data.length; i++) {
 
-          var car_brand = data[i];
-          var all_car_venders = car_brand.all_car_venders;
+                var car_brand = data[i];
+                var all_car_venders = car_brand.all_car_venders;
 
-          var all_car_venders_html = '';
-          for (var j=0; j<all_car_venders.length; j++) {
-            var car_vender = all_car_venders[j];
-            var all_car_models = car_vender.all_car_models;
+                var all_car_venders_html = '';
+                for (var j = 0; j < all_car_venders.length; j++) {
+                    var car_vender = all_car_venders[j];
+                    var all_car_models = car_vender.all_car_models;
 
-            var all_car_models_html = '';
-            for (var k=0; k<all_car_models.length; k++) {
-              var car_model = all_car_models[k];
-              all_car_models_html = all_car_models_html + '<span class="TagLabel"><span class="TagLabel-text">'+car_model.name+'</span></span>';
+                    var all_car_models_html = '';
+                    for (var k = 0; k < all_car_models.length; k++) {
+                        var car_model = all_car_models[k];
+                        all_car_models_html = all_car_models_html + '<span class="TagLabel"><span class="TagLabel-text">' + car_model.name + '</span></span>';
+                    }
+                    all_car_venders_html = '<div>' + car_vender.name + '</div><span class="TagsLabel ">' + all_car_models_html + '</span>';
+                }
+
+                all_car_brands_html = all_car_brands_html + '<li data-index="20" class="pinned colored" style="color: rgb(181, 158, 140);"><span class="icon TagIcon " style="background-color: rgb(181, 158, 140);"></span><span class="SelectTagListItem-name">' + car_brand.name + '</span><span class="SelectTagListItem-description">' + all_car_venders_html + '</span></li>';
             }
-            all_car_venders_html = '<div>'+car_vender.name+'</div><span class="TagsLabel ">'+all_car_models_html+'</span>';
-          }
-
-          all_car_brands_html = all_car_brands_html + '<li data-index="20" class="pinned colored" style="color: rgb(181, 158, 140);"><span class="icon TagIcon " style="background-color: rgb(181, 158, 140);"></span><span class="SelectTagListItem-name">'+car_brand.name+'</span><span class="SelectTagListItem-description">'+all_car_venders_html+'</span></li>';
-        }
 
 
-        
 
-        var modal = '<div class="Modal modal-dialog TagDiscussionModal ModelModal"><div class="Modal-content"><div class="Modal-close App-backControl"><button class="Button Button--icon Button--link hasIcon" type="button"><i class="icon fa fa-fw fa-times Button-icon"></i></button></div><div><div class="Modal-header"><h3 class="App-titleControl App-titleControl--text">选择相关车型</h3></div><div class="Modal-alert"></div><div class="Modal-body"><div class="TagDiscussionModal-form"><div class="TagDiscussionModal-form-input"><div class="TagsInput FormControl "><span class="TagsInput-selected"></span><input class="FormControl" placeholder="选择相关的车型（可选）"></div></div><div class="TagDiscussionModal-form-submit App-primaryControl"><button  class="Button Button--primary hasIcon disabled" disabled="" title="确定"><i class="icon fa fa-fw fa-check Button-icon"></i><span class="Button-label">确定</span></button></div></div></div><div class="Modal-footer"><ul class="TagDiscussionModal-list SelectTagList">'+all_car_brands_html+'</ul></div></div></div></div>';
-        $('.ModalManager').html(modal);
-        $('.modal').modal('show');
-    }); 
+
+            var modal = '<div class="Modal modal-dialog TagDiscussionModal ModelModal"><div class="Modal-content"><div class="Modal-close App-backControl"><button class="Button Button--icon Button--link hasIcon" type="button"><i class="icon fa fa-fw fa-times Button-icon"></i></button></div><div><div class="Modal-header"><h3 class="App-titleControl App-titleControl--text">选择相关车型</h3></div><div class="Modal-alert"></div><div class="Modal-body"><div class="TagDiscussionModal-form"><div class="TagDiscussionModal-form-input"><div class="TagsInput FormControl "><span class="TagsInput-selected"></span><input class="FormControl" placeholder="选择相关的车型（可选）"></div></div><div class="TagDiscussionModal-form-submit App-primaryControl"><button  class="Button Button--primary hasIcon disabled" disabled="" title="确定"><i class="icon fa fa-fw fa-check Button-icon"></i><span class="Button-label">确定</span></button></div></div></div><div class="Modal-footer"><ul class="TagDiscussionModal-list SelectTagList">' + all_car_brands_html + '</ul></div></div></div></div>';
+            $('.ModalManager').html(modal);
+            $('.modal').modal('show');
+        });
     });
 
-$(document).on('click', '.ModelModal .SelectTagListItem-description .TagLabel', function() {
-      var tagHtml = '<span class="TagsInput-tag">'+$(this).prop("outerHTML")+'</span>';
-      $('.TagsInput-selected').html(tagHtml);
-      $('.TagDiscussionModal-form-submit button').removeClass('disabled');
-      $('.TagDiscussionModal-form-submit button').attr('disabled',false); 
+    $(document).on('click', '.ModelModal .SelectTagListItem-description .TagLabel', function() {
+        var tagHtml = '<span class="TagsInput-tag">' + $(this).prop("outerHTML") + '</span>';
+        $('.TagsInput-selected').html(tagHtml);
+        $('.TagDiscussionModal-form-submit button').removeClass('disabled');
+        $('.TagDiscussionModal-form-submit button').attr('disabled', false);
     });
 
     $(document).on('click', '.ModelModal .TagDiscussionModal-form-submit', function() {
-      var tagHtml = '<span class="TagsLabel "><span class="TagLabel  colored" style="color: rgb(239, 86, 79); background-color: rgb(155, 193, 102);"><span class="TagLabel-text">车型</span></span>'+$('.TagsInput-selected .TagsInput-tag').html()+'</span>';
-      $('.model .DiscussionComposer-changeTags').html(tagHtml);
-      $('.modal').modal('hide');
-    });
-    {%endif%}
-
-    
-
-    
+        var tagHtml = '<span class="TagsLabel "><span class="TagLabel  colored" style="color: rgb(239, 86, 79); background-color: rgb(155, 193, 102);"><span class="TagLabel-text">车型</span></span>' + $('.TagsInput-selected .TagsInput-tag').html() + '</span>';
+        $('.model .DiscussionComposer-changeTags').html(tagHtml);
+        $('.modal').modal('hide');
+    }); 
+    {% endif %}
 });
 </script>
 {% endblock %}
