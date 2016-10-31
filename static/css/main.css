@@ -133,6 +133,7 @@ h2 {
     margin-bottom: 20px;
     border-radius: 5px;
     border: 1px dashed #667d99;
+    background: #ffffff;
 }
 .TagHero.TagHero--colored {
     border: none;

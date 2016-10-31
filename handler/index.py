@@ -110,6 +110,9 @@ class TagHandler(BaseHandler):
         template_variables["static_path"] = self.static_path
         template_variables["user_info"] = user_info
         p = int(self.get_argument("p", "1"))
+
+        tag = self.tag_model.get_tag_by_tag_name(tag_name)
+        template_variables["tag"] = tag
        
         self.render(self.template_path+"tag.html", **template_variables)
 
