@@ -127,3 +127,13 @@ h2 {
 .DiscussionList-loadMore {
     margin-top: 20px;
 }
+.Hero.TagHero {
+    padding-top: 35px;
+    padding-bottom: 35px;
+    margin-bottom: 20px;
+    border-radius: 5px;
+    border: 1px dashed #667d99;
+}
+.TagHero.TagHero--colored {
+    border: none;
+}
